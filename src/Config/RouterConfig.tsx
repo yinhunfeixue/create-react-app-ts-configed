@@ -12,7 +12,14 @@ class RouterConfig extends Component {
         <HashRouter>
           <Switch>
             <Route path="/Login" exact component={async(() => import('Pages/Login'))} />
-            <Route path="/" exact component={async(() => import('Pages/BasicLayout'))} />
+            <Route path="/" render={(props) => {
+              let children = <Switch>
+                <Route path='/page1' component={async(() => import('Pages/Page1'))} />
+              </Switch>;
+              let Result = async(() => import('Pages/BasicLayout'), children);
+              return <Result {...props} />
+            }}>
+            </Route>
           </Switch>
         </HashRouter>
       </div>

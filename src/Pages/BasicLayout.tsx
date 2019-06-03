@@ -6,6 +6,9 @@ class BasicLayout extends Component {
     return (
       <div>
         <Button>BasicLayout</Button>
+        {
+          this.props.children
+        }
       </div>
     );
   }

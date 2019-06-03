@@ -1,14 +1,41 @@
 import React, { Component } from 'react';
-import { Button } from 'antd';
+import { Button, Form, Input } from 'antd';
+import { FormComponentProps } from 'antd/lib/form';
+import FormItem from 'antd/lib/form/FormItem';
 
-class Login extends Component {
+class Login extends Component<FormComponentProps, any> {
   render() {
     return (
       <div>
-        <Button>登录</Button>
+        <Form layout="inline">
+          <FormItem>
+            {
+              this.props.form.getFieldDecorator("name")(<Input />)
+            }
+          </FormItem>
+          <FormItem>
+            {
+              this.props.form.getFieldDecorator("password")(<Input />)
+            }
+          </FormItem>
+          <FormItem>
+            <Button
+              onClick={() => {
+                this.props.form.validateFields((errors, values) => {
+                  if (!errors) {
+                    console.log(values);
+                  }
+                });
+              }}
+            >
+              登录
+              </Button>
+          </FormItem>
+        </Form>
+
       </div>
     );
   }
 }
 
-export default Login;
+export default Form.create()(Login);
