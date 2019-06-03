@@ -11,8 +11,8 @@ class RouterConfig extends Component {
       <div>
         <HashRouter>
           <Switch>
-            <Route path="/Login" exact component={async(() => import('../Pages/Login'))} />
-            <Route path="/" exact component={async(() => import('../Pages/BasicLayout'))} />
+            <Route path="/Login" exact component={async(() => import('Pages/Login'))} />
+            <Route path="/" exact component={async(() => import('Pages/BasicLayout'))} />
           </Switch>
         </HashRouter>
       </div>
