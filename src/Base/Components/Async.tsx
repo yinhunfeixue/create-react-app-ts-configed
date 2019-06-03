@@ -3,7 +3,7 @@ const URL = require('url');
 
 const CACHE = new Map();
 
-export default function async(importComponent: any, children: any = null) {
+export default function async(importComponent: any) {
   let key = importComponent.toString();
   if (CACHE.has(key)) {
     return CACHE.get(key);
@@ -31,7 +31,7 @@ export default function async(importComponent: any, children: any = null) {
     render() {
       const C = this.state.component;
 
-      return C ? <C {...this.props} query={URL.parse(this.props.location.search, true).query} >{children}</C> : null;
+      return C ? <C {...this.props} query={URL.parse(this.props.location.search, true).query} >{this.props.children}</C> : null;
     }
   }
 

@@ -1,0 +1,25 @@
+.BasicLayout {
+  display: flex;
+  min-height: 100vh;
+
+  .Left {
+    align-self: stretch;
+    width: 180px;
+    background: #001529;
+
+    .Logo {
+      height: 100px;
+    }
+  }
+
+  .Right {
+    flex-grow: 1;
+    flex-shrink: 1;
+
+    header {
+      height: 100px;
+      border-bottom: 1px solid #eee;
+      margin-bottom: 20px;
+    }
+  }
+}

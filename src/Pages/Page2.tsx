@@ -3,14 +3,14 @@ import React, { Component } from 'react';
 /**
  * 
  */
-class Page1 extends Component {
+class Page2 extends Component {
   render() {
     return (
       <div>
-        page1
+        page2
       </div>
     );
   }
 }
 
-export default Page1;
+export default Page2;

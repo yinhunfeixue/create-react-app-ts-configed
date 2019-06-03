@@ -3,6 +3,9 @@ import { Button, Form, Input } from 'antd';
 import { FormComponentProps } from 'antd/lib/form';
 import FormItem from 'antd/lib/form/FormItem';
 
+/**
+ * 登录页
+ */
 class Login extends Component<FormComponentProps, any> {
   render() {
     return (
@@ -23,16 +26,15 @@ class Login extends Component<FormComponentProps, any> {
               onClick={() => {
                 this.props.form.validateFields((errors, values) => {
                   if (!errors) {
-                    console.log(values);
+                    // console.log(values);
                   }
                 });
               }}
             >
               登录
-              </Button>
+            </Button>
           </FormItem>
         </Form>
-
       </div>
     );
   }
