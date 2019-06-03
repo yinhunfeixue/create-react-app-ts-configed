@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { HashRouter, Switch, Route } from 'react-router-dom';
-import async from '../Base/Components/Async';
+import async from 'Base/Components/Async';
 
 /**
  * 路由配置文件
