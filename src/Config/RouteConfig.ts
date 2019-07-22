@@ -22,6 +22,13 @@ const routeConfig: IRouteItem[] = [
         name: '页面二',
         path: '/Page2',
         component: async(() => import('Pages/Page2')),
+        children: [
+          {
+            name: '页面二一',
+            path: '/Page2/page21',
+            component: async(() => import('Pages/Page2')),
+          },
+        ]
       },
     ],
   }

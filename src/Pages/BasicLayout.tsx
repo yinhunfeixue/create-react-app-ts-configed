@@ -36,11 +36,12 @@ class BasicLayout extends Component {
         </div>
         <div className={styles.Right}>
           <header>header</header>
-          {
-            this.props.children
-          }
+          <main>
+            {
+              this.props.children
+            }
+          </main>
         </div>
-
       </div>
     );
   }
