@@ -14,11 +14,14 @@ const styles = require('./BasicLayout.less');
 class BasicLayout extends Component {
   renderMenu(data: IRouteItem[]) {
     return data.map((item) => {
+      if (item.hideInMenu) {
+        return null;
+      }
       if (item.children && item.children.length) {
         return <SubMenu key={item.path} title={item.name}>{this.renderMenu(item.children)}</SubMenu>
       }
       else {
-        return <MenuItem key={item.path}><a onClick={() => UrlUtil.toUrl(item.path)}>{item.name}</a></MenuItem>
+        return <MenuItem key={item.path}><a onClick={() => UrlUtil.toUrl(item.href || item.path)}>{item.name}</a></MenuItem>
       }
     });
   }

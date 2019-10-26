@@ -7,6 +7,7 @@ const routeConfig: IRouteItem[] = [
     name: '登录',
     path: '/Login',
     component: Login,
+    hideInMenu: true,
   },
   {
     name: '主页',
