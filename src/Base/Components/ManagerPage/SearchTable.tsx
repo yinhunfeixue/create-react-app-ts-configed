@@ -1,11 +1,11 @@
-import React, { Component } from 'react';
-import ISearchTableProps from './Interfaces/ISearchTableProps';
-import { Table, message } from 'antd';
+import { message, Table } from 'antd';
 import Axios from 'axios';
+import ISearchTableProps from 'Base/Interfaces/ISearchTableProps';
+import React, { Component } from 'react';
 
 interface ISearchTableState {
   current: number;
-  selectedRows?: any[],
+  selectedRows?: any[];
   selectedRowKeys?: string[] | number[];
   total: number;
   dataSource: any[];
@@ -14,7 +14,10 @@ interface ISearchTableState {
 
 const DEFAULT_PAGE_SIZE = 20;
 
-class SearchTable extends Component<ISearchTableProps, ISearchTableState>{
+/**
+ *
+ */
+class SearchTable extends Component<ISearchTableProps, ISearchTableState> {
   static defaultProps = {
     pageSize: 20,
     rowKey: 'id',
@@ -23,8 +26,7 @@ class SearchTable extends Component<ISearchTableProps, ISearchTableState>{
       if (error) {
         if (error.toString) {
           msg = error.toString();
-        }
-        else {
+        } else {
           msg = error;
         }
       }
@@ -50,7 +52,7 @@ class SearchTable extends Component<ISearchTableProps, ISearchTableState>{
       dataSource: [],
       loading: false,
       selectedRowKeys: [],
-      selectedRows: [],
+      selectedRows: []
     };
   }
 
@@ -65,16 +67,20 @@ class SearchTable extends Component<ISearchTableProps, ISearchTableState>{
   private requestData() {
     if (this.props.createSearchRequest) {
       this.setState({ loading: true });
-      const requestData = this.props.createSearchRequest(this.state.current, this.props.pageSize || DEFAULT_PAGE_SIZE, this.props.searchParams);
+      const requestData = this.props.createSearchRequest(
+        this.state.current,
+        this.props.pageSize || DEFAULT_PAGE_SIZE,
+        this.props.searchParams
+      );
       Axios.request(requestData)
-        .then((response) => {
+        .then(response => {
           if (this.props.parseResponse) {
             const { total, dataSource } = this.props.parseResponse(response);
             this.setState({ total, dataSource });
           }
           this.setState({ loading: false });
         })
-        .catch((error) => {
+        .catch(error => {
           this.setState({ loading: false });
           if (this.props.requestErrorHandler) {
             this.props.requestErrorHandler(error);
@@ -87,13 +93,16 @@ class SearchTable extends Component<ISearchTableProps, ISearchTableState>{
     const tableProps: { [key: string]: any } = {};
     if (this.props.selectEnable) {
       tableProps.rowSelection = {
-        onChange: (selectedRowKeys: string[] | number[], selectedRows: any[]) => {
+        onChange: (
+          selectedRowKeys: string[] | number[],
+          selectedRows: any[]
+        ) => {
           this.setState({ selectedRowKeys, selectedRows });
           if (this.props.onSelectedChange) {
             this.props.onSelectedChange(selectedRowKeys, selectedRows);
           }
-        },
-      }
+        }
+      };
     }
     return (
       <Table
@@ -107,7 +116,7 @@ class SearchTable extends Component<ISearchTableProps, ISearchTableState>{
             this.setState({ current }, () => this.requestData());
           },
           current: this.state.current,
-          pageSize: this.props.pageSize,
+          pageSize: this.props.pageSize
         }}
         {...tableProps}
         {...this.props.tableProps}

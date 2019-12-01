@@ -1,10 +1,9 @@
-import SearchTable from "../SearchTable";
+import SearchTable from 'Base/Components/ManagerPage/SearchTable';
 
 /**
  * 表格相关的控制组件props
  */
 interface ITableControlProps {
-
   /**
    * 选中的行
    */
