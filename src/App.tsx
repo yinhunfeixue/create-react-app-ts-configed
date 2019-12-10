@@ -1,6 +1,6 @@
+import RouterRender from '@/config/RouterRender';
 import React from 'react';
 import './App.less';
-import RouterRender from 'Config/RouterRender';
 
 const App: React.FC = () => {
   return (
@@ -8,6 +8,6 @@ const App: React.FC = () => {
       <RouterRender />
     </div>
   );
-}
+};
 
 export default App;

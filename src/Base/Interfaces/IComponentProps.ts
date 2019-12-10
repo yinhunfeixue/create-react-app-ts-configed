@@ -1,4 +1,4 @@
-import { MouseEventHandler } from 'react';
+import { MouseEventHandler } from '@/base/interfaces/node_modules/react';
 
 export default interface IComponentProps {
   className?: string;
