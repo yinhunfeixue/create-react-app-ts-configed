@@ -42,7 +42,7 @@
 		"prefix": "newCom",
 		"body": [
 			"import React, { Component } from 'react';",
-			"import IComponentProps from '@/base/interface/IComponentProps';",
+			"import IComponentProps from '@/Base/Interfaces/IComponentProps';",
 			"",
 			"interface I${TM_FILENAME_BASE}State {",
 			"",
@@ -72,10 +72,13 @@
 		"prefix": "newPage",
 		"body": [
 			"import React, { Component } from 'react';",
-			"import IPageProps from '@/base/interface/IPageProps';",
+			"import IPageProps from '@/Base/Interfaces/IPageProps';",
 			"",
 			"interface I${TM_FILENAME_BASE}Sate { }",
 			"",
+			"/**",
+			"* ${TM_FILENAME_BASE}",
+			"*/",
 			"class ${TM_FILENAME_BASE} extends Component<IPageProps, I${TM_FILENAME_BASE}Sate> {",
 			"render() {",
 			"return (",

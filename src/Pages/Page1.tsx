@@ -1,15 +1,15 @@
+import IComponentProps from '@/Base/Interfaces/IComponentProps';
 import React, { Component } from 'react';
 
+interface IPage1State {}
+interface IPage1Props extends IComponentProps {}
+
 /**
- * 
+ * Page1
  */
-class Page1 extends Component {
+class Page1 extends Component<IPage1Props, IPage1State> {
   render() {
-    return (
-      <div style={{ border: '1px solid red', height: 2000 }}>
-        page1
-      </div>
-    );
+    return <div>Page1</div>;
   }
 }
 
