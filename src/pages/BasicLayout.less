@@ -1,0 +1,38 @@
+@headerHeight: 80px;
+
+.BasicLayout {
+  display: flex;
+  height: 100vh;
+
+  .Left {
+    align-self: stretch;
+    width: 180px;
+    background: #001529;
+
+    .Logo {
+      height: @headerHeight;
+    }
+  }
+
+  .Right {
+    flex-grow: 1;
+    flex-shrink: 1;
+    align-self: stretch;
+    display: flex;
+    flex-direction: column;
+
+    header {
+      height: @headerHeight;
+      border-bottom: 1px solid #eee;
+      margin-bottom: 20px;
+      flex-grow: 0;
+      flex-shrink: 0;
+    }
+
+    main{
+      flex-grow: 1;
+      flex-shrink: 1;
+      overflow: auto;
+    }
+  }
+}
