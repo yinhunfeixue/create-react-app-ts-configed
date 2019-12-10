@@ -1,19 +1,12 @@
 import React, { Component, ReactElement } from 'react';
-import { injectIntl } from 'react-intl';
 import { HashRouter, Route, Switch } from 'react-router-dom';
-import ProjectUtil from 'Utils/ProjectUtil';
 import IRouteItem from './IRouteItem';
 import routeConfig from './RouteConfig';
 
 /**
  * 路由配置文件
  */
-class RouterConfig extends Component<any, any> {
-  constructor(props: any) {
-    super(props);
-    ProjectUtil._intl = this.props.intl;
-  }
-
+class RouterRender extends Component<any, any> {
   renderRoutes(data: IRouteItem[]): ReactElement[] {
     let result: ReactElement[] = data.map(item => {
       return (
@@ -59,4 +52,4 @@ class RouterConfig extends Component<any, any> {
   }
 }
 
-export default injectIntl(RouterConfig);
+export default RouterRender;

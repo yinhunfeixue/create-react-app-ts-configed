@@ -1,4 +1,4 @@
-import RouterRender from '@/config/RouterRender';
+import RouterRender from 'config/RouterRender';
 import React from 'react';
 import './App.less';
 

@@ -1,10 +1,12 @@
+/** @format */
+
 import IRouteItem from '@/config/IRouteItem';
 import routeConfig from '@/config/RouteConfig';
 import UrlUtil from '@/utils/UrlUtil';
-import { Menu } from 'antd';
+import {Menu} from 'antd';
 import MenuItem from 'antd/lib/menu/MenuItem';
 import SubMenu from 'antd/lib/menu/SubMenu';
-import React, { Component } from 'react';
+import React, {Component} from 'react';
 
 const styles = require('./BasicLayout.less');
 
