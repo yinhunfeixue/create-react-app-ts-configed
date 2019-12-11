@@ -1,0 +1,70 @@
+import PageItem from '@/base/components/mobile/PageItem';
+import PageManager from '@/base/components/mobile/PageManager';
+import PageView, { IPageViewProps } from '@/base/components/mobile/PageView';
+import PageView1 from '@/pages/mobile/PageView1';
+import { Button, Modal, Switch } from 'antd';
+import React from 'react';
+
+interface IPageView2State {
+  checked: boolean;
+}
+interface IPageView2Props extends IPageViewProps {
+  index: any;
+}
+
+/**
+ * PageView2
+ */
+class PageView2 extends PageView<IPageView2Props, IPageView2State> {
+  get title() {
+    return this.props.index;
+  }
+
+  constructor(props: IPageView2Props) {
+    super(props);
+    this.state = {
+      checked: false
+    };
+  }
+
+  renderChildren() {
+    const index = this.props.index;
+    return (
+      <div style={{ padding: '5vw' }}>
+        <a
+          onClick={() => {
+            PageManager.openPage(
+              new PageItem(index % 2 === 0 ? PageView1 : PageView2, {
+                index: index + 1
+              })
+            );
+          }}
+        >
+          打开下一个窗口
+        </a>
+        <Switch
+          onChange={checked => this.setState({ checked })}
+          checked={this.state.checked}
+        />
+        <Button
+          onClick={() => {
+            Modal.success({
+              content: this.state.checked ? 'true' : 'false'
+            });
+          }}
+        >
+          显示选中状态
+        </Button>
+        {(() => {
+          const result = [];
+          for (let i = 0; i < 1000; i++) {
+            result.push(<li>{i}</li>);
+          }
+          return result;
+        })()}
+      </div>
+    );
+  }
+}
+
+export default PageView2;
