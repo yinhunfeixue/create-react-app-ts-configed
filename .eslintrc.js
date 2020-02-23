@@ -2,7 +2,7 @@ module.exports = {
   extends: ['react-app'],
   rules: {
     'jsx-a11y/anchor-is-valid': 0,
-
+    'no-redeclare': 0,
     /*****************防止代码无效内容太多*****************/
     //使用console会有警告
     'no-console': 'warn',

@@ -1,7 +1,5 @@
-import PageItem from '@/base/components/mobile/PageItem';
-import PageManager from '@/base/components/mobile/PageManager';
-import PageView, { IPageViewProps } from '@/base/components/mobile/PageView';
 import PageView2 from '@/pages/mobile/PageView2';
+import PageManager, { IPageViewProps, PageItem, PageView } from 'h5-webview';
 import React from 'react';
 
 interface IPageView1State {}

@@ -37,6 +37,7 @@
     "eslint-plugin-react-hooks": "^2.3.0",
     "file-loader": "^5.0.2",
     "fs-extra": "^8.1.0",
+    "h5-webview": "^0.0.7",
     "html-webpack-plugin": "4.0.0-beta.5",
     "identity-obj-proxy": "3.0.0",
     "is-wsl": "^2.1.1",
