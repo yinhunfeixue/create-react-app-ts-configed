@@ -1,5 +1,5 @@
 import React, { Component, ReactElement } from 'react';
-import { HashRouter, Route, Switch } from 'react-router-dom';
+import { HashRouter, Redirect, Route, Switch } from 'react-router-dom';
 import IRouteItem from './IRouteItem';
 import routeConfig from './RouteConfig';
 
@@ -8,7 +8,19 @@ import routeConfig from './RouteConfig';
  */
 class RouterRender extends Component<any, any> {
   renderRoutes(data: IRouteItem[]): ReactElement[] {
-    let result: ReactElement[] = data.map(item => {
+    //按是否有redirect排序，有redirect的在后面
+    data.sort((a, b) => {
+      if (a.redirect && !b.redirect) {
+        return 1;
+      } else if (!a.redirect && b.redirect) {
+        return -1;
+      }
+      return 0;
+    });
+    let result: ReactElement[] = data.map((item, index) => {
+      if (item.redirect) {
+        return <Redirect key={index} to={item.redirect} exact />;
+      }
       return (
         <Route
           key={item.path}
@@ -28,11 +40,7 @@ class RouterRender extends Component<any, any> {
                 </ClassType>
               );
             }
-            return (
-              <React.Fragment>
-                <Switch>{children}</Switch>
-              </React.Fragment>
-            );
+            return <Switch>{children}</Switch>;
           }}
         />
       );
@@ -43,11 +51,9 @@ class RouterRender extends Component<any, any> {
 
   render() {
     return (
-      <React.Fragment>
-        <HashRouter>
-          <Switch>{this.renderRoutes(routeConfig)}</Switch>
-        </HashRouter>
-      </React.Fragment>
+      <HashRouter>
+        <Switch>{this.renderRoutes(routeConfig)}</Switch>
+      </HashRouter>
     );
   }
 }

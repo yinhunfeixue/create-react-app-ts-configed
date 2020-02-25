@@ -1,6 +1,5 @@
 /** @format */
 
-import img from '@/assets/1.png';
 import IRouteItem from '@/config/IRouteItem';
 import routeConfig from '@/config/RouteConfig';
 import UrlUtil from '@/utils/UrlUtil';
@@ -17,7 +16,8 @@ const styles = require('./BasicLayout.less');
 class BasicLayout extends Component {
   renderMenu(data: IRouteItem[]) {
     return data.map(item => {
-      if (item.hideInMenu) {
+      const href = item.href || item.path;
+      if (item.hideInMenu || item.redirect) {
         return null;
       }
       if (item.children && item.children.length) {
@@ -29,9 +29,7 @@ class BasicLayout extends Component {
       } else {
         return (
           <MenuItem key={item.path}>
-            <a onClick={() => UrlUtil.toUrl(item.href || item.path)}>
-              {item.name}
-            </a>
+            <a onClick={() => UrlUtil.toUrl(href)}>{item.name}</a>
           </MenuItem>
         );
       }
@@ -49,10 +47,7 @@ class BasicLayout extends Component {
         </div>
         <div className={styles.Right}>
           <header>header</header>
-          <main>
-            <img src={img} alt="" />
-            {this.props.children}
-          </main>
+          <main>{this.props.children}</main>
         </div>
       </div>
     );

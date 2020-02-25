@@ -15,6 +15,10 @@ const routeConfig: IRouteItem[] = [
     component: async(() => import('@/pages/BasicLayout')),
     children: [
       {
+        path: '/',
+        redirect: '/Page1'
+      },
+      {
         name: '页面一',
         path: '/Page1',
         component: async(() => import('@/pages/Page1'))

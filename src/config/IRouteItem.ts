@@ -4,7 +4,7 @@ export default interface IRouteItem {
   /**
    * 菜单名称
    */
-  name: string;
+  name?: string;
   /**
    * route路径
    */
@@ -13,7 +13,7 @@ export default interface IRouteItem {
   /**
    * route组件
    */
-  component: ReactElement | Function;
+  component?: ReactElement | Function;
 
   /**
    * 子结点列表
@@ -29,4 +29,9 @@ export default interface IRouteItem {
    * 点击菜单跳转的路径，如果不设置，则使用path
    */
   href?: string;
+
+  /**
+   * 要跳转的路径
+   */
+  redirect?: string;
 }
