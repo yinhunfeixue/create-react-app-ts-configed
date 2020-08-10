@@ -60,6 +60,7 @@ module.exports = {
           FunctionExpression: false
         }
       }
-    ]
+    ],
+    'react/jsx-key': 'error',
   }
 };

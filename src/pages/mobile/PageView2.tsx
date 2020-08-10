@@ -56,7 +56,7 @@ class PageView2 extends PageView<IPageView2Props, IPageView2State> {
         {(() => {
           const result = [];
           for (let i = 0; i < 1000; i++) {
-            result.push(<li>{i}</li>);
+            result.push(<li key={i}>{i}</li>);
           }
           return result;
         })()}

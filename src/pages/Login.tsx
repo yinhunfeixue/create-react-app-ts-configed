@@ -1,12 +1,13 @@
+import IPageProps from '@/base/interfaces/IPageProps';
 import { Button, Form, Input } from 'antd';
-import { FormComponentProps } from 'antd/lib/form';
 import FormItem from 'antd/lib/form/FormItem';
 import React, { Component } from 'react';
 
+interface ILoginSate {}
 /**
  * 登录页
  */
-class Login extends Component<FormComponentProps, any> {
+class Login extends Component<IPageProps, ILoginSate> {
   render() {
     return (
       <div>
@@ -18,17 +19,7 @@ class Login extends Component<FormComponentProps, any> {
             {this.props.form.getFieldDecorator('password')(<Input />)}
           </FormItem>
           <FormItem>
-            <Button
-              onClick={() => {
-                this.props.form.validateFields((errors, values) => {
-                  if (!errors) {
-                    // console.log(values);
-                  }
-                });
-              }}
-            >
-              登录
-            </Button>
+            <Button onClick={() => {}}>登录</Button>
           </FormItem>
         </Form>
       </div>
@@ -36,4 +27,4 @@ class Login extends Component<FormComponentProps, any> {
   }
 }
 
-export default Form.create()(Login);
+export default Login;
