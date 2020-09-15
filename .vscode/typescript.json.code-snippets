@@ -38,6 +38,15 @@
 		],
 		"description": "创建Enum"
 	},
+	"createInterface": {
+		"prefix": "newInterface",
+		"body": [
+			"export default interface ${TM_FILENAME_BASE} {",
+			"  id: string;",
+			"}"
+		],
+		"description": "创建接口"
+	},
 	"createComponent": {
 		"prefix": "newCom",
 		"body": [

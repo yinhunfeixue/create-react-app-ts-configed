@@ -44,7 +44,7 @@ for (const file of fileList) {
   code.exportList.push(varName);
 }
 
-let fileContent = '';
+let fileContent = '/* eslint-disable */\r\n';
 fileContent += code.varList.join('\r\n');
 fileContent += '\r\n';
 fileContent += '\r\n';
