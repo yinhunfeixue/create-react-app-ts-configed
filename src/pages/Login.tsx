@@ -13,13 +13,19 @@ class Login extends Component<IPageProps, ILoginSate> {
       <div>
         <Form layout="inline">
           <FormItem>
-            {this.props.form.getFieldDecorator('name')(<Input />)}
+            <Input placeholder="用户名" />
           </FormItem>
           <FormItem>
-            {this.props.form.getFieldDecorator('password')(<Input />)}
+            <Input placeholder="密码" />
           </FormItem>
           <FormItem>
-            <Button onClick={() => {}}>登录</Button>
+            <Button
+              onClick={() => {
+                window.location.hash = '/';
+              }}
+            >
+              登录
+            </Button>
           </FormItem>
         </Form>
       </div>
