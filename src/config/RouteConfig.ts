@@ -7,7 +7,7 @@ const routeConfig: IRouteItem[] = [
     name: '登录',
     path: '/Login',
     component: Login,
-    hideInMenu: true
+    hideInMenu: true,
   },
   {
     name: '主页',
@@ -16,12 +16,12 @@ const routeConfig: IRouteItem[] = [
     children: [
       {
         path: '/',
-        redirect: '/Page1'
+        redirect: '/Page1',
       },
       {
         name: '页面一',
         path: '/Page1',
-        component: async(() => import('@/pages/Page1'))
+        component: async(() => import('@/pages/Page1')),
       },
       {
         name: '页面二',
@@ -31,12 +31,12 @@ const routeConfig: IRouteItem[] = [
           {
             name: '页面二一',
             path: '/Page2/page21',
-            component: async(() => import('@/pages/Page2'))
-          }
-        ]
-      }
-    ]
-  }
+            component: async(() => import('@/pages/Page2')),
+          },
+        ],
+      },
+    ],
+  },
 ];
 
 export default routeConfig;
