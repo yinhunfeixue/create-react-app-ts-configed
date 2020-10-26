@@ -177,4 +177,29 @@
 		],
 		"description": "创建组件"
 	},
+	"fromState": {
+		"prefix": "fromState",
+		"body": [
+			"const { $1 } = this.state;"
+		],
+		"description": "从state中取值"
+	},
+	"fromProps": {
+		"prefix": "fromProps",
+		"body": [
+			"const { $1 } = this.props;"
+		],
+		"description": "从state中取值"
+	},
+	"constructor": {
+		"prefix": "constructor",
+		"body": [
+			"constructor(props: I${TM_FILENAME_BASE}Props) {",
+			"super(props);",
+			"this.state = {",
+			"};",
+			"}"
+		],
+		"description": "从state中取值"
+	},
 }
