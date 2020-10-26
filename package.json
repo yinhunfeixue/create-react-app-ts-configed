@@ -38,7 +38,6 @@
     "eslint-plugin-jsx-a11y": "6.2.3",
     "eslint-plugin-react": "7.19.0",
     "eslint-plugin-react-hooks": "^1.6.1",
-    "fb-project-component": "^0.0.89",
     "file-loader": "4.3.0",
     "fs-extra": "^8.1.0",
     "h5-webview": "^2.0.9",

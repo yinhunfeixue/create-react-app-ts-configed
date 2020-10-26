@@ -1,11 +1,11 @@
 import IPageProps from '@/base/interfaces/IPageProps';
 import IRouteItem from '@/config/IRouteItem';
 import routeConfig from '@/config/RouteConfig';
+import TreeControl from '@/utils/TreeControl';
 import UrlUtil from '@/utils/UrlUtil';
 import { Menu } from 'antd';
 import MenuItem from 'antd/lib/menu/MenuItem';
 import SubMenu from 'antd/lib/menu/SubMenu';
-import { TreeControl } from 'fb-project-component';
 import { pathToRegexp } from 'path-to-regexp';
 import React, { Component, ReactText } from 'react';
 

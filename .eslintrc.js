@@ -7,7 +7,7 @@ module.exports = {
     //使用console会有警告
     'no-console': 'warn',
     //禁止出现未使用的变量
-    'no-unused-vars': 'warn',
+    'no-unused-vars': 'error',
     //不允许重复import
     'no-duplicate-imports': 'error',
     //强制使用单引号
@@ -23,7 +23,7 @@ module.exports = {
     //不能用多余的空格
     'no-extra-semi': 'error',
     //缩进用2个空格
-    indent: ['error', 2, { SwitchCase: 1 }],
+    indent: 0,
     //函数定义时,括号前面要不要有空格
     'space-before-function-paren': ['error', 'never'],
     //禁止使用多个空格
@@ -57,10 +57,10 @@ module.exports = {
           MethodDefinition: false,
           ClassDeclaration: true,
           ArrowFunctionExpression: false,
-          FunctionExpression: false
-        }
-      }
+          FunctionExpression: false,
+        },
+      },
     ],
     'react/jsx-key': 'error',
-  }
+  },
 };
