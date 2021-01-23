@@ -1,4 +1,4 @@
-import { ReactElement } from 'react';
+import { ReactElement, ReactNode } from 'react';
 
 export default interface IRouteItem {
   /**
@@ -34,4 +34,9 @@ export default interface IRouteItem {
    * 要跳转的路径
    */
   redirect?: string;
+
+  /**
+   * 图标
+   */
+  icon?: ReactNode;
 }

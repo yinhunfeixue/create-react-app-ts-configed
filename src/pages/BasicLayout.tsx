@@ -1,6 +1,7 @@
 import IPageProps from '@/base/interfaces/IPageProps';
 import IRouteItem from '@/config/IRouteItem';
-import routeConfig from '@/config/RouteConfig';
+import { APP_NAME } from '@/config/ProjectConfig';
+import { MENU_LIST } from '@/config/RouteConfig';
 import UrlUtil from '@/utils/UrlUtil';
 import { Menu } from 'antd';
 import MenuItem from 'antd/lib/menu/MenuItem';
@@ -31,13 +32,26 @@ class BasicLayout extends Component<IPageProps, IBasicLayoutState> {
   }
 
   componentDidMount() {
+    this.updateSelectedKeys();
+  }
+
+  componentDidUpdate(prevProps: IPageProps) {
+    if (this.props.location.pathname !== prevProps.location.pathname) {
+      this.updateSelectedKeys();
+    }
+  }
+
+  private updateSelectedKeys() {
     const keys = this.getSelectedKeys();
-    this.setState({ openMenuKeys: keys, selectedMenuKeys: keys });
+    this.setState({
+      openMenuKeys: keys,
+      selectedMenuKeys: keys,
+    });
   }
 
   private getSelectedKeys() {
     const currentPath = window.location.hash.substr(1);
-    const chain = this.treeControl.searchChain(routeConfig, (node) => {
+    const chain = this.treeControl.searchChain(MENU_LIST, (node) => {
       const reg = pathToRegexp(node.path);
       if (reg.test(currentPath)) {
         return true;
@@ -55,13 +69,13 @@ class BasicLayout extends Component<IPageProps, IBasicLayoutState> {
       }
       if (item.children && item.children.length) {
         return (
-          <SubMenu key={item.path} title={item.name}>
+          <SubMenu key={item.path} title={item.name} icon={item.icon}>
             {this.renderMenu(item.children)}
           </SubMenu>
         );
       } else {
         return (
-          <MenuItem key={item.path}>
+          <MenuItem key={item.path} icon={item.icon}>
             <a onClick={() => UrlUtil.toUrl(href)}>{item.name}</a>
           </MenuItem>
         );
@@ -75,7 +89,7 @@ class BasicLayout extends Component<IPageProps, IBasicLayoutState> {
     return (
       <div className={styles.BasicLayout}>
         <div className={styles.Left}>
-          <div className={styles.Logo}>LOGO</div>
+          <div className={styles.Logo}>{APP_NAME}</div>
           <Menu
             theme="dark"
             mode="inline"
@@ -88,7 +102,7 @@ class BasicLayout extends Component<IPageProps, IBasicLayoutState> {
               this.setState({ selectedMenuKeys: option.selectedKeys || [] });
             }}
           >
-            {this.renderMenu(routeConfig)}
+            {this.renderMenu(MENU_LIST)}
           </Menu>
         </div>
         <div className={styles.Right}>

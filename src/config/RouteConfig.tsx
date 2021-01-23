@@ -1,5 +1,7 @@
 import async from '@/base/components/Async';
 import Login from '@/pages/Login';
+import { SnippetsOutlined } from '@ant-design/icons';
+import React from 'react';
 import IRouteItem from './IRouteItem';
 
 const routeConfig: IRouteItem[] = [
@@ -22,6 +24,7 @@ const routeConfig: IRouteItem[] = [
         name: '页面一',
         path: '/Page1',
         component: async(() => import('@/pages/Page1')),
+        icon: <SnippetsOutlined />,
       },
       {
         name: '页面二',
@@ -38,5 +41,7 @@ const routeConfig: IRouteItem[] = [
     ],
   },
 ];
+
+export const MENU_LIST: IRouteItem[] = routeConfig[1].children || [];
 
 export default routeConfig;
