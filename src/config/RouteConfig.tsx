@@ -14,7 +14,7 @@ const routeConfig: IRouteItem[] = [
   {
     name: '主页',
     path: '/',
-    component: async(() => import('@/pages/BasicLayout')),
+    component: async(() => import('@/layout/TabLayout')),
     children: [
       {
         path: '/',

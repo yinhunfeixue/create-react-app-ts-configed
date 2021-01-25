@@ -16,7 +16,7 @@ export default function async(importComponent: any) {
       super(props);
 
       this.state = {
-        component: null
+        component: null,
       };
     }
 
@@ -24,18 +24,20 @@ export default function async(importComponent: any) {
       const component: ReactNode = (await importComponent()).default;
 
       this.setState({
-        component: component
+        component: component,
       });
     }
 
     render() {
       const C = this.state.component;
 
+      const query =
+        this.props.location && this.props.location.query
+          ? URL.parse(this.props.location.search, true).query
+          : undefined;
+
       return C ? (
-        <C
-          {...this.props}
-          query={URL.parse(this.props.location.search, true).query}
-        >
+        <C {...this.props} query={query}>
           {this.props.children}
         </C>
       ) : null;
