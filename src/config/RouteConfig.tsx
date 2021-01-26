@@ -4,6 +4,11 @@ import { SnippetsOutlined } from '@ant-design/icons';
 import React from 'react';
 import IRouteItem from './IRouteItem';
 
+const layout: string = 'basic';
+
+const tabLayout = async(() => import('@/layout/TabLayout'));
+const basicLayout = async(() => import('@/layout/BasicLayout'));
+
 const routeConfig: IRouteItem[] = [
   {
     name: '登录',
@@ -14,7 +19,7 @@ const routeConfig: IRouteItem[] = [
   {
     name: '主页',
     path: '/',
-    component: async(() => import('@/layout/TabLayout')),
+    component: layout === 'tab' ? tabLayout : basicLayout,
     children: [
       {
         path: '/',
