@@ -6,7 +6,7 @@ import { Menu, Tabs } from 'antd';
 import MenuItem from 'antd/lib/menu/MenuItem';
 import SubMenu from 'antd/lib/menu/SubMenu';
 import TreeControl from 'fb-project-component/es/utils/TreeControl';
-import React, { Component, ReactNode, ReactText } from 'react';
+import React, { Component, ReactElement, ReactNode, ReactText } from 'react';
 
 const pathToRegexp = require('path-to-regexp');
 
@@ -184,6 +184,21 @@ class TabLayout extends Component<IPageProps, ITabLayoutState> {
     return tabs.find((item) => item.path === path) !== undefined;
   }
 
+  private swapTab(key1: string, key2: string) {
+    if (!key1 || !key2 || key1 === key2) {
+      return;
+    }
+    const { tabs } = this.state;
+    const index1 = tabs.findIndex((item) => item.path === key1);
+    const index2 = tabs.findIndex((item) => item.path === key2);
+    if (index1 >= 0 && index2 >= 0) {
+      const temp = tabs[index1];
+      tabs[index1] = tabs[index2];
+      tabs[index2] = temp;
+    }
+    this.forceUpdate();
+  }
+
   private get selectedTab() {
     const { selectedMenuKeys } = this.state;
     if (selectedMenuKeys && selectedMenuKeys.length) {
@@ -232,6 +247,41 @@ class TabLayout extends Component<IPageProps, ITabLayoutState> {
           if (action === 'remove') {
             this.removeTab(key as string);
           }
+        }}
+        renderTabBar={(props, DefaultTabBar) => {
+          return (
+            <DefaultTabBar {...props}>
+              {(node: ReactElement) => {
+                return (
+                  <div
+                    draggable
+                    onDragOver={(event) => {
+                      event.preventDefault();
+                    }}
+                    onDrop={(event) => {
+                      if (node) {
+                        const { key } = node;
+                        const fromKey = event.dataTransfer.getData('path');
+                        if (key && fromKey) {
+                          this.swapTab(key.toString(), fromKey);
+                        }
+                      }
+                    }}
+                    onDragStart={(event) => {
+                      if (node) {
+                        const { key } = node;
+                        if (key) {
+                          event.dataTransfer.setData('path', key.toString());
+                        }
+                      }
+                    }}
+                  >
+                    {node}
+                  </div>
+                );
+              }}
+            </DefaultTabBar>
+          );
         }}
       >
         {tabs.map((item) => {

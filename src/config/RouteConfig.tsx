@@ -4,7 +4,7 @@ import { SnippetsOutlined } from '@ant-design/icons';
 import React from 'react';
 import IRouteItem from './IRouteItem';
 
-const layout: string = 'basic';
+const layout: string = 'tab';
 
 const tabLayout = async(() => import('@/layout/TabLayout'));
 const basicLayout = async(() => import('@/layout/BasicLayout'));
