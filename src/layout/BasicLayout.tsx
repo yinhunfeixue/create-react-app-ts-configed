@@ -61,7 +61,7 @@ class BasicLayout extends Component<IPageProps, IBasicLayoutState> {
     return chain ? chain.map((item) => item.path) : [];
   }
 
-  renderMenu(data: IRouteItem[]) {
+  private renderMenu(data: IRouteItem[]) {
     return data.map((item) => {
       const href = item.href || item.path;
       if (item.hideInMenu || item.redirect) {
@@ -85,7 +85,6 @@ class BasicLayout extends Component<IPageProps, IBasicLayoutState> {
 
   render() {
     const { openMenuKeys, selectedMenuKeys } = this.state;
-
     return (
       <div className={styles.BasicLayout}>
         <div className={styles.Left}>
