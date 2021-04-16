@@ -19,6 +19,9 @@
 	"createEnum": {
 		"prefix": "newEnum",
 		"body": [
+			"/**",
+			"* ${TM_FILENAME_BASE}",
+			"*/",
 			"enum ${TM_FILENAME_BASE} {",
 			"UNKNOW,",
 			"$1",
@@ -41,6 +44,9 @@
 	"createInterface": {
 		"prefix": "newInterface",
 		"body": [
+			"/**",
+			"* ${TM_FILENAME_BASE}",
+			"*/",
 			"export default interface ${TM_FILENAME_BASE} {",
 			"  id: string;",
 			"}"
@@ -202,4 +208,16 @@
 		],
 		"description": "从state中取值"
 	},
+	"class": {
+		"prefix": "newClass",
+		"body": [
+			"/**",
+			"* ${TM_FILENAME_BASE}",
+			"*/",
+			"class ${TM_FILENAME_BASE} {",
+			"}",
+			"export default ${TM_FILENAME_BASE}"
+		],
+		"description": "从state中取值"
+	}
 }
