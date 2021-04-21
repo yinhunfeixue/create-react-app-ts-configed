@@ -1,3 +1,4 @@
+import { notification } from 'antd';
 import axios from 'axios';
 
 /**
@@ -5,10 +6,21 @@ import axios from 'axios';
  */
 class ProxySetting {
   static init() {
-    axios.defaults.baseURL = "./";
+    axios.defaults.baseURL = './';
     axios.defaults.withCredentials = true;
     axios.defaults.headers.post['Content-Type'] = 'application/json';
-    axios.interceptors.response.use(ProxySetting.successHandler, ProxySetting.errorHandler);
+    axios.interceptors.response.use(
+      ProxySetting.successHandler,
+      ProxySetting.errorHandler
+    );
+    axios.interceptors.request.use((config) => {
+      // 如需添加全局请求头，在这里配置
+      // const token = '1111'
+      // if (token) {
+      //   config.headers.token = token;
+      // }
+      return config;
+    });
   }
 
   /**
@@ -19,18 +31,33 @@ class ProxySetting {
   static successHandler(response) {
     //当出错时，执行全局响应处理，并不再向后执行
     // return new Promise(() => { });   表示不再向后（比如模块中的响应处理）执行
-    if (false) {
-      return new Promise(() => { });
+    const { code, message } = response.data;
+    if (code !== 200) {
+      notification.error({
+        description: message,
+      });
+      return Promise.reject();
     }
     return response;
   }
 
   /**
    * 全局错误拦截器
-   * @param {*} error 
+   * @param {*} error
    */
   static errorHandler(error) {
-    return new Promise(() => { });
+    const { message, response } = error;
+    const { status } = response;
+    switch (status) {
+      case 401:
+        break;
+      default:
+        notification.error({
+          description: message || `未知错误:${status}`,
+        });
+        break;
+    }
+    return Promise.reject();
   }
 }
 
