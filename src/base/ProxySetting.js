@@ -30,7 +30,6 @@ class ProxySetting {
    */
   static successHandler(response) {
     //当出错时，执行全局响应处理，并不再向后执行
-    // return new Promise(() => { });   表示不再向后（比如模块中的响应处理）执行
     const { code, message } = response.data;
     if (code !== 200) {
       notification.error({
