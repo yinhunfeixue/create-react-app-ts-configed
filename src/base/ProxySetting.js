@@ -46,15 +46,21 @@ class ProxySetting {
    */
   static errorHandler(error) {
     const { message, response } = error;
-    const { status } = response;
-    switch (status) {
-      case 401:
-        break;
-      default:
-        notification.error({
-          description: message || `未知错误:${status}`,
-        });
-        break;
+    if (response) {
+      const { status } = response;
+      switch (status) {
+        case 401:
+          break;
+        default:
+          notification.error({
+            description: message || `未知错误:${status}`,
+          });
+          break;
+      }
+    } else {
+      notification.error({
+        description: message || `未知错误`,
+      });
     }
     return Promise.reject();
   }

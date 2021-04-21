@@ -1,6 +1,7 @@
 import IPageProps from '@/base/interfaces/IPageProps';
 import { Button, Form, Input } from 'antd';
 import FormItem from 'antd/lib/form/FormItem';
+import axios from 'axios';
 import React, { Component } from 'react';
 
 interface ILoginSate {}
@@ -21,7 +22,8 @@ class Login extends Component<IPageProps, ILoginSate> {
           <FormItem>
             <Button
               onClick={() => {
-                window.location.hash = '/';
+                // window.location.hash = '/';
+                axios.get('http://www.baidu.com/sfadsfa/sfasda');
               }}
             >
               登录
