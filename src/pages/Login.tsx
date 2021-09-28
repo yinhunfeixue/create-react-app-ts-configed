@@ -1,35 +1,62 @@
 import IPageProps from '@/base/interfaces/IPageProps';
 import { Button, Form, Input } from 'antd';
 import FormItem from 'antd/lib/form/FormItem';
-import axios from 'axios';
 import React, { Component } from 'react';
+
+const styles = require('./Login.less');
 
 interface ILoginSate {}
 /**
  * 登录页
  */
 class Login extends Component<IPageProps, ILoginSate> {
+  requestLogin(data: any) {}
+
   render() {
     return (
-      <div>
-        <Form layout="inline">
-          <FormItem>
-            <Input placeholder="用户名" />
-          </FormItem>
-          <FormItem>
-            <Input placeholder="密码" />
-          </FormItem>
-          <FormItem>
-            <Button
-              onClick={() => {
-                // window.location.hash = '/';
-                axios.get('http://www.baidu.com/sfadsfa/sfasda');
-              }}
+      <div className={styles.Login}>
+        <main>
+          <Form
+            layout="vertical"
+            onFinish={(values) => {
+              this.requestLogin(values);
+            }}
+          >
+            <FormItem
+              label="帐号"
+              name="phone"
+              rules={[
+                {
+                  required: true,
+                },
+              ]}
             >
-              登录
-            </Button>
-          </FormItem>
-        </Form>
+              <Input placeholder="用户名" />
+            </FormItem>
+            <FormItem
+              label="密码"
+              name="password"
+              rules={[
+                {
+                  required: true,
+                },
+              ]}
+            >
+              <Input placeholder="密码" />
+            </FormItem>
+            <FormItem>
+              <Button
+                htmlType="submit"
+                type="primary"
+                block
+                size="large"
+                onClick={() => {}}
+              >
+                登录
+              </Button>
+            </FormItem>
+          </Form>
+        </main>
       </div>
     );
   }
