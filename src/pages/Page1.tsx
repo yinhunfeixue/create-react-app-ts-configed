@@ -1,7 +1,7 @@
 import IComponentProps from '@/base/interfaces/IComponentProps';
 import PageView1 from '@/pages/mobile/PageView1';
 import Axios from 'axios';
-import PageManager, { PageItem } from 'h5-webview';
+import { PageItem, PageManager } from 'h5-webview';
 import React, { Component } from 'react';
 
 interface IPage1State {}

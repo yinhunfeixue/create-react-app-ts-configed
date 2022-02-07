@@ -1,18 +1,19 @@
-import PageView2 from '@/pages/mobile/PageView2';
-import PageManager, { IPageViewProps, PageItem, PageView } from 'h5-webview';
-import React from 'react';
+import PageView2 from "@/pages/mobile/PageView2";
+import { PageManager, PageItem, Page } from "h5-webview";
+import { IPageProps } from "h5-webview/lib/Page";
+import React from "react";
 
 interface IPageView1State {}
-interface IPageView1Props extends IPageViewProps {
+interface IPageView1Props extends IPageProps {
   index: any;
 }
 
 /**
  * PageView1
  */
-class PageView1 extends PageView<IPageView1Props, IPageView1State> {
+class PageView1 extends Page<IPageView1Props, IPageView1State> {
   static defaultProps = {
-    title: 'PageView1Title'
+    title: "PageView1Title",
   };
 
   get disabledBack() {
@@ -52,7 +53,7 @@ class PageView1 extends PageView<IPageView1Props, IPageView1State> {
           onClick={() => {
             PageManager.openPage(
               new PageItem(index % 2 === 0 ? PageView1 : PageView2, {
-                index: index + 1
+                index: index + 1,
               })
             );
           }}

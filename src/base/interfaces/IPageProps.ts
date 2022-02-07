@@ -1,10 +1,12 @@
-import { match, RouteProps } from 'react-router';
+import { ParsedUrlQuery } from 'querystring';
+import { Location, RouteProps } from 'react-router';
 
 /**
  * 页面props
  */
 export default interface IPageProps {
-  match?: match;
   route?: RouteProps;
   [key: string]: any;
+  query?: ParsedUrlQuery;
+  location: Location;
 }

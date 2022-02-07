@@ -9,8 +9,7 @@ import SubMenu from 'antd/lib/menu/SubMenu';
 import TreeControl from 'fb-project-component/es/utils/TreeControl';
 import { pathToRegexp } from 'path-to-regexp';
 import React, { Component, ReactText } from 'react';
-
-const styles = require('./BasicLayout.less');
+import styles from './BasicLayout.less';
 
 interface IBasicLayoutState {
   openMenuKeys: ReactText[];
@@ -112,5 +111,4 @@ class BasicLayout extends Component<IPageProps, IBasicLayoutState> {
     );
   }
 }
-
 export default BasicLayout;

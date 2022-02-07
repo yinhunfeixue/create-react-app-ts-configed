@@ -1,5 +1,5 @@
 import React, { Component, ReactElement } from 'react';
-import { HashRouter, Redirect, Route, Switch } from 'react-router-dom';
+import { HashRouter, Navigate, Route, Routes } from 'react-router-dom';
 import IRouteItem from './IRouteItem';
 import routeConfig from './RouteConfig';
 
@@ -7,7 +7,10 @@ import routeConfig from './RouteConfig';
  * 路由配置文件
  */
 class RouterRender extends Component<any, any> {
-  renderRoutes(data: IRouteItem[]): ReactElement[] {
+  renderRoutes(data?: IRouteItem[]): ReactElement[] {
+    if (!data) {
+      return [];
+    }
     //按是否有redirect排序，有redirect的在后面
     data.sort((a, b) => {
       if (a.redirect && !b.redirect) {
@@ -18,41 +21,34 @@ class RouterRender extends Component<any, any> {
       return 0;
     });
     let result: ReactElement[] = data.map((item, index) => {
-      if (item.redirect) {
-        return <Redirect key={index} to={item.redirect} exact />;
-      }
+      const createElement = (props: any) => {
+        if (item.redirect) {
+          return <Navigate key={index} to={item.redirect} />;
+        }
+        let ClassType: any = item.component;
+        if (ClassType) {
+          return <ClassType {...props}></ClassType>;
+        }
+        return null;
+      };
+
       return (
         <Route
           key={item.path}
           path={item.path}
-          exact={!(item.children && item.children.length)}
-          render={props => {
-            let children = null;
-            let ClassType: any = item.component;
-            if (item.children) {
-              children = this.renderRoutes(item.children);
-            }
-
-            if (ClassType) {
-              return (
-                <ClassType {...props}>
-                  <Switch>{children}</Switch>
-                </ClassType>
-              );
-            }
-            return <Switch>{children}</Switch>;
-          }}
-        />
+          element={createElement(this.props)}
+        >
+          {this.renderRoutes(item.children)}
+        </Route>
       );
     });
-
     return result;
   }
 
   render() {
     return (
       <HashRouter>
-        <Switch>{this.renderRoutes(routeConfig)}</Switch>
+        <Routes>{this.renderRoutes(routeConfig)}</Routes>
       </HashRouter>
     );
   }

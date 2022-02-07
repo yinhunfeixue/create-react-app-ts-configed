@@ -7,10 +7,9 @@ import MenuItem from 'antd/lib/menu/MenuItem';
 import SubMenu from 'antd/lib/menu/SubMenu';
 import TreeControl from 'fb-project-component/es/utils/TreeControl';
 import React, { Component, ReactElement, ReactNode, ReactText } from 'react';
+import styles from './TabLayout.less';
 
 const pathToRegexp = require('path-to-regexp');
-
-const styles = require('./TabLayout.less');
 
 interface ITabItem {
   path: string;

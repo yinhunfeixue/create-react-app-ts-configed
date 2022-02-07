@@ -39,7 +39,7 @@ const routeConfig: IRouteItem[] = [
           {
             name: '页面二一',
             path: '/Page2/page21',
-            component: async(() => import('@/pages/Page2')),
+            component: async(() => import('@/pages/Page21')),
           },
         ],
       },

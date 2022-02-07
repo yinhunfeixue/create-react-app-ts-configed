@@ -1,17 +1,18 @@
 import ProxySetting from '@/base/ProxySetting';
 import Model from '@/Model/Model';
-import RouterRender from 'config/RouterRender';
+import { ConfigProvider } from 'antd';
+import zhCN from 'antd/lib/locale/zh_CN';
 import React from 'react';
-import './App.less';
+import RouterRender from './config/RouterRender';
 
 ProxySetting.init();
 Model.init();
 
-const App: React.FC = () => {
+const App: React.FC<any> = (props: any) => {
   return (
-    <div className="App">
+    <ConfigProvider locale={zhCN}>
       <RouterRender />
-    </div>
+    </ConfigProvider>
   );
 };
 

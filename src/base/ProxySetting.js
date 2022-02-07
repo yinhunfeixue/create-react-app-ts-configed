@@ -1,6 +1,7 @@
 import { notification } from 'antd';
 import axios from 'axios';
 
+const duration = 10000;
 /**
  * 网络代理的配置类
  */
@@ -33,7 +34,8 @@ class ProxySetting {
     const { code, message } = response.data;
     if (code !== 200) {
       notification.error({
-        description: message,
+        description: message || '未知错误',
+        duration,
       });
       return Promise.reject();
     }
@@ -54,12 +56,14 @@ class ProxySetting {
         default:
           notification.error({
             description: message || `未知错误:${status}`,
+            duration,
           });
           break;
       }
     } else {
       notification.error({
         description: message || `未知错误`,
+        duration,
       });
     }
     return Promise.reject();

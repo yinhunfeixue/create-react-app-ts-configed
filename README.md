@@ -176,3 +176,73 @@ URL.parse(this.props.location.search, true).query
 在`.env`文件中，设置`GENERATE_SOURCEMAP=true`。
 
 默认为 false，表示不生成 sourceMap 文件
+
+# 更新流程
+
+1. 使用`create-react-app`创建新项目
+2. 把新项目 src 目录，复制到旧项目，除以下文件
+   1. `index.tsx`
+   1. `index.css`
+   1. `App.test.tsx`
+3. 复制
+   1. `.babelrc`
+   1. `.env`
+   1. `.eslintrc.js`
+4. 修改`tsconfig.json`, 添加如下配置
+
+```json
+{
+  compilerOptions:{
+  ...
+  "baseUrl": "src",
+    "paths": {
+      "@/*": [
+        "./*"
+      ]
+  }
+}
+```
+
+5. 修改`webpack.config.js`
+
+```json
+{
+  "alias":{
+      ...
+      "@": paths.appSrc,
+  }
+
+}
+```
+
+```js
+const lessRegex = /\.less$/;
+
+ "oneOf":{
+   ...
+   {
+    test: lessRegex,
+    use: getStyleLoaders(
+      {
+        importLoaders: 3,
+        sourceMap: isEnvProduction && shouldUseSourceMap,
+        modules: {
+          getLocalIdent: getCSSModuleLocalIdent,
+        },
+      },
+      'less-loader',
+      {
+        lessOptions: {
+          javascriptEnabled: true,
+        },
+      }
+    ),
+  }
+ }
+```
+
+5. 安装依赖
+
+```
+npm i axios h5-webview antd react-router @ant-design/icons fb-project-component path-to-regexp react-router-dom babel-plugin-import url http-proxy-middleware --save
+```

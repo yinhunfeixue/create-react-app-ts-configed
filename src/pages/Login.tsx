@@ -2,8 +2,7 @@ import IPageProps from '@/base/interfaces/IPageProps';
 import { Button, Form, Input } from 'antd';
 import FormItem from 'antd/lib/form/FormItem';
 import React, { Component } from 'react';
-
-const styles = require('./Login.less');
+import styles from './Login.less';
 
 interface ILoginSate {}
 /**

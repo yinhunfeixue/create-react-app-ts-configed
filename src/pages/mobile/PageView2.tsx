@@ -1,19 +1,23 @@
-import PageView1 from '@/pages/mobile/PageView1';
-import { Button, Modal, Switch } from 'antd';
-import PageManager, { IPageViewProps, PageItem, PageView } from 'h5-webview';
-import React from 'react';
+import PageView1 from "@/pages/mobile/PageView1";
+import { Button, Modal, Switch } from "antd";
+import {
+  Page,
+  PageItem, PageManager
+} from "h5-webview";
+import { IPageProps } from "h5-webview/lib/Page";
+import React from "react";
 
 interface IPageView2State {
   checked: boolean;
 }
-interface IPageView2Props extends IPageViewProps {
+interface IPageView2Props extends IPageProps {
   index: any;
 }
 
 /**
  * PageView2
  */
-class PageView2 extends PageView<IPageView2Props, IPageView2State> {
+class PageView2 extends Page<IPageView2Props, IPageView2State> {
   get title() {
     return this.props.index;
   }
@@ -21,19 +25,19 @@ class PageView2 extends PageView<IPageView2Props, IPageView2State> {
   constructor(props: IPageView2Props) {
     super(props);
     this.state = {
-      checked: false
+      checked: false,
     };
   }
 
   renderChildren() {
     const index = this.props.index;
     return (
-      <div style={{ padding: '5vw' }}>
+      <div style={{ padding: "5vw" }}>
         <a
           onClick={() => {
             PageManager.openPage(
               new PageItem(index % 2 === 0 ? PageView1 : PageView2, {
-                index: index + 1
+                index: index + 1,
               })
             );
           }}
@@ -41,13 +45,13 @@ class PageView2 extends PageView<IPageView2Props, IPageView2State> {
           打开下一个窗口
         </a>
         <Switch
-          onChange={checked => this.setState({ checked })}
+          onChange={(checked) => this.setState({ checked })}
           checked={this.state.checked}
         />
         <Button
           onClick={() => {
             Modal.success({
-              content: this.state.checked ? 'true' : 'false'
+              content: this.state.checked ? "true" : "false",
             });
           }}
         >

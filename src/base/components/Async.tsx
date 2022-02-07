@@ -1,5 +1,6 @@
-import React, { Component, ReactNode } from 'react';
-const URL = require('url');
+import React, { useEffect, useState } from "react";
+import { Outlet, useLocation } from "react-router-dom";
+import URL from "url";
 
 const CACHE = new Map();
 
@@ -11,38 +12,29 @@ export default function async(importComponent: any) {
   /**
    * 类方法
    */
-  class AsyncComponent extends Component<any, any> {
-    constructor(props: any) {
-      super(props);
+  const AsyncComponent = (props: any) => {
+    const [component, setComponent] = useState<any>(null);
+    const C = component?.default;
 
-      this.state = {
-        component: null,
-      };
-    }
-
-    async componentDidMount() {
-      const component: ReactNode = (await importComponent()).default;
-
-      this.setState({
-        component: component,
+    useEffect(() => {
+      importComponent().then((res: any) => {
+        setComponent(res);
       });
-    }
+    }, []);
 
-    render() {
-      const C = this.state.component;
+    const location = useLocation();
 
-      const query =
-        this.props.location && this.props.location.query
-          ? URL.parse(this.props.location.search, true).query
-          : undefined;
+    const query =
+      location && location.search
+        ? URL.parse(location.search, true).query
+        : undefined;
 
-      return C ? (
-        <C {...this.props} query={query}>
-          {this.props.children}
-        </C>
-      ) : null;
-    }
-  }
+    return C ? (
+      <C {...props} location={location} query={query}>
+        <Outlet />
+      </C>
+    ) : null;
+  };
 
   CACHE.set(key, AsyncComponent);
   return AsyncComponent;
