@@ -1,4 +1,5 @@
 import IPageProps from '@/base/interfaces/IPageProps';
+import UrlUtil from '@/utils/UrlUtil';
 import { Button, Form, Input } from 'antd';
 import FormItem from 'antd/lib/form/FormItem';
 import React, { Component } from 'react';
@@ -9,7 +10,15 @@ interface ILoginSate {}
  * 登录页
  */
 class Login extends Component<IPageProps, ILoginSate> {
-  requestLogin(data: any) {}
+  requestLogin(data: any) {
+    const { query } = this.props;
+    const backUrl: string = query?.backUrl as string;
+    if (backUrl) {
+      window.location.href = backUrl;
+    } else {
+      UrlUtil.toUrl('/');
+    }
+  }
 
   render() {
     return (

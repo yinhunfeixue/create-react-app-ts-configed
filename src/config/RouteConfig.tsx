@@ -1,5 +1,4 @@
 import async from '@/base/components/Async';
-import Login from '@/pages/Login';
 import { SnippetsOutlined } from '@ant-design/icons';
 import React from 'react';
 import IRouteItem from './IRouteItem';
@@ -13,7 +12,7 @@ const routeConfig: IRouteItem[] = [
   {
     name: '登录',
     path: '/Login',
-    component: Login,
+    component: async(() => import('@/pages/Login')),
     hideInMenu: true,
   },
   {

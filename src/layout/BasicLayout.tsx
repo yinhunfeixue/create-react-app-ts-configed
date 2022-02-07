@@ -2,8 +2,9 @@ import IPageProps from '@/base/interfaces/IPageProps';
 import IRouteItem from '@/config/IRouteItem';
 import { APP_NAME } from '@/config/ProjectConfig';
 import { MENU_LIST } from '@/config/RouteConfig';
+import PageUtil from '@/utils/PageUtil';
 import UrlUtil from '@/utils/UrlUtil';
-import { Menu } from 'antd';
+import { Button, Menu } from 'antd';
 import MenuItem from 'antd/lib/menu/MenuItem';
 import SubMenu from 'antd/lib/menu/SubMenu';
 import TreeControl from 'fb-project-component/es/utils/TreeControl';
@@ -104,7 +105,16 @@ class BasicLayout extends Component<IPageProps, IBasicLayoutState> {
           </Menu>
         </div>
         <div className={styles.Right}>
-          <header>header</header>
+          <header>
+            header
+            <Button
+              onClick={() => {
+                PageUtil.openLoginPage(window.location.href);
+              }}
+            >
+              退出
+            </Button>
+          </header>
           <main>{this.props.children}</main>
         </div>
       </div>

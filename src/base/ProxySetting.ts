@@ -1,7 +1,9 @@
+import Model from '@/Model/Model';
+import PageUtil from '@/utils/PageUtil';
 import { notification } from 'antd';
-import axios from 'axios';
+import axios, { AxiosResponse } from 'axios';
 
-const duration = 10000;
+const duration = 3;
 /**
  * 网络代理的配置类
  */
@@ -16,29 +18,30 @@ class ProxySetting {
     );
     axios.interceptors.request.use((config) => {
       // 如需添加全局请求头，在这里配置
-      // const token = '1111'
-      // if (token) {
-      //   config.headers.token = token;
-      // }
+      const token = Model.token;
+      if (token) {
+        config.headers = {
+          ...config.headers,
+          token,
+        };
+      }
       return config;
     });
   }
 
   /**
-   * 请求响应拦截器。
+   * 请求响应拦截器。
    * 通常，需要对一些消息做全局的错误处理，在此处进行。
    * 处理完成后，如果不希望
    */
-  static successHandler(response) {
+  static successHandler(response: AxiosResponse) {
     //当出错时，执行全局响应处理，并不再向后执行
     const { code, message } = response.data;
     if (code !== 200) {
-      notification.error({
-        description: message || '未知错误',
-        duration,
-      });
+      ProxySetting.showErrorMessage(message);
       return Promise.reject();
     }
+
     return response;
   }
 
@@ -46,27 +49,30 @@ class ProxySetting {
    * 全局错误拦截器
    * @param {*} error
    */
-  static errorHandler(error) {
+  static errorHandler(error: any) {
     const { message, response } = error;
     if (response) {
       const { status } = response;
       switch (status) {
         case 401:
+          PageUtil.openLoginPage(window.location.href);
           break;
         default:
-          notification.error({
-            description: message || `未知错误:${status}`,
-            duration,
-          });
+          ProxySetting.showErrorMessage(message, status);
           break;
       }
     } else {
-      notification.error({
-        description: message || `未知错误`,
-        duration,
-      });
+      ProxySetting.showErrorMessage(message);
     }
     return Promise.reject();
+  }
+
+  static showErrorMessage(resMessage?: string, status?: string) {
+    const message = resMessage || `未知错误： ${status || ''}`;
+    notification.error({
+      message,
+      duration,
+    });
   }
 }
 

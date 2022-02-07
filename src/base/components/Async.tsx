@@ -1,6 +1,6 @@
-import React, { useEffect, useState } from "react";
-import { Outlet, useLocation } from "react-router-dom";
-import URL from "url";
+import React, { useEffect, useState } from 'react';
+import { Outlet, useLocation } from 'react-router-dom';
+import URL from 'url';
 
 const CACHE = new Map();
 
