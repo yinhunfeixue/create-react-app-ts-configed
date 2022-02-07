@@ -1,5 +1,5 @@
 import ProxySetting from '@/base/ProxySetting';
-import Model from '@/Model/Model';
+import Model from '@/model/Model';
 import { ConfigProvider } from 'antd';
 import zhCN from 'antd/lib/locale/zh_CN';
 import React from 'react';

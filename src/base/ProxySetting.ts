@@ -1,4 +1,4 @@
-import Model from '@/Model/Model';
+import Model from '@/model/Model';
 import PageUtil from '@/utils/PageUtil';
 import { notification } from 'antd';
 import axios, { AxiosResponse } from 'axios';
