@@ -8,7 +8,7 @@
       {
         "libraryName": "antd",
         "libraryDirectory": "es",
-        "style": "less"
+        "style": "css"
       },
       "antd"
     ],
