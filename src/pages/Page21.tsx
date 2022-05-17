@@ -8,6 +8,8 @@ interface IPage21Sate {}
  */
 class Page21 extends Component<IPageProps, IPage21Sate> {
   render() {
+    console.log('props', this.props);
+
     return <div>Page21</div>;
   }
 }
