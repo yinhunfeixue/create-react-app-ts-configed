@@ -22,7 +22,7 @@ const routeConfig: IRouteItem[] = [
     children: [
       {
         path: '/',
-        redirect: '/Page1',
+        redirect: '/Page2/page21',
       },
       {
         name: '页面一',
