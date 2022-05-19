@@ -3,6 +3,7 @@ import Model from '@/model/Model';
 import { ConfigProvider } from 'antd';
 import zhCN from 'antd/lib/locale/zh_CN';
 import React from 'react';
+import './App.less';
 import RouterRender from './config/RouterRender';
 
 ProxySetting.init();

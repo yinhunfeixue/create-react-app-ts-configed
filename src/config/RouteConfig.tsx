@@ -31,6 +31,12 @@ const routeConfig: IRouteItem[] = [
         icon: <SnippetsOutlined />,
       },
       {
+        name: '树编辑',
+        path: '/MenuEdit',
+        component: async(() => import('@/pages/MenuEdit')),
+        icon: <SnippetsOutlined />,
+      },
+      {
         name: '页面二',
         path: '/Page2',
         component: async(() => import('@/pages/Page2')),
