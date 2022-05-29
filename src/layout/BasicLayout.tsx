@@ -1,20 +1,23 @@
 import IPageProps from '@/base/interfaces/IPageProps';
+import IndexSync from '@/components/IndexSync';
 import IRouteItem from '@/config/IRouteItem';
-import { MENU_LIST } from '@/config/RouteConfig';
-import UrlUtil from '@/utils/UrlUtil';
 import { GlobalOutlined } from '@ant-design/icons';
-import { Card, PageHeader } from 'antd';
-import MenuItem from 'antd/lib/menu/MenuItem';
-import SubMenu from 'antd/lib/menu/SubMenu';
+import { Card, Drawer, DrawerProps, PageHeader } from 'antd';
 import TreeControl from 'fb-project-component/es/utils/TreeControl';
-import { pathToRegexp } from 'path-to-regexp';
-import React, { Component, ReactText } from 'react';
+import React, { Component, ReactNode, ReactText } from 'react';
 import styles from './BasicLayout.less';
+
+interface IFunction {
+  title: string;
+  url?: string;
+  component?: ReactNode;
+}
 
 interface IBasicLayoutState {
   openMenuKeys: ReactText[];
   selectedMenuKeys: ReactText[];
   columnsCount: number;
+  selectedFunction?: IFunction;
 }
 
 /**
@@ -33,7 +36,6 @@ class BasicLayout extends Component<IPageProps, IBasicLayoutState> {
   }
 
   componentDidMount() {
-    this.updateSelectedKeys();
     this.updateColumnCount();
     window.addEventListener('resize', this.windowResizeHandler);
   }
@@ -42,57 +44,9 @@ class BasicLayout extends Component<IPageProps, IBasicLayoutState> {
     window.removeEventListener('resize', this.windowResizeHandler);
   }
 
-  componentDidUpdate(prevProps: IPageProps) {
-    if (this.props.location.pathname !== prevProps.location.pathname) {
-      this.updateSelectedKeys();
-    }
-  }
-
   private windowResizeHandler = () => {
     this.updateColumnCount();
   };
-
-  private updateSelectedKeys() {
-    const keys = this.getSelectedKeys();
-    this.setState({
-      openMenuKeys: keys,
-      selectedMenuKeys: keys,
-    });
-  }
-
-  private getSelectedKeys() {
-    const currentPath = window.location.hash.substr(1);
-    const chain = this.treeControl.searchChain(MENU_LIST, (node) => {
-      const reg = pathToRegexp(node.path);
-      if (reg.test(currentPath)) {
-        return true;
-      }
-      return false;
-    });
-    return chain ? chain.map((item) => item.path) : [];
-  }
-
-  private renderMenu(data: IRouteItem[]) {
-    return data.map((item) => {
-      const href = item.href || item.path;
-      if (item.hideInMenu || item.redirect) {
-        return null;
-      }
-      if (item.children && item.children.length) {
-        return (
-          <SubMenu key={item.path} title={item.name} icon={item.icon}>
-            {this.renderMenu(item.children)}
-          </SubMenu>
-        );
-      } else {
-        return (
-          <MenuItem key={item.path} icon={item.icon}>
-            <a onClick={() => UrlUtil.toUrl(href)}>{item.name}</a>
-          </MenuItem>
-        );
-      }
-    });
-  }
 
   private updateColumnCount() {
     const { offsetWidth } = document.body;
@@ -102,12 +56,13 @@ class BasicLayout extends Component<IPageProps, IBasicLayoutState> {
 
   private renderContent() {
     const { columnsCount } = this.state;
-    const groups = [
+    const groups: { groupTitle: string; dataSource: IFunction[] }[] = [
       {
         groupTitle: '运维管理',
         dataSource: [
           {
             title: '索引同步',
+            component: <IndexSync />,
           },
           {
             title: '治理过滤推理',
@@ -128,6 +83,7 @@ class BasicLayout extends Component<IPageProps, IBasicLayoutState> {
           },
           {
             title: 'ActiveMQ管理',
+            url: 'http://www.baidu.com',
           },
         ],
       },
@@ -146,9 +102,14 @@ class BasicLayout extends Component<IPageProps, IBasicLayoutState> {
                 }}
               >
                 {dataSource.map((item) => {
+                  const { title } = item;
                   return (
-                    <div className={styles.FunItem} key={item.title}>
-                      {item.title}
+                    <div
+                      className={styles.FunItem}
+                      key={title}
+                      onClick={() => this.setState({ selectedFunction: item })}
+                    >
+                      {title}
                     </div>
                   );
                 })}
@@ -157,6 +118,31 @@ class BasicLayout extends Component<IPageProps, IBasicLayoutState> {
           );
         })}
       </div>
+    );
+  }
+
+  private renderDrawer() {
+    const { selectedFunction } = this.state;
+    const visible = Boolean(selectedFunction);
+    let props: DrawerProps = {};
+    if (selectedFunction) {
+      const { title } = selectedFunction;
+      props = {
+        title,
+      };
+    }
+    return (
+      <Drawer
+        visible={visible}
+        destroyOnClose
+        width={400}
+        onClose={() => {
+          this.setState({ selectedFunction: undefined });
+        }}
+        {...props}
+      >
+        {selectedFunction ? selectedFunction.component : undefined}
+      </Drawer>
     );
   }
 
@@ -172,6 +158,7 @@ class BasicLayout extends Component<IPageProps, IBasicLayoutState> {
           }}
         />
         <main>{this.renderContent()}</main>
+        {this.renderDrawer()}
       </div>
     );
   }
