@@ -271,7 +271,7 @@ class MenuEdit extends Component<IPageProps, IMenuEditSate> {
           </div>
         }
       >
-        <Tree defaultExpandAll>{this.renderTreeNodeList(dataSource)}</Tree>
+        <Tree draggable>{this.renderTreeNodeList(dataSource)}</Tree>
       </Card>
     );
   }
