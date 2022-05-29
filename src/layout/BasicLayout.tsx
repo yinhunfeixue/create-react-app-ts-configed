@@ -1,10 +1,9 @@
 import IPageProps from '@/base/interfaces/IPageProps';
 import IRouteItem from '@/config/IRouteItem';
-import { APP_NAME } from '@/config/ProjectConfig';
 import { MENU_LIST } from '@/config/RouteConfig';
-import PageUtil from '@/utils/PageUtil';
 import UrlUtil from '@/utils/UrlUtil';
-import { Button, Menu } from 'antd';
+import { GlobalOutlined } from '@ant-design/icons';
+import { Card, PageHeader } from 'antd';
 import MenuItem from 'antd/lib/menu/MenuItem';
 import SubMenu from 'antd/lib/menu/SubMenu';
 import TreeControl from 'fb-project-component/es/utils/TreeControl';
@@ -15,6 +14,7 @@ import styles from './BasicLayout.less';
 interface IBasicLayoutState {
   openMenuKeys: ReactText[];
   selectedMenuKeys: ReactText[];
+  columnsCount: number;
 }
 
 /**
@@ -28,11 +28,18 @@ class BasicLayout extends Component<IPageProps, IBasicLayoutState> {
     this.state = {
       openMenuKeys: [],
       selectedMenuKeys: [],
+      columnsCount: 4,
     };
   }
 
   componentDidMount() {
     this.updateSelectedKeys();
+    this.updateColumnCount();
+    window.addEventListener('resize', this.windowResizeHandler);
+  }
+
+  componentWillUnmount() {
+    window.removeEventListener('resize', this.windowResizeHandler);
   }
 
   componentDidUpdate(prevProps: IPageProps) {
@@ -40,6 +47,10 @@ class BasicLayout extends Component<IPageProps, IBasicLayoutState> {
       this.updateSelectedKeys();
     }
   }
+
+  private windowResizeHandler = () => {
+    this.updateColumnCount();
+  };
 
   private updateSelectedKeys() {
     const keys = this.getSelectedKeys();
@@ -83,40 +94,84 @@ class BasicLayout extends Component<IPageProps, IBasicLayoutState> {
     });
   }
 
+  private updateColumnCount() {
+    const { offsetWidth } = document.body;
+    const columnsCount = Math.max(1, Math.floor(offsetWidth / 330));
+    this.setState({ columnsCount });
+  }
+
+  private renderContent() {
+    const { columnsCount } = this.state;
+    const groups = [
+      {
+        groupTitle: '运维管理',
+        dataSource: [
+          {
+            title: '索引同步',
+          },
+          {
+            title: '治理过滤推理',
+          },
+          {
+            title: '字段类型推理',
+          },
+          {
+            title: '同义簇推理',
+          },
+        ],
+      },
+      {
+        groupTitle: '工具组件',
+        dataSource: [
+          {
+            title: 'Solr管理',
+          },
+          {
+            title: 'ActiveMQ管理',
+          },
+        ],
+      },
+    ];
+
+    return (
+      <div>
+        {groups.map((item) => {
+          const { groupTitle, dataSource } = item;
+          return (
+            <Card className={styles.Group} key={groupTitle} title={groupTitle}>
+              <div
+                className={styles.FunGroup}
+                style={{
+                  gridTemplateColumns: `repeat(${columnsCount}, 1fr)`,
+                }}
+              >
+                {dataSource.map((item) => {
+                  return (
+                    <div className={styles.FunItem} key={item.title}>
+                      {item.title}
+                    </div>
+                  );
+                })}
+              </div>
+            </Card>
+          );
+        })}
+      </div>
+    );
+  }
+
   render() {
-    const { openMenuKeys, selectedMenuKeys } = this.state;
     return (
       <div className={styles.BasicLayout}>
-        <div className={styles.Left}>
-          <div className={styles.Logo}>{APP_NAME}</div>
-          <Menu
-            theme="dark"
-            mode="inline"
-            openKeys={openMenuKeys as string[]}
-            selectedKeys={selectedMenuKeys as string[]}
-            onOpenChange={(keys) => {
-              this.setState({ openMenuKeys: keys });
-            }}
-            onSelect={(option) => {
-              this.setState({ selectedMenuKeys: option.selectedKeys || [] });
-            }}
-          >
-            {this.renderMenu(MENU_LIST)}
-          </Menu>
-        </div>
-        <div className={styles.Right}>
-          <header>
-            header
-            <Button
-              onClick={() => {
-                PageUtil.openLoginPage(window.location.href);
-              }}
-            >
-              退出
-            </Button>
-          </header>
-          <main>{this.props.children}</main>
-        </div>
+        <PageHeader
+          className={styles.Header}
+          title="DOP运维管理"
+          subTitle=""
+          avatar={{
+            icon: <GlobalOutlined />,
+          }}
+        />
+        <main>{this.renderContent()}</main>
       </div>
     );
   }
