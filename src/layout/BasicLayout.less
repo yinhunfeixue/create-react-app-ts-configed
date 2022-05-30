@@ -21,6 +21,7 @@
         row-gap: 10px;
         column-gap: 10px;
         grid-template-columns: repeat(5, 1fr);
+
         .FunItem {
           border: 1px solid #eee;
           display: flex;
@@ -32,6 +33,11 @@
           &:hover {
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
           }
+        }
+
+        .FunItemLink {
+          .FunItem;
+          height: 50px;
         }
       }
     }

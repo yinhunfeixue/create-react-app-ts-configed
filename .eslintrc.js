@@ -1,6 +1,7 @@
 module.exports = {
   extends: ['react-app'],
   rules: {
+    'react/jsx-no-target-blank': 0,
     'jsx-a11y/anchor-is-valid': 0,
     'no-redeclare': 0,
     /*****************防止代码无效内容太多*****************/

@@ -106,17 +106,28 @@ class BasicLayout extends Component<IPageProps, IBasicLayoutState> {
                 }}
               >
                 {dataSource.map((item) => {
-                  const { name } = item;
+                  const { name, url } = item;
+
+                  if (url) {
+                    const useUrl =
+                      url.indexOf('http') === 0 ? url : `http://${url}`;
+                    return (
+                      <a
+                        key={name}
+                        className={styles.FunItemLink}
+                        href={useUrl}
+                        target="_blank"
+                      >
+                        {name}
+                      </a>
+                    );
+                  }
                   return (
                     <div
                       className={styles.FunItem}
                       key={name}
                       onClick={() => {
-                        if (item.url) {
-                          window.open(item.url);
-                        } else {
-                          this.setState({ selectedFunction: item });
-                        }
+                        this.setState({ selectedFunction: item });
                       }}
                     >
                       {name}
@@ -152,7 +163,6 @@ class BasicLayout extends Component<IPageProps, IBasicLayoutState> {
         maskClosable={false}
         visible={visible}
         destroyOnClose
-        width={400}
         onClose={() => {
           this.setState({ selectedFunction: undefined });
         }}
