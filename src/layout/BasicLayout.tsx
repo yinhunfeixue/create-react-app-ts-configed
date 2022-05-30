@@ -1,15 +1,18 @@
 import IPageProps from '@/base/interfaces/IPageProps';
+import FieldTypeReasoning from '@/components/FieldTypeReasoning';
+import GoverningFilteringReasoning from '@/components/GoverningFilteringReasoning';
 import IndexSync from '@/components/IndexSync';
+import SynonymInferenceReasoning from '@/components/SynonymInferenceReasoning';
 import IRouteItem from '@/config/IRouteItem';
+import IFriendLink from '@/interfaces/IFriendLink';
+import DOPService from '@/services/DOPService';
 import { GlobalOutlined } from '@ant-design/icons';
 import { Card, Drawer, DrawerProps, PageHeader } from 'antd';
 import TreeControl from 'fb-project-component/es/utils/TreeControl';
 import React, { Component, ReactNode, ReactText } from 'react';
 import styles from './BasicLayout.less';
 
-interface IFunction {
-  title: string;
-  url?: string;
+interface IFunction extends IFriendLink {
   component?: ReactNode;
 }
 
@@ -18,6 +21,7 @@ interface IBasicLayoutState {
   selectedMenuKeys: ReactText[];
   columnsCount: number;
   selectedFunction?: IFunction;
+  outSystemList?: IFriendLink[];
 }
 
 /**
@@ -37,6 +41,7 @@ class BasicLayout extends Component<IPageProps, IBasicLayoutState> {
 
   componentDidMount() {
     this.updateColumnCount();
+    this.requestOutSystemList();
     window.addEventListener('resize', this.windowResizeHandler);
   }
 
@@ -55,37 +60,36 @@ class BasicLayout extends Component<IPageProps, IBasicLayoutState> {
   }
 
   private renderContent() {
-    const { columnsCount } = this.state;
-    const groups: { groupTitle: string; dataSource: IFunction[] }[] = [
+    const { columnsCount, outSystemList } = this.state;
+
+    const groups: {
+      groupTitle: string;
+      dataSource: (IFunction | IFriendLink)[];
+    }[] = [
       {
         groupTitle: '运维管理',
         dataSource: [
           {
-            title: '索引同步',
+            name: '索引同步',
             component: <IndexSync />,
           },
           {
-            title: '治理过滤推理',
+            name: '治理过滤推理',
+            component: <GoverningFilteringReasoning />,
           },
           {
-            title: '字段类型推理',
+            name: '字段类型推理',
+            component: <FieldTypeReasoning />,
           },
           {
-            title: '同义簇推理',
+            name: '同义簇推理',
+            component: <SynonymInferenceReasoning />,
           },
         ],
       },
       {
         groupTitle: '工具组件',
-        dataSource: [
-          {
-            title: 'Solr管理',
-          },
-          {
-            title: 'ActiveMQ管理',
-            url: 'http://www.baidu.com',
-          },
-        ],
+        dataSource: outSystemList || [],
       },
     ];
 
@@ -102,14 +106,20 @@ class BasicLayout extends Component<IPageProps, IBasicLayoutState> {
                 }}
               >
                 {dataSource.map((item) => {
-                  const { title } = item;
+                  const { name } = item;
                   return (
                     <div
                       className={styles.FunItem}
-                      key={title}
-                      onClick={() => this.setState({ selectedFunction: item })}
+                      key={name}
+                      onClick={() => {
+                        if (item.url) {
+                          window.open(item.url);
+                        } else {
+                          this.setState({ selectedFunction: item });
+                        }
+                      }}
                     >
-                      {title}
+                      {name}
                     </div>
                   );
                 })}
@@ -121,14 +131,20 @@ class BasicLayout extends Component<IPageProps, IBasicLayoutState> {
     );
   }
 
+  private requestOutSystemList() {
+    DOPService.requestOutSystemList().then((data) => {
+      this.setState({ outSystemList: data });
+    });
+  }
+
   private renderDrawer() {
     const { selectedFunction } = this.state;
     const visible = Boolean(selectedFunction);
     let props: DrawerProps = {};
     if (selectedFunction) {
-      const { title } = selectedFunction;
+      const { name } = selectedFunction;
       props = {
-        title,
+        title: name,
       };
     }
     return (

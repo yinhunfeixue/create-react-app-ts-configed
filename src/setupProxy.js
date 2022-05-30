@@ -1,13 +1,8 @@
 const { createProxyMiddleware } = require('http-proxy-middleware');
 
 const config = {
-  '/baiduApi': {
-    target: 'http://www.baidu.com/',
-    changeOrigin: true,
-    pathRewrite: { '^/baiduApi': '/s' },
-  },
-  '/services': {
-    target: 'http://10.128.27.222:8080',
+  '/quantchiAPI': {
+    target: 'http://192.168.2.45:82/',
     changeOrigin: true,
   },
 };

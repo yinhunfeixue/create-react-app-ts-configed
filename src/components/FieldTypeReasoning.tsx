@@ -1,20 +1,23 @@
 import IComponentProps from '@/base/interfaces/IComponentProps';
 import DOPService from '@/services/DOPService';
 import AntdUtil from '@/utils/AntdUtil';
-import { Button, Form, Select } from 'antd';
+import { Button, Form, Input } from 'antd';
 import React, { Component } from 'react';
 
-interface IIndexSyncState {
+interface IFieldTypeReasoningState {
   dataSource: any[];
   loading: boolean;
 }
-interface IIndexSyncProps extends IComponentProps {}
+interface IFieldTypeReasoningProps extends IComponentProps {}
 
 /**
- * IndexSync
+ * FieldTypeReasoning
  */
-class IndexSync extends Component<IIndexSyncProps, IIndexSyncState> {
-  constructor(props: IIndexSyncProps) {
+class FieldTypeReasoning extends Component<
+  IFieldTypeReasoningProps,
+  IFieldTypeReasoningState
+> {
+  constructor(props: IFieldTypeReasoningProps) {
     super(props);
     this.state = {
       dataSource: [],
@@ -30,9 +33,9 @@ class IndexSync extends Component<IIndexSyncProps, IIndexSyncState> {
       <Form layout="vertical">
         {AntdUtil.renderFormItems([
           {
-            label: '类型',
-            content: <Select />,
-            name: 'type',
+            label: '请输入字段ID，逗号分隔',
+            content: <Input />,
+            name: 'id',
             rules: [
               {
                 required: true,
@@ -42,7 +45,7 @@ class IndexSync extends Component<IIndexSyncProps, IIndexSyncState> {
           {
             content: (
               <Button type="primary" loading={loading}>
-                开始同步
+                开始推理
               </Button>
             ),
           },
@@ -52,4 +55,4 @@ class IndexSync extends Component<IIndexSyncProps, IIndexSyncState> {
   }
 }
 
-export default IndexSync;
+export default FieldTypeReasoning;

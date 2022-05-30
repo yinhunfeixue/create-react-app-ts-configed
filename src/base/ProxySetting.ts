@@ -36,9 +36,9 @@ class ProxySetting {
    */
   static successHandler(response: AxiosResponse) {
     //当出错时，执行全局响应处理，并不再向后执行
-    const { code, message } = response.data;
+    const { code, msg } = response.data;
     if (code !== 200) {
-      ProxySetting.showErrorMessage(message);
+      ProxySetting.showErrorMessage(msg);
       return Promise.reject();
     }
 
