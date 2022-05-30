@@ -1,17 +1,16 @@
 import IComponentProps from '@/base/interfaces/IComponentProps';
 import DOPService from '@/services/DOPService';
 import AntdUtil from '@/utils/AntdUtil';
-import { Button, Form, Input } from 'antd';
+import { Button, Form, Input, message } from 'antd';
 import React, { Component } from 'react';
 
 interface IFieldTypeReasoningState {
-  dataSource: any[];
   loading: boolean;
 }
 interface IFieldTypeReasoningProps extends IComponentProps {}
 
 /**
- * FieldTypeReasoning
+ * 字段类型推理
  */
 class FieldTypeReasoning extends Component<
   IFieldTypeReasoningProps,
@@ -20,8 +19,7 @@ class FieldTypeReasoning extends Component<
   constructor(props: IFieldTypeReasoningProps) {
     super(props);
     this.state = {
-      dataSource: [],
-      loading: true,
+      loading: false,
     };
   }
   componentDidMount() {
@@ -30,7 +28,19 @@ class FieldTypeReasoning extends Component<
   render() {
     const { loading } = this.state;
     return (
-      <Form layout="vertical">
+      <Form
+        layout="vertical"
+        onFinish={(values) => {
+          this.setState({ loading: true });
+          DOPService.fieldTypeReasoning(values.id)
+            .then((msg) => {
+              message.success(msg);
+            })
+            .finally(() => {
+              this.setState({ loading: false });
+            });
+        }}
+      >
         {AntdUtil.renderFormItems([
           {
             label: '请输入字段ID，逗号分隔',
@@ -44,7 +54,7 @@ class FieldTypeReasoning extends Component<
           },
           {
             content: (
-              <Button type="primary" loading={loading}>
+              <Button type="primary" loading={loading} htmlType="submit">
                 开始推理
               </Button>
             ),

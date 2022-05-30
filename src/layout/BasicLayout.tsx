@@ -149,6 +149,7 @@ class BasicLayout extends Component<IPageProps, IBasicLayoutState> {
     }
     return (
       <Drawer
+        maskClosable={false}
         visible={visible}
         destroyOnClose
         width={400}
