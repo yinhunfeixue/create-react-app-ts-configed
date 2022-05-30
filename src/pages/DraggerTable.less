@@ -1,0 +1,23 @@
+:global {
+  .DraggerTable {
+    colgroup {
+      display: none;
+    }
+  }
+  .DraggerTh {
+    position: relative;
+    .DragElement {
+      position: absolute;
+      right: 0;
+      top: 0;
+      bottom: 0;
+      width: 10px;
+      background: transparent;
+      cursor: col-resize;
+
+      &:hover {
+        background-color: #f2f2f2;
+      }
+    }
+  }
+}

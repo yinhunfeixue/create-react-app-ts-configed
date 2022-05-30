@@ -6,14 +6,15 @@ class MoveController {
   private _startSize?: Position;
 
   constructor(
-    public target: HTMLElement,
+    public dragTarget: HTMLElement,
+    public displayTarget: HTMLElement,
     public onChange: (value: Position) => void
   ) {
     this.init();
   }
 
   private init() {
-    this.target.addEventListener('mousedown', this.mouseDownHandler);
+    this.dragTarget.addEventListener('mousedown', this.mouseDownHandler);
   }
 
   start() {
@@ -28,14 +29,15 @@ class MoveController {
   }
 
   mouseDownHandler = (event: MouseEvent) => {
-    const { offsetX } = event;
-    const { offsetWidth, offsetHeight } = this.target;
-    const dis = offsetWidth - offsetX;
-    if (dis >= 0 && dis <= 20) {
-      this._startPosition = this.getPositionFromEvent(event);
-      this._startSize = new Position(offsetWidth, offsetHeight);
-      this.start();
-    }
+    // const { offsetX } = event;
+
+    const { offsetWidth, offsetHeight } = this.displayTarget;
+    // const dis = offsetWidth - offsetX;
+    // if (dis >= 0 && dis <= 20) {
+    this._startPosition = this.getPositionFromEvent(event);
+    this._startSize = new Position(offsetWidth, offsetHeight);
+    this.start();
+    // }
   };
 
   mouseMoveHandler = (event: MouseEvent) => {
