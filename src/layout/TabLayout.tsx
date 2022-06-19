@@ -316,7 +316,7 @@ class TabLayout extends Component<IPageProps, ITabLayoutState> {
             openKeys={openMenuKeys as string[]}
             selectedKeys={selectedMenuKeys as string[]}
             onOpenChange={(keys) => {
-              this.setState({ openMenuKeys: keys });
+              this.setState({ openMenuKeys: keys as any });
             }}
             onSelect={(option) => {
               this.setState({ selectedMenuKeys: option.selectedKeys || [] });
