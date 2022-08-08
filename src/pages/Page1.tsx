@@ -29,17 +29,18 @@ class Page1 extends Component<IPage1Props, IPage1State> {
         <Button onClick={() => this.setState({ visibleDrawer: true })}>
           打开drawer
         </Button>
-        <Drawer
-          // key={Math.random()}
-          title="drawer"
-          visible={visibleDrawer}
-          closable
-          onClose={() => {
-            this.setState({ visibleDrawer: false });
-          }}
-        >
-          aa
-        </Drawer>
+        {visibleDrawer && (
+          <Drawer
+            title="drawer"
+            visible={visibleDrawer}
+            closable
+            onClose={() => {
+              this.setState({ visibleDrawer: false });
+            }}
+          >
+            aa
+          </Drawer>
+        )}
       </div>
     );
   }
