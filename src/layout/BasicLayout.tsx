@@ -2,14 +2,13 @@ import IPageProps from '@/base/interfaces/IPageProps';
 import IRouteItem from '@/config/IRouteItem';
 import { APP_NAME } from '@/config/ProjectConfig';
 import { MENU_LIST } from '@/config/RouteConfig';
+import LayoutUtil from '@/utils/LayoutUtil';
 import PageUtil from '@/utils/PageUtil';
-import UrlUtil from '@/utils/UrlUtil';
 import { Button, Menu } from 'antd';
-import MenuItem from 'antd/lib/menu/MenuItem';
-import SubMenu from 'antd/lib/menu/SubMenu';
+import { ItemType } from 'antd/lib/menu/hooks/useItems';
 import TreeControl from 'fb-project-component/es/utils/TreeControl';
 import { pathToRegexp } from 'path-to-regexp';
-import React, { Component, ReactText } from 'react';
+import { Component, ReactText } from 'react';
 import styles from './BasicLayout.less';
 
 interface IBasicLayoutState {
@@ -61,26 +60,8 @@ class BasicLayout extends Component<IPageProps, IBasicLayoutState> {
     return chain ? chain.map((item) => item.path) : [];
   }
 
-  private renderMenu(data: IRouteItem[]) {
-    return data.map((item) => {
-      const href = item.href || item.path;
-      if (item.hideInMenu || item.redirect) {
-        return null;
-      }
-      if (item.children && item.children.length) {
-        return (
-          <SubMenu key={item.path} title={item.name} icon={item.icon}>
-            {this.renderMenu(item.children)}
-          </SubMenu>
-        );
-      } else {
-        return (
-          <MenuItem key={item.path} icon={item.icon}>
-            <a onClick={() => UrlUtil.toUrl(href)}>{item.name}</a>
-          </MenuItem>
-        );
-      }
-    });
+  private createMenuItems(): ItemType[] {
+    return LayoutUtil.createMenuItems(MENU_LIST);
   }
 
   render() {
@@ -92,6 +73,7 @@ class BasicLayout extends Component<IPageProps, IBasicLayoutState> {
           <Menu
             theme="dark"
             mode="inline"
+            items={this.createMenuItems()}
             openKeys={openMenuKeys as string[]}
             selectedKeys={selectedMenuKeys as string[]}
             onOpenChange={(keys) => {
@@ -100,9 +82,7 @@ class BasicLayout extends Component<IPageProps, IBasicLayoutState> {
             onSelect={(option) => {
               this.setState({ selectedMenuKeys: option.selectedKeys || [] });
             }}
-          >
-            {this.renderMenu(MENU_LIST)}
-          </Menu>
+          />
         </div>
         <div className={styles.Right}>
           <header>

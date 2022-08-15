@@ -2,9 +2,9 @@ import IPageProps from '@/base/interfaces/IPageProps';
 import IRouteItem from '@/config/IRouteItem';
 import { APP_NAME } from '@/config/ProjectConfig';
 import routeConfig, { MENU_LIST } from '@/config/RouteConfig';
+import LayoutUtil from '@/utils/LayoutUtil';
 import { Menu, Tabs } from 'antd';
-import MenuItem from 'antd/lib/menu/MenuItem';
-import SubMenu from 'antd/lib/menu/SubMenu';
+import { ItemType } from 'antd/lib/menu/hooks/useItems';
 import TreeControl from 'fb-project-component/es/utils/TreeControl';
 import React, { Component, ReactElement, ReactNode, ReactText } from 'react';
 import styles from './TabLayout.less';
@@ -206,24 +206,9 @@ class TabLayout extends Component<IPageProps, ITabLayoutState> {
     return undefined;
   }
 
-  private renderMenu(data: IRouteItem[]) {
-    return data.map((item) => {
-      if (item.hideInMenu || item.redirect) {
-        return null;
-      }
-      if (item.children && item.children.length) {
-        return (
-          <SubMenu key={item.path} title={item.name} icon={item.icon}>
-            {this.renderMenu(item.children)}
-          </SubMenu>
-        );
-      } else {
-        return (
-          <MenuItem key={item.path} icon={item.icon}>
-            <a onClick={() => this.addTab(item)}>{item.name}</a>
-          </MenuItem>
-        );
-      }
+  private renderMenu(data: IRouteItem[]): ItemType[] {
+    return LayoutUtil.createMenuItems(MENU_LIST, (item) => {
+      return <a onClick={() => this.addTab(item)}>{item.name}</a>;
     });
   }
 
@@ -249,6 +234,7 @@ class TabLayout extends Component<IPageProps, ITabLayoutState> {
         }}
         renderTabBar={(props, DefaultTabBar) => {
           return (
+            // @ts-ignore
             <DefaultTabBar {...props}>
               {(node: ReactElement) => {
                 return (
@@ -305,6 +291,7 @@ class TabLayout extends Component<IPageProps, ITabLayoutState> {
 
   render() {
     const { openMenuKeys, selectedMenuKeys } = this.state;
+    const menuItems = this.renderMenu(MENU_LIST);
 
     return (
       <div className={styles.TabLayout}>
@@ -313,6 +300,7 @@ class TabLayout extends Component<IPageProps, ITabLayoutState> {
           <Menu
             theme="dark"
             mode="inline"
+            items={menuItems}
             openKeys={openMenuKeys as string[]}
             selectedKeys={selectedMenuKeys as string[]}
             onOpenChange={(keys) => {
@@ -322,7 +310,7 @@ class TabLayout extends Component<IPageProps, ITabLayoutState> {
               this.setState({ selectedMenuKeys: option.selectedKeys || [] });
             }}
           >
-            {this.renderMenu(MENU_LIST)}
+            {/* {this.renderMenu(MENU_LIST)} */}
           </Menu>
         </div>
         <div className={styles.Right}>

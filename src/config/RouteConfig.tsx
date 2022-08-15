@@ -1,6 +1,5 @@
 import async from '@/base/components/Async';
 import { SnippetsOutlined } from '@ant-design/icons';
-import React from 'react';
 import IRouteItem from './IRouteItem';
 
 const layout: string = '';
