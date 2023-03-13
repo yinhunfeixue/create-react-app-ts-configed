@@ -1,4 +1,13 @@
-.ScrollBar {
-  .Bar {
+:global {
+  .DmpScrollTrack {
+    width: 400px;
+    border: 1px solid red;
+    height: 20px;
+    position: relative;
+    .DmpScrollSlider {
+      height: 100%;
+      border: 1px solid green;
+      position: absolute;
+    }
   }
 }
