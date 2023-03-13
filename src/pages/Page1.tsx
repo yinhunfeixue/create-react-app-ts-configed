@@ -1,13 +1,14 @@
 import IComponentProps from '@/base/interfaces/IComponentProps';
-import PageView1 from '@/pages/mobile/PageView1';
-import UrlUtil from '@/utils/UrlUtil';
-import { Button, Drawer } from 'antd';
+import ScrollBar from '@/pages/component/ScrollBar';
+import ScrollBarDirection from '@/pages/component/ScrollBarDirection';
+import { Button } from 'antd';
 import Axios from 'axios';
-import { PageItem, PageManager } from 'h5-webview';
-import React, { Component } from 'react';
+import { Component } from 'react';
 
 interface IPage1State {
   visibleDrawer: boolean;
+  maxValue: number;
+  value: number;
 }
 interface IPage1Props extends IComponentProps {}
 
@@ -19,6 +20,8 @@ class Page1 extends Component<IPage1Props, IPage1State> {
     super(props);
     this.state = {
       visibleDrawer: false,
+      maxValue: 300,
+      value: 10,
     };
   }
   componentDidMount() {
@@ -26,39 +29,21 @@ class Page1 extends Component<IPage1Props, IPage1State> {
   }
 
   render() {
-    const { visibleDrawer } = this.state;
+    const { maxValue, value } = this.state;
     return (
       <div>
-        Page1
         <Button
-          onClick={() => {
-            PageManager.openPage(new PageItem(PageView1, { index: 1 }));
-          }}
+          onClick={() => this.setState({ maxValue: 200 + Math.random() * 500 })}
         >
-          打开新手机页面
+          随机最大值{maxValue}
         </Button>
-        <Button
-          onClick={() => {
-            UrlUtil.toUrl(`/Page2/page21`, { x: 1 });
-          }}
-        >
-          打开页面二一
-        </Button>
-        <Button onClick={() => this.setState({ visibleDrawer: true })}>
-          打开drawer
-        </Button>
-        {visibleDrawer && (
-          <Drawer
-            title="drawer"
-            visible={visibleDrawer}
-            closable
-            onClose={() => {
-              this.setState({ visibleDrawer: false });
-            }}
-          >
-            aa
-          </Drawer>
-        )}
+        <Button>增加当前值</Button>
+        <ScrollBar
+          maxValue={maxValue}
+          value={value}
+          direction={ScrollBarDirection.H}
+          onChange={(value) => this.setState({ value })}
+        />
       </div>
     );
   }
