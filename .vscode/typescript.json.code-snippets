@@ -218,6 +218,6 @@
 			"}",
 			"export default ${TM_FILENAME_BASE}"
 		],
-		"description": "从state中取值"
+		"description": "新建普通class"
 	}
 }
