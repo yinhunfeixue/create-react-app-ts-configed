@@ -8,7 +8,7 @@ import { Button, Menu } from 'antd';
 import { ItemType } from 'antd/lib/menu/hooks/useItems';
 import TreeControl from 'fb-project-component/es/utils/TreeControl';
 import { pathToRegexp } from 'path-to-regexp';
-import { Component, ReactText } from 'react';
+import React, { Component, ReactText } from 'react';
 import styles from './BasicLayout.less';
 
 interface IBasicLayoutState {
