@@ -1,8 +1,12 @@
 const FS = require('fs');
 const PATH = require('path');
 
-const ROOT_FOLDER = PATH.join(__dirname, './assets/');
+const assetFold = 'static';
+const ROOT_FOLDER = PATH.join(__dirname, assetFold);
 const EXT_LIST = ['.jpg', '.png', '.svg', '.gif'];
+
+const netAssetsServer = '';
+const isWx = true;
 
 /**
  *
@@ -37,23 +41,55 @@ for (const file of fileList) {
     .filter((item) => item.length > 0)
     .join('_');
 
-  const varValue = `require('./${relativePath.replace(/[\\/]/g, '/')}');`;
+  const varValue = generateAssetRequire(
+    relativePath,
+    Boolean(netAssetsServer),
+    isWx
+  );
   const varItem = `const ${varName} = ${varValue}`;
   code.varList.push(varItem);
 
   code.exportList.push(varName);
 }
 
-let fileContent = '/* eslint-disable */\r\n';
-fileContent += code.varList.join('\r\n');
-fileContent += '\r\n';
-fileContent += '\r\n';
-fileContent += `const Assets = {
+function generateAssetRequire(path, useNetAssets = true, isWx = false) {
+  const usedPath = path.replace(/[\\/]/g, '/');
+  if (useNetAssets) {
+    return `getStaticReourceImg('${usedPath}')`;
+  }
+  if (isWx) {
+    return `'/${assetFold}${usedPath}'`;
+  }
+  return `require('./${assetFold}${usedPath}')`;
+}
+
+const contentList = [];
+
+contentList.push(`/* eslint-disable */`);
+// 资源列表
+contentList.push(code.varList.join('\r\n'));
+
+// 用于导出的对象
+contentList.push(
+  `const Assets = {
   ${code.exportList.join(',\r\n')}
-};\r\n`;
+};`
+);
+// 用于导出的类型
+contentList.push(`type AssetsType = typeof Assets`);
 
-fileContent += `export default Assets;`;
+contentList.push(`export default Assets;`, `export { AssetsType };`);
 
-FS.writeFileSync(PATH.join(ROOT_FOLDER, 'Assets.ts'), fileContent);
+// 如果使用网络资源, 添加网络函数
+if (netAssetsServer) {
+  contentList.push(`function getStaticReourceImg(assetsPath:string):string{
+    const server = '${netAssetsServer}';
+    return \`\${server}\${assetsPath}\`
+  }`);
+}
+
+const fileContent = contentList.join('\r\n\r\n');
+
+FS.writeFileSync(PATH.join(__dirname, 'Assets.ts'), fileContent);
 
 // const login_bg = require('./login/bg.jpg');
