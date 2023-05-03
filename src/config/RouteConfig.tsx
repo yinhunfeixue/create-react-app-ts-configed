@@ -1,6 +1,4 @@
 import async from '@/base/components/Async';
-import { SnippetsOutlined } from '@ant-design/icons';
-import React from 'react';
 import IRouteItem from './IRouteItem';
 
 const layout: string = '';
@@ -22,25 +20,12 @@ const routeConfig: IRouteItem[] = [
     children: [
       {
         path: '/',
-        redirect: '/Page1',
+        redirect: '/List',
       },
       {
-        name: '页面一',
-        path: '/Page1',
-        component: async(() => import('@/pages/Page1')),
-        icon: <SnippetsOutlined />,
-      },
-      {
-        name: '页面二',
-        path: '/Page2',
-        component: async(() => import('@/pages/Page2')),
-        children: [
-          {
-            name: '页面二一',
-            path: '/Page2/page21',
-            component: async(() => import('@/pages/Page21')),
-          },
-        ],
+        name: '用户列表',
+        path: '/List',
+        component: async(() => import('@/pages/List')),
       },
     ],
   },
