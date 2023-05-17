@@ -1,3 +1,4 @@
+import Config from '@/Config';
 import Model from '@/model/Model';
 import PageUtil from '@/utils/PageUtil';
 import { notification } from 'antd';
@@ -9,8 +10,8 @@ const duration = 3;
  */
 class ProxySetting {
   static init() {
-    axios.defaults.baseURL = './';
-    axios.defaults.withCredentials = true;
+    axios.defaults.baseURL = Config.SERVER;
+    axios.defaults.withCredentials = false;
     axios.defaults.headers.post['Content-Type'] = 'application/json';
     axios.interceptors.response.use(
       ProxySetting.successHandler,
@@ -36,9 +37,9 @@ class ProxySetting {
    */
   static successHandler(response: AxiosResponse) {
     //当出错时，执行全局响应处理，并不再向后执行
-    const { code, message } = response.data;
-    if (code !== 200) {
-      ProxySetting.showErrorMessage(message);
+    const { code, msg } = response.data;
+    if (code !== 1000) {
+      ProxySetting.showErrorMessage(msg);
       return Promise.reject();
     }
 

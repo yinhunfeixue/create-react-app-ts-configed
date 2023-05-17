@@ -1,15 +1,23 @@
+import Config from '@/Config';
 import IPageProps from '@/base/interfaces/IPageProps';
+import Model from '@/model/Model';
+import KeyInputModal from '@/pages/KeyInputModal';
 import Setting from '@/pages/component/Setting';
-import { Button, Card, Table, message } from 'antd';
+import KeyService from '@/services/KeyService';
+import { Button, Card, Result, Table, message } from 'antd';
 import { HtmlUtil } from 'fb-project-component';
+import moment from 'moment';
 import React, { Component } from 'react';
 
 interface IListSate {
   visibleSetting: boolean;
+  visibleKeyInput: boolean;
   dataSource: any[];
+
+  error: boolean;
 }
 
-const URL = `ws://1.117.70.104:8000/`;
+const URL = Config.SOCKET_SERVER;
 
 let index = 0;
 
@@ -21,9 +29,38 @@ class List extends Component<IPageProps, IListSate> {
   constructor(props: any) {
     super(props);
     this.state = {
-      visibleSetting: true,
+      visibleSetting: false,
+      visibleKeyInput: false,
+      error: false,
       dataSource: [],
     };
+  }
+
+  componentDidMount() {
+    this.init();
+  }
+
+  private init() {
+    this.checkToken();
+  }
+
+  private async checkToken() {
+    const maxDate = moment(`2023-06-11`);
+    if (moment() > maxDate) {
+      this.setState({ error: true });
+    }
+    const token = Model.token;
+    if (!token) {
+      this.setState({ visibleKeyInput: true });
+    } else {
+      await KeyService.getStatus(token)
+        .then(() => {
+          this.setState({ visibleSetting: true });
+        })
+        .catch(() => {
+          this.setState({ visibleKeyInput: true });
+        });
+    }
   }
 
   private paramsChangeHandler(params: any) {
@@ -34,7 +71,7 @@ class List extends Component<IPageProps, IListSate> {
   }
 
   private connect(params: any) {
-    const temp: WebSocket = new WebSocket(URL + '/get_data?key=12344123414124');
+    const temp: WebSocket = new WebSocket(URL + `?key=${Model.token}`);
     temp.onopen = () => {
       const postData = {
         action: 'spy',
@@ -75,7 +112,10 @@ class List extends Component<IPageProps, IListSate> {
   }
 
   render() {
-    const { visibleSetting, dataSource } = this.state;
+    const { visibleSetting, dataSource, visibleKeyInput, error } = this.state;
+    if (error) {
+      return <Result />;
+    }
     return (
       <>
         <Card
@@ -119,6 +159,7 @@ class List extends Component<IPageProps, IListSate> {
             ]}
             pagination={{
               pageSize: 20,
+              size: 'small',
             }}
           />
         </Card>
@@ -129,6 +170,14 @@ class List extends Component<IPageProps, IListSate> {
           onSave={(value) => {
             this.setState({ visibleSetting: false, dataSource: [] });
             this.paramsChangeHandler(value);
+          }}
+        />
+
+        <KeyInputModal
+          visible={visibleKeyInput}
+          onSuccess={() => {
+            this.setState({ visibleKeyInput: false });
+            this.init();
           }}
         />
       </>
