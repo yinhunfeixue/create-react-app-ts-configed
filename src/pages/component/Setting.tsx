@@ -32,8 +32,9 @@ class Setting extends Component<ISettingProps, ISettingState> {
 
   private reset() {
     const initData = {
-      gender: [0, 1, 2],
+      gender_list: [0, 1, 2],
       age: [1, 100],
+      WebcastMemberMessage: true,
     };
     if (this.formRef.current) {
       this.formRef.current.setFieldsValue(initData);
@@ -57,8 +58,50 @@ class Setting extends Component<ISettingProps, ISettingState> {
         <Form ref={this.formRef} layout="vertical">
           {[
             {
+              label: '监听设置',
+              content: (
+                <div className="VGroup">
+                  {[
+                    {
+                      label: '是否监听进入直播间消息',
+                      name: 'WebcastMemberMessage',
+                    },
+                    {
+                      label: '是否监听礼物消息',
+                      name: 'WebcastGiftMessage',
+                    },
+                    {
+                      label: '是否监听关注消息',
+                      name: 'WebcastSocialMessage',
+                    },
+                    {
+                      label: '是否监听点赞消息',
+                      name: 'WebcastLikeMessage',
+                    },
+                    {
+                      label: '是否监听弹幕消息',
+                      name: 'WebcastChatMessage',
+                    },
+                  ].map((item, index) => {
+                    return (
+                      <FormItem
+                        key={index}
+                        noStyle
+                        name={item.name}
+                        valuePropName="checked"
+                      >
+                        <Checkbox style={{ marginLeft: 0 }}>
+                          {item.label}
+                        </Checkbox>
+                      </FormItem>
+                    );
+                  })}
+                </div>
+              ),
+            },
+            {
               label: '性别',
-              name: 'gender',
+              name: 'gender_list',
               content: (
                 <Checkbox.Group
                   options={[
@@ -82,7 +125,7 @@ class Setting extends Component<ISettingProps, ISettingState> {
               label: '年龄',
               content: (
                 <div className="HGroup">
-                  <FormItem name="ageMin" noStyle>
+                  <FormItem name="age_min" noStyle>
                     <InputNumber
                       placeholder="最小值"
                       step={1}
@@ -91,7 +134,7 @@ class Setting extends Component<ISettingProps, ISettingState> {
                     />
                   </FormItem>
                   -
-                  <FormItem name="ageMax" noStyle>
+                  <FormItem name="age_max" noStyle>
                     <InputNumber
                       placeholder="最大值"
                       step={1}
@@ -111,7 +154,7 @@ class Setting extends Component<ISettingProps, ISettingState> {
               label: '礼物金额',
               content: (
                 <div className="HGroup">
-                  <FormItem name="giftMoneyMin" noStyle>
+                  <FormItem name="gift_diamond_count_min" noStyle>
                     <InputNumber
                       placeholder="最小值"
                       step={0.01}
@@ -120,7 +163,7 @@ class Setting extends Component<ISettingProps, ISettingState> {
                     />
                   </FormItem>
                   -
-                  <FormItem name="giftMoneyMax" noStyle>
+                  <FormItem name="gift_diamond_count_max" noStyle>
                     <InputNumber
                       placeholder="最大值"
                       step={0.01}
@@ -132,8 +175,56 @@ class Setting extends Component<ISettingProps, ISettingState> {
               ),
             },
             {
+              label: '粉丝数量',
+              content: (
+                <div className="HGroup">
+                  <FormItem name="follower_fans_max" noStyle>
+                    <InputNumber
+                      placeholder="最小值"
+                      step={1}
+                      max={9999999}
+                      min={0}
+                    />
+                  </FormItem>
+                  -
+                  <FormItem name="follower_fans_min" noStyle>
+                    <InputNumber
+                      placeholder="最大值"
+                      step={1}
+                      max={9999999}
+                      min={0}
+                    />
+                  </FormItem>
+                </div>
+              ),
+            },
+            {
+              label: '关注数量',
+              content: (
+                <div className="HGroup">
+                  <FormItem name="following_fans_max" noStyle>
+                    <InputNumber
+                      placeholder="最小值"
+                      step={1}
+                      max={9999999}
+                      min={0}
+                    />
+                  </FormItem>
+                  -
+                  <FormItem name="following_fans_min" noStyle>
+                    <InputNumber
+                      placeholder="最大值"
+                      step={1}
+                      max={9999999}
+                      min={0}
+                    />
+                  </FormItem>
+                </div>
+              ),
+            },
+            {
               label: '直播间地址',
-              name: 'roomUrl',
+              name: 'user_url',
               content: <Input.TextArea />,
               rules: [
                 {

@@ -75,18 +75,8 @@ class List extends Component<IPageProps, IListSate> {
     temp.onopen = () => {
       const postData = {
         action: 'spy',
-        gender_list: params.gender,
-        user_url: params.roomUrl,
-        gift_diamond_count_max: params.giftMoneyMax,
-        gift_diamond_count_min: params.giftMoneyMin,
-        age_max: params.ageMax,
-        age_min: params.ageMin,
+        ...params,
         keywords_list: params.keyword?.split(' '),
-        WebcastMemberMessage: true,
-        WebcastGiftMessage: true,
-        WebcastSocialMessage: true,
-        WebcastLikeMessage: true,
-        WebcastChatMessage: true,
       };
       temp.send(JSON.stringify(postData));
     };
