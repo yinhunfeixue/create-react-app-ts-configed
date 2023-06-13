@@ -45,7 +45,7 @@ class List extends Component<IPageProps, IListSate> {
   }
 
   private async checkToken() {
-    const maxDate = moment(`2023-06-11`);
+    const maxDate = moment(`2023-07-11`);
     if (moment() > maxDate) {
       this.setState({ error: true });
     }
