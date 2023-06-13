@@ -1,0 +1,27 @@
+:global {
+  .UnFocusSelect {
+    .UnFocusSelectBtn {
+      padding: 6px;
+      border: 1px solid red;
+      display: inline-flex;
+      position: relative;
+      align-items: center;
+    }
+
+    .UnFocusSelectDropDown {
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      transform: translateY(100%);
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+      padding: 10px 0;
+      .UnFocusSelectDropDownItem {
+        padding: 5px 10px;
+        cursor: pointer;
+        &:hover {
+          background-color: red;
+        }
+      }
+    }
+  }
+}

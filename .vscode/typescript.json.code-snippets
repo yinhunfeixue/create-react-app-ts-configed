@@ -219,5 +219,19 @@
 			"export default ${TM_FILENAME_BASE}"
 		],
 		"description": "从state中取值"
+	},
+	"createHooks": {
+		"prefix": "newHooks",
+		"body": [
+			"import React from 'react'",
+			"interface I${TM_FILENAME_BASE}Props {}",
+			"/**",
+			"* ${TM_FILENAME_BASE}",
+			"*/",
+			"const ${TM_FILENAME_BASE}: React.FC<I${TM_FILENAME_BASE}Props> = (props) => {",
+			"return <div>${TM_FILENAME_BASE}</div>",
+			"}",
+			"export default ${TM_FILENAME_BASE}",
+		]
 	}
 }
