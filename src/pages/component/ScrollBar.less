@@ -1,13 +1,18 @@
 :global {
   .DmpScrollTrack {
     width: 400px;
-    border: 1px solid red;
-    height: 20px;
+    border: 1px solid rgb(226, 226, 226);
+    height: 10px;
     position: relative;
     .DmpScrollSlider {
       height: 100%;
-      border: 1px solid green;
+      background-color: #c8c8c8;
       position: absolute;
+      cursor: pointer;
+      transition: background-color 0.3s;
+      &:hover {
+        background-color: #e2e2e2;
+      }
     }
   }
 }
