@@ -1,18 +1,20 @@
 import { RightOutlined } from '@ant-design/icons';
 import classNames from 'classnames';
-import React, { Key, ReactNode, useState } from 'react';
+import React, { CSSProperties, Key, ReactNode, useState } from 'react';
 import './UnFocusSelect.less';
 
 interface IToolBarSelectProps {
   value?: Key;
   options?: { label: ReactNode; value: Key }[];
   placeholder?: ReactNode;
+  style?: CSSProperties;
+  className?: string;
 }
 /**
  * ToolBarSelect
  */
 const ToolBarSelect: React.FC<IToolBarSelectProps> = (props) => {
-  const { options = [], value: propsValue } = props;
+  const { options = [], value: propsValue, className, style } = props;
 
   const [stateValue, setStateValue] = useState<Key>();
   const [stateVisible, setStateVisible] = useState(false);
@@ -27,8 +29,10 @@ const ToolBarSelect: React.FC<IToolBarSelectProps> = (props) => {
     <div
       className={classNames(
         'UnFocusSelect',
-        visible ? 'UnFocusSelectVisible' : ''
+        visible ? 'UnFocusSelectVisible' : '',
+        className
       )}
+      style={style}
     >
       {/* 按钮 */}
       <div
@@ -45,7 +49,10 @@ const ToolBarSelect: React.FC<IToolBarSelectProps> = (props) => {
             <div
               className="UnFocusSelectDropDownItem"
               key={item.value}
-              onClick={() => setStateValue(item.value)}
+              onClick={() => {
+                setStateValue(item.value);
+                setStateVisible(false);
+              }}
             >
               {item.label}
             </div>

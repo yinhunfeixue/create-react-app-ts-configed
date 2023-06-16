@@ -27,13 +27,13 @@ class Page1 extends Component<IPage1Props, IPage1State> {
     return (
       <div>
         <Input placeholder="" />
-
         <div
           onMouseDown={(event) => {
             event.preventDefault();
           }}
         >
           <UnFocusSelect
+            style={{ width: 100 }}
             options={[
               { value: 1, label: '11111' },
               { value: 2, label: '222' },
