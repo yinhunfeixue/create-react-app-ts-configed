@@ -1,15 +1,16 @@
 import IComponentProps from '@/base/interfaces/IComponentProps';
 import ScrollBar from '@/pages/component/ScrollBar';
 import ScrollBarDirection from '@/pages/component/ScrollBarDirection';
-import ScrollBarUtil from '@/pages/component/ScrollBarUtil';
-import { Button } from 'antd';
+import ScrollContainer from '@/pages/component/ScrollContainer';
 import Axios from 'axios';
-import React, { Component } from 'react';
+import { Component } from 'react';
 
 interface IPage1State {
   visibleDrawer: boolean;
-  maxValue: number;
-  value: number;
+  maxWidth: number;
+  widthValue: number;
+  maxHeight: number;
+  heightValue: number;
 }
 interface IPage1Props extends IComponentProps {}
 
@@ -21,55 +22,66 @@ class Page1 extends Component<IPage1Props, IPage1State> {
     super(props);
     this.state = {
       visibleDrawer: false,
-      maxValue: 300,
-      value: 10,
+      maxWidth: 0,
+      widthValue: 0,
+      maxHeight: 0,
+      heightValue: 0,
     };
   }
   componentDidMount() {
     Axios.get('baiduApi?wd=create-react-app');
-
-    if (this.divRef.current) {
-      ScrollBarUtil.listenScrollChange(this.divRef.current, (data) => {
-        console.log('data', data);
-      });
-    }
   }
 
-  private divRef: React.RefObject<HTMLDivElement> = React.createRef();
-
   render() {
-    const { maxValue, value } = this.state;
+    const { maxWidth, widthValue, maxHeight, heightValue } = this.state;
     return (
-      <div>
-        <Button
-          onClick={() => this.setState({ maxValue: 200 + Math.random() * 500 })}
-        >
-          随机最大值{maxValue}
-        </Button>
-        <Button>增加当前值</Button>
-        <ScrollBar
-          maxValue={maxValue}
-          value={value}
-          direction={ScrollBarDirection.H}
-          onChange={(value) => this.setState({ value })}
-        />
-
-        <Button
-          onClick={() => {
-            if (this.divRef.current) {
-              const { scrollWidth, scrollHeight, offsetWidth, offsetHeight } =
-                this.divRef.current;
-              console.log(scrollWidth, scrollHeight, offsetWidth, offsetHeight);
-            }
+      <div style={{ display: 'flex' }}>
+        <div style={{ marginRight: 30 }}>
+          <h2>下面的滚动条，控制左边元素滚动</h2>
+          <h4>水平方向滚动</h4>
+          <ScrollBar
+            style={{ marginBottom: 10 }}
+            maxValue={maxWidth}
+            value={widthValue}
+            direction={ScrollBarDirection.H}
+            onChange={(value) => {
+              this.setState({ widthValue: value });
+            }}
+          />
+          <h4>垂直方向滚动</h4>
+          <ScrollBar
+            style={{ marginBottom: 10 }}
+            maxValue={maxHeight}
+            value={heightValue}
+            direction={ScrollBarDirection.H}
+            onChange={(value) => this.setState({ heightValue: value })}
+          />
+        </div>
+        <ScrollContainer
+          style={{
+            border: '1px solid green',
+            width: 300,
+            height: 100,
+            overflow: 'hidden',
+          }}
+          scrollLeft={widthValue}
+          scrollTop={heightValue}
+          onScrollSizeChange={(width, height) => {
+            this.setState({ maxWidth: width, maxHeight: height });
           }}
         >
-          显示尺寸
-        </Button>
-        <div ref={this.divRef} style={{ width: 300, border: '1px solid #888' }}>
-          <div style={{ width: 500, border: '1px solid red' }} contentEditable>
-            content
+          <div
+            style={{
+              border: '1px solid red',
+              width: 800,
+              height: 200,
+              background: `linear-gradient(45deg, green, red, transparent)`,
+            }}
+          >
+            aaa
           </div>
-        </div>
+          <div style={{ border: '1px solid red' }}>bbb</div>
+        </ScrollContainer>
       </div>
     );
   }

@@ -3,31 +3,31 @@
  */
 class ScrollBarUtil {
   static listenScrollChange(
-    target: HTMLDivElement,
+    container: HTMLElement,
+    content: HTMLElement,
     onChange: (data: { width: number; height: number }) => void
   ) {
-    const observer: MutationObserver = new MutationObserver(
-      (list, abserver) => {
-        for (const item of list) {
-          if (item.type === 'attributes') {
-            const { offsetWidth, offsetHeight, scrollWidth, scrollHeight } =
-              target;
-            onChange({
-              width: scrollWidth - offsetWidth,
-              height: scrollHeight - offsetHeight,
-            });
-          }
-        }
-      }
-    );
+    const resizeHandler = () => {
+      const { clientWidth, clientHeight, scrollWidth, scrollHeight } =
+        container;
 
-    observer.observe(target, {
-      attributes: true,
-      childList: true,
-    });
+      onChange({
+        width: scrollWidth - clientWidth,
+        height: scrollHeight - clientHeight,
+      });
+    };
+
+    const containerObserver = new ResizeObserver(resizeHandler);
+    const contentObserver = new ResizeObserver(resizeHandler);
+
+    containerObserver.observe(container);
+    contentObserver.observe(content);
+
+    resizeHandler();
 
     return () => {
-      observer.disconnect();
+      containerObserver.disconnect();
+      contentObserver.disconnect();
     };
   }
 }
