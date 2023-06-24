@@ -5,12 +5,9 @@ import URL from 'url';
 const CACHE = new Map();
 
 export default function async(importComponent: any) {
-  console.log('async ', importComponent);
 
   let key = importComponent.toString();
   if (CACHE.has(key)) {
-    console.log('async cache');
-
     return CACHE.get(key);
   }
   /**
