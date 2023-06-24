@@ -5,7 +5,6 @@ import URL from 'url';
 const CACHE = new Map();
 
 export default function async(importComponent: any) {
-
   let key = importComponent.toString();
   if (CACHE.has(key)) {
     return CACHE.get(key);
