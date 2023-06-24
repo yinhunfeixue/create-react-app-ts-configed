@@ -1,23 +1,26 @@
-import ProxySetting from '@/base/ProxySetting';
-import Model from '@/model/Model';
-import { ConfigProvider } from 'antd';
-import zhCN from 'antd/lib/locale/zh_CN';
 import React from 'react';
-import './App.less';
-import RouterRender from './config/RouterRender';
+import logo from './logo.svg';
+import './App.css';
 
-ProxySetting.init();
-Model.init();
-
-let x: string | undefined;
-console.log(x?.length);
-
-const App: React.FC<any> = (props: any) => {
+function App() {
   return (
-    <ConfigProvider locale={zhCN}>
-      <RouterRender />
-    </ConfigProvider>
+    <div className="App">
+      <header className="App-header">
+        <img src={logo} className="App-logo" alt="logo" />
+        <p>
+          Edit <code>src/App.tsx</code> and save to reload.
+        </p>
+        <a
+          className="App-link"
+          href="https://reactjs.org"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          Learn React
+        </a>
+      </header>
+    </div>
   );
-};
+}
 
 export default App;
