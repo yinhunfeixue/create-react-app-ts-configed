@@ -57,19 +57,19 @@ function getAdditionalModulePaths(options = {}) {
  * @param {*} options
  */
 function getWebpackAliases(options = {}) {
-  const baseUrl = options.baseUrl;
+  // const baseUrl = options.baseUrl;
 
-  if (!baseUrl) {
-    return {};
-  }
+  // if (!baseUrl) {
+  //   return {};
+  // }
 
-  const baseUrlResolved = path.resolve(paths.appPath, baseUrl);
+  // const baseUrlResolved = path.resolve(paths.appPath, baseUrl);
 
-  if (path.relative(paths.appPath, baseUrlResolved) === '') {
-    return {
-      src: paths.appSrc,
-    };
-  }
+  // if (path.relative(paths.appPath, baseUrlResolved) === '') {
+  //   return {
+  //     src: paths.appSrc,
+  //   };
+  // }
   const ROOT_PATH = path.resolve(__dirname, '../')
   const APP_NAME = 'dmp'
   return {

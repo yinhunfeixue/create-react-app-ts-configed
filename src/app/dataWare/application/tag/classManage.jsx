@@ -2,6 +2,7 @@ import EmptyLabel from '@/component/EmptyLabel'
 import DrawerLayout from '@/component/layout/DrawerLayout'
 import RichTableLayout from '@/component/layout/RichTableLayout'
 import SliderLayout from '@/component/layout/SliderLayout'
+import PermissionWrap from '@/component/PermissionWrap'
 import { Button, Checkbox, Form, Input, message, Select, Switch, Tooltip } from 'antd'
 import FormItem from 'antd/es/form/FormItem'
 import { deleteSystem, deleteTreeNode, getNodeSourceCountByNodeId } from 'app_api/systemManage'
@@ -11,7 +12,6 @@ import TagsInput from 'app_page/dama/component/tagsInput'
 import moment from 'moment'
 import 'moment/locale/zh-cn'
 import React from 'react'
-import PermissionWrap from '@/component/PermissionWrap'
 import './classManage.less'
 
 const { Option } = Select
@@ -379,7 +379,7 @@ class TagCategory extends React.Component {
     //     this.postAddType()
     // }
     postAddType = async () => {
-        const { addTypeInfo, type } = this.state
+        const { addTypeInfo, type ,selectedTagCategory} = this.state
         this.setState({ loading: true })
         let res
         if (type == 'add') {
@@ -758,7 +758,7 @@ class TagCategory extends React.Component {
                                 addOnPaste={true}
                                 pasteSplit={(data) => data.split(' ')}
                                 value={newTagValue}
-                                onChange={::this.changeNewTagInput}
+                                onChange={this.changeNewTagInput}
                                 inputProps={{ placeholder: '请输入标签名称，标签以空格隔开' }}
                             />
                         </FormItem>

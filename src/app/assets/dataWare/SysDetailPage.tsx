@@ -13,7 +13,7 @@ import GraphTargetType from '@/app/graph/enum/GraphTargetType'
 import MetaDataType from '@/app/metadataCenter/enum/MetaDataType'
 import ErPage from '@/app/metadataCenter/ErPage'
 import ModuleTitle from '@/component/module/ModuleTitle'
-import { Button, Collapse, message, Modal as AntdModal, Popover, Radio, Spin, Tabs, Tooltip } from 'antd'
+import { Modal as AntdModal, Button, Collapse, message, Popover, Radio, Spin, Tabs, Tooltip } from 'antd'
 import { tableVersionList } from 'app_api/autoManage'
 import { foreignRelation, getBloodHot, getBloodScript, getRelation, getRelationTable, getSysBasic, getSysBasicOverview, getSysColumn, getSysPartitionColumn } from 'app_api/dataAssetApi'
 import { ListHorizontal, LzTable } from 'cps'
@@ -849,7 +849,7 @@ class SysDetailPage extends Component<any, ISysDetailPageSate> {
 
     private toSql = (item: any) => {
         PageUtil.addTab(
-            'sqlDetail'
+            'sqlDetail',
             {
                 id: _.get(item, 'fileId'),
             },

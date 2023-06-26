@@ -1,24 +1,21 @@
-import React, { useRef, useState } from "react";
-import SliderLayout from "@/component/layout/SliderLayout";
-import { Section, ListHorizontal, FormTool, Select, IconLink } from 'cps';
-import RichTableLayout from "@/component/layout/RichTableLayout";
-import StatusLabel from "@/component/statusLabel/StatusLabel";
-import DrawerLayout from "@/component/layout/DrawerLayout";
-import ModuleTitle from "@/component/module/ModuleTitle";
-import { useTablePathData, useBusinessClassify, useDwTheme, useAnalizeTheme } from 'hooks';
-import { addDou, formatPercent, recursiveByCb } from 'utils';
 import AutoTip from "@/component/AutoTip";
-import { Cascader, Divider, Progress, Radio, Space, Button, Tabs, Tooltip, Select as AntdSelect, message, Alert, Popover, Table } from 'antd';
-import EmptyLabel from '@/component/EmptyLabel'
+import EmptyLabel from '@/component/EmptyLabel';
+import DrawerLayout from "@/component/layout/DrawerLayout";
+import RichTableLayout from "@/component/layout/RichTableLayout";
+import SliderLayout from "@/component/layout/SliderLayout";
+import ModuleTitle from "@/component/module/ModuleTitle";
+import StatusLabel from "@/component/statusLabel/StatusLabel";
+import { Alert, Select as AntdSelect, Button, Cascader, Divider, Popover, Progress, Radio, Space, Table, Tabs, Tooltip, message } from 'antd';
+import { FormTool, IconLink, ListHorizontal, Section, Select } from 'cps';
+import { useAnalizeTheme, useBusinessClassify, useDwTheme, useTablePathData } from 'hooks';
+import React, { useRef, useState } from "react";
+import { addDou, recursiveByCb } from 'utils';
 
-import { readConfirmList, readConfirmSignleDetail, readConfirmBatchDetail, createConfirm, querySystemList, readSystemDetail, readSystemCompleted, readAllConfirmation } from '@/api/confirmation';
-import classnames from 'classnames';
+import { createConfirm, querySystemList, readAllConfirmation, readConfirmBatchDetail, readConfirmList, readConfirmSignleDetail, readSystemCompleted, readSystemDetail } from '@/api/confirmation';
+import PermissionWrap from '@/component/PermissionWrap';
+import ProjectUtil from '@/utils/ProjectUtil';
+import { useCallback, useEffect } from "react";
 import style from './index.lees';
-import { useEffect } from "react";
-import { useCallback } from "react";
-import { useMemo } from "react";
-import ProjectUtil from '@/utils/ProjectUtil'
-import PermissionWrap from '@/component/PermissionWrap'
 
 
 const TABLE = <svg viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="10764" width="16"><path fill='#2D3033' d="M96 160v704h832V160H96z m309.344 400.192v-160h192v160h-192z m192 64V800h-192v-175.808h192zM160 400.192h181.344v160H160v-160z m501.344 0H864v160h-202.656v-160zM864 224v112.192H160V224h704zM160 624.192h181.344V800H160v-175.808zM661.344 800v-175.808H864V800h-202.656z" p-id="10765"></path></svg>
@@ -934,7 +931,7 @@ export default function (props: React.PropsWithChildren<{
                           <Space direction="vertical">
                             {
                               (drawerActiveData.recommendClassList || []).map((v: any) => (
-                                <Radio node={...v} value={v.classId}>{v.classPath || ''}</Radio>
+                                <Radio node={v} value={v.classId}>{v.classPath || ''}</Radio>
                               ))
                             }
                             <Radio value={"custom"}>自定义</Radio>

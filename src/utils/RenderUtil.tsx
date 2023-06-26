@@ -2,7 +2,7 @@ import EmptyLabel from '@/component/EmptyLabel'
 import { Divider, Radio, Select, Tooltip, Tree } from 'antd'
 import FormItem, { FormItemProps } from 'antd/es/form/FormItem'
 import { Rule } from 'antd/lib/form'
-import React, { ReactNode, ReactText } from 'react'
+import { ReactNode, ReactText } from 'react'
 
 class RenderUtil {
     static renderRadioList(valueList: any[], labelFunction: (value: any) => ReactNode, onClick?: (value: any) => void) {

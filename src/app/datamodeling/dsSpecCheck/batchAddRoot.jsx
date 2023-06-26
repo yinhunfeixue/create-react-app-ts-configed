@@ -94,7 +94,7 @@ export default class eastUpload extends Component {
                                 // }}
                                 pasteSplit={(data) => data.split(' ')}
                                 value={text}
-                                onChange={::this.changeNewTagInput.bind(this, index)}
+                                onChange={this.changeNewTagInput.bind(this, index)}
                                 inputProps={{ placeholder: '请添加描述词，空格区分' }}
                             />
                         </div>

@@ -1,8 +1,8 @@
-import React, { Component } from 'react'
-import _ from 'underscore'
-import $ from 'jquery'
-import echarts from 'echarts'
 import SliceStyle from 'app_js/sliceStyle'
+import * as echarts from 'echarts'
+import $ from 'jquery'
+import { Component } from 'react'
+import _ from 'underscore'
 
 export default class Graph extends Component {
     constructor(props) {

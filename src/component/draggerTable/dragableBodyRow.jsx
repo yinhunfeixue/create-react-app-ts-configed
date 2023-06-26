@@ -1,5 +1,5 @@
-import { Table } from 'antd';
-import { DndProvider, DragSource, DropTarget } from 'react-dnd';
+import React from 'react';
+import { DragSource, DropTarget } from 'react-dnd';
 
 
 let dragingIndex = -1;

@@ -29,6 +29,22 @@ module.exports = {
             'lz_antd',
         ],
         [
+            'import',
+            {
+                libraryName: 'app_common',
+                libraryDirectory: 'lib',
+            },
+            'app_common',
+        ],
+        [
+            'import',
+            {
+                libraryName: 'app_component',
+                libraryDirectory: 'lib',
+            },
+            'app_component',
+        ],
+        [
             '@babel/plugin-proposal-decorators',
             {
                 legacy: true,

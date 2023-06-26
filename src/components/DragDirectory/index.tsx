@@ -1,13 +1,13 @@
-import React, { ReactNode, useCallback, useEffect, useMemo, useState } from "react";
-import style from './index.lees';
+import { Input, Popover } from 'antd';
+import React, { ReactNode, useEffect, useState } from "react";
 import { arrayMove } from 'react-sortable-hoc';
-import { Popover, Input } from 'antd';
+import style from './index.lees';
 
 import Sort from "./sort";
 
+import classnames from "classnames";
 import DOWN from './img/arrow_down.png';
 import RIGHT from './img/arrow_right.png';
-import classnames from "classnames";
 
 const More = (props: React.PropsWithChildren<{
   color?: string,
@@ -44,7 +44,7 @@ export default function DragDirectory(props: React.PropsWithChildren<{
   disabledMainSelected?: boolean,
   search?: boolean,
   searchChange?: (value?: any) => void,
-  searchOnChange? (value?: any) => void,
+  searchOnChange?: (value?: any) => void,
   renderTitle?: (value?: any) => void,
   renderSubTitle?: (value?: any) => void,
 }>) {

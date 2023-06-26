@@ -1,5 +1,5 @@
-import React from 'react'
 import PropTypes from 'prop-types'
+import React from 'react'
 import './index.less'
 
 function uniq (arr) {
@@ -83,8 +83,8 @@ class TagsInput extends React.Component {
     constructor () {
         super()
         this.state = {tag: '', isFocused: false}
-        this.focus = ::this.focus
-        this.blur = ::this.blur
+        this.focus = this.focus
+        this.blur = this.blur
     }
 
     static propTypes = {
@@ -474,9 +474,9 @@ class TagsInput extends React.Component {
             return renderTag({
                 key: index,
                 tag,
-                onRemove: ::this.handleRemove,
+                onRemove: this.handleRemove,
                 disabled,
-                getTagDisplayValue: ::this._getTagDisplayValue,
+                getTagDisplayValue: this._getTagDisplayValue,
                 ...tagProps
             })
         })
@@ -484,17 +484,17 @@ class TagsInput extends React.Component {
         let inputComponent = renderInput({
             ref: r => { this.input = r },
             value: this._tag(),
-            onPaste: ::this.handlePaste,
-            onKeyDown: ::this.handleKeyDown,
-            onChange: ::this.handleChange,
-            onFocus: ::this.handleOnFocus,
-            onBlur: ::this.handleOnBlur,
-            addTag: ::this.addTag,
+            onPaste: this.handlePaste,
+            onKeyDown: this.handleKeyDown,
+            onChange: this.handleChange,
+            onFocus: this.handleOnFocus,
+            onBlur: this.handleOnBlur,
+            addTag: this.addTag,
             ...this.inputProps()
         })
 
         return (
-            <div ref={r => { this.div = r }} onClick={::this.handleClick} className={className}>
+            <div ref={r => { this.div = r }} onClick={this.handleClick} className={className}>
                 {renderLayout(tagComponents, inputComponent)}
             </div>
         )

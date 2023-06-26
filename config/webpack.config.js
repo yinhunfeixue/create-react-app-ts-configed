@@ -107,7 +107,7 @@ module.exports = function (webpackEnv) {
   const shouldUseReactRefresh = env.raw.FAST_REFRESH;
 
   // common function to get style loaders
-  const getStyleLoaders = (cssOptions, preProcessor) => {
+  const getStyleLoaders = (cssOptions, preProcessor, preProcessorOption) => {
     const loaders = [
       isEnvDevelopment && require.resolve('style-loader'),
       isEnvProduction && {
@@ -181,6 +181,7 @@ module.exports = function (webpackEnv) {
           loader: require.resolve(preProcessor),
           options: {
             sourceMap: true,
+            ...preProcessorOption
           },
         }
       );
@@ -427,6 +428,7 @@ module.exports = function (webpackEnv) {
                   isEnvDevelopment &&
                     shouldUseReactRefresh &&
                     require.resolve('react-refresh/babel'),
+                  '@babel/plugin-proposal-optional-chaining'
                 ].filter(Boolean),
                 // This is a feature of `babel-loader` for webpack (not Babel itself).
                 // It enables caching results in ./node_modules/.cache/babel-loader/
@@ -559,7 +561,12 @@ module.exports = function (webpackEnv) {
                     mode: 'global',
                   },
                 },
-                'less-loader'
+                'less-loader',
+                {
+                  lessOptions:{
+                    javascriptEnabled: true,
+                  }
+                }
               ),
               sideEffects: true,
             },
@@ -576,7 +583,12 @@ module.exports = function (webpackEnv) {
                     getLocalIdent: getCSSModuleLocalIdent,
                   },
                 },
-                'less-loader'
+                'less-loader',
+                {
+                  lessOptions:{
+                    javascriptEnabled: true,
+                  }
+                }
               ),
             },
             // "file" loader makes sure those assets get served by WebpackDevServer.
@@ -711,53 +723,53 @@ module.exports = function (webpackEnv) {
           maximumFileSizeToCacheInBytes: 5 * 1024 * 1024,
         }),
       // TypeScript type checking
-      useTypeScript &&
-        new ForkTsCheckerWebpackPlugin({
-          async: isEnvDevelopment,
-          typescript: {
-            typescriptPath: resolve.sync('typescript', {
-              basedir: paths.appNodeModules,
-            }),
-            configOverwrite: {
-              compilerOptions: {
-                sourceMap: isEnvProduction
-                  ? shouldUseSourceMap
-                  : isEnvDevelopment,
-                skipLibCheck: true,
-                inlineSourceMap: false,
-                declarationMap: false,
-                noEmit: true,
-                incremental: true,
-                tsBuildInfoFile: paths.appTsBuildInfoFile,
-              },
-            },
-            context: paths.appPath,
-            diagnosticOptions: {
-              syntactic: true,
-            },
-            mode: 'write-references',
-            // profile: true,
-          },
-          issue: {
-            // This one is specifically to match during CI tests,
-            // as micromatch doesn't match
-            // '../cra-template-typescript/template/src/App.tsx'
-            // otherwise.
-            include: [
-              { file: '../**/src/**/*.{ts,tsx}' },
-              { file: '**/src/**/*.{ts,tsx}' },
-            ],
-            exclude: [
-              { file: '**/src/**/__tests__/**' },
-              { file: '**/src/**/?(*.){spec|test}.*' },
-              { file: '**/src/setupProxy.*' },
-              { file: '**/src/setupTests.*' },
-            ],
-          },
-          logger: {
-            infrastructure: 'silent',
-          },
-        }),
+      // useTypeScript &&
+      //   new ForkTsCheckerWebpackPlugin({
+      //     async: isEnvDevelopment,
+      //     typescript: {
+      //       typescriptPath: resolve.sync('typescript', {
+      //         basedir: paths.appNodeModules,
+      //       }),
+      //       configOverwrite: {
+      //         compilerOptions: {
+      //           sourceMap: isEnvProduction
+      //             ? shouldUseSourceMap
+      //             : isEnvDevelopment,
+      //           skipLibCheck: true,
+      //           inlineSourceMap: false,
+      //           declarationMap: false,
+      //           noEmit: true,
+      //           incremental: true,
+      //           tsBuildInfoFile: paths.appTsBuildInfoFile,
+      //         },
+      //       },
+      //       context: paths.appPath,
+      //       diagnosticOptions: {
+      //         syntactic: true,
+      //       },
+      //       mode: 'write-references',
+      //       // profile: true,
+      //     },
+      //     issue: {
+      //       // This one is specifically to match during CI tests,
+      //       // as micromatch doesn't match
+      //       // '../cra-template-typescript/template/src/App.tsx'
+      //       // otherwise.
+      //       include: [
+      //         { file: '../**/src/**/*.{ts,tsx}' },
+      //         { file: '**/src/**/*.{ts,tsx}' },
+      //       ],
+      //       exclude: [
+      //         { file: '**/src/**/__tests__/**' },
+      //         { file: '**/src/**/?(*.){spec|test}.*' },
+      //         { file: '**/src/setupProxy.*' },
+      //         { file: '**/src/setupTests.*' },
+      //       ],
+      //     },
+      //     logger: {
+      //       infrastructure: 'silent',
+      //     },
+      //   }),
       !disableESLintPlugin &&
         new ESLintPlugin({
           // Plugin options
