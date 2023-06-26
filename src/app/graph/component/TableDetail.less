@@ -1,0 +1,96 @@
+.TableDetail {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    .FieldItem {
+        padding: 5px 8px;
+        background: #f7f8fa;
+
+        border-radius: 1px;
+        position: relative;
+        transition: all 0.3s;
+        cursor: pointer;
+        &.FieldItemSelect {
+            background: rgba(81, 127, 252, 0.1);
+            color: #4d73ff;
+        }
+        &:not(:last-child) {
+            margin-bottom: 8px;
+        }
+    }
+
+    .ant-tabs {
+        flex-grow: 1;
+        flex-shrink: 1;
+        .ant-tabs-content {
+            height: 100%;
+            .ant-tabs-tabpane {
+                height: 100%;
+                overflow: auto;
+            }
+        }
+    }
+
+    .PaddinWrap {
+        padding: 16px;
+        > h4 {
+            word-break: break-all;
+            margin-bottom: 16px;
+        }
+    }
+
+    .ant-tabs {
+        .ant-tabs-nav {
+            padding: 0;
+            margin: 0;
+            .ant-tabs-nav-list {
+                width: 100%;
+                .ant-tabs-tab {
+                    flex-grow: 1;
+                    flex-shrink: 1;
+                    padding: 0;
+                    display: flex;
+                    justify-content: center;
+                    margin: 0;
+                    padding: 7px;
+                    background: #f9fafc;
+                    border: 1px solid #e6e8ed;
+
+                    border-right: none;
+                    position: relative;
+                    &:first-child {
+                        border-left: none;
+                    }
+                    &.ant-tabs-tab-active {
+                        background-color: white;
+                        &::before {
+                            content: '';
+                            position: absolute;
+                            top: 0;
+                            left: 0;
+                            height: 2px;
+                            width: 100%;
+                            background: #4d73ff;
+                        }
+                    }
+                }
+                .ant-tabs-ink-bar {
+                    display: none;
+                }
+            }
+            .ant-tabs-nav-operations {
+                display: none;
+            }
+        }
+    }
+
+    > main {
+        flex-grow: 1;
+        flex-shrink: 1;
+        overflow: auto;
+    }
+
+    > footer {
+        padding: 16px;
+    }
+}

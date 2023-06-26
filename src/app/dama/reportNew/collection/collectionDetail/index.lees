@@ -1,0 +1,30 @@
+
+.list {
+  color: #5E6266;
+  height: 22px;
+  margin-bottom: 12px;
+  &:last-child{
+    margin-bottom: 0;
+  }
+  span{
+    margin-left: 80px;
+    color: #2D3033;
+    margin-bottom: 12px;
+  }
+}
+
+.status{
+  display: flex;
+  align-items: center;
+  span{
+    margin-right: 10px;
+  }
+}
+
+.reason{
+  display: inline-block;
+  max-width: 150px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}

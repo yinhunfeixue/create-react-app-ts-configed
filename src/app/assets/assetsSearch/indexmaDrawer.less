@@ -1,0 +1,55 @@
+.indexmaDrawer {
+    .ant-drawer-body {
+        padding: 0;
+    }
+
+    .indexmaAssetDetail {
+        .assetTitle {
+            display: flex;
+            background: linear-gradient(180deg, #ffffff 0%, #f2f5fa 100%);
+            padding: 25px;
+            align-items: center;
+
+            .assetIcon {
+                width: 44px;
+                height: 44px;
+                background: #45b7da;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                color: white;
+                border-radius: 100%;
+                font-size: 18px;
+                margin-right: 16px;
+                flex-grow: 0;
+                flex-shrink: 0;
+            }
+
+            .OverView {
+                flex-grow: 1;
+                flex-shrink: 1;
+
+                .title {
+                    font-size: 20px;
+                    font-weight: 600;
+                    color: #262626;
+                    text-align: left;
+                }
+
+                .ant-divider {
+                    margin: 0 16px;
+                }
+
+                .atomLabel {
+                    > label {
+                        color: #9ea3a8;
+                    }
+                }
+            }
+        }
+
+        > main {
+            padding: 0 25px 25px 25px;
+        }
+    }
+}

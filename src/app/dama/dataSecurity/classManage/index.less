@@ -1,0 +1,187 @@
+.classManageDetail {
+    .sensitiveLabel {
+        display: inline-block;
+        width: 30px;
+        height: 20px;
+        background: #FF6A00;
+        border-radius: 2px;
+        text-align: center;
+        line-height: 20px;
+        color: #fff;
+        font-size: 14px;
+        font-family: PingFangSC-Medium, PingFang SC;
+        font-weight: 500;
+        margin-left: 8px;
+    }
+    .RichTableLayout {
+        margin-top: 20px;
+    }
+    .RichTableLayout_SearchGroup {
+        display: block;
+    }
+    .ant-tabs {
+        margin: 0 16px;
+    }
+    .hideColumn {
+        display: none;
+    }
+}
+.classPage {
+    background: #fff;
+    height: 100%;
+    .ant-tabs-nav {
+        padding: 0 16px;
+        margin: 0px;
+    }
+    .ant-tabs {
+        //box-shadow: 0px 1px 3px 0px rgba(0, 0, 0, 0.12);
+        border: none;
+        margin-bottom: 2px;
+    }
+    .classManage {
+        //display: flex;
+        height: calc(~"100% - 65px");
+        header {
+            display: none;
+        }
+        .treeContent {
+            //padding: 12px 16px;
+            //width: 240px;
+            position: relative;
+            z-index: 11;
+            //box-shadow: 1px 0px 0px 0px #E6E8ED;
+            .ant-tree {
+                li {
+                    padding-left: 1px;
+                }
+            }
+            .treeTitleNumber {
+                float: right;
+                margin-left: 10px;
+            }
+            .treeTitleSelected {
+                background: #F4F5F7;
+                color: #4D73FF;
+            }
+            .treeTitle {
+                margin-top: 15px;
+                line-height: 36px;
+                padding-left: 6px;
+                cursor: pointer;
+                i {
+                    margin-right: 8px;
+                }
+                img {
+                    width: 16px;
+                    margin-right: 8px;
+                    margin-bottom: 3px;
+                }
+                div {
+                    font-size: 14px;
+                }
+                span {
+                    float: right;
+                    color: #9EA3A8;
+                    margin-right: 5px;
+                }
+            }
+            .treeTitle:hover {
+                background: #F4F5F7;
+                color: #4D73FF;
+            }
+            .ellipsisLabel {
+                width: calc(~"100% - 40px");
+                display: inline-block;
+                overflow-x: hidden;
+                text-overflow: ellipsis;
+                white-space: nowrap;
+            }
+            .ant-input-search {
+                .ant-input-suffix {
+                    display: none;
+                }
+                .ant-input {
+                    padding-left: 36px;
+                    padding-right: 12px !important;
+                }
+            }
+            .searchIcon {
+                position: absolute;
+                z-index: 1;
+                top: 6px;
+                left: 12px;
+                width: 21px;
+                .iconfont {
+                    font-size: 12px;
+                }
+            }
+        }
+        .tableContent {
+            position: relative;
+            //width: calc(~"100% - 240px");
+            .TableLayout > main {
+                padding: 0px;
+            }
+            .RichTableLayout .RichTableLayout_SearchGroup > *:not(:last-child) {
+                margin-bottom: 8px;
+            }
+            .highlight {
+                color: #4D73FF;
+            }
+            .ant-table-fixed-right {
+                overflow: initial !important;
+            }
+            .treePath {
+                font-family: PingFangSC-Medium, PingFang SC;
+                font-weight: 500;
+                margin-bottom: 16px;
+            }
+            .tableLabel {
+                div {
+                    color: #9EA3A8;
+                }
+                p {
+                    width: 18px;
+                    height: 14px;
+                    background: #FF6A00;
+                    border-radius: 2px;
+                    display: inline-block;
+                    color: #fff;
+                    font-size: 10px;
+                    margin-right: 4px;
+                    line-height: 14px;
+                    text-align: center;
+                }
+            }
+            .RichTableLayout .RichTableLayout_SearchGroup {
+                display: block;
+            }
+            .TableLayout {
+                position: relative;
+                main {
+                    padding-bottom: 50px;
+                }
+            }
+            .ant-radio-group {
+                float: right;
+                .ant-radio-button-wrapper {
+                    background: #F7F8FA;
+                    border: 1px solid #C0C6CC;
+                    span {
+                        color: #5E6266;
+                    }
+                }
+                .ant-radio-button-wrapper-checked {
+                    background: rgba(77, 115, 255, 0.1);
+                    border: 1px solid #4D73FF;
+                    span {
+                        color: #4D73FF;
+                    }
+                }
+            }
+        }
+    }
+}
+.batchConfig {
+
+}

@@ -1,0 +1,157 @@
+.editableTree {
+    padding-top: 0px;
+    //   background: #f9f9f9;
+    font-size: 12px;
+    color: #333;
+    font-family: PingFangSC-Regular, PingFang SC;
+    font-weight: 400;
+    .ant-tree {
+        overflow: hidden;
+    }
+    .test .ant-tree-node-content-wrapper:hover {
+        background: transparent !important;
+    }
+    .test .ant-tree-child-tree .ant-tree-title {
+        width: auto !important;
+    }
+    .ant-tree li .ant-tree-node-content-wrapper.ant-tree-node-selected {
+        background: transparent !important;
+        width: 100%;
+        color: #4d73ff;
+    }
+    .ant-tree li .ant-tree-child-tree .ant-tree-node-content-wrapper-normal.ant-tree-node-content-wrapper.ant-tree-node-selected {
+        background: transparent2 !important;
+        color: #4d73ff;
+    }
+    .hasBorder {
+        border-left: 1px solid #ebedf0;
+    }
+
+    .ant-tree li ul.ant-tree-child-tree-open li ul li span span {
+        font-weight: 400;
+    }
+    .ant-tree li span[draggable],
+    .ant-tree li span.ant-tree-switcher {
+        height: 36px;
+        line-height: 36px;
+    }
+    .ant-tree li span[draggable],
+    .ant-tree li span.ant-tree-node-content-wrapper {
+        height: 36px;
+        line-height: 36px;
+    }
+    .ant-tree-switcher i svg {
+        width: 1.2em;
+        height: 1.2em;
+    }
+
+    .expand-edit {
+        position: absolute;
+        right: 0px;
+        top: 50%;
+        padding: 0;
+        padding: 0 11px;
+        transform: translateY(-50%);
+        // display: none;
+        .ant-btn {
+            &:hover {
+                box-shadow: none;
+            }
+        }
+    }
+    .ant-tree-node-content-wrapper {
+        width: 100%;
+        &:hover {
+            background-color: #f4f5f7 !important;
+            color: #4d73ff;
+            .expand-edit {
+                display: inline-block;
+            }
+        }
+    }
+    .expandIcon {
+        margin-right: 4px;
+        &:hover {
+            color: #4d73ff;
+        }
+    }
+    .expand-overview-show {
+        display: block;
+        position: relative;
+    }
+    .expand-overview-off {
+        display: none;
+    }
+    .ant-input {
+        height: 32px !important;
+    }
+    .ant-input-group-wrapper {
+        .ant-input-group-addon {
+            border: none;
+        }
+        i {
+            margin-right: 10px;
+            margin-left: 4px;
+        }
+        .disableIcon {
+            svg {
+                color: #666;
+            }
+        }
+        .enableIcon {
+            svg {
+                color: var(--primaryColor);
+            }
+        }
+        .lengthTip {
+            color: #b3b3b3;
+            font-size: 12px;
+        }
+        .lengthTipDanger {
+            color: #f23f30;
+            font-size: 12px;
+        }
+    }
+}
+.editableTree .ant-tree li span.ant-tree-switcher,
+.App .ant-tree li span.ant-tree-iconEle {
+}
+.editableTree .mg10 {
+    margin: 0 0 0 0px;
+}
+.editableTree .ant-tree li {
+    padding: 0px;
+    font-size: 14px;
+    position: relative;
+}
+
+.editableTree ul.ant-tree {
+    //overflow-y: auto;
+    margin-top: 4px;
+    //height: calc(~"100vh - 120px");
+    overflow-x: hidden;
+}
+.indexmaGeneralTree {
+    .editableTree {
+        margin: 15px;
+        padding: 0px 20px;
+        background: #f5f5f5;
+        border: 1px solid #ddd;
+        border-radius: 4px;
+    }
+}
+.treeEditContent {
+    button {
+        padding: 0px;
+        border: none;
+        background: transparent;
+        border: none;
+    }
+    .ant-btn:hover,
+    .ant-btn:focus,
+    .ant-btn:active {
+        background: none;
+        color: #333;
+        border: none;
+    }
+}

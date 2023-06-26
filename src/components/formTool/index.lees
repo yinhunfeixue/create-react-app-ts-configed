@@ -1,0 +1,16 @@
+
+.wrap{
+  :global{
+    form :not(.ant-input-group-wrapper) > .ant-input-group, form .ant-input-group-wrapper{
+      top: 0
+    }
+    .ant-form-inline{
+      margin-right: -8px;
+      margin-bottom: -8px;
+      .ant-form-item {
+        margin-right: 8px;
+        margin-bottom: 8px;
+      }
+    }
+  }
+}

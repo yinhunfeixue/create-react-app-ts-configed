@@ -1,0 +1,68 @@
+.dashboardAdd{
+    // height: 400px;
+
+    .menuItemLi{
+        line-height: 24px;
+        padding:0px !important;
+        padding-left: 8px !important;
+        // width:72px;
+        // width:432px;
+        height:26px;
+        font-size:12px;
+        font-family:PingFangSC-Regular,PingFang SC;
+        font-weight:400;
+        color:rgba(0,0,0,1);
+        line-height:26px;
+        span{
+            img{
+                  vertical-align: sub;
+            }
+        }
+    }
+    .ant-menu-item-active{
+        // background-color: #e6f7ff;
+
+        background:rgba(0,0,0,0.09);
+        border-radius:2px;
+    }
+
+    .ant-menu-inline{
+        border-right: 1px solid #ffffff;
+    }
+
+    .ant-menu-item-selected{
+        background-color:rgba(0,0,0,0.09) !important;
+        border-radius:2px;
+    }
+
+    .tooTipText{
+        height:20px;
+        font-size:12px;
+        font-family:PingFangSC-Regular,PingFang SC;
+        font-weight:400;
+        color:var(--primaryColor);
+        line-height:20px;
+        padding-left: 4px;
+    }
+
+    .menuItemDiv{
+        overflow-y: auto;
+        max-height: 350px;
+        font-size: 12px
+    }
+
+    .menuItemDiv::-webkit-scrollbar {/*滚动条整体样式*/
+        width: 8px;     /*高宽分别对应横竖滚动条的尺寸*/
+        height: 8px;     /*高宽分别对应横竖滚动条的尺寸*/
+    }
+
+    .menuItemDiv::-webkit-scrollbar-thumb {/*滚动条里面小方块*/
+        border-radius: 4px;
+        height: 91px;
+        background:rgba(183,183,183,1);
+    }
+
+    .menuItemDiv::-webkit-scrollbar-track {/*滚动条里面轨道*/
+        background:rgba(231, 234, 240, 1);
+    }
+}

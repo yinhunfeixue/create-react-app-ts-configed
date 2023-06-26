@@ -1,0 +1,123 @@
+.addReportDrawer {}
+
+.logDrawer {
+    .ant-alert-with-description {
+        padding: 8px 16px 8px 37px;
+
+        .ant-alert-icon {
+            top: 12px;
+            left: 16px;
+        }
+    }
+
+    .logArea {
+        margin-top: 16px;
+
+        .logItem {
+            padding: 8px 16px;
+            box-shadow: 0px 1px 0px 0px #E6E8ED;
+            display: flex;
+
+            .logContent {
+                line-height: 22px;
+            }
+        }
+    }
+}
+
+.reportCollectDetail {
+    .RichTableLayout {
+        margin-top: 16px;
+    }
+
+    .editIcon {
+        color: #507499;
+        font-size: 16px;
+        float: right;
+        cursor: pointer;
+    }
+
+    .editIcon:hover {
+        color: #4D73FF;
+    }
+
+    .ellipsisLabel {
+        display: inline-block;
+        width: calc(~"100% - 30px");
+        overflow-x: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+    }
+
+    .MiniForm {
+        .ant-form-item:nth-child(10) {
+            .ant-form-item-control-wrapper {
+                max-width: 250px;
+            }
+        }
+
+        .ant-form-item:nth-child(2) {
+            .ant-form-item-control-wrapper {
+                max-width: 250px;
+            }
+        }
+
+        .ant-form-item:nth-child(1) {
+            .ant-form-item-control-wrapper {
+                max-width: 250px;
+            }
+        }
+    }
+}
+
+.reportCategory {
+    position: relative;
+
+    .expandTable {
+        .ellipsisLabel {
+            display: inline-block;
+            width: 100%;
+            overflow-x: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+        }
+
+        .ant-table-expanded-row {
+            display: none;
+        }
+
+        .ant-table-row-level-1 {
+            .subInput {
+                padding-left: 32px;
+            }
+        }
+
+        .ant-table-row-expand-icon-cell {
+            vertical-align: top;
+            padding-right: 0px;
+        }
+    }
+
+    .iconfont {
+        cursor: pointer;
+        position: absolute;
+        top: 128px;
+        left: 37px;
+        z-index: 10;
+    }
+}
+
+.reportForm {
+    .ant-form-item-label {
+        padding-bottom: 0px;
+    }
+}
+
+.searchCascader {
+    .ant-cascader-menu-item {
+        max-width: 200px;
+        text-overflow: ellipsis;
+        overflow: hidden;
+        white-space: nowrap;
+    }
+}

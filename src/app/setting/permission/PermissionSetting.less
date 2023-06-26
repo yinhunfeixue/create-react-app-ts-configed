@@ -1,0 +1,113 @@
+.PermissionIndex {
+    height: 100%;
+    .ContentContainer,
+    .PermissionBody {
+        overflow: visible;
+        > .ant-tabs {
+            position: relative;
+            top: -61px;
+            margin-bottom: -29px;
+            height: calc(~'100% + 59px');
+            display: flex;
+            flex-direction: column;
+            .ant-tabs-top-content {
+                flex-grow: 1;
+                flex-shrink: 1;
+                height: 10px;
+                overflow: auto;
+                > .ant-tabs-tabpane {
+                    display: flex;
+                    flex-direction: column;
+                }
+            }
+        }
+
+        .UserInfiniteScroll {
+            flex-grow: 1;
+            flex-shrink: 1;
+            overflow: auto;
+        }
+    }
+    .RightTabs {
+        .ant-tabs-tab {
+            margin-right: 0;
+        }
+    }
+
+    .Selected {
+        color: #4d73ff;
+    }
+
+    .ant-list-item-meta-title {
+        cursor: pointer;
+    }
+
+    .PermissionBody {
+        display: flex;
+        flex-direction: column;
+        height: 100%;
+
+        .ResetAlert {
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .PermissionTabs {
+            flex-grow: 1;
+            flex-shrink: 1;
+            height: 10px;
+
+            display: flex;
+            flex-direction: column;
+            .ant-tabs-content-holder {
+                display: flex;
+                flex-direction: column;
+
+                .ant-tabs-content {
+                    flex-grow: 1;
+                    flex-shrink: 1;
+                    height: 10px;
+
+                    .ant-tabs-tabpane {
+                        height: 100%;
+                        overflow: auto;
+                    }
+                }
+            }
+        }
+
+        > footer {
+            box-shadow: 0px -1px 6px 0px rgba(0, 0, 0, 0.08);
+            padding: 15px;
+            margin: -15px;
+            flex-grow: 0;
+            flex-shrink: 0;
+        }
+
+        .PermissionTree {
+            padding-left: 20px;
+            .PermissionNode {
+                list-style: none;
+                .PermissionContent {
+                    padding: 8px 0;
+                }
+            }
+
+            .PermissionLeafGroup {
+                padding-left: 40px;
+            }
+        }
+    }
+    .ant-tree {
+        li {
+            .ant-tree-node-content-wrapper {
+                width: unset;
+                overflow: unset;
+            }
+        }
+    }
+
+    .ant-tabs-content-holder {
+        overflow: auto;
+    }
+}

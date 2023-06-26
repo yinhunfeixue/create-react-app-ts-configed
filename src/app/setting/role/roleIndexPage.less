@@ -1,0 +1,60 @@
+.roleIndexPage {
+    height: 100%;
+    .RoleItem {
+        cursor: pointer;
+
+        .NodeMenuIcon {
+            visibility: hidden;
+            padding: 5px 8px;
+            &:hover {
+                background-color: #e8e9eb;
+            }
+        }
+
+        .ant-list-item-meta-content {
+            width: 100%;
+            .ant-list-item-meta-title {
+                word-break: keep-all;
+                white-space: nowrap;
+                overflow: hidden;
+                text-overflow: ellipsis;
+            }
+        }
+
+        &.SelectedRoleItem {
+            .ant-list-item-meta-title {
+                color: #4d73ff;
+            }
+
+            .NodeMenuIcon {
+                visibility: visible;
+            }
+        }
+
+        &:hover,
+        &.HoveredRoleItem {
+            background-color: #f4f5f7;
+            .NodeMenuIcon {
+                visibility: visible;
+            }
+        }
+    }
+}
+.ErrorLabel {
+    color: hsl(0, 100%, 40%);
+}
+
+.InfoCardModal {
+    .ant-modal-confirm-content {
+        margin-left: 0;
+        .infoCardBody {
+            padding-left: 0;
+            padding-right: 0;
+            box-shadow: none;
+        }
+    }
+
+    .ant-modal-confirm-btns {
+        display: none;
+    }
+}

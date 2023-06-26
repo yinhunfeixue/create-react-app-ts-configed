@@ -1,0 +1,49 @@
+.dataWare_standardDetail {
+    display: flex;
+    height: 100%;
+
+    .Slider {
+        width: 10%;
+        padding: 8px 0;
+        border-right: 1px solid #e6e8ed;
+        flex-grow: 0;
+        flex-shrink: 0;
+        overflow: auto;
+        position: fixed;
+        right: 0;
+        top: 100px;
+
+        .TypeTag {
+            padding: 5px 24px;
+            cursor: pointer;
+            position: relative;
+            margin-bottom: 8px;
+            width: 120px;
+
+            &.TypeTagSelected {
+                background: #f5f7ff;
+                color: #4d73ff;
+
+                &::after {
+                    content: '';
+                    position: absolute;
+                    left: 0;
+                    top: 0;
+                    bottom: 0;
+                    width: 2px;
+                    background: currentColor;
+                }
+            }
+        }
+    }
+
+    .Body {
+        overflow: auto;
+        flex-grow: 1;
+        flex-shrink: 1;
+    }
+
+    .commonScroll {
+        overflow-y: auto;
+    }
+}

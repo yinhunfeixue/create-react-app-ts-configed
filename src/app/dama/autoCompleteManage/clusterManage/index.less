@@ -1,0 +1,149 @@
+.clusterManage {
+    font-family: PingFangSC-Regular, PingFang SC;
+    .spanTip {
+        font-size: 12px;
+        font-weight: 300;
+        color: #666666;
+        margin-left: 12px;
+        font-family: PingFangSC-Light, PingFang SC;
+        .dot {
+            width: 4px;
+            height: 4px;
+            background: #1890FF;
+            display: inline-block;
+            margin-right: 6px;
+            margin-left: 24px;
+        }
+    }
+    .editBtn {
+        width: 65px;
+        height: 32px;
+        line-height: 32px;
+        text-align: center;
+        color: #333;
+        border-radius: 2px;
+        opacity: 0.47;
+        border: 1px solid #D3D3D3;
+        font-size: 14px;
+        cursor: pointer;
+    }
+    .spanTipHover {
+        .spanText {
+            display: none;
+        }
+    }
+    .spanTipHover:hover {
+        .dot {
+            width: 6px;
+            height: 6px;
+        }
+    }
+    .ant-radio-group {
+        .ant-radio-button-wrapper {
+            height: 28px;
+            line-height: 28px;
+            width: 72px;
+            text-align: center;
+            border-color: #D3D3D3;
+            color: #666;
+            padding: 0px;
+        }
+        .ant-radio-button-wrapper-checked {
+            border-color: #1890ff;
+            color: #1890ff;
+        }
+    }
+    .saveBtn {
+        position: fixed;
+        height: 52px;
+        background: #fff;
+        z-index: 99;
+        bottom: 0px;
+        left: 250px;
+        text-align: center;
+        padding-top: 10px;
+        width: calc(~"100vw - 250px");
+        box-shadow: 0px 2px 14px 1px rgba(0, 0, 0, 0.1);
+        div {
+            display: inline-block;
+            padding: 2px 20px;
+            border-radius: 2px;
+            border: 1px solid #1890FF;
+            cursor: pointer;
+            color: #1890ff;
+            font-size: 14px;
+        }
+    }
+    .saveBtn1 {
+        display: inline-block;
+        padding: 2px 35px;
+        border-radius: 2px;
+        border: 1px solid #1890FF;
+        cursor: pointer;
+        color: #1890ff;
+        font-size: 14px;
+    }
+    .tagArea {
+        width: calc(~"100% - 30px");
+        overflow: hidden;
+        white-space: nowrap;
+        display: inline-block;
+        text-overflow: ellipsis;
+        .tagItem {
+            margin-right: 8px;
+            padding: 4px 8px;
+            border-radius: 2px;
+            border: 1px solid rgba(102, 102, 102, 0.2);
+            font-size: 12px;
+            color: #666;
+            cursor: pointer;
+            display: inline-block;
+            overflow: hidden;
+            white-space: nowrap;
+            text-overflow: ellipsis;
+            max-width: 100px;
+        }
+        .selectedTagItem {
+            border: 1px solid #1890FF;
+            color: #1890ff;
+        }
+    }
+    .clusterFilter {
+        display: inline-block;
+        width: calc(~"(100% - 134px)/3");
+        vertical-align: top;
+        color: #333;
+        .clusterFilterTitle {
+            margin-right: 5px;
+            font-size: 16px;
+            line-height: 26px;
+            display: inline-block;
+            width: 90px;
+            text-align: right;
+        }
+        .ant-input {
+            width: calc(~"100% - 96px");
+        }
+        div {
+            padding-left: 84px;
+            margin-top: 8px;
+            .clusterFilter_span {
+                color: #B3B3B3;
+                font-size: 12px;
+                width: auto;
+                display: inline-block;
+            }
+            .ant-tag {
+                margin-right: 8px;
+                max-width: calc(~"(100% - 52px)/3");
+                overflow: hidden;
+                text-overflow: ellipsis;
+                white-space: nowrap;
+                vertical-align: bottom;
+            }
+            .ant-tag:last-child {
+                margin-right: 0px;
+            }
+        }
+    }
+}

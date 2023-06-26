@@ -1,0 +1,147 @@
+.recordDrawer {
+    .ant-drawer-wrapper-body .ant-drawer-body > main {
+        padding: 16px 24px;
+    }
+    .TableLayout > main {
+        padding: 0px;
+    }
+}
+.discoverList {
+    .discoverItem {
+        .ModuleTitle {
+            padding: 20px 20px 0 20px;
+            margin-bottom: 0px !important;
+            background: #fff;
+        }
+        .TableLayoutSmall > main {
+            background: #fff;
+            padding: 20px !important;
+        }
+    }
+    .OverviewGroup {
+        display: flex;
+
+        .OverviewCard {
+            display: inline-flex;
+            align-items: center;
+            padding: 0 16px;
+            //background: #f7f8fa;
+            flex-grow: 1;
+            flex-shrink: 1;
+            width: 100%;
+
+            &:not(:last-child) {
+                //margin-right: 16px;
+            }
+            > img {
+                width: 44px;
+                height: 44px;
+                margin-right: 20px;
+            }
+            > main {
+                font-weight: 500;
+                color: #2d3033;
+                h5 {
+                    font-weight: 400;
+                    color: #5e6266;
+                    margin-bottom: 8px;
+                    font-size: 14px;
+                }
+
+                em {
+                    font-size: 24px;
+                    color: #262626;
+                    margin-right: 4px;
+                    font-style: normal;
+                }
+            }
+        }
+    }
+}
+.timePeriodArea {
+    .rangeArea {
+        background: #F7F8FA;
+        margin-top: 17px;
+        padding: 16px;
+
+        .ant-form-item {
+            margin-bottom: 0px;
+        }
+
+        .timeTitle,
+        .timeEndTip {
+            color: #606366;
+        }
+
+        .timeEndTip {
+            margin-left: 24px;
+
+            span {
+                color: #2D3033;
+            }
+        }
+
+        .editautoDay {
+            display: flex;
+            align-items: center;
+
+            >*:not(:last-child) {
+                margin-right: 12px;
+            }
+
+            .editautoDayCheck {
+                border-radius: 2px;
+                line-height: 22px;
+                width: 329px;
+
+                .ant-checkbox-wrapper {
+                    position: relative;
+                    background: #fff;
+                    border: 1px solid #C0C6CC;
+                    margin-left: -1px;
+                    margin-top: -1px;
+                    margin-right: 0;
+                    height: 32px;
+                    width: 48px;
+                    text-align: center;
+                    line-height: 32px;
+                    font-size: 14px;
+
+                    svg {
+                        width: 14px;
+                        height: 14px;
+                        position: absolute;
+                        right: 0px;
+                    }
+
+                    .ant-checkbox {
+                        display: none;
+                    }
+                }
+
+                .ant-checkbox-wrapper:hover {
+                    border: 1px solid #4D73FF;
+                    background: #F0F3FC;
+                    z-index: 1;
+                }
+
+                .ant-checkbox-wrapper-checked {
+                    border: 1px solid #4D73FF;
+                    background: #F0F3FC;
+                    z-index: 1;
+                }
+
+                .ant-checkbox {
+                    position: absolute;
+                    right: 2px;
+                    top: 14px;
+
+                    .ant-checkbox-inner {
+                        background-color: transparent;
+                        border: none;
+                    }
+                }
+            }
+        }
+    }
+}

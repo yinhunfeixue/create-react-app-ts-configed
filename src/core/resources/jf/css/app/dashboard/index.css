@@ -1,0 +1,483 @@
+.markets_exponent_chart,.markets_exponent_line{
+    height: 395px;
+
+}
+.business_height .markets_exponent_chart{
+    height: 418px;
+}
+
+.business_pie_height{ float: left; width: 50%; position: relative; }
+.business_pie_height .text-center{
+    text-align: center;
+    font-size: 14px;
+        z-index: 6;
+        top:22px;
+    position: absolute;
+    width: 160px;
+    margin-left: -80px; left:50%}
+.business_pie_height .ant-card:not(.ant-card-no-hovering):hover,.kpi_business_table_left .ant-card:not(.ant-card-no-hovering):hover{
+    box-shadow: none;
+}
+.business_pie_height  .markets_exponent_line,.business_bar_height  .markets_exponent_chart{
+    height: 300px;
+
+}
+
+.business_pie_height .card_layout_module .ant-card{margin-top:0px; margin-bottom: 0px;}
+.asset_zcjg .card_layout_module .ant-card,.asset_ywlx .card_layout_module .ant-card{
+    margin-left: 0px;
+    margin-right: 0px
+}
+.asset_zcjg .card_layout_module .ant-card{     margin-left: 1px;}
+.asset_ywlx .card_layout_module .ant-card{
+    margin-right: 1px;
+}
+.business_line_height .markets_exponent_line{
+    height: 250px;
+}
+
+.market_height .markets_exponent_line{
+    height: 200px;
+}
+.market_height .card_layout_module .ant-card-head .ant-card-head-title{
+    text-align: left
+}
+.market_height .anticon.anticon-arrows-alt,.business_height .anticon.anticon-arrows-alt,.market_modal_5 .anticon.anticon-arrows-alt{
+    position: absolute;
+    right: 19px;
+    text-align: right;
+    top: 24px;
+    color: #b7b7b7;
+    cursor: pointer;
+    font-size: 13px;
+}
+.market_modal_5 .anticon.anticon-arrows-alt{
+    top:-26px;right: 13px;
+}
+.market_modal_l, .market_modal_r{
+    float: left;width: 100%;
+    height: 50%;
+}
+.business_height .anticon.anticon-arrows-alt{
+    top: 15px;
+}
+.business_sort{
+    text-align: left;
+    padding: 8px 10px;
+    color: rgba(255, 255, 255, 0.5);
+    font-size: 14px;
+    background: rgba(38, 32, 61, 0.5);
+
+}
+.business_sort .ant-radio-group .ant-radio-button-wrapper{
+    font-size: 12px;
+}
+.business_top .ant-table-wrapper .ant-table-thead > tr > th{
+    color: rgba(255, 255, 255, 0.3);
+    font-size: 12px;
+    background: #37324a;
+    padding: 10px 3px
+
+
+}
+.business_top .ant-table-wrapper .ant-table-tbody > tr > td{
+    font-size: 12px;
+    padding: 10px 5px;
+}
+.business_top .ant-table-wrapper .ant-table-tbody > tr:nth-child(1) > td:nth-child(1){
+    min-width: 94px
+}
+.business_top .ant-table-wrapper .ant-table-tbody > tr:nth-child(1) > td:nth-child(1),.business_top .ant-table-wrapper .ant-table-tbody > tr:nth-child(2) > td:nth-child(1){
+    font-weight: bold;
+
+}
+.business_top .card_layout_module .ant-card{
+    margin-top: 0px;
+    margin-left: 0px
+}
+
+/*股基交易信息概览*/
+.table_stock_based .ant-table-wrapper .ant-table-tbody > tr > td{
+    padding-top: 5px;
+padding-bottom: 5px;
+font-size: 13px;
+}
+.table_stock_based .ant-table-wrapper .ant-table-thead > tr > th{
+    padding-top: 7px;
+padding-bottom: 7px;
+}
+.table_stock_based{
+
+    height: 395px;
+    overflow: hidden;
+}
+.table_stock_based .ant-table-wrapper .ant-table-thead > tr > th{
+    background:#37324a;
+    color: rgba(255, 255, 255, .5);
+}
+.table_stock_based .ant-table-wrapper .ant-table-tbody > tr > td{
+    color: #c6c4ca
+}
+.table_stock_based .ant-table-wrapper .ant-table-tbody > tr:hover > td{
+    color:#fff
+}
+.table_stock_based .ant-table-wrapper .ant-table-tbody  tr td .anticon-upp{
+
+    color: #ff434d
+}
+.table_stock_based .ant-table-wrapper .ant-table-tbody  tr td .anticon-downn{
+
+    color: #08ecb1
+}
+.table_stock_based .ant-table-wrapper .ant-table-tbody  tr td span .anticon {
+     font-size: 12px;
+}
+.table_stock_based .ant-table-fixed-header > .ant-table-content > .ant-table-scroll > .ant-table-body{
+    background: transparent;
+}
+.table_stock_based .ant-table-fixed-header .ant-table-scroll .ant-table-header{
+    overflow: auto;
+}
+.table_stock_based .ant-table-scroll .ant-table-header{
+    overflow: hidden;
+    background: rgba(7, 0, 32, 0.3);
+}
+.table_stock_based .ant-table table{
+    border-radius: 0px
+}
+.table_stock_based  .ant-table-scroll .ant-table-body{
+    margin-top: 17px;
+}
+.table_stock_based .ant-table-wrapper .ant-table-tbody > tr:nth-child(4n) > td{
+     border-bottom: 1px solid  #9f98b9
+
+}
+.market_table_three .table_stock_based .ant-table-wrapper .ant-table-tbody > tr:nth-child(4n) > td{
+     border-bottom:none
+}
+.market_table_three .table_stock_based .ant-table-wrapper .ant-table-tbody > tr > td,.market_table_first .table_stock_based .ant-table-wrapper .ant-table-tbody > tr > td {
+    padding-top: 10px;
+    padding-bottom: 11px;
+
+}
+.market_table_three .table_stock_based .ant-table-wrapper .ant-table-tbody > tr > td{
+    font-size: 12px;
+}
+.market_table_three .table_stock_based .ant-table-wrapper .ant-table-tbody > tr:nth-child(3n) > td{
+     border-bottom: 1px solid  #9f98b9
+
+}
+.market_table_three .table_stock_based .ant-table-wrapper .ant-table-tbody > tr:last-child > td,.market_table_three .table_stock_based .ant-table-wrapper .ant-table-tbody > tr:last-child > td{
+    border-bottom:none
+}
+.table_stock_based .ant-table-wrapper .ant-table-tbody > tr:last-child > td{
+    border-bottom: none
+
+}
+
+.ant-table-scroll .ant-table-body::-webkit-scrollbar-track
+{
+	-webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+	background-color: transparent;
+}
+
+.ant-table-scroll .ant-table-body::-webkit-scrollbar
+{
+	width: 7px;
+	background-color: transparent;
+
+}
+
+.ant-table-scroll .ant-table-body::-webkit-scrollbar-thumb
+{
+	background-color: #767589;
+    border-radius: 15px;
+}
+/*筛选条件*/
+.screen_condition{
+    margin-left: -4px;
+    margin-right: -4px;
+    background: #68687a
+}
+.screen_column_title{
+    font-size: 16px;
+    color: #fff;
+    margin-bottom: 10px;
+}
+.screen_condition_content{
+    padding-left: 8px;
+}
+.cockpit_branch_ranking{
+    margin-top: -51px;
+}
+.branch_header_right{
+
+
+    margin-right: 0px;
+    color: #fff;
+    font-size: 14px;
+
+}
+.branch_tip{
+    color: #999;
+    font-size: 12px;
+    display: block;
+    padding-left: 12px;
+    background: #26203d;
+    border-bottom: 1px solid #47415b;
+    padding-bottom: 7px;
+    padding-top: 7px;
+    border-top: 1px solid #47415b;
+}
+ .screen_condition .branch_header_right .ant-select{
+    margin-top: 0px;
+    margin-bottom: 0px;
+}
+ .screen_condition .ant-tag{
+     border: none;
+         font-size: 14px;
+         padding: 7px 27px;
+         height: auto;
+         color: #400fdf;
+         background: #fff
+ }
+  .screen_condition .ant-tag.ant-tag-checkable-checked{
+      background: #3311a9;
+color: #fff;
+  }
+  .branch_btn_sx{ margin-top: 10px;}
+.branch_employee_table{
+    width: 50%;
+    font-size: 14px;
+    float: left;
+    overflow: hidden;
+    height: 386px;
+
+}
+.branch_employee_table_l{
+    border-right: 1px solid #4e4a5b;
+}
+.branch_employee_table_l .ant-table-tbody > tr > td{
+    border-bottom: 1px solid #4e4a5b;
+    color: #d8d7dc; font-size: 12px;
+    padding: 10px 5px; background: #372d4c
+
+}
+.branch_employee_table_l table tr td .branch_table_red{color: #f5222d;}
+.branch_employee_table_l table tr td .branch_table_green{color: #08ecb1;}
+.branch_employee_table_l table tr td:first-child,.branch_employee_table_l table tr:hover td:first-child,.branch_employee_table_l table tr:first-child td:nth-child(2),.branch_employee_table_l table tr:first-child td:nth-child(3){
+        color: rgba(255, 255, 255, 0.3);
+        background: rgba(7, 0, 32, 0.5);
+}
+.branch_employee_table_l table {
+        border-spacing: 0px;
+        width:100%
+}
+
+
+.branch_employee_table_l .ant-table-tbody > tr:hover > td{
+    color: #fff;
+    background: rgba(255, 255, 255, 0.3)
+}
+.branch_employee_table .title{
+    margin: 0px
+
+}
+.card_branch .anticon-color{
+    position: absolute;
+    right: 14px;
+    margin-top: -26px;
+    color: #9592a7;
+    font-size: 13px;
+    display: none
+}
+.business_top{
+
+}
+.business_top .ant-table-body table tbody tr:nth-child(1) {
+        background:url(../../../images/table_bg_1.png) ;
+
+}.business_top .ant-table-scroll .ant-table-header{
+
+    background: #36324a;
+    overflow: hidden;
+    padding-bottom: 4px;
+}
+.business_top .ant-table-scroll .ant-table-body{
+    margin-top: 17px;
+}
+.business_top .ant-table-wrapper .ant-table-thead > tr > th.table_color{
+    color: #fff;
+}
+.business_top .ant-table-scroll .ant-table-body table{    border-radius: 0px;}
+.business_top .ant-table-body table tbody tr:nth-child(2){
+    background:url(../../../images/table_bg_2.png) ;
+
+}
+.business_top .ant-table-fixed-header > .ant-table-content > .ant-table-scroll > .ant-table-body{
+    background: transparent;
+}
+.business_top .ant-table-body table tbody tr:nth-child(2n):hover td{
+background: #cdcee0;color: #29203d;
+}
+.business_top .ant-table-body table tbody tr:nth-child(3) {
+    background:url(../../../images/table_bg_3.png) ;
+}
+.business_top .ant-table-body table tbody tr:nth-child(4)  {
+    background:url(../../../images/table_bg_4.png) ;
+}
+.business_top .ant-table-body table tbody tr:nth-child(5) {
+    background:url(../../../images/table_bg_5.png) ;
+}
+.business_top  .ant-table-wrapper .ant-table-tbody  tr:nth-child(even) td{
+    background: transparent
+}
+.business_height{
+
+    margin-top: -10px;
+}
+/*branch*/
+.branch_btn{
+    padding:15px;
+    padding-bottom: 0px;
+}
+.branch_btn button.ant-btn{
+    font-size: 12px;
+    padding: 5px 11px;
+    border-radius:2px;
+    margin-right: 8px;
+    margin-bottom: 8px;
+    background-color: #5d5c72;
+    color: #c3b9e4;
+}
+.branch_btn button.ant-btn.ant-btn-primary{
+    color: #fff;
+}
+.branch-ant-table table{
+    width: 100%;
+    border-collapse: collapse;
+    color: #ddd;
+
+}
+.branch_container_title{
+    text-align: center;
+    background: rgba(38, 32, 61, 0.5);
+    color: rgba(255, 255, 255, 0.5);
+    line-height: 35px;font-size: 14px;
+    position: relative;
+}
+.branch_container_title span{
+    position: absolute;
+    right: 15px;
+    top:4px;
+    color:rgba(255, 255, 255, 0.3);
+    font-size: 12px;
+    z-index: 1
+}
+.branch-ant-table thead th{
+        background: rgba(38, 32, 61, 0.5);
+
+    font-weight: 100;
+    font-size: 14px;
+    border: none;
+    line-height: 35px;
+    width: 33.333%;
+    text-align: center;
+        color: rgba(255, 255, 255, 0.3);
+}
+
+.branch-ant-table tbody tr td b{
+    color: #ffe829;
+    font-size: 20px;
+
+}
+.branch-ant-table tbody tr td{
+    padding: 10px 5px;
+}
+.branch-ant-table tbody tr td em{
+    color: #ffe829;
+    font-size:12px;
+    padding-right: 4px;
+    display: inline-block;
+
+}
+.branch-ant-table tbody tr td span.anticon-upp{
+    color: #f71034;
+    font-size: 14px;
+}
+.branch-ant-table tbody tr td span.card_tab_green{
+    color: #08ecb1;
+    font-size: 14px;
+}
+
+.barnch_symmetrybar_heihgt .markets_exponent_chart{
+height: 286px;
+margin-top: -10px;
+}
+.barnch_symmetrybar_heihgt .ant-card:not(.ant-card-no-hovering):hover{
+    box-shadow: inherit;
+}
+.branch_chartline_height .markets_exponent_line{
+    height: 306px;
+}
+.branch_symmetrybar_bottom{ height: 390px; margin-bottom: 4px;overflow: hidden;}
+.branch_symmetrybar_bottom .markets_exponent_chart{
+    height: 375px;
+}
+.branch_symmetrybar_bottom_right .markets_exponent_chart{ height: 347px}
+/**/
+.kpi_business_table{
+    margin-top: 1px;
+}
+.kpi_business_table .ant-table-wrapper .ant-table-thead > tr > th,.kpi_business_table .ant-table-wrapper .ant-table-tbody > tr > td{
+    padding:5px;
+    font-size: 12px;
+}
+.kpi_business_table .ant-table-wrapper .ant-table-tbody > tr.kpi-active > td{
+    background: #d8d7dc;
+    color: #45475e;
+    font-weight: bold;
+}
+.kpi_business_table_left .markets_exponent_chart{
+    height:699px
+}
+.kpi_business_table_left{
+    position: relative;
+}
+.kpi_business_table_left_1{
+    position: absolute;
+    background: rgba(0, 0, 0, 0.2);
+    height: 281px;
+    width: 100%;
+    z-index: 1;
+    margin-top: -8px;
+}
+.kpi_business_table_left_2{
+    background: rgba(0, 0, 0, 0.4);
+    top:281px;
+    height: 280px;
+}
+.kpi_business_table_left_3{
+    background: rgba(0, 0, 0, 0.3);
+    top: 561px;
+    height: 148px;
+}
+
+/*businessanalysis*/
+.businessanalysis_table .ant-table-thead th,.businessanalysis_table .ant-table-wrapper .ant-table-tbody > tr > td{
+    text-align: center;
+
+}
+.businessanalysis_table{
+    overflow: hidden;
+    border-bottom-left-radius: 6px;
+    border-bottom-right-radius: 6px;
+}
+.businessanalysis_chartpie_height .markets_exponent_line{
+    height: 251px;
+}
+.businessanalysis_table .ant-table-wrapper .ant-table-thead > tr > th{
+    color: rgba(255, 255, 255, 0.3);
+
+background: rgba(38, 32, 61, 0.5);
+}

@@ -1,0 +1,30 @@
+.ant-menu-submenu-title i.anticon{
+    display: inline-block;
+    width: 16px;
+    height: 16px;
+    vertical-align: text-bottom;
+    margin-bottom: 2px;
+    margin-right: 14px;
+
+}
+.ant-menu-submenu-title i.leftsidebar_ico_1{
+    background: url(../../../images/icon_menu_1.png) no-repeat
+}
+.ant-menu-submenu-title i.leftsidebar_ico_2{
+    background: url(../../../images/icon_menu_2.png) no-repeat
+}
+.ant-menu-submenu-title i.leftsidebar_ico_3{
+    background: url(../../../images/icon_menu_3.png) no-repeat
+}
+.ant-menu-submenu-title i.leftsidebar_ico_4{
+    background: url(../../../images/icon_menu_4.png) no-repeat
+}
+.ant-menu-submenu-title i.leftsidebar_ico_5{
+    background: url(../../../images/icon_menu_5.png) no-repeat
+}
+
+
+.ant-select-dropdown .ant-select-tree li .ant-select-tree-node-content-wrapper:hover{
+
+    color: #3311a9;
+}

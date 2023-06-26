@@ -1,0 +1,137 @@
+.loginPage {
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    position: relative;
+    font-family: PingFangSC-Regular, PingFang SC;
+    .Wrap {
+        width: 1280px;
+        height: 560px;
+        margin: 0 auto;
+        display: flex;
+
+        // border: 1px solid red;
+
+        .Left {
+            flex-grow: 1;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+            align-self: stretch;
+            margin-right: 80px;
+
+            > main {
+                flex-grow: 1;
+                flex-shrink: 1;
+                display: flex;
+                flex-direction: column;
+            }
+
+            .ErrorInfo {
+                margin-bottom: 32px;
+            }
+        }
+        .ImgBanner {
+            width: 800px;
+            height: 540px;
+            object-fit: contain;
+        }
+    }
+
+    h1 {
+        font-size: 40px;
+        font-weight: 600;
+        color: #2d3033;
+        margin-bottom: 10px;
+    }
+
+    h2 {
+        font-size: 20px;
+        font-weight: 400;
+        color: #2d3033;
+        margin-bottom: 58px;
+    }
+
+    > footer {
+        width: 1280px;
+        margin: 0 auto;
+        margin-bottom: 60px;
+        > em {
+            font-size: 14px;
+            color: #5e6266;
+            letter-spacing: 1px;
+            font-style: normal;
+            display: inline-flex;
+            align-items: center;
+            width: calc(~'100% - 800px - 80px');
+
+            &::after,
+            &::before {
+                content: '';
+                display: block;
+                height: 1px;
+                background-color: #e6e8ed;
+                flex-grow: 1;
+                flex-shrink: 1;
+                width: 10px;
+            }
+
+            > span {
+                margin: 0 10px;
+            }
+        }
+    }
+
+    :global {
+        .ant-form {
+            color: red;
+            .ant-form-item {
+                margin-bottom: 20px;
+                .ant-form-item-label {
+                    line-height: 1;
+                    margin-bottom: 8px;
+                    label {
+                        font-size: 14px;
+                        font-weight: 600;
+                        color: #2d3033;
+                    }
+                }
+            }
+
+            .ant-form-item-control-input-content {
+                > * {
+                    height: 52px;
+                    border-radius: 4px;
+                }
+            }
+
+            .btnLogin {
+                height: 52px;
+                background: #4d73ff;
+                border-radius: 4px;
+
+                font-size: 16px;
+                font-weight: 500;
+                color: #ffffff;
+            }
+        }
+    }
+}
+
+@media screen and (min-height: 646px) {
+    .loginPage {
+        position: relative;
+        .Wrap {
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+        }
+        > footer {
+            position: absolute;
+            bottom: 60px;
+            left: calc(~'(100% - 1280px) / 2');
+            margin-bottom: 0;
+        }
+    }
+}

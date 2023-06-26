@@ -1,0 +1,31 @@
+.addRelation {
+    display: flex;
+    align-items: center;
+    > *:not(:last-child) {
+        margin-right: 10px;
+    }
+    .addRelationModule {
+        box-shadow: 0px 0px 4px 0px rgba(0, 0, 0, 0.12);
+        border: 1px solid #e6e8ed;
+        flex-grow: 1;
+        flex-shrink: 1;
+        overflow: hidden;
+        width: 10px;
+        > h3 {
+            background: #f7f8fa;
+            margin-bottom: 0;
+            padding: 14px;
+            font-size: 14px;
+            font-family: PingFangSC-Semibold, PingFang SC;
+            font-weight: 600;
+            color: #262626;
+        }
+
+        .MiniForm {
+            padding: 14px 12px;
+            .ant-form-item {
+                overflow: hidden;
+            }
+        }
+    }
+}

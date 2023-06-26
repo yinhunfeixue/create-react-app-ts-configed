@@ -1,0 +1,64 @@
+.DataSourceDetail {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    .IconType {
+        background: rgba(149, 169, 189, 1);
+        border-radius: 2px;
+        color: white;
+        margin-right: 3px;
+        padding: 1px 1px;
+        font-size: 12px;
+        font-weight: normal;
+    }
+
+    h3 {
+        display: flex;
+        align-items: center;
+        margin-bottom: 16px;
+        font-size: 14px;
+        font-weight: 600;
+    }
+
+    .TableHeader {
+        margin-bottom: 20px;
+        flex-wrap: nowrap;
+        h3 {
+            margin: 0;
+            flex-grow: 1;
+            flex-shrink: 1;
+        }
+    }
+
+    .TableGroup {
+        flex-grow: 1;
+        flex-shrink: 1;
+        overflow: auto;
+        margin-bottom: 10px;
+        .TableItem {
+            background: #f7f8fa;
+            border-radius: 1px;
+            padding: 5px 8px;
+
+            font-size: 14px;
+            color: #9ea3a8;
+            line-height: 22px;
+            position: relative;
+            cursor: pointer;
+
+            &.TableItemSelected {
+                background-color: rgba(81, 127, 252, 0.1);
+            }
+
+            &:not(:last-child) {
+                margin-bottom: 8px;
+            }
+
+            > h4 {
+                color: #2d3033;
+                font-weight: normal;
+                margin: 0;
+            }
+        }
+    }
+}

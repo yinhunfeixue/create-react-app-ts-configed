@@ -1,0 +1,39 @@
+
+.Dopmanage {
+  display: flex;
+  flex-direction: column;
+
+  main {
+    flex-grow: 1;
+    flex-shrink: 1;
+    overflow: auto;
+    padding: 20px;
+    .Group {
+      margin-bottom: 10px;
+      .FunGroup {
+        display: grid;
+        row-gap: 10px;
+        column-gap: 10px;
+        grid-template-columns: repeat(5, 1fr);
+
+        .FunItem {
+          border: 1px solid #eee;
+          display: flex;
+          height: 120px;
+          justify-content: center;
+          align-items: center;
+          cursor: pointer;
+          transition: all 0.3s;
+          &:hover {
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+          }
+        }
+
+        .FunItemLink {
+          .FunItem;
+          height: 50px;
+        }
+      }
+    }
+  }
+}

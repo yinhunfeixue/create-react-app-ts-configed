@@ -1,0 +1,17 @@
+
+
+.emptyWrap{
+  background: #fff;
+  padding-top: 120px;
+  margin: 0;
+  :global{
+    .ant-empty-footer{
+      margin-top: 16px;
+    }
+  }
+}
+
+.desc{
+  color: #5E6266;
+  marginBottom: 16px;
+}

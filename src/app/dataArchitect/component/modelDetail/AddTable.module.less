@@ -1,0 +1,98 @@
+.AddTable {
+    display: flex;
+    align-items: flex-start;
+    height: 100%;
+    .IconLink {
+        font-size: 17px;
+        color: #5b7fa3;
+        margin: 0 10px;
+        line-height: 32px;
+        margin-top: 30px;
+    }
+    .FieldSelect {
+        display: flex;
+        flex-direction: column;
+        flex: 1;
+        align-self: stretch;
+        width: 10px;
+        > h4 {
+            font-size: 14px;
+            font-weight: 400;
+            color: #262626;
+            line-height: 22px;
+            margin-bottom: 8px;
+        }
+
+        .SelectTable {
+            margin-bottom: 13px;
+        }
+
+        .Body {
+            border-radius: 2px;
+            border: 1px solid #e6e8ed;
+            flex: 1;
+            overflow: auto;
+
+            display: flex;
+            flex-direction: column;
+            > header {
+                background: #f7f8fa;
+                border-bottom: 1px solid #e6e8ed;
+                line-height: 32px;
+                padding: 0 8px;
+                font-size: 14px;
+                color: #5e6266;
+            }
+
+            > main {
+                flex: 1;
+                overflow: auto;
+                display: flex;
+                flex-direction: column;
+                .InputSearch {
+                    margin: 8px;
+                    width: unset;
+                    display: block;
+                }
+
+                :global {
+                    .ant-list {
+                        flex: 1;
+                        overflow: auto;
+                    }
+                }
+
+                .FieldItem {
+                    cursor: pointer;
+                    padding: 5px 15px;
+                    display: flex;
+                    align-items: center;
+                    &:hover {
+                        background: #f3f3f3;
+                    }
+                    &.FieldItemSelected {
+                        background: #f4f5f7;
+                    }
+
+                    label {
+                        flex-grow: 1;
+                        flex-shrink: 1;
+                        white-space: nowrap;
+                        word-break: keep-all;
+                        overflow: hidden;
+                        text-overflow: ellipsis;
+                    }
+
+                    :global {
+                        .anticon {
+                            font-size: 22px;
+                            margin-right: 4px;
+                            flex-grow: 0;
+                            flex-shrink: 0;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

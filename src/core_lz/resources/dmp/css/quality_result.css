@@ -1,0 +1,288 @@
+.page_right_history {
+    margin-left: 40px;
+    margin-top: 70px;
+    margin-right: 30px;
+    padding: 0px;
+    background: #fff;
+    -webkit-box-shadow: 4px 4px 20px 0 rgba(0, 0, 0, 0.01);
+    box-shadow: 4px 4px 20px 0 rgba(0, 0, 0, 0.01);
+}
+
+.page_right_history .pc-title-left {
+    line-height: 55px;
+    border-bottom: 1px solid #E8EBEE;
+    display: block;
+    margin-left: -15px;
+    margin-right: -15px;
+    font-weight: normal;
+    text-indent: 20px;
+    font-size: 16px;
+}
+
+.resulttoday_padding_width, .manualcheck_main .ant-table {
+    padding: 15px
+}
+
+.page_right_history .pc-title {
+    margin-bottom: 15px
+}
+
+.examination_tjgz {
+    padding: 11px 0px 11px 0px;
+}
+
+.ant-btn {
+    height: 32px;
+}
+
+.examination_tjgz_margin {
+    margin: 0px 10px
+}
+
+.examination_user {
+    position: relative;
+}
+
+.examination_user .pull-right {
+    position: absolute;
+    left: -4px;
+    top: 53px;
+    z-index: 9;
+}
+
+.examination_table {
+    margin-top: 50px;
+}
+
+.user_quality .pc-title {
+    margin-bottom: 64px;
+}
+
+/* 今日检核结果 */
+
+.quality_result {
+    border-radius: 50%;
+    height: 150px;
+    width: 150px;
+    line-height: 13px;
+    text-align: center;
+    color: #fff;
+    background: -moz-linear-gradient(80deg, #0989c5 0, #995cb6 100%);
+    background: -webkit-linear-gradient(80deg, #0989c5 0, #995cb6 100%);
+    background: linear-gradient(80deg, #0989c5 0, #995cb6 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#0989c5', endColorstr='#995cb6', GradientType=1);
+    margin-left: 10%;
+    font-size: 20px;
+    padding-top: 50px;
+    margin-top: -25px;
+}
+
+.quality_btn button {
+    margin-right: 15px;
+    margin-top: 15px;
+    padding: 9px 25px;
+    height: auto;
+    border-radius: 4px;
+}
+
+.quality_text {
+    border-top: 1px solid #ddd;
+    text-indent: 30px;
+    line-height: 35px;
+    margin-top: 25px;
+    color: #F38900;
+    background: #FCF7F1;
+}
+
+.quality_yc {
+    line-height: 55px;
+    border-bottom: 1px solid #E8EBEE;
+    display: block;
+    margin-left: -8px;
+    margin-right: -8px;
+    font-weight: normal;
+    text-indent: 29px;
+    font-size: 16px;
+}
+
+.history_bg {
+    padding-bottom: 10px;
+    margin-top: 30px;
+    padding-left: 15px
+}
+
+.history_bg button {
+    margin-left: 15px
+}
+
+.wholereport {
+    padding-top: 30px;
+}
+
+.wholereport_top .markets_exponent_line {
+    height: 250px;
+    width: 100%
+}
+
+.wholereport_top b {
+    margin-top: -43px;
+    display: block;
+    font-size: 16px;
+    padding-bottom: 6px;
+}
+
+.wholereport_t_left {
+    text-align: center;
+    font-size: 20px
+}
+
+.wolereport_two em {
+    height: 20px;
+    display: block;
+    background: #e8ecf0
+}
+
+.page_right_history.wolereport_two .pc-title-left, .page_right_history.wolereport_one .pc-title-left {
+    padding-left: 15px;
+}
+
+.wolereport_two .ant-pagination, .wolereport_one .ant-pagination {
+    background: #fff;
+    display: block;
+    width: 100%;
+    text-align: right;
+    padding-bottom: 12px;
+    padding-top: 12px;
+    position: relative;
+    bottom: 20px;
+}
+
+.wolereport_two.page_right_history {
+    margin-top: 20px;
+    margin-bottom: 75px
+}
+
+.wolereport_one.page_right_history {
+    margin-top: 20px;
+}
+
+.wholereport_color span {
+    color: #e62f2d;
+}
+
+.wholereport_font {
+    font-size: 12px;
+    color: #999;
+    padding-top: 5px;
+}
+
+.wholereport_top .card_layout_module .ant-card-body {
+    min-height: 250px;
+}
+
+.addrules_title .pull-right {
+    position: absolute;
+    top: 12px;
+    right: 10px;
+}
+
+.addrules_title .pull-right button {
+    background: #fff;
+    color: #1f8eeb;
+    border: none;
+}
+
+.page_right_history .addrules_title {
+    margin-bottom: 30px
+}
+
+.addrule_btn {
+    padding-left: 64px;
+    padding-bottom: 30px;
+}
+
+.addrule_btn .ant-btn {
+    padding-left: 28px;
+    padding-right: 28px;
+    margin-right: 15px
+}
+
+.addrules_main .ant-form-item-label {
+    text-align: center;
+}
+
+.breadcrumb_left {
+    padding-top: 58px;
+    padding-left: 60px;
+    margin-bottom: -62px;
+    font-size: 12px;
+}
+
+.manualcheck_main.page_right_history .pc-title {
+    margin-bottom: 64px;
+}
+
+.manualcheck_main .manual_btn {
+    position: relative;
+}
+
+.manualcheck_main .manual_btn button {
+    position: absolute;
+    left: 23px;
+    top: 66px;
+}
+
+.manualcheck_btn_center {
+    text-align: center;
+    padding: 30px 0px;
+    margin-bottom: -50px;
+}
+
+.resulttoday_padding .ant-table-tbody>tr>td {
+    padding: 12px 10px
+}
+
+.manual_modal_btn input {
+    border-top-right-radius: 0px;
+    height: 34px;
+    border-bottom-right-radius: 0px;
+    border-right: 0px;
+    width: 80%
+}
+
+.manual_modal_btn button {
+    border-top-left-radius: 0px;
+    border-bottom-left-radius: 0px;
+    width: 20%
+}
+
+.manual_modal_tree {
+    max-height: 200px;
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+
+.manual_modal_tree .ant-tree-child-tree .ant-tree-node-content-wrapper-normal .ant-tree-title:before {
+    background: transparent
+}
+
+.manual_modal_tree .ant-tree-child-tree .ant-tree-node-content-wrapper-normal .ant-tree-title {
+    padding-left: 0px
+}
+
+.manual_modal_tree .ant-tree-child-tree .ant-tree-title {
+    overflow: inherit;
+}
+
+.manual_modal_tree .ant-tree li span.ant-tree-checkbox {
+    margin-top: 2px;
+}
+
+.manual_modal_tree .ant-tree li {
+    padding: 0px
+}
+
+.page_right_resulttoday {
+    margin-left: 25px;
+    margin-right: 15px;
+}

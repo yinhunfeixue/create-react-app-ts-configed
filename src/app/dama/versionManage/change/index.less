@@ -1,0 +1,326 @@
+.changeSet {
+    .TableLayout main {
+        padding: 0px;
+        background-color: transparent;
+        .TableLayout_SearchGroup {
+            padding: 20px;
+            background: #fff;
+            margin-bottom: 0px;
+        }
+        .ant-table-wrapper {
+            padding: 0px 20px 20px 20px;
+            background: #fff;
+        }
+    }
+    .tableArea {
+        background: #fff;
+        padding: 16px 20px;
+        margin-top: 16px;
+    }
+
+    .lastHeaderCell{
+        border-bottom-color: #d0d2d6 !important;
+    }
+}
+.changeManage {
+    .RichTableLayout_SearchGroup {
+        display: block !important;
+    }
+    .ant-table {
+        .rowSpanTable {
+            margin: -16px;
+            .diffItem {
+                background: #FFECEC;
+                box-shadow: 1px 0px 0px 0px #E6E8ED;
+                border-radius: 2px;
+                padding: 4px;
+            }
+            div {
+                min-height: 52px;
+                padding: 16px;
+            }
+            div:not(:last-child) {
+                box-shadow: 1px 0px 0px 0px #E6E8ED, inset 0px -1px 0px 0px #E6E8ED;
+            }
+        }
+    }
+}
+.subscribeUserManage {
+    .TableLayout main {
+        padding: 20px 0;
+    }
+    .ant-tree li {
+        border-left: 0px;
+    }
+    .replaceEmptyIcon {
+        .ant-table-placeholder {
+            display: none;
+        }
+    }
+}
+.addUserDrawer {
+    .TableLayout main {
+        padding: 20px 0;
+        .ant-table-fixed {
+            width: auto !important;
+        }
+    }
+}
+.changeDetailDrawer {
+    .commonScroll {
+        padding: 0px !important;
+    }
+    .sliderLayout {
+        display: flex;
+        height: 100%;
+        .slider {
+            width: 240px;
+            flex-grow: 0;
+            flex-shrink: 0;
+            box-shadow: 1px 0px 0px 0px #E6E8ED;
+            transition: all 0.15s;
+            overflow: hidden;
+            background: #F7F8FA;
+            display: flex;
+            flex-direction: column;
+            position: relative;
+            .triangle {
+                width: 0;
+                height: 0;
+                border-left: 6px solid transparent;
+                border-right: 0px solid transparent;
+                border-top: 6px solid #4081FF;
+                position: absolute;
+                top: 11px;
+                right: 16px;
+            }
+            .leftHeader {
+                height: 48px;
+                line-height: 48px;
+                padding: 0px 6px 0px 16px;
+                display: flex;
+                position: relative;
+                .headerTitle {
+                    font-family: PingFangSC-Semibold, PingFang SC;
+                    font-weight: 600;
+                    color: #262626;
+                    margin-left: 8px;
+                    width: 148px;
+                }
+                .iconfont {
+                    color: #5E6266;
+                    width: 24px;
+                    height: 24px;
+                    cursor: pointer;
+                    display: inline-block;
+                    text-align: center;
+                    line-height: 24px;
+                }
+                .icon-sousuo {
+                    margin-right: 4px;
+                    position: absolute;
+                    top: 12px;
+                    right: 46px;
+                }
+                .icon-Filter {
+                    position: absolute;
+                    top: 12px;
+                    right: 16px;
+                    &:hover {
+                        background: #EFF0F2;
+                        border-radius: 2px;
+                    }
+                }
+                .collapseInput {
+                    transition: ease-in 0.3s;
+                    display: inline-block;
+                    overflow: hidden;
+                    position: absolute;
+                    right: 44px;
+                    margin-top: 8px;
+                    .ant-input-search {
+                        vertical-align: text-bottom;
+                        .anticon-search {
+                            //transform: scale(1.3);
+                            color: #5E6266;
+                        }
+                    }
+                }
+            }
+            .tableArea {
+                padding: 0px 16px;
+                line-height: 23px;
+                .tableItem {
+                    padding: 9px 0px 9px 32px;
+                    cursor: pointer;
+                    text-overflow: ellipsis;
+                    white-space: nowrap;
+                    overflow-x: hidden;
+                    &:hover {
+                        background: #EFF0F2;
+                        border-radius: 4px;
+                    }
+                }
+                .tableItemSelected {
+                    background: rgba(68, 113, 243, 0.08);
+                    border-radius: 4px;
+                    border: 1px solid #4471F3;
+                    font-family: PingFangSC-Medium, PingFang SC;
+                    font-weight: 500;
+                }
+            }
+        }
+        > main {
+            flex-grow: 1;
+            flex-shrink: 1;
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            width: 10px;
+            .IconFold {
+                transition: all 0.15s;
+                position: absolute;
+                left: 12px;
+                top: 36px;
+                width: 24px;
+                height: 24px;
+                border-radius: 50%;
+                text-align: center;
+                line-height: 24px;
+                font-size: 10px;
+                color: #5E6266;
+                background: #FFFFFF;
+                box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.12), 0px 4px 8px 0px rgba(0, 0, 0, 0.08);
+                border: 1px solid #E6E8ED;
+                transform: translateX(-100%);
+                z-index: 1;
+                cursor: pointer;
+                &:hover {
+                    width: 28px;
+                    height: 28px;
+                    line-height: 28px;
+                    left: 14px;
+                }
+            }
+        }
+        .ContentContainer {
+            flex-grow: 1;
+            flex-shrink: 1;
+            overflow: auto;
+            height: 10px;
+            .detailHeader {
+                height: 106px;
+                box-shadow: 0px 1px 0px 0px #E6E8ED;
+                padding: 24px;
+                display: flex;
+                .diffItemContent {
+                    .diffItem {
+                        background: #FFECEC;
+                        box-shadow: 1px 0px 0px 0px #E6E8ED;
+                        border-radius: 2px;
+                        padding: 4px;
+                    }
+                }
+                .iconHead {
+                    width: 48px;
+                    height: 48px;
+                    background: #FF9900;
+                    border-radius: 50%;
+                    margin-right: 20px;
+                    line-height: 48px;
+                    text-align: center;
+                    color: #fff;
+                    font-size: 12px;
+                }
+                .detailTitle {
+                    font-size: 20px;
+                    font-family: PingFangSC-Medium, PingFang SC;
+                    font-weight: 500;
+                    color: #2D3033;
+                    margin-bottom: 8px;
+                }
+                .detailContent {
+                    display: flex;
+                    .label {
+                        color: #9EA3A8;
+                        margin-right: 12px;
+                    }
+                    .collapseLabel {
+                        display: inline-block;
+                        max-width: 300px;
+                        overflow: hidden;
+                        text-overflow: ellipsis;
+                        white-space: nowrap;
+                        vertical-align: bottom;
+                    }
+                    > div:not(:last-child) {
+                        margin-right: 60px;
+                    }
+                }
+            }
+            .TableLayout {
+                margin: 1px;
+                .typeTag {
+                    height: 14px;
+                    width: 22px;
+                    line-height: 12px;
+                    text-align: center;
+                    background: rgba(40, 174, 82, 0.1);
+                    box-shadow: 1px 0px 0px 0px #E6E8ED;
+                    border-radius: 7px;
+                    border: 1px solid rgba(46, 176, 86, 0.6);
+                    font-size: 10px;
+                    color: #28AE52;
+                    text-shadow: 1px 0px 0px #E6E8ED;
+                    margin-right: 8px;
+                    margin-top: 4px;
+                }
+                .updateTag {
+                    background: rgba(255, 153, 0, 0.1);
+                    border: 1px solid rgba(255, 153, 0, 0.6);
+                    color: #FF9900;
+                }
+                .deleteTag {
+                    background: rgba(255, 77, 79, 0.1);
+                    border: 1px solid rgba(255, 77, 79, 0.6);
+                    color: #FF4D4F;
+                }
+                .remainTag {
+                    color: #3A9DFF;
+                    border: 1px solid rgba(58, 157, 255, 0.6);
+                    background: rgba(58, 157, 255, 0.1);
+                }
+            }
+        }
+        &.sliderLayoutFoled {
+            .slider {
+                width: 14px;
+                pointer-events: none;
+            }
+        }
+    }
+}
+.filterPopover {
+    .ant-popover-inner-content {
+        overflow: auto;
+        padding: 0px;
+        max-height: 330px;
+        .EditMiniForm {
+            padding-top: 24px;
+            .ant-row {
+                padding: 0 16px;
+            }
+            .Grid2 {
+                padding: 8px 16px;
+                box-shadow: 0px -1px 0px 0px #E6E8ED;
+            }
+        }
+    }
+}
+.manageFilter{
+    :global{
+        .ant-table-content{
+            //min-height: 600px;
+        }
+    }
+}

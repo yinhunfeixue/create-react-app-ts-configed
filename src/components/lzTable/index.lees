@@ -1,0 +1,66 @@
+
+.expandWrap{
+  position: relative;
+  :global{
+    .expandIcon{
+      cursor: pointer;
+      position: absolute;
+      top: 12px;
+      left: 20px;
+      z-index: 9;
+    }
+  }
+}
+
+.tableWrap{
+  :global{
+    .ant-table-thead > tr > th:not(:last-child):not(.ant-table-selection-column):not(.ant-table-row-expand-icon-cell):not([colspan])::before {
+          display: none;
+      }
+    .DraggerTh {
+      position: relative;
+      .DragElement {
+          position: absolute;
+          right: 0;
+          top: 0;
+          bottom: 0;
+          width: 10px;
+          background: transparent;
+          cursor: col-resize;
+          &:hover {
+              background-color: #f2f2f2;
+          }
+
+          &::after {
+              position: absolute;
+              top: 50%;
+              right: 0;
+              width: 1px;
+              height: 1.6em;
+              background-color: rgba(0, 0, 0, 0.06);
+              transform: translateY(-50%);
+              transition: background-color 0.3s;
+              content: '';
+          }
+
+          &:hover {
+              &::after {
+                  background-color: #5e6266;
+              }
+          }
+      }
+    }
+
+    .EditColumnSpace{
+      gap: 0 !important;
+    }
+  }
+
+
+}
+
+.tableEmptyLabel{
+  color: #c4c8cc;
+}
+
+

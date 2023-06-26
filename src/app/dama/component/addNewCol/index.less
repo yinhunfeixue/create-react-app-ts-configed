@@ -1,0 +1,42 @@
+.addNewCol{
+    .newColTopic{
+        height:50px;
+        .topicName{
+            padding:0 8px;
+            display: inline-block;
+            font-size:14px;
+            font-family:PingFangSC-Regular,PingFang SC;
+            font-weight:400;
+            color:rgba(0,0,0,1);
+            line-height:22px;
+        }
+    }
+    .addNewContent{
+        display: flex;
+        .leftContent{
+            background: rgba(247,248,250,1);
+            padding-top: 12px;
+            height: 377px;
+            width: 168px;
+            border:1px solid rgba(232,232,232,1);
+            overflow: hidden;
+            .ant-menu-inline{
+                background: rgba(247,248,250,1);
+            }
+            .ant-menu:not(.ant-menu-horizontal) .ant-menu-item-selected{
+                border-left: 2px solid var(--primaryColor);
+                background:rgba(255,255,255,1);
+            }
+            .ant-menu-item-selected{
+                color:rgba(0, 0, 0, 0.65);
+            }
+            .ant-menu-inline, .ant-menu-vertical, .ant-menu-vertical-left {
+                border-right: none;
+            }
+        }
+        .rightContent{
+            border:1px solid rgba(232,232,232,1);
+            width: 100%;
+        }
+    }
+}

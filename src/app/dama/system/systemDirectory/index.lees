@@ -1,0 +1,147 @@
+
+.title{
+  flex: 1;
+  line-height: 32px;
+  button{
+    float: right;
+  }
+  span{
+    float: right;
+  }
+}
+
+.search{
+  width: 280px;
+  margin-bottom: 18px;
+}
+
+.wrap{
+  padding-bottom: 16px;
+  border-bottom: 1px solid #EEF0F5;
+
+  &:last-child{
+    border-bottom: none;
+  }
+  h3{
+    font-size: 18px;
+    margin: 0;
+    margin-bottom: 8px;
+    height: 26px;
+  }
+  p{
+    margin: 0;
+  }
+  h4{
+    font-size: 14px;
+    margin: 0;
+    margin-bottom: 16px;
+  }
+}
+
+.treeEmpty{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 310px;
+  color: #9EA3A8;
+  p{
+    margin: 0;
+  }
+}
+
+.add{
+  cursor: pointer;
+}
+
+.subTitle{
+  position: relative;
+  display: inline-block;
+  line-height: 14px;
+  margin: 0 5px;
+  margin-top: 2px
+}
+
+.tree{
+  :global{
+    .ant-tree-indent-unit {
+      width: 0;
+    }
+  }
+}
+.treeTitle{
+  display: flex;
+  align-items: center;
+  &:hover{
+    .icon{
+      opacity: 1;
+    }
+  }
+  .text{
+    flex: 1;
+    width: 100px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  .icon{
+    width: 24px;
+    height: 24px;
+    margin: 0 5px;
+    padding: 4px;
+    border-radius: 2px;
+    opacity: 0;
+    margin-top: 3px;
+    svg{
+      position: relative;
+      width: 16px;
+      height: 16px;
+      top: -6px;
+    }
+  }
+  i{
+    display: inline-block;
+    margin-right: 8px;
+    width: 15px;
+    height: 15px;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+  }
+}
+
+.popover{
+  padding: 0;
+  :global{
+    .ant-popover-inner-content{
+      padding: 0;
+    }
+    .ant-popover-placement-rightTop .ant-popover-arrow{
+      opacity: 0;
+    }
+  }
+}
+
+.wrapClass {
+  height: 100%;
+  :global{
+    .lz-rc-appTree{
+      height: calc(100% - 50px);
+    }
+  }
+}
+
+.titleWrap{
+  display: flex;
+  align-items: center;
+  .titleIcon{
+    color: #6A747F;
+    background: #F4F5F7;
+    transform: scale(0.7);
+    display: inline-block;
+    border-radius: 100%;
+    width: 24px;
+    height: 24px;
+    text-align: center;
+    line-height: 24px;
+  }
+}

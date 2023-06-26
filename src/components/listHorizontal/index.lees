@@ -1,0 +1,29 @@
+
+.wrap{
+  font-size: 14px;
+  color: #9EA3A8;
+  display: flex;
+  overflow: hidden;
+  white-space: nowrap;
+  p{
+    color: #C4C8CC;
+    margin: 0;
+    text-align: left;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    font-family: PingFangSC-Regular, PingFang SC;
+  }
+  .label{
+    width: 120px;
+    text-align: left;
+    margin-right: 16px;
+    color: #5E6266;
+    flex-shrink: 0;
+  }
+  .value{
+    color: #2D3033;
+    span{
+      color: #2D3033;
+    }
+  }
+}

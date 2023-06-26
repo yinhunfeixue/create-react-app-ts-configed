@@ -1,0 +1,122 @@
+.standardEdit {
+
+    //height: calc(~"100vh - 52px");
+    //overflow: hidden;
+    .ant-legacy-form-item {
+        padding-bottom: 0 !important;
+        margin-bottom: 0 !important;
+    }
+
+    .TableLayout>main {
+        background-color: transparent;
+        padding: 0px;
+    }
+
+    .standardEditArea {
+        display: flex;
+
+        .leftArea {
+            width: calc(~"100% - 168px");
+            flex-grow: 1;
+            flex-shrink: 1;
+            transition: all 0.3s;
+
+            .anchorLink {
+                opacity: 0;
+                height: 0px;
+            }
+
+            .tableInfo {
+                padding: 20px;
+                margin-Bottom: 16px;
+                background: #fff;
+
+                .ModuleTitle {
+                    margin-bottom: 16px;
+                }
+            }
+
+            .iconFold {
+                width: 27px;
+                height: 32px;
+                line-height: 32px;
+                text-align: center;
+                font-size: 8px;
+                transition: all 0.3s;
+                position: absolute;
+                right: -27px;
+                top: 120px;
+                background-color: white;
+                box-shadow: 0px 2px 8px 0px rgba(0, 0, 0, 0.12);
+                border-radius: 100px 0px 0px 100px;
+                border: 1px solid #E6E8ED;
+                border-right: none;
+                transform: translateX(-100%);
+                display: inline-block;
+                cursor: pointer;
+                z-index: 99;
+                color: #5E6266;
+            }
+
+            .iconUnFold {
+                width: 32px;
+                height: 32px;
+                background: #E6E8ED;
+                border-radius: 50%;
+                right: 96px;
+            }
+
+
+        }
+
+        .rightArea {
+            width: 168px;
+            flex-grow: 0;
+            flex-shrink: 0;
+            padding-left: 24px;
+            padding-top: 56px;
+            transition: all 0.3s;
+
+            .ant-anchor {
+                position: fixed;
+                top: 176px;
+
+                .ant-anchor-link {
+                    padding: 9px 0 7px 12px;
+                }
+
+                .ant-anchor-link-title {
+                    color: #606366;
+                }
+
+                .ant-anchor-link-title-active {
+                    color: #4D73FF;
+                }
+
+                .ant-anchor-ink::before {
+                    width: 1px;
+                    background-color: #DFE1E6;
+                }
+
+                .ant-anchor-ink-ball {
+                    width: 2px;
+                    height: 32px;
+                    background: #4D73FF;
+                    border-radius: 0px;
+                    transform: translateY(-12.5px);
+                    border: none;
+                }
+            }
+        }
+    }
+
+    .standardEditAreaFolded {
+        .rightArea {
+            width: 0 !important;
+            opacity: 0;
+            pointer-events: none;
+            transition: all 0.3s;
+            padding-left: 0px;
+        }
+    }
+}

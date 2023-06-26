@@ -1,0 +1,8 @@
+/**
+ * 数据治理模块说明
+     共分四大块
+     1、元数据管理 metadata
+     2、指标管理 indexma
+     3、标准管理 standard
+     4、数据检核 examination
+ */

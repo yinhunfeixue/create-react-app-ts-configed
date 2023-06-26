@@ -1,0 +1,130 @@
+.kwContentTable{
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+
+    .react-resizable {
+        position: relative;
+        background-clip: padding-box;
+      }
+      
+    .react-resizable-handle {
+        position: absolute;
+        width: 10px;
+        height: 100%;
+        bottom: 0;
+        right: -5px;
+        cursor: col-resize;
+        z-index: 1;
+      }
+
+    .tableHeader{
+        flex:none;
+        .ant-table-bordered .ant-table-header > table,
+        .ant-table-bordered .ant-table-body > table,
+        .ant-table-bordered .ant-table-fixed-left table,
+        .ant-table-bordered .ant-table-fixed-right table {
+            // border: 0px;
+            // border-right: 0;
+            height: 100%;
+            width: 100%;
+            border-bottom: 2px #333333 solid !important;
+        }
+
+        .ant-table-thead > tr > th, .ant-table-tbody > tr > td, .portaitcheck_padding .ant-table-tbody > tr > td{
+            padding: 10px;
+        }
+
+        .ant-table-thead > tr > th{
+            background: #fff !important;
+            padding: 10px 16px !important;
+        }
+        .ant-table-placeholder, tbody{
+            display: none;
+        }
+    }
+
+    .tableAlign{
+        flex:1;
+        max-height: 100%;
+        width: 100%;
+        overflow: auto;
+        margin-top: 1px;
+        // padding-bottom: 40px;
+        min-height: 180px;
+        border: 1px solid #ebebeb;
+
+        table{
+            border: 0;
+            td {
+              padding: 7px 8px;
+              padding-bottom: 6px;
+            }
+        }
+
+    }
+
+    .tableAlign::-webkit-scrollbar {/*滚动条整体样式*/
+        width: 8px;     /*高宽分别对应横竖滚动条的尺寸*/ 
+        height: 8px;     /*高宽分别对应横竖滚动条的尺寸*/ 
+    }
+
+    .tableAlign::-webkit-scrollbar-thumb {/*滚动条里面小方块*/
+        border-radius: 4px;
+        // height: 91px;
+        background:rgba(183,183,183,1);
+    }
+    
+    .tableAlign::-webkit-scrollbar-track {/*滚动条里面轨道*/
+        background:rgba(231, 234, 240, 1);
+    }
+
+    .tableStatics{
+        flex:none;
+        // white-space: nowrap;
+        // overflow-x: auto;
+        // height: 100px;
+        max-height: 129px;
+        overflow-x: auto;
+        overflow-y: hidden;
+
+        .boxStatics{
+            display: flex;
+            flex-direction: row;
+            white-space: nowrap;
+            padding-bottom: 8px;
+        }
+        .boxStatics .boxItem{
+            .ant-select-selection{
+                border-bottom: 2px solid #333;
+            }
+            b{
+              display: block;
+              font-size: 16px;
+              padding-left: 8px;
+              text-align: left;
+            }
+            em{
+              font-style: normal;
+              display: block;
+              padding: 8px 0px;
+              padding-left: 8px;
+              text-align: left;
+              font-size: 12px;
+              color:rgba(0,0,0,0.45);
+            }
+            flex-shrink:0;
+            // display: inline-block;
+            display: flex;
+            flex-direction: column;
+            text-align: center;
+            padding-top: 24px;
+            margin-right: 16px;
+
+
+            // display: inline-block;
+            // background: red;
+        }
+    }
+}

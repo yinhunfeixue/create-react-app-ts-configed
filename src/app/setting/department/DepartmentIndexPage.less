@@ -1,0 +1,49 @@
+.DepartmentIndexPage {
+    height: 100%;
+    .ant-tree {
+        li {
+            .ant-tree-node-content-wrapper {
+                width: unset;
+                overflow: unset;
+            }
+        }
+
+        .HoveredTreeNode {
+            > .ant-tree-node-content-wrapper {
+                background-color: #f4f5f7 !important;
+                color: #4d73ff;
+            }
+            .DepartNode {
+                .DepartNodeMenu {
+                    display: unset;
+                }
+            }
+        }
+    }
+    .DepartNode {
+        flex-wrap: nowrap;
+        .DepartNodeTitle {
+            display: inline-block;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            flex-grow: 1;
+            flex-shrink: 1;
+            width: 10px;
+        }
+
+        .DepartNodeMenu {
+            display: none;
+            padding: 5px 8px;
+            &:hover {
+                background-color: #e8e9eb;
+            }
+        }
+
+        &.DepartNodeSelected,
+        &:hover {
+            .DepartNodeMenu {
+                display: unset;
+            }
+        }
+    }
+}

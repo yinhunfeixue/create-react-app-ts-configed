@@ -1,0 +1,43 @@
+.node-container{
+    width: 155px;
+    height: 100px;
+    background-color: #f0f0f0;
+    border-width: 2px;
+    margin: 0 auto;
+    position:relative;
+
+}
+.node-container-corner{
+    position: absolute;
+    width: 0;
+    height: 0;
+    top:0;
+    right:0;
+    border: 10px solid black;
+    border-color: transparent transparent  #f0f0f0 #f0f0f0  ;
+    background-color:#ffffff;
+    font-size:xx-small;
+    text-align:right;
+}
+
+.node-container .node-container-status{
+    color:grey;
+    padding-left: 1px;
+    line-height: 40px;
+    height: 40px;
+    border-radius: 50%;
+    -moz-border-radius: 50%;
+    -webkit-border-radius: 50%;
+}
+.node-container .node-container-success{
+    background: #006000;
+}
+.node-container .node-container-fail{
+    background: #FF0030;
+}
+.node-container .node-container-title{
+    background: white;
+    padding-left:1px;
+    height: 60px;
+    line-height: 60px;
+}

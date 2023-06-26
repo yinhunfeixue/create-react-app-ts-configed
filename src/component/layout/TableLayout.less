@@ -1,0 +1,67 @@
+.TableLayout {
+    @gap: 20px;
+    display: flex;
+    flex-direction: column;
+
+    > main {
+        padding: @gap;
+        background-color: white;
+        margin-bottom: @gap;
+        > *:not(:last-child) {
+            margin-bottom: 16px;
+        }
+
+        &:last-child {
+            margin-bottom: 0;
+        }
+    }
+    .TableLayout_FloatFooter,
+    > footer {
+        color: #acb2b8;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 56px;
+        flex-grow: 0;
+        flex-shrink: 0;
+    }
+
+    .TableLayout_FloatFooter {
+        justify-content: flex-start;
+        transform: translateY(100%);
+        opacity: 0;
+        position: absolute;
+        z-index: 10;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        transition: all 0.3s;
+        background-color: white;
+        padding: 0 20px;
+        background: #ffffff;
+        box-shadow: 0px -1px 4px 0px rgba(0, 0, 0, 0.12);
+        height: 0;
+        overflow: hidden;
+        &.TableLayout_FloatFooterShow {
+            transform: none;
+            opacity: 1;
+            height: 56px;
+        }
+
+        > *:not(:last-child) {
+            margin-right: 8px;
+        }
+    }
+
+    &.TableLayoutSmall {
+        > main {
+            padding: 0;
+        }
+    }
+
+    &.TableLayoutWithOutFooter {
+        > main {
+            margin-bottom: 0;
+        }
+    }
+}

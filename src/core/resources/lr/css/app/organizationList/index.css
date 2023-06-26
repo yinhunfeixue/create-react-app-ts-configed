@@ -1,0 +1,116 @@
+.business-title {
+    font-size: 24px;
+    padding-bottom: 10px;
+}
+
+.organization-list .card_layout_module .ant-card-body {
+    min-height: inherit;
+}
+
+.panel-title-col .pc-title-left {
+    display: inline-block;
+}
+
+.pc-title-left {
+    color: #2c2e2f;
+    display: block;
+}
+
+.retention-rate-time {}
+
+.pull-left {
+    float: left;
+}
+
+.pull-right {
+    float: right;
+}
+
+.bus_byl {
+    background: white;
+}
+
+.bus_byl_right li {
+    color: #2c2e2f;
+    background: #eee;
+    border: 1px solid #e7e7e7;
+    border-radius: 50px;
+    width: 100%;
+    margin-bottom: 11px;
+    padding: 8px 9px;
+    font-size: 14px;
+    position: relative;
+    padding-left: 12px;
+}
+
+.bus_byl_right li b img {
+    width: 20px;
+    vertical-align: text-bottom;
+}
+
+.bus_byl_right li em {
+    color: #fff;
+    background: #9fc9f5;
+    border-radius: 50px;
+    padding: 3px 15px;
+    position: absolute;
+    right: 10px;
+    top: 6px;
+    font-size: 13px;
+}
+
+.lrkf_new li {
+    margin-bottom: 10px;
+    padding: 9px;
+    padding-left: 12px;
+}
+
+.bus_byl_right li b {
+    padding-right: 5px;
+}
+
+.lrkf_new li strong {
+    font-size: 12px;
+    color: #ef4836;
+}
+
+.bus_byl_right li em .new_lrkf i {
+    color: #ef4836;
+    display: inline-block;
+    font-weight: bold;
+}
+
+.panel-col {
+    position: relative;
+}
+
+.panel-col .panel-col-div {
+    position: absolute;
+    top: 10px;
+    right: 30px;
+    z-index: 10;
+    color: #999;
+    font-size: 12px;
+}
+
+.income-title {
+    background: white;
+    padding-top: 10px;
+    padding-left: 30px;
+}
+
+.panel-col .markets_exponent_line {
+    height: inherit!important;
+}
+
+.panel-col .ant-tabs-nav-wrap .ant-tabs-nav-scroll {
+    background: white;
+}
+
+.panel-col .ant-card {
+    margin: 0;
+}
+
+.text-light-gray {
+    color: #999;
+}

@@ -1,0 +1,206 @@
+.DataDissectDetailPage {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    :global {
+        .PageHeaderExtra {
+            padding-right: 0;
+            align-self: stretch;
+            > *:not(:last-child) {
+                margin-right: 8px;
+            }
+            .ant-divider-vertical {
+                height: 100%;
+                margin-right: 0;
+            }
+        }
+    }
+
+    .IconSetting {
+        margin: 0 18px;
+        font-size: 17px;
+    }
+
+    > main {
+        flex-grow: 1;
+        flex-shrink: 1;
+        overflow: auto;
+        position: relative;
+    }
+
+    .SuccessContainer {
+        background-color: white;
+        height: 100%;
+        :global {
+            .ant-spin-container {
+                height: 100%;
+                display: flex;
+                flex-direction: column;
+            }
+        }
+    }
+
+    .OverviewModule {
+        padding: 0 24px 0 24px;
+        background-color: white;
+        .Path {
+            color: #9ea3a8;
+            margin: 12px 0;
+            display: flex;
+            align-items: center;
+            .Type,
+            .Status {
+                line-height: 20px;
+                font-size: 12px;
+                padding: 0 8px;
+                border-radius: 2px;
+                display: inline-block;
+            }
+            .Type {
+                background: #e6ebf0;
+                color: #667380;
+                margin: 0 4px 0 24px;
+            }
+            .Status {
+                border: 1px solid;
+            }
+        }
+        .Overview {
+            overflow: hidden;
+            transition: all 0.5s;
+            max-height: 500px;
+            margin-top: 12px;
+            padding-bottom: 24px;
+            .OverviewGroup {
+                &:not(:last-child) {
+                    margin-bottom: 32px;
+                }
+                > h3 {
+                    font-size: 16px;
+                    font-weight: 500;
+                    color: #262626;
+                    margin-bottom: 16px;
+                }
+                > main {
+                    display: grid;
+                    grid-template-columns: repeat(5, 1fr);
+                    row-gap: 16px;
+                    column-gap: 16px;
+                }
+            }
+
+            &.OverviewHide {
+                max-height: 0;
+                margin-top: 0;
+                padding-bottom: 0;
+            }
+        }
+    }
+
+    .BtnSwitchOverview {
+        background: #f0f2f5;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.2);
+        font-size: 12px;
+        position: relative;
+        z-index: 1;
+        cursor: pointer;
+        transition: all 0.3s;
+        &:hover {
+            background: #ebedf0;
+        }
+        .Icon {
+            transition: all 0.3s;
+        }
+        .IconHide {
+            transform: rotate(180deg);
+        }
+    }
+
+    .ChartGroup {
+        padding: 16px;
+        background: #f7f8fa;
+        display: flex;
+        overflow: auto;
+        flex: 1;
+
+        .DetailItemSelected {
+            position: relative;
+            z-index: 1;
+            box-shadow: 0 0 2px 2px #4d73ff;
+        }
+    }
+}
+
+.SettingListWrap {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 9;
+    pointer-events: none;
+
+    &.SettingListWrapShow {
+        pointer-events: all;
+    }
+
+    .SettingList {
+        background-color: rgba(255, 255, 255, 0.9);
+        backdrop-filter: blur(3px);
+        overflow: auto;
+        padding: 20px;
+        box-shadow: 0px 1px 40px 0px rgba(0, 0, 0, 0.16);
+
+        position: absolute;
+        z-index: 9;
+        top: 0;
+        width: 100%;
+        max-height: 70vh;
+
+        display: grid;
+        justify-content: center;
+        row-gap: 16px;
+        column-gap: 16px;
+        grid-template-columns: repeat(4, 288px);
+
+        transform: translateY(-100%);
+        opacity: 0;
+        transition: all 0.3s;
+        pointer-events: none;
+
+        &.SettingListShow {
+            transform: none;
+            pointer-events: all;
+            opacity: 1;
+        }
+
+        .ItemWrap {
+            position: relative;
+            cursor: pointer;
+            &.ItemWrapSelected {
+                background: rgba(81, 127, 252, 0.06);
+                box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.12);
+                border-radius: 2px;
+                border: 1px solid #4471f3;
+            }
+
+            .ItemIcon {
+                position: absolute;
+                right: 0;
+                top: 0;
+                font-size: 24px;
+
+                opacity: 0;
+                transform: translate(100%, -100%);
+                transition: all 0.3s;
+                &.ItemIconShow {
+                    opacity: 1;
+                    transform: none;
+                }
+            }
+        }
+    }
+}

@@ -1,0 +1,61 @@
+.ant-menu-submenu-title i.anticon{
+    display: inline-block;
+    width: 16px;
+    height: 16px;
+    vertical-align: text-bottom;
+    margin-bottom: 2px;
+    margin-right: 14px;
+
+}
+.ant-menu-submenu-title i.leftsidebar_ico_1{
+    background: url(../../../images/icon_menu_1.png) no-repeat
+}
+.ant-menu-submenu-title i.leftsidebar_ico_2{
+    background: url(../../../images/icon_menu_2.png) no-repeat
+}
+.ant-menu-submenu-title i.leftsidebar_ico_3{
+    background: url(../../../images/icon_menu_3.png) no-repeat
+}
+
+
+.ant-select-dropdown .ant-select-tree li .ant-select-tree-node-content-wrapper:hover{
+
+    color: #3311a9;
+}
+.ant-menu.ant-menu-inline .ant-menu-submenu-title {
+    background: #425cb1;
+
+}
+.ant-menu.ant-menu-dark .ant-menu-submenu-title:hover, .ant-menu.ant-menu-inline .ant-menu-submenu-title:active, .ant-menu.ant-menu-inline .ant-menu-submenu-selected .ant-menu-submenu-title {
+    background: #374f9e;
+}
+
+.ant-layout-header,.ant-menu-dark, .ant-menu-dark .ant-menu-sub{
+    background: #2f3f71;
+}
+.ant-layout-sider {
+
+    background: #2f406e;
+
+}
+.ant-layout-sider-collapsed .ant-menu.ant-menu-dark.ant-menu-root .ant-menu-item-selected {
+    background-color: #425cb1;
+}
+.ant-layout {
+
+    background: #0c1e45;
+}
+.anticon.anticon-info-circle{
+    color: #2f406e;
+}
+.ant-layout .ant-layout-footer {
+    color: rgba(255,255,255,.5);
+    background: #0a1a3d
+}
+.ant-back-top {
+    right: 25px;
+}
+.gotoTop img {
+    border-radius: 4px;
+    box-shadow: 0 6px 12px 0 rgba(0, 0, 0, 0.15);
+}

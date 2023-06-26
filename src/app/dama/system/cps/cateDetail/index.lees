@@ -1,0 +1,22 @@
+
+.img{
+  display: inline-block;
+  width: 15px;
+  height: 15px;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    position: relative;
+    top: 2px;
+    margin-right: 5px;
+}
+
+.table{
+  table{
+    tbody{
+      >tr{
+        cursor: pointer;
+      }
+    }
+  }
+}

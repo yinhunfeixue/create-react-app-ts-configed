@@ -1,0 +1,48 @@
+.KpiCharts {
+    .Header {
+        margin-bottom: 16px;
+        .ant-spin-container {
+            > *:not(:last-child) {
+                margin-right: 28px;
+            }
+
+            .DropDownManage {
+                cursor: pointer;
+            }
+        }
+
+        .TopicRadioGroup {
+            .ant-radio-button-wrapper-checked:not(.ant-radio-button-wrapper-disabled) {
+                background-color: white;
+            }
+        }
+    }
+
+    > main {
+        display: flex;
+        > *:not(:last-child) {
+            margin-right: 16px;
+        }
+        .Column {
+            flex-grow: 1;
+            flex-shrink: 1;
+            overflow: auto;
+            width: 100%;
+            > *:not(:last-child) {
+                margin-bottom: 16px;
+            }
+        }
+    }
+}
+
+.TopicManageOverlay {
+    z-index: 999;
+}
+
+.drop-over-downward {
+    border-bottom: 2px dashed #1890ff;
+}
+
+.drop-over-upward {
+    border-top: 2px dashed #1890ff;
+}

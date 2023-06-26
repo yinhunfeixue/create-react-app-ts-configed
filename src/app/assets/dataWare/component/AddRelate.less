@@ -1,0 +1,45 @@
+.AddRelate {
+    .ant-modal-body {
+        display: flex;
+        //justify-content: space-between;
+
+        .RelateItem {
+            display: inline-flex;
+            flex-direction: column;
+            margin-right: 20px;
+            .ant-select {
+                width: 140px;
+            }
+
+            h3 {
+                font-size: 14px;
+                font-weight: normal;
+                color: rgba(0, 0, 0, 0.65);
+                line-height: 22px;
+                text-align: center;
+            }
+
+            header {
+                height: 30px;
+                display: flex;
+                align-items: center;
+                background: #fafafa;
+                padding: 0 11px;
+            }
+
+            > *:not(:last-child) {
+                margin-bottom: 8px;
+            }
+
+            .ant-radio-group {
+                display: flex;
+                flex-direction: column;
+                padding: 16px 24px;
+                background: #fafafa;
+                > *:not(:last-child) {
+                    margin-bottom: 8px;
+                }
+            }
+        }
+    }
+}

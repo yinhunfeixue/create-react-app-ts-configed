@@ -1,0 +1,46 @@
+.FieldDetail {
+    height: 100%;
+    .ant-collapse {
+        .ant-collapse-header {
+            font-weight: 500;
+        }
+        .ant-collapse-item:not(:last-child) {
+            border-bottom: 1px solid rgba(230, 232, 237, 1);
+        }
+        .ant-collapse-content {
+            padding: 0;
+            .ant-collapse-content-box {
+                padding: 0 16px 8px 16px !important;
+            }
+        }
+    }
+    .ant-collapse-item-active {
+        .CollapseItemHeaderArrow {
+            transform: rotate(-90deg);
+        }
+    }
+
+    > .ant-divider-horizontal {
+        margin: 0;
+    }
+
+    h4 {
+        font-weight: 600;
+    }
+
+    .PaddingWrap {
+        padding: 16px;
+    }
+
+    .FieldList{
+        max-height: 50%;
+        overflow: auto;
+
+        .ant-collapse-header-text{
+            overflow: hidden;
+            word-break: keep-all;
+            white-space: nowrap;
+            text-overflow: ellipsis;
+        }
+    }
+}

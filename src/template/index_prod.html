@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8" />
+        <title>DOP数据运营平台</title>
+        <link rel="shortcut icon" href="<%= htmlWebpackPlugin.options.baseurl %>resources/images/favicon.ico" type="image/x-icon" />
+        <link href="<%= htmlWebpackPlugin.options.baseurl %>resources/index.css" rel="stylesheet" />
+    </head>
+    <body>
+        <section id="content">
+            <div id="dmpIndexPage" class="mainBody" />
+        </section>
+
+        <!-- js -->
+        <script type="text/javascript" src="<%= htmlWebpackPlugin.options.baseurl %>resources/index.js"></script>
+        <script type="text/javascript" src="<%= htmlWebpackPlugin.options.baseurl %>resources/lib/react/react.production.min.js"></script>
+        <script type="text/javascript" src="<%= htmlWebpackPlugin.options.baseurl %>resources/lib/react/react-dom.production.min.js"></script>
+        <script charset="utf-8" src="<%= htmlWebpackPlugin.options.baseurl %>resources/lib/echarts/echarts.min.js"></script>
+        <!-- data-set有用到 -->
+        <script src="<%= htmlWebpackPlugin.options.baseurl %>resources/lib/data-set.js"></script>
+        <script src="<%= htmlWebpackPlugin.options.baseurl %>resources/lib/go.js"></script>
+        <script type="text/javascript" src="<%= htmlWebpackPlugin.options.baseurl %>dist/<%= htmlWebpackPlugin.options.versionString %>/dmp.index.entry.js"></script>
+    </body>
+</html>

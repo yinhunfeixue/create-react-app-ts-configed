@@ -1,0 +1,18 @@
+.TimingSelect {
+    display: flex;
+    > * {
+        flex-grow: 1;
+        flex-shrink: 1;
+        width: 10px !important;
+
+        &:not(:first-child) {
+            margin-left: -1px;
+        }
+    }
+
+    .TimingSelectType {
+        width: 160px !important;
+        flex-grow: 0;
+        flex-shrink: 0;
+    }
+}

@@ -1,0 +1,7 @@
+.step{
+  margin: 24px 0;
+  p{
+    margin: 0;
+    margin-bottom: 8px;
+  }
+}

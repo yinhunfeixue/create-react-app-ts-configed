@@ -1,0 +1,85 @@
+.PermissionTree {
+    @border: 1px solid #e6e8ed;
+
+    padding-left: 17px;
+    &.PermissionTreeRoot {
+        padding-left: 0 !important;
+    }
+    > li {
+        list-style: none;
+    }
+    .PermissionNode {
+        .PermissionLeafGroup {
+            display: flex;
+            flex-wrap: wrap;
+            border-bottom: @border;
+            padding: 0 30px;
+            > .PermissionContent {
+                border-bottom: none;
+            }
+            > * {
+                padding: 30px;
+            }
+        }
+        .PermissionContent {
+            border-bottom: @border;
+            padding: 8px;
+            color: #c4c8cc;
+            display: flex;
+            align-items: center;
+            > *:not(:last-child) {
+                margin-right: 8px;
+            }
+            .ArrowIcon {
+                color: #9ea3a8;
+                font-size: 12px;
+            }
+            &.PermissionContentSelected {
+                color: #2d3033;
+            }
+            &.PermissionContentRoot {
+                font-weight: bold;
+            }
+
+            .TitleWrap {
+                flex-grow: 1;
+                flex-shrink: 1;
+                overflow: hidden;
+                justify-content: flex-start;
+                display: flex;
+                padding-right: 10px;
+                .Lock {
+                    margin-left: 16px;
+                    font-size: 12px;
+                }
+            }
+        }
+    }
+
+    &.PermissionTreeNoBorder {
+        .PermissionNode {
+            .PermissionContent,
+            .PermissionLeafGroup {
+                border-bottom: none;
+            }
+        }
+    }
+}
+
+.LockPopconfirm {
+    width: 286px;
+    .ant-popover-message-title {
+        padding-left: 0;
+    }
+    .LockTip {
+        font-size: 14px;
+        color: #5e6266;
+        line-height: 22px;
+        > h2 {
+            font-size: 14px;
+            font-weight: bold;
+            color: #262626;
+            margin-bottom: 8px;
+        }
+    }
+}

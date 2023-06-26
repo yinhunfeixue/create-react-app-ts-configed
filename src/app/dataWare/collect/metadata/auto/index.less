@@ -1,0 +1,285 @@
+@borderColor: #e6e8ed;
+:global {
+    .editautoDay {
+        // position: relative;
+        // top: -30px;
+        // margin-left: 65px;
+        display: flex;
+        align-items: center;
+        > *:not(:last-child) {
+            margin-right: 12px;
+        }
+        .editautoDayTime {
+            // float: right;
+            // margin-top: 4px;
+            // margin-right: 23px;
+        }
+
+        .editautoDayCheck {
+            .ant-checkbox-group-item {
+                position: relative;
+                .ant-checkbox-inner:after {
+                    left: 4.571429px;
+                    top: 2.142857px;
+                    width: 4.714286px;
+                    height: 7.142857px;
+                }
+                border: 1px solid #c0c6cc;
+                margin-left: -1px;
+                margin-top: -1px;
+                margin-right: 0;
+                height: 28px;
+                line-height: 28px;
+                font-size: 12px;
+
+                .ant-checkbox-checked .ant-checkbox-inner {
+                    border: none;
+                    width: 12px;
+                    height: 12px;
+                    border-radius: 50%;
+                    background-color: #4d73ff;
+                }
+
+                .ant-checkbox + span {
+                    padding-left: 12px;
+                    padding-right: 12px;
+                }
+            }
+
+            .ant-checkbox-wrapper-checked {
+                border: 1px solid #4d73ff !important;
+                border-bottom: 1px solid #4d73ff;
+                background: #f7f8fa;
+                z-index: 1;
+            }
+            // background: #fff;
+            border-radius: 2px;
+            line-height: 22px;
+            width: calc(~'48px * 7');
+
+            .ant-checkbox {
+                position: absolute;
+                right: 2px;
+                top: 14px;
+
+                .ant-checkbox-inner {
+                    background-color: transparent;
+                    border: none;
+                }
+            }
+        }
+    }
+
+    .editautoDay .editautoDayCheck .ant-checkbox-group-item {
+        width: 49px;
+        text-align: center;
+        border-bottom: 1px solid #c0c6cc;
+        position: relative;
+        word-break: keep-all;
+        white-space: nowrap;
+    }
+
+    .editautoDay.editautoMonth {
+        .editautoDayCheck {
+            width: calc(~'48px * 10');
+            border-bottom: none;
+        }
+    }
+    .editautoDay .editautoDayCheck .ant-checkbox-group-item .ant-checkbox-inner:after {
+        top: 5px;
+    }
+}
+
+.autoCollection {
+    .tableStatus {
+        display: inline-block;
+        width: 100%;
+        color: #b3b3b3;
+        padding: 0px 10px;
+    }
+    .dot {
+        width: 6px;
+        height: 6px;
+        border-radius: 50%;
+        background: #b3b3b3;
+        display: inline-block;
+        margin-right: 4px;
+    }
+    .tableActiveStatus {
+        display: inline-block;
+        width: 100%;
+        color: var(--primaryColor);
+        padding: 0px 10px;
+    }
+    .dotActive {
+        width: 6px;
+        height: 6px;
+        border-radius: 50%;
+        background: var(--primaryColor);
+        display: inline-block;
+        margin-right: 4px;
+    }
+    .tableSwitch {
+        height: 22px !important;
+        float: right;
+    }
+    .top_filter {
+        button {
+            margin-left: 8px;
+        }
+    }
+    .datasourceSelect {
+        margin-right: 8px;
+    }
+}
+.editAutoCollection {
+    .formFirstTitle {
+        font-size: 16px;
+        font-family: PingFangSC-Regular, PingFang SC;
+        color: #333;
+        margin-bottom: 30px;
+    }
+    .formSecondTitle {
+        font-size: 14px;
+        color: #333;
+        margin: 30px 0px 20px 0px;
+    }
+    // .ant-form-item-label {
+    //     display: inline-block;
+    // }
+    // .ant-form-item-control-wrapper {
+    //     display: inline-block;
+    //     width: 540px;
+    // }
+
+    .formtableContainer {
+        height: auto;
+        border: 1px solid @borderColor;
+        border-left: none;
+        .checkboxContainer {
+            width: 100%;
+            height: 100%;
+            position: relative;
+            overflow: hidden;
+            .checkboxMiddle {
+                .checkboxDiv {
+                    height: 70px;
+                    width: 340px;
+                    box-sizing: border-box;
+                    background: #f7f8fa;
+                    border-bottom: @borderColor 1px solid;
+                    border-left: @borderColor 1px solid;
+                    position: relative;
+                    padding-top: 25px;
+                    padding-left: 22px;
+                    .disabledTip {
+                        width: 100%;
+                        height: 100%;
+                        background: rgba(0, 0, 0, 0.5);
+                        color: #fff;
+                        padding-top: 25px;
+                        text-align: center;
+                        position: absolute;
+                        top: 0;
+                        left: 0;
+                        cursor: pointer;
+                        font-size: 14px;
+                        display: none;
+                    }
+                    //.ant-checkbox-wrapper{
+                    //    padding-top: 25px;
+                    //    padding-left: 22px;
+                    //    width: 100%;
+                    //    height: 100%;
+                    //}
+                    .setInfo {
+                        font-size: 14px;
+                        color: #b3b3b3;
+                        position: absolute;
+                        top: 25px;
+                        right: 0px;
+                        margin-right: 40px;
+                        width: 100px;
+                        span {
+                            text-align: left;
+                        }
+                    }
+                }
+                .checkboxDiv:hover .disabledTip {
+                    display: block;
+                }
+                div.checked {
+                    background: #fff;
+                    border-right: none;
+                    border-left: 4px solid var(--primaryColor);
+                    box-shadow: -6px 0px 6px 0px rgba(0, 0, 0, 0.2);
+                    position: relative;
+                    z-index: 2;
+                }
+            }
+            .checkboxMiddle:last-child {
+                .checkboxDiv {
+                    border-bottom: none;
+                }
+            }
+        }
+        .checkboxRight {
+            position: absolute;
+            top: 0;
+            left: 340px;
+            height: 100%;
+            right: 0;
+            box-shadow: 0px 0px 6px 0px rgba(0, 0, 0, 0.2);
+            z-index: 1;
+            padding: 10px 30px;
+            overflow: auto;
+
+    
+            > h2 {
+                font-size: 14px;
+                font-weight: 600;
+                color: #1a1a1a;
+                line-height: 22px;
+                margin-bottom: 16px !important;
+            }
+            > *:not(:last-child) {
+                margin-top: 0;
+                margin-bottom: 12px;
+            }
+            > *:last-child{
+                margin-bottom: 0;
+            }
+            .checkboxRightForm {
+                .ant-form-item-control-wrapper {
+                    width: calc(~'100% - 120px');
+                    padding-top: 4px;
+                }
+            }
+            .checkboxBottomForm {
+                padding-left: 20px;
+                .timeTitle {
+                    width: 130px;
+                    display: inline-block;
+                }
+                .ant-form-item-label {
+                    vertical-align: inherit;
+                }
+                .ant-radio-wrapper {
+                    margin-right: 30px;
+                    span {
+                        font-size: 12px;
+                    }
+                }
+                .ant-select,
+                .ant-select-selection--single {
+                    min-width: 100px;
+                }
+                .timeEndTip {
+                    margin-left: 10px;
+                    font-size: 12px;
+                    color: #b3b3b3;
+                }
+            }
+        }
+    }
+}

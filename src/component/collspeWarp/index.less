@@ -1,0 +1,50 @@
+.foldBlock{
+    overflow: hidden;
+    background: #FFFFFF;
+    .foldHeader{
+        margin-bottom: 8px;
+        .arrowImg{
+            width: 21px;
+            text-align: center;
+            display: inline-block;
+        }
+    }
+    .foldIcon{
+      width: 5px;
+      height: 6px;
+      cursor: pointer;
+    }
+    .foldName{
+        font-size:12px;
+        font-family:PingFangSC-Regular,PingFang SC;
+        font-weight:400;
+        color:rgba(0,0,0,1);
+        line-height:20px;
+    //   font-size: 14px;
+    //   font-weight: bold;
+    }
+    .collseBlock{
+        padding-left: 14px;
+        max-height: 0;
+        overflow: hidden;
+    }
+    .block{
+        padding-left: 14px;
+        transition-duration: 0.3s, 0.3s;
+        transition-timing-function: cubic-bezier(0.645, 0.045, 0.355, 1), cubic-bezier(0.645, 0.045, 0.355, 1);
+        transition-delay: 0s, 0s;
+        max-height: 9999px;
+        overflow: hidden;
+    }
+  }
+  .disableBlock{
+    .foldHeader{
+        margin-bottom: 8px;
+        color: #999;
+        .arrowImg{
+            width: 21px;
+            text-align: center;
+            display: inline-block;
+        }
+    }
+  }

@@ -1,0 +1,78 @@
+.ModelItem {
+    border-radius: 2px;
+    border: 1px solid #e6e8ed;
+    padding: 16px;
+    transition: all 0.3s;
+    position: relative;
+    cursor: pointer;
+    overflow: hidden;
+    &:hover {
+        box-shadow: 0px 2px 16px 0px rgba(0, 0, 0, 0.12);
+        border: 1px solid #4471f3;
+    }
+    > header {
+        font-size: 16px;
+        font-weight: 600;
+        color: #262626;
+        line-height: 22px;
+        margin-bottom: 20px;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+
+        > *:not(:last-child) {
+            margin-right: 8px;
+        }
+    }
+
+    > main {
+        font-size: 14px;
+        font-weight: 400;
+        color: #5e6266;
+        line-height: 22px;
+        margin-bottom: 17px;
+        :global {
+            .anticon {
+                margin-right: 8px;
+            }
+        }
+    }
+
+    > footer {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+
+        .TypeTag {
+            background: #e6ebf0;
+            border-radius: 2px;
+
+            font-size: 12px;
+            color: #667380;
+            line-height: 20px;
+
+            padding: 0 8px;
+        }
+    }
+
+    .StatusBar {
+        position: absolute;
+        right: 0;
+        top: 0;
+        display: flex;
+        align-items: center;
+        > *:not(:last-child) {
+            margin-right: 5px;
+        }
+        .IconStatus {
+            width: 24px;
+            height: 24px;
+            background: #c4c8cc;
+            border-radius: 0px 2px 0px 8px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: white;
+        }
+    }
+}

@@ -1,0 +1,233 @@
+.SysDetailPage {
+  height: 100vh;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  .titleIcon{
+    display: flex;
+    align-items: center;
+    >span{
+        margin-right: 12px;
+    }
+}
+  .SysDetailPageContent {
+      flex-grow: 1;
+      flex-shrink: 1;
+      overflow: hidden;
+      .TableLayout{
+        main{
+            padding: 0 !important;
+            .SQLGraph{
+                height: 85vh;
+            }
+        }
+      }
+      .TableLayoutHeader{
+        display: none !important;
+      }
+      .ant-collapse > .ant-collapse-item > .ant-collapse-header {
+          padding: 13px 16px;
+      }
+      .ant-collapse-header {
+
+          &:hover {
+              background-color: rgba(244, 245, 247, 1);
+          }
+
+          .CollapseItemHeaderArrow {
+              transition: all 0.3s;
+          }
+
+          .CollapseItemHeader {
+              font-weight: 600;
+              .CollapseItemHeaderIcon {
+                  margin-right: 8px;
+                  background-color: #ebf2ff;
+                  width: 20px;
+                  height: 20px;
+                  border-radius: 100%;
+                  display: inline-flex;
+                  align-items: center;
+                  justify-content: center;
+              }
+          }
+      }
+
+      .ant-collapse-content-box {
+          padding: 8px 16px 24px 16px !important
+      }
+
+      .ant-collapse-item-active {
+          .CollapseItemHeaderArrow {
+              transform: rotate(-90deg);
+          }
+      }
+
+      .ant-tabs.SysDetailPageTabs {
+          height: 100%;
+          background-color: white;
+          > .ant-tabs-nav {
+              background: #f7f8fa;
+              margin-bottom: 0;
+              padding: 0 16px;
+
+              .ant-tabs-tab {
+                  margin: 0;
+                  padding: 12px 20px;
+              }
+
+              &::before {
+                  content: '';
+                  position: absolute;
+                  left: 0;
+                  right: 0;
+                  bottom: 0;
+                  height: 1px;
+                  background-color: #d0d5de;
+                  border: none;
+              }
+          }
+          > .ant-tabs-content-holder {
+              padding: 0;
+              .ant-tabs-content {
+                  height: 100%;
+                  .ant-tabs-tabpane {
+                      height: 100%;
+                      overflow: auto;
+                      padding: 16px;
+                  }
+              }
+          }
+      }
+
+      .otherInfo {
+          display: flex;
+          .otherInfoItem {
+              margin-right: 8px;
+              height: 18px;
+              background: #c4c8cc;
+              border-radius: 2px;
+              line-height: 18px;
+              text-align: center;
+              color: #fff;
+              cursor: pointer;
+              font-size: 10px;
+              padding: 0 4px;
+              cursor: not-allowed;
+          }
+          .otherInfoItemSelected:hover {
+              background: #5b7fa3;
+              opacity: 0.8;
+          }
+          .otherInfoItemSelected {
+              background: #5b7fa3;
+          }
+      }
+  }
+  .ContentWrap {
+      padding: 16px 20px;
+      border-radius: 4px;
+      border: 1px solid #e6e8ed;
+      margin-bottom: 16px;
+      &:last-child{
+          margin-bottom: 0;
+      }
+      >.ModuleTitle {
+          margin-bottom: 16px;
+          .ddlSuffix{
+              color: #4D73FF;
+              cursor: pointer;
+          }
+      }
+  }
+  .listHorizontal{
+      span{
+          width: 88px;
+      }
+  }
+  pre{
+    height: 100%;
+    code span{
+        white-space: pre-wrap !important;
+    }
+    span.comment.linenumber.react-syntax-highlighter-line-number{
+        text-align: center !important;
+    }
+}
+
+  .tableInfo {
+      //padding: 16px 20px 20px 16px;
+      margin-top: 16px;
+      //background: #fff;
+      .ModuleTitle {
+          margin-bottom: 20px;
+          display: inline-block;
+      }
+      .updateTime{
+          color: #9ea3a8;
+          font-size: 12px;
+          margin-left: 15px;
+      }
+      .titleBtn {
+          margin-left: 24px;
+          font-family: PingFangSC-Regular, PingFang SC;
+          font-weight: 400;
+      }
+      .scrollBtn {
+          float: right;
+          span {
+              cursor: pointer;
+          }
+      }
+      .statics {
+          display: grid;
+          grid-template-columns: repeat(9, 1fr);
+          column-gap: 50px;
+          text-overflow: ellipsis;
+          white-space: nowrap;
+          overflow-x: auto;
+          div {
+              white-space: nowrap;
+              display: flex;
+              align-items: center;
+          }
+          .label {
+              color: #5E6266;
+              margin: 0 12px 0 8px;
+          }
+          .value {
+              font-size: 20px;
+              font-family: DINAlternate-Bold, DINAlternate;
+              font-weight: bold;
+              color: #1A1A1A;
+          }
+          .iconfont {
+              color: #4c79fc;
+              font-size: 20px;
+          }
+      }
+  }
+  .sqlVisible{
+    position: relative;
+    height: 100%;
+    textarea{
+        height: 100%;
+    }
+    .link{
+        position: absolute;
+        top: 8px;
+        right: 20px;
+        z-index: 1;
+        span{
+            font-size: 14px;
+        }
+    }
+  }
+}
+
+.sysDetailPageDdlModal{
+  .ant-modal-body{
+      height: 445px;
+      overflow: scroll;
+  }
+}

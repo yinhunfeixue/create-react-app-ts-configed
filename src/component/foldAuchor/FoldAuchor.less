@@ -1,0 +1,42 @@
+.FoldAuchor {
+    @iconSize: 32px;
+    position: sticky;
+    padding: 0 16px;
+    align-self: flex-start;
+    top: 0;
+    .FoldAuchorIcon {
+        width: @iconSize;
+        height: @iconSize;
+        transition: all 0.3s;
+        position: absolute;
+        background: #e6e8ed;
+        border-radius: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        left: 16px;
+        top: 0;
+    }
+
+    .FoldAuchorAuthor {
+        margin-top: calc(@iconSize ~' + 20px');
+        .ant-anchor-link {
+            padding: 8px 0 8px 16px;
+        }
+    }
+    &.FoldAuchorHide {
+        padding: 0;
+        .FoldAuchorIcon {
+            left: 100%;
+            transform: translateX(-100%) scaleX(-1);
+            width: 27px;
+            height: 32px;
+            border-radius: 0 100px 100px 0;
+            background-color: white;
+            box-shadow: 0px 2px 8px 0px rgba(0, 0, 0, 0.12);
+        }
+        .FoldAuchorAuthor {
+            display: none;
+        }
+    }
+}

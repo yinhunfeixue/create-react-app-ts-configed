@@ -1,0 +1,41 @@
+.ModelChart {
+    display: flex;
+    align-items: center;
+}
+
+.DotGroup {
+    margin-left: 16px;
+    .DotItem {
+        display: flex;
+        align-items: center;
+        font-size: 12px;
+        color: #5e6266;
+        .Icon {
+            width: 6px;
+            height: 6px;
+            border-radius: 100%;
+            margin-right: 8px;
+        }
+    }
+}
+
+.Tip {
+    width: 120px;
+    > h4 {
+        font-size: 12px;
+        font-weight: 500;
+        color: #ffffff;
+        margin-bottom: 8px;
+    }
+    .DotGroup {
+        margin-left: 0;
+        .DotItem {
+            color: white;
+            justify-content: space-between;
+            .Value {
+                flex: 1;
+                text-align: right;
+            }
+        }
+    }
+}

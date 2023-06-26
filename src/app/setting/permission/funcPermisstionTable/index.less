@@ -1,0 +1,104 @@
+.funcPermisstionTable {
+    overflow: hidden;
+
+    .record_list_wrap {
+        height: 100%;
+        overflow: auto;
+
+        &.record_list_wrap_show_footer {
+            padding-bottom: 45px;
+        }
+
+        .record_list_header {
+            padding: 12px 0;
+
+            .record_list_title {
+                font-size: 14px;
+                font-family: PingFangSC-Semibold, PingFang SC;
+                font-weight: 600;
+                color: #2d3033;
+            }
+
+            .record_list_checkall {
+                float: right;
+                padding-right: 6px;
+            }
+        }
+
+        .record_body:hover {
+            background-color: #f7f8fa;
+        }
+
+        .record_body {
+            padding: 12px 0px 6px 0px;
+            border-bottom: 1px solid #f0f2f7;
+            position: relative;
+
+            .record_title {
+                display: block;
+                width: 140px;
+                float: left;
+            }
+
+            .check_box_wrap {
+                width: calc(100% - 260px);
+                display: inline-block;
+                min-height: 24px;
+
+                .button_box {
+                    width: 144px;
+                    margin-left: 12px;
+                    // margin-bottom: 6px;
+                    position: relative;
+                    top: -6px;
+
+                    .button_box_title {
+                        display: inline-block;
+                        max-width: 88px;
+                        margin-right: 6px;
+                        word-break: keep-all;
+                        white-space: nowrap;
+                        overflow: hidden;
+                        text-overflow: ellipsis;
+                        position: relative;
+                        top: 6px;
+                    }
+                }
+            }
+
+            .right_box {
+                width: 120px;
+                text-align: right;
+                display: block;
+                float: right;
+            }
+
+            .ant-checkbox-wrapper {
+                margin-left: 0px;
+                margin-right: 8px;
+            }
+        }
+
+        .record_footer {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 45px;
+            border-top: 1px solid #e6e8ed;
+            background-color: white;
+            align-items: flex-end;
+            animation: record_footer_show 0.3s 1;
+
+            @keyframes record_footer_show {
+                0% {
+                    transform: translateY(100%);
+                }
+
+                100% {
+                    transform: none;
+                }
+            }
+        }
+    }
+}

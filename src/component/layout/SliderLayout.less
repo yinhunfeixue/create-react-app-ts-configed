@@ -1,0 +1,110 @@
+.SliderLayout {
+    @border: 1px solid #e6e8ed;
+
+    display: flex;
+    background-color: white;
+
+    .header {
+        border-bottom: @border;
+        height: 48px;
+        padding: 0 15px;
+        display: flex;
+        align-items: center;
+        font-size: 14px;
+        font-weight: 600;
+        color: #1a1a1a;
+        flex-grow: 0;
+        flex-shrink: 0;
+    }
+
+    .Slider {
+        width: 220px;
+        flex-grow: 0;
+        flex-shrink: 0;
+        border-right: 1px solid #e6e8ed;
+        overflow: hidden;
+
+        display: flex;
+        flex-direction: column;
+        > header {
+            .header;
+        }
+        .ant-tree {
+            .ant-tree-treenode {
+                width: 100%;
+            }
+        }
+    }
+
+    > main {
+        flex-grow: 1;
+        flex-shrink: 1;
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        width: 10px;
+        > header {
+            .header;
+            flex-grow: 0;
+            flex-shrink: 0;
+            justify-content: space-between;
+        }
+
+        .IconFold {
+            transition: all 0.3s;
+            position: absolute;
+            left: 0px;
+            top: 63px;
+            padding: 8px 3px;
+            background-color: white;
+            border-radius: 4px 0px 0px 4px;
+            border: 1px solid #e6e8ed;
+            border-right: none;
+            transform: translateX(-100%);
+            z-index: 99;
+        }
+    }
+
+    .ContentContainer {
+        padding: 15px;
+        flex-grow: 1;
+        flex-shrink: 1;
+        overflow: auto;
+        height: 10px;
+    }
+
+    &.SliderLayoutFoled {
+        .Slider {
+            width: 0 !important;
+            opacity: 0;
+            pointer-events: none;
+            transition: all 0.3s;
+        }
+
+        .IconFold {
+            transform: none;
+            opacity: 0.3;
+            border-radius: 0px 4px 4px 0px;
+            border-right: 1px solid #e6e8ed;
+            border-left: none;
+            &:hover {
+                opacity: 1;
+            }
+        }
+    }
+
+    .react-resizable {
+        position: relative;
+    }
+
+    .react-resizable-handle {
+        position: absolute;
+        width: 10px;
+        height: 100%;
+        bottom: 0;
+        right: -5px;
+        cursor: col-resize;
+        z-index: 1;
+        border-right: 1px solid #e0e0e0;
+    }
+}

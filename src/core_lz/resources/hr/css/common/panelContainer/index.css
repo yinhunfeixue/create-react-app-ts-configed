@@ -1,0 +1,30 @@
+.pc-title-left{
+    line-height: 35px;
+    font-size: 18px;
+    color: #fff;
+    display: inline-block;
+}
+.pc-title-right{
+    display: inline-block;
+    float: right;
+}
+.pc-title{
+    height: 32px;
+    margin-bottom: 10px;
+
+}
+.pc-filter{
+    padding: 9px 0;
+    background: #1d2e5b;
+    margin: 16px -16px 16px -16px;
+     color: rgba(255, 255, 255, 0.8);
+    font-size: 14px;
+    padding-left: 20px;
+}
+.pc-filter .ant-calendar-picker{margin-left: 8px;}
+.pc-filter  .ant-select .ant-select-selection.ant-select-selection--single{
+    margin-left: 8px;
+}
+.pc-filter  .ant-select .ant-select-selection-selected-value{
+    max-width: 140px;
+}

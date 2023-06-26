@@ -1,0 +1,70 @@
+
+.wrap {
+  width: 220px;
+  background-color: #fff;
+  height: 100%;
+  font-size: 14px;
+  border-right: 1px solid #E6E8ED;
+  .header {
+    display: flex;
+    align-items: center;
+    height: 48px;
+    padding: 0 16px;
+    border-bottom: 1px solid #E6E8ED;
+    h2{
+      font-size: 14px;
+      color: #1A1A1A;
+      margin: 0;
+    }
+    span{
+      font-size: 12px;
+      color: #9EA3A8;
+      margin-left: 10px;
+      flex: 1;
+    }
+    i{
+      width: 20px;
+      height: 20px;
+      font-style: normal;
+      font-size: 14px;
+    }
+  }
+  .search{
+    padding: 16px;
+  }
+  .list{
+    .menu{
+      border-bottom: 1px solid #E6E8ED;
+      .title{
+        height: 40px;
+        padding: 0 16px;
+        img{
+          cursor: pointer;
+          margin-right: 10px;
+        }
+      }
+    }
+    .subMenu{
+      list-style: none;
+      li{
+        height: 40px;
+        padding-left: 36px;
+        padding-right: 8px;
+        color: #2D3033;
+      }
+    }
+  }
+}
+
+
+.treeWrap{
+  font-size: 14px;
+  :global{
+    .ant-tree-treenode{
+      padding-left: 16px;
+    }
+    .ant-tree-treenode-selected{
+      background: #F5F7FF;
+    }
+  }
+}

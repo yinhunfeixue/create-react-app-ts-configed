@@ -1,0 +1,9 @@
+
+.status{
+  span:first-child{
+    margin-right: 10px;
+  }
+  .text{
+    margin-left: 10px;
+  }
+}

@@ -1,0 +1,11 @@
+
+.drawerWrap {
+  :global{
+    .ant-radio.ant-radio-disabled.ant-radio-checked .ant-radio-inner {
+      border: 4px solid #c0c6cc;
+    }
+    .ant-radio.ant-radio-disabled + span{
+      color: #2D3033;
+    }
+  }
+}

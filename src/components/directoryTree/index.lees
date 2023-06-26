@@ -1,0 +1,39 @@
+
+.wrap {
+  height: 100%;
+  .search{
+    padding: 16px;
+  }
+  &.search{
+    .treeWrap{
+      height: calc(100% - 64px);
+    }
+  }
+  .treeWrap{
+    font-size: 14px;
+    color: #2D3033;
+    height: 100%;
+    overflow: scroll;
+    :global{
+      .ant-tree-treenode{
+        padding-left: 12px;
+        &:hover{
+          background: #F4F5F7;
+        }
+      }
+      .ant-tree-treenode-selected{
+        background: #F5F7FF;
+        &:hover{
+          color: #4d73ff;
+        }
+      }
+      .ant-tree-node-content-wrapper:hover{
+        background-color: transparent !important;
+        color: unset;
+      }
+      .ant-tree-node-content-wrapper:hover{
+        background-color: transparent !important;
+      }
+    }
+  }
+}

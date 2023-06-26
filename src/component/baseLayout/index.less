@@ -1,0 +1,447 @@
+.header_profile {
+    height: 52px;
+    z-index: 1;
+    right: 0;
+    width: 120px;
+    float: right;
+    .pull-right {
+        line-height: 45px;
+        color: #fff;
+    }
+
+    .pull-right a {
+        padding: 0px 20px;
+        display: block;
+    }
+    .pull-right img {
+        width: 24px;
+        margin-right: 6px;
+    }
+    .pull-right:hover {
+        cursor: pointer;
+        /*color: var(--primaryColor);*/
+    }
+    .versionTip {
+        width: 80px;
+        height: 28px;
+        background: #ffffff;
+        border-radius: 16px;
+        text-align: center;
+        line-height: 28px;
+        color: #1890ff;
+        cursor: pointer;
+        display: inline-block;
+    }
+    .profileArea:hover {
+        background: #f4f5f7;
+    }
+    .profileArea {
+        display: flex;
+        padding-left: 8px;
+        padding-right: 8px;
+        height: 100%;
+        align-items: center;
+        > img {
+            flex-grow: 0;
+            flex-shrink: 0;
+        }
+        .profileName {
+            white-space: nowrap;
+            word-break: keep-all;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+        .iconfont {
+            color: #5e6266;
+            display: inline-block;
+        }
+        .rotateIcon {
+            transform: rotate(180deg);
+        }
+    }
+}
+.versionContent {
+    padding: 16px 24px;
+    background: #fff;
+    box-shadow: 0px 3px 6px 0px rgba(102, 102, 102, 0.1);
+    margin-top: 10px;
+}
+
+.resetPasswordContainer {
+    position: absolute;
+    top: 0;
+    right: 0;
+    left: 0;
+    bottom: 0;
+    z-index: 9999;
+    background: rgba(27, 28, 31, 0.5);
+    backdrop-filter: blur(2px);
+}
+
+.resetPasswordForm {
+    position: absolute;
+    top: 100px;
+    left: 50%;
+    transform: translate(-50%, 0);
+    padding: 30px;
+    width: 368px;
+    background: #fff;
+    box-shadow: 0 15px 30px 0 rgba(0, 0, 1, 0.1);
+    border-radius: 4px;
+}
+
+.resetPasswordForm .ant-input-affix-wrapper:hover .ant-input:not(.ant-input-disabled),
+.resetPasswordForm .ant-input-affix-wrapper .ant-input:not(:first-child) {
+    padding-left: 40px;
+}
+.fullScreen {
+    #pageContent {
+        padding: 0px !important;
+    }
+}
+.baseLayout {
+    .trigger {
+        position: fixed;
+        width: 64px;
+        bottom: 0px;
+        left: 0px;
+        height: 36px;
+        text-align: center;
+        line-height: 36px;
+        box-shadow: 0px -1px 0px 0px rgba(0, 0, 0, 0.2);
+        background: #213359;
+        cursor: pointer;
+        z-index: 4;
+        svg {
+            width: 18px;
+            height: 18px;
+            fill: #fff;
+            opacity: 0.6;
+        }
+    }
+    .trigger:hover {
+        svg {
+            opacity: 1;
+        }
+    }
+    .collapsedContent {
+        margin-left: 64px;
+        height: 100vh;
+        transition: all 0.2s;
+    }
+    .uncollapsedContent {
+        margin-left: 209px;
+        height: 100vh;
+        transition: all 0.2s;
+    }
+    .layoutContent {
+        overflow: hidden;
+        position: relative;
+        height: 100vh;
+        .ant-layout-header {
+            height: 52px;
+            border-bottom: 1px solid #e6e8ed;
+            box-sizing: content-box;
+        }
+        .pageContent {
+            background: #f7f8fa;
+            flex-grow: 1;
+            flex-shrink: 1;
+            overflow: auto;
+            .pageArea {
+                background: #fff;
+                overflow-x: hidden;
+                min-height: calc(~'100vh - 85px');
+            }
+        }
+    }
+    .menuSider {
+        width: 209px !important;
+        min-width: 209px !important;
+        max-width: 209px !important;
+        background: #fff;
+        transition: all 0.2s;
+    }
+    .menuSiderMini {
+        width: 64px !important;
+        min-width: 64px !important;
+        max-width: 64px !important;
+        background: #fff;
+        transition: all 0.2s;
+    }
+    .menuContainer {
+        height: 100%;
+        width: 64px;
+        background: linear-gradient(180deg, #24375b 0%, #213359 100%);
+        display: inline-block;
+        overflow-y: hidden;
+
+        .menuContent {
+            height: calc(~'100vh - 112px');
+        }
+        .menuItem {
+            margin: 8px 0;
+            height: 64px;
+            width: 100%;
+            cursor: pointer;
+            .menuTitle {
+                text-align: center;
+                height: 100%;
+                padding-top: 8px;
+                opacity: 0.7;
+                .menuLogo img {
+                    width: 24px;
+                    margin: 0px auto 4px auto;
+                }
+                .menuName {
+                    color: #fff;
+                    font-size: 14px;
+                }
+            }
+        }
+        .menuItemSelected {
+            background: rgba(14, 24, 58, 0.6);
+            font-weight: 600;
+            .menuTitle {
+                opacity: 1 !important;
+            }
+        }
+        .menuItem:hover {
+            background: rgba(14, 24, 58, 0.6);
+            .menuTitle {
+                opacity: 0.7;
+            }
+        }
+    }
+}
+
+.PageHeader.ant-layout-header {
+    display: flex;
+    height: 52px;
+    padding: 0;
+    background: white;
+    align-items: center;
+    border-bottom: 1px solid #e6e8ed;
+    .Breadcrumb-container {
+        flex-grow: 1;
+        flex-shrink: 1;
+    }
+
+    .HLogo {
+        width: 64px;
+        height: 100%;
+        margin-bottom: 0;
+    }
+}
+.FullPageContent {
+    #pageContent {
+        padding: 0 !important;
+    }
+}
+.logo {
+    width: 100%;
+    height: 52px;
+    line-height: 51px;
+    text-align: center;
+    margin-bottom: 24px;
+    cursor: pointer;
+    background: linear-gradient(270deg, #5c89ff 0%, #295df0 100%);
+    img {
+        width: 28px;
+    }
+}
+.Breadcrumb-container {
+    width: 60%;
+    display: inline-block;
+    margin-left: 15px;
+    vertical-align: text-bottom;
+    height: 100%;
+    line-height: 100%;
+    padding-top: 15px;
+    font-size: 14px;
+    .ant-breadcrumb-link {
+        a {
+            color: #000;
+        }
+        span {
+            color: #9ea3a8;
+        }
+    }
+    .BreadcrumbLink {
+        color: #2d3033 !important;
+        cursor: pointer;
+    }
+    .BreadcrumbLink:hover {
+        color: #4d73ff !important;
+    }
+}
+.layoutSubMenuContent {
+    float: right;
+    background: #fff;
+    width: 144px;
+    height: 100vh;
+    transition: all 0.2s;
+    border-right: 1px solid #e6e8ed;
+    .subMenuTitle {
+        height: 52px;
+        color: #1a1a1a;
+        font-size: 14px;
+        font-family: PingFangSC-Semibold, PingFang SC;
+        font-weight: 600;
+        line-height: 52px;
+        padding-left: 16px;
+        box-sizing: content-box;
+        border-bottom: 1px solid #e6e8ed;
+    }
+    .subMenuItem {
+        height: calc(~'100vh - 62px');
+        padding: 8px;
+        .ant-menu-root {
+            border: none;
+            background: transparent;
+            min-height: calc(~'100vh - 78px');
+            .ant-menu-sub.ant-menu-inline {
+                background: none;
+            }
+            .ant-menu-submenu-title {
+                padding: 0px 8px !important;
+                margin: 0px;
+                .ant-menu-submenu-arrow {
+                    right: 8px;
+                }
+            }
+            .ant-menu-item-group-title {
+                color: #9ea3a8;
+                padding: 8px 8px 6px 8px;
+            }
+            .ant-menu-item-selected {
+                background: #f4f5f7;
+                color: #4d73ff !important;
+            }
+            .ant-menu-item-selected::after {
+                opacity: 0;
+            }
+            .ant-menu-item {
+                color: #5e6266;
+                height: 32px;
+                line-height: 32px;
+                padding-left: 20px !important;
+                margin: 4px 0;
+            }
+            .ant-menu-item:hover {
+                color: #4d73ff;
+            }
+            .ant-menu-item-group-list {
+                padding: 0px;
+                .ant-menu-item {
+                    padding: 0 4px 0 16px !important;
+                }
+            }
+        }
+    }
+    .subMenuItem > .ant-menu > .ant-menu-item {
+        padding: 0px 8px !important;
+        color: #2d3033;
+    }
+    .subMenuItem > .ant-menu > .ant-menu-item-selected {
+        background: transparent;
+    }
+}
+
+.UserOverlay {
+    background: #ffffff;
+    box-shadow: 0px 4px 16px 0px rgba(0, 0, 0, 0.12);
+    border-radius: 2px;
+    border: 1px solid #e6e8ed;
+    padding: 16px;
+    width: 280px;
+
+    .UserInfo {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+
+        font-size: 12px;
+        font-weight: 400;
+        color: #5e6266;
+
+        .ImgHead {
+            width: 40px;
+            height: 40px;
+            border-radius: 100%;
+        }
+
+        > * {
+            margin-bottom: 4px;
+        }
+
+        > h3 {
+            font-size: 16px;
+            font-family: PingFangSC-Semibold, PingFang SC;
+            font-weight: 600;
+            color: #2d3033;
+        }
+    }
+    .IconLabel {
+        color: #2d3033;
+        height: unset;
+        padding: 7px 0;
+        line-height: unset;
+        word-break: keep-all;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        > *:not(:last-child) {
+            margin-right: 10px;
+        }
+    }
+
+    .ant-divider {
+        margin: 8px 0;
+    }
+
+    > footer {
+        display: flex;
+        justify-content: space-between;
+        > * {
+            width: 100%;
+        }
+        > *:not(:last-child) {
+            margin-right: 8px;
+        }
+    }
+}
+
+.NoPermissionContent {
+    height: 100%;
+    padding: 16px;
+    display: flex;
+    flex-direction: column;
+    > main {
+        background-color: white;
+        text-align: center;
+        flex-grow: 1;
+        flex-shrink: 1;
+        padding: 80px;
+
+        .IconFont {
+            font-size: 63px;
+            color: #ff4d4f;
+            margin-bottom: 28px;
+        }
+
+        h2 {
+            font-size: 28px;
+            font-weight: 500;
+            color: #2d3033;
+            line-height: 36px;
+        }
+
+        p {
+            font-size: 16px;
+            font-weight: 400;
+            color: #5e6266;
+            line-height: 22px;
+        }
+    }
+}

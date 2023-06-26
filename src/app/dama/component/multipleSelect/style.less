@@ -1,0 +1,38 @@
+.multiple_select_container {
+    position: relative;
+
+    .multiple_select_title {
+        background: white;
+        cursor: pointer;
+        // height: 33px;
+        padding: 5px;
+        border: 1px solid #d9d9d9;
+        border-top-left-radius: 4px;
+        border-bottom-left-radius: 4px;
+        border-right: 0;
+        display: inline-block;
+        min-width: 120px;
+        text-align: center;
+    }
+
+    .multiple_select {
+        position: absolute;
+        min-width: 120px;
+        z-index: 1000000000;
+        margin: 0;
+        text-align: left;
+        background-color: #fff;
+        border-radius: 4px;
+        -webkit-box-shadow: 0 2px 8px rgba(0,0,0,.15);
+        box-shadow: 0 2px 8px rgba(0,0,0,.15);
+        background-clip: padding-box;
+        background: white;
+        padding: 10px;
+
+        label {
+            display: block;
+        }
+
+        label:nth-child(2) {}
+    }
+}

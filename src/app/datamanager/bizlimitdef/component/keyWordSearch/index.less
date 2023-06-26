@@ -1,0 +1,364 @@
+.searchWrap {
+    > *:not(:last-child) {
+        margin-bottom: 16px;
+    }
+    .searchContent {
+        display: flex;
+        align-items: center;
+        padding: 10px 20px;
+        min-height: 48px;
+        background: #ffffff;
+        box-shadow: 0px 0px 4px 0px rgba(0, 0, 0, 0.12);
+        border-radius: 2px;
+        border: 1px solid #e6e8ed;
+        // margin-bottom: 16px;
+        .IconSearch {
+            font-size: 17px;
+            margin-right: 18px;
+            color: #5e6266;
+        }
+        .kwSearch {
+            background: #ffffff;
+            outline: none;
+            display: flex;
+            flex-flow: wrap;
+            flex-grow: 1;
+            flex-shrink: 1;
+            .kwBlock {
+                margin: 4px 0;
+            }
+            .kwBlock:hover {
+                .del {
+                    display: inline-block;
+                    cursor: pointer;
+                    top: -5px;
+                    right: 4px;
+                    position: absolute;
+                }
+            }
+            .selectList {
+                position: relative;
+                .blockList {
+                    z-index: 10;
+                    position: absolute;
+                    top: -4px;
+                    left: 0;
+                    background: rgba(255, 255, 255, 1);
+                    box-shadow: 0px 0px 8px 0px rgba(0, 0, 0, 0.15);
+                    border-radius: 4px;
+                    background: #ffffff;
+                    min-width: 200px;
+                    max-height: 400px;
+                    overflow: auto;
+                    .blockOpiton {
+                        padding: 3px 16px;
+                        cursor: pointer;
+                        .optionLogo {
+                            img {
+                                width: 12px;
+                                height: 12px;
+                                margin-right: 8px;
+                            }
+                        }
+                    }
+                    .blockOpiton:hover {
+                        background: rgba(238, 238, 238, 1);
+                        //opacity:0.09;
+                    }
+                }
+            }
+            .kwBlock {
+                position: relative;
+                min-width: 10px;
+                line-height: 24px;
+                .searchBlock {
+                    line-height: 24px;
+                    outline: none;
+                    padding: 2px 8px;
+                    font-size: 12px;
+                    border-radius: 2px;
+                    vertical-align: top;
+                    -webkit-user-modify: read-write-plaintext-only;
+                }
+                .normal {
+                    background: rgba(186, 231, 255, 1);
+                    box-shadow: inset 1px 0px 0px 0px #2194ff;
+                }
+                .normalIn {
+                    border-bottom: 4px solid rgba(186, 231, 255, 1);
+                }
+                .del {
+                    display: none;
+                    margin-left: 3px;
+                    cursor: pointer;
+                    background: rgba(0, 0, 0, 0.65);
+                    border-radius: 20px;
+                    height: 14px;
+                    width: 14px;
+                    color: #fff;
+                    text-align: center;
+                    font-size: 12px;
+                    line-height: 13px;
+                    svg {
+                        width: 8px;
+                    }
+                }
+                .normal1 {
+                    background: rgba(208, 244, 232, 1);
+                    box-shadow: inset 1px 0px 0px 0px #64c085;
+                }
+                .normal2 {
+                    background: rgba(238, 238, 238, 1);
+                    box-shadow: inset 1px 0px 0px 0px rgb(139, 139, 139);
+                }
+                .unormal1 {
+                    background: #ffe7ba;
+                    box-shadow: inset 1px 0px 0px 0px #f1a71c;
+                }
+                .unormal2 {
+                    background: #ffccc7;
+                    box-shadow: inset 1px 0px 0px 0px #cc0000;
+                }
+                .block {
+                    height: 28px;
+                    line-height: 24px;
+                    outline: none;
+                }
+            }
+            // .kwBlock:nth-child(1){
+            //     .normal1{
+            //             background: rgba(186, 231, 255, 1)
+            //     }
+            // }
+            // .kwBlock:nth-child(3){
+            //     .normal1{
+            //             background:rgba(238, 238, 238, 1)
+            //     }
+            // }
+            // .kwBlock:nth-child(4){
+            //     .normal1{
+            //             background:rgba(255, 231, 186, 1)
+            //     }
+            // }
+            // .kwBlock:nth-child(5){
+            //     .normal1{
+            //             background:#FFCCC7
+            //     }
+            // }
+            // .kwBlock:nth-child(6){
+            //     .normal1{
+            //             background:#BAE7FF
+            //     }
+            // }
+        }
+        .rightBtn {
+            position: absolute;
+            right: 8px;
+            top: 0;
+            padding-top: 4px;
+            .clear {
+                cursor: pointer;
+                display: inline-block;
+                width: 24px;
+                margin-right: 12px;
+            }
+            .del {
+                display: inline-block;
+                width: 24px;
+                cursor: pointer;
+                width: 16px;
+                margin-right: 8px;
+                img {
+                    vertical-align: top;
+                    padding-top: 9px;
+                }
+            }
+            .blankLine {
+                display: inline-block;
+                width: 1px;
+                background: #dbdbdb;
+                height: 25px;
+                float: right;
+                margin-right: 7px;
+                margin-top: 5px;
+            }
+            .intell {
+                padding-right: 6px;
+                padding-left: 4px;
+                float: right;
+                display: inline-block;
+            }
+        }
+    }
+    .ambiguity {
+        .warnList {
+            padding: 12px 17px;
+            line-height: 22px;
+            // padding-left: 48px;
+            // padding-right: 198px;
+            position: relative;
+            // margin-bottom: 24px;
+            background: #f7f8fa;
+            border-radius: 2px;
+            border: 1px solid #e6e8ed;
+            .warnLogo {
+                position: absolute;
+                left: 16px;
+                height: 24px;
+                width: 24px;
+                top: 50%;
+                transform: translate(0, -50%);
+            }
+            .warnBtn {
+                position: absolute;
+                margin-bottom: 20px;
+                right: 16px;
+                top: 50%;
+                transform: translate(0, -50%);
+
+                text-align: center;
+                button {
+                    width: 80px;
+                }
+            }
+            .ant-btn.ant-btn-primary {
+                padding: 0 15px;
+            }
+            button {
+                height: 32px;
+                width: initial;
+                font-size: 14px;
+                border-radius: 4px;
+                margin-left: 0;
+            }
+        }
+    }
+
+    .searchView {
+        // background:rgba(255,255,255,1);
+        // margin-top: 8px;
+        margin-bottom: 20px;
+        line-height: 40px;
+        background: rgba(255, 255, 255, 1);
+        box-shadow: 0px 2px 4px 0px rgba(18, 28, 37, 0.04), 0px 2px 4px -2px rgba(18, 28, 37, 0.04);
+        border-radius: 4px;
+        padding-left: 8px;
+
+        .searchViewTooltip {
+            padding-left: 8px;
+        }
+
+        .viewShowIcon {
+            padding: 1px 16px;
+        }
+        .searchViewTooltip,
+        .viewShowIcon,
+        .viewManIcon {
+            cursor: pointer;
+            img {
+                display: inline-block;
+            }
+            i {
+                display: none;
+                img {
+                    display: none;
+                }
+            }
+        }
+
+        .searchViewTooltip:hover,
+        .viewShowIcon:hover,
+        .viewManIcon:hover {
+            cursor: pointer;
+            img {
+                display: none;
+            }
+            i {
+                display: inline-block;
+                img {
+                    display: inline-block;
+                }
+            }
+        }
+
+        .viewListOverHidden {
+            max-height: 40px;
+            overflow: hidden;
+        }
+
+        .viewTag {
+            float: left;
+            padding: 1px 8px;
+            background: rgba(255, 255, 255, 1);
+
+            .viewTagDef {
+                cursor: pointer;
+                border: 1px solid rgba(243, 246, 249, 1);
+                /* width: 1152px; */
+                // height: 40px;
+                // background: rgba(255,255,255,1);
+                box-shadow: 0px 2px 4px 0px rgba(18, 28, 37, 0.04), 0px 2px 4px -2px rgba(18, 28, 37, 0.04);
+                border-radius: 4px;
+                border: 1px solid rgba(243, 246, 249, 1);
+                background: rgba(245, 245, 245, 1);
+
+                .textContent {
+                    padding: 1px 8px;
+                }
+            }
+
+            .viewTagSelected {
+                background: rgba(255, 255, 255, 1);
+                border-radius: 2px;
+                border: 1px solid rgba(24, 144, 255, 1);
+                position: relative;
+                // padding-right: 14px;
+                .textContent {
+                    padding: 1px 0px 1px 8px;
+                }
+
+                img {
+                    //   position: absolute;
+                    //   bottom: 0px;
+                    //   right: 0px;
+                    vertical-align: text-bottom;
+                }
+            }
+
+            .viewTagDisabled {
+                box-shadow: 0px 2px 4px 0px rgba(18, 28, 37, 0.04), 0px 2px 4px -2px rgba(18, 28, 37, 0.04);
+                border-radius: 4px;
+                border: 1px solid rgba(243, 246, 249, 1);
+                background: rgba(245, 245, 245, 1);
+                opacity: 0.25;
+            }
+        }
+    }
+}
+
+.viewList {
+    // // width:192px;
+    // height:20px;
+    // font-size:12px;
+    // // font-family:PingFangSC-Regular,PingFang SC;
+    // font-weight:400;
+    // color:rgba(0,0,0,0.65);
+    // line-height:20px;
+    // background: rgba(0,0,0,0.04);
+    // border-radius: 2px;
+    // border: 1px solid #dad1d1;
+    // padding-left: 8px;
+
+    height: 22px;
+    background: rgba(0, 0, 0, 0.04);
+    border-radius: 2px;
+    border: 1px solid rgba(0, 0, 0, 0.15);
+    span {
+        padding: 0px 8px;
+        font-size: 12px;
+        font-family: PingFangSC-Regular, PingFang SC;
+        font-weight: 400;
+        color: rgba(0, 0, 0, 0.65);
+        line-height: 20px;
+    }
+}

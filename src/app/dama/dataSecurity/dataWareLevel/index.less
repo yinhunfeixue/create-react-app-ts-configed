@@ -1,0 +1,80 @@
+.dataWareLevel {
+    .levelContainer {
+        display: flex;
+        height: 480px;
+        .levelItem {
+            width: 266px;
+            box-shadow: 0px 0px 4px 0px rgba(0, 0, 0, 0.12);
+            border: 1px solid #E6E8ED;
+            border-radius: 2px;
+            transition: 0.3s;
+            cursor: pointer;
+            .borderTop {
+                height: 2px;
+                background: linear-gradient(270deg, #4D73FF 0%, #4D86FF 100%);
+                opacity: 0.5;
+            }
+            .levelTitle {
+                height: 48px;
+                line-height: 48px;
+                padding: 0 18px 0 21px;
+                span {
+                    font-family: PingFangSC-Semibold, PingFang SC;
+                    font-weight: 600;
+                    color: #262626;
+                }
+                .iconfont {
+                    float: right;
+                    cursor: pointer;
+                    color: #5E6266;
+                }
+                .iconfont:hover {
+                    color: #4D73FF;
+                }
+            }
+            .tagItem {
+                height: 36px;
+                background: #F7F8FA;
+                border-radius: 4px;
+                border: 1px solid #E6E8ED;
+                margin-bottom: 8px;
+                line-height: 36px;
+                padding: 0 16px;
+                display: block;
+            }
+        }
+        .levelItem:hover {
+            transform: translate(0, -4px);
+            box-shadow: 0px 4px 16px 0px rgba(0, 0, 0, 0.12);
+            .borderTop {
+                opacity: 1;
+            }
+        }
+    }
+    .arrowArea {
+        width: 30px;
+        text-align: center;
+        img {
+            width: 19px;
+            margin-top: 104px;
+        }
+    }
+}
+.addLevelDrawer {
+    .dataTableColumn {
+        margin-bottom: 0px !important;
+    }
+    .tableAddBtn {
+        width: 100%;
+        color: #4D73FF;
+        //box-shadow: inset 0px -1px 0px 0px #E6E8ED;
+        border-bottom: 1px solid #E6E8ED;
+        height: 40px;
+    }
+    .tableAddBtn:hover {
+        background: none;
+    }
+    .ant-select-item-option-disabled {
+        color: #C4C8CC;
+    }
+}

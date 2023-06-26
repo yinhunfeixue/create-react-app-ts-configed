@@ -1,0 +1,128 @@
+
+@borderColor: #E6E8ED;
+@selectBorderColor: #4471F3;
+@selectBgColor: rgba(81,127,252,0.0600);
+
+.lz-rc-appTree-item{
+  width: 280px;
+  height: 100%;
+  border: 1px solid @borderColor;
+  position: relative;
+  border-right: none;
+  &:last-child{
+    border-right: 1px solid @borderColor;
+  }
+}
+
+.lz-rc-appTree-item-title{
+  background: #F7F8FA;
+  border-bottom: 1px solid @borderColor;
+  height: 40px;
+  padding: 0 16px;
+  display: flex;
+  align-items: center;
+  margin: 0;
+  span{
+    max-width: 100%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+}
+
+.lz-rc-appTree-item-list{
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  padding: 12px 8px;
+  overflow: scroll;
+  li{
+    position: relative;
+    border: 1px solid @borderColor;
+    padding: 12px 12px;
+    margin-bottom: 8px;
+    cursor: pointer;
+    border-radius: 2px;
+    max-height: 48px;
+    transition: all .5s;
+    overflow: hidden;
+    &:last-child{
+      margin-bottom: 0;
+    }
+  }
+  .lz-rc-appTree-item-list-select{
+    border-color: @selectBorderColor;;
+    background-color: @selectBgColor;
+    max-height: 300px;
+    .lz-rc-appTree-item-list-more{
+      height: auto;
+      opacity: 1;
+    }
+  }
+  .lz-rc-appTree-item-list-more{
+    height: 0;
+    opacity: 0;
+    //transition: all .5s;
+  }
+  .lz-rc-appTree-item-list-node{
+    white-space: nowrap;
+    max-width: calc(100% - 35px);
+    overflow: hidden;
+    text-overflow: ellipsis;
+    min-height: 22px;
+  }
+}
+
+.lz-rc-appTree-item-list-moreIcon{
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  top: 14px;
+  right: 32px;
+  padding: 2px;
+  &:hover{
+    background: #F4F5F7;
+  }
+}
+
+.lz-rc-appTree-item-list-rightIcon{
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  top: 14px;
+  right: 8px;
+}
+
+.lz-rc-appTree-item-footer{
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  border-top: 1px solid @borderColor;
+  background: #F7F8FA;
+  color: #507499;
+  >span{
+    height: 40px;
+    line-height: 40px;
+    flex: 1;
+    text-align: center;
+    cursor: pointer;
+    border: 1px solid @borderColor;
+    &:hover{
+      box-shadow: 0px 2px 6px 0px rgb(0 0 0 / 20%);
+      border: 1px solid #C0C6CC;
+      background: #F7F8FA;
+    }
+    /* &:first-child{
+      border-right: 1px solid @borderColor;
+    } */
+    &:last-child{
+      >span{
+        transform: rotate(-90deg);
+      }
+    }
+  }
+}

@@ -1,0 +1,43 @@
+.permisstionTable .ant-table-thead {
+  position: sticky;
+  top: 0;
+  z-index: 1;
+}
+.permisstionTable .indent-level-1 {
+  padding-left: 20px !important;
+}
+.permisstionTable .indent-level-2 {
+  padding-left: 40px !important;
+}
+.permisstionTable .indent-level-3 {
+  padding-left: 60px !important;
+}
+.permisstionTable .indent-level-4 {
+  padding-left: 80px !important;
+}
+.permisstionTable .indent-level-5 {
+  padding-left: 100px !important;
+}
+.permisstionTable .indent-level-6 {
+  padding-left: 120px !important;
+}
+.permisstionTable .indent-level-7 {
+  padding-left: 140px !important;
+}
+.permisstionTable .indent-level-8 {
+  padding-left: 160px !important;
+}
+.permisstionTable .indent-level-9 {
+  padding-left: 200px !important;
+}
+.permisstionTable .indent-level-10 {
+  padding-left: 200px !important;
+}
+.permisstionTable .ant-table-tbody > tr > td > span:empty::after {
+  content: none !important;
+}
+.permisstionTable .icon-arrow {
+  font-size: 20px;
+  position: relative;
+  top: 2px;
+}

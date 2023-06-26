@@ -1,0 +1,40 @@
+.pc-title-left{
+    line-height: 44px;
+    font-size: 16px;
+    color: #333;
+    display: inline-block;
+
+}
+.pc-title-right{
+    display: inline-block;
+    float: right;
+}
+.pc-title{
+    height: 44px;
+
+
+}
+.pc-filter{
+    padding: 9px 0;
+    color: #333;
+    font-size: 12px;
+    padding-left: 20px;
+}
+.pc-filter .ant-calendar-picker{margin-left: 8px;}
+.pc-filter  .ant-select .ant-select-selection.ant-select-selection--single{
+    margin-left: 8px;
+}
+.pc-filter  .ant-select .ant-select-selection-selected-value{
+    max-width: 140px;
+}
+.card_bg {
+  background: #fff;
+
+  border-radius: 3px;
+}
+.card_bg .pc-title{
+  border-bottom: 1px solid #ddd;
+}
+.card_bg .pc-title-left{
+  text-indent: 15px;
+}

@@ -1,0 +1,92 @@
+.BoardEdit {
+    .ant-modal-body {
+        padding: 0;
+    }
+    .BoardEditContent {
+        display: flex;
+        min-height: 450px;
+        .Left {
+            flex-grow: 1;
+            flex-shrink: 1;
+            padding: 24px;
+            overflow: hidden;
+            .Part {
+                > *:not(:last-child) {
+                    margin-bottom: 12px;
+                }
+                &:not(:last-child) {
+                    margin-bottom: 28px;
+                }
+
+                > h3 {
+                    font-size: 14px;
+                    font-weight: 500;
+                    color: #2d3033;
+                    line-height: 1;
+                }
+
+                .ant-form-item-label > label {
+                    color: #606366;
+                }
+
+                .Des {
+                    color: #5e6266;
+                }
+            }
+            .TypeTitle {
+                display: flex;
+                align-items: center;
+                > img {
+                    width: 16px;
+                    height: 16px;
+                    object-fit: cover;
+                    margin-right: 6px;
+                }
+
+                h2 {
+                    font-size: 16px;
+                    font-weight: 600;
+                    color: #2d3033;
+                    line-height: 1;
+                    margin-bottom: 0;
+                    flex-grow: 1;
+                    flex-shrink: 1;
+                    overflow: hidden;
+                    text-overflow: ellipsis;
+                }
+            }
+
+            .ChartItem {
+                display: flex;
+                &:not(:last-child) {
+                    margin-bottom: 12px;
+                }
+                > main {
+                    margin-left: 12px;
+                    line-height: 22px;
+                    color: #5e6266;
+                    label {
+                        color: #2d3033;
+                    }
+                }
+            }
+        }
+
+        .Right {
+            width: 380px;
+            background: #f7f8fa;
+            flex-grow: 0;
+            flex-shrink: 0;
+            padding: 24px;
+            max-height: 500px;
+            overflow-y: auto;
+
+            > h2 {
+                font-size: 14px;
+                font-weight: 600;
+                color: #2d3033;
+                margin-bottom: 16px;
+            }
+        }
+    }
+}

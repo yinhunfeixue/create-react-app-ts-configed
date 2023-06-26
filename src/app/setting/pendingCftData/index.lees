@@ -1,0 +1,62 @@
+
+.layout{
+  :global{
+    .TableLayout > main{
+      padding: 0 !important;
+    }
+  }
+}
+
+.extraTitle{
+  font-size: 14px;
+  font-weight: 400;
+  cursor: pointer;
+}
+
+.errorDesc{
+  display: flex;
+  span{
+    
+  }
+  svg{
+    color: #F54B45;
+    margin-right: 9px;
+  }
+}
+.noticeDesc{
+  display: flex;
+  svg{
+    color: #FF9900;
+    margin-right: 9px;
+  }
+}
+
+.tableName{
+  display: flex;
+  align-items: center;
+  >svg{
+    margin-right: 5px;
+    font-size: 16px;
+  }
+}
+
+.iconStatus{
+  >svg{
+    position: relative;
+    top: 3px;
+  }
+}
+
+.drawerWrap{
+  :global{
+    .commonScroll{
+      padding: 0 !important;
+    }
+    .ant-alert-banner{
+      position: sticky;
+      top: 0;
+      z-index: 1;
+      margin: 0 !important;
+    }
+  }
+}

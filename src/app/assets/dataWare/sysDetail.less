@@ -1,0 +1,92 @@
+@padding: calc(~'(100% - 1200px) / 2');
+.sysDetail {
+    font-family: PingFangSC-Regular, PingFang SC;
+    flex-grow: 1;
+    flex-shrink: 1;
+    background-color: #fff;
+    height: calc(~"100vh - 52px");
+    .RichTableLayout {
+        main {
+            padding-top: 0px !important;
+        }
+    }
+    .atomLabel {
+        > label, span {
+            color: #5E6266;
+        }
+    }
+    .ant-divider-vertical {
+        background: #C6C8CC;
+        margin: 0 16px;
+    }
+    > header {
+        //padding: 28px @padding;
+        padding: 28px 80px;
+        background: linear-gradient(180deg, #ffffff 0%, #f2f5fa 100%);
+        display: flex;
+        align-items: center;
+        > img {
+            width: 30px;
+            margin-right: 25px;
+        }
+
+        h2 {
+            font-size: 20px;
+            font-weight: 600;
+            color: #262626;
+            line-height: 1;
+        }
+    }
+
+    > main {
+        background-color: white;
+        //padding: 5px @padding 40px @padding;
+        padding: 5px 80px 40px 80px;
+        .Module {
+            padding: 0;
+        }
+    }
+    .otherInfo {
+        display: flex;
+        .otherInfoItem {
+            margin-right: 8px;
+            height: 18px;
+            background: #C4C8CC;
+            border-radius: 2px;
+            line-height: 18px;
+            text-align: center;
+            color: #fff;
+            cursor: pointer;
+            font-size: 10px;
+            padding: 0 4px;
+        }
+        .otherInfoItemSelected:hover {
+            background: #5B7FA3;
+            opacity: 0.8;
+        }
+        .otherInfoItemSelected {
+            background: #5B7FA3;
+        }
+    }
+    .redDot {
+        width: 6px;
+        height: 6px;
+        background: #FF6216;
+        display: inline-block;
+        border-radius: 50%;
+        margin-right: 8px;
+        vertical-align: bottom;
+        margin-bottom: 7px;
+    }
+    .ant-tag-grey {
+        background: rgba(82, 120, 158, 0.1);
+        border-radius: 2px;
+        border: 1px solid rgba(82, 120, 158, 0.32);
+        padding: 0px 4px;
+        color: #52789E;
+        margin-bottom: 8px;
+    }
+    .historyTablelayout main {
+        padding: 20px 0;
+    }
+}

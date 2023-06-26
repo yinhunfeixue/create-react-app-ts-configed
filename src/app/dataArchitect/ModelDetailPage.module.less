@@ -1,0 +1,73 @@
+.ModelDetailPage {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    > *:not(:last-child) {
+        margin-bottom: 16px;
+    }
+    > header {
+        background-color: white;
+        padding: 20px;
+
+        .TitleContainer {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 10px;
+
+            > h4 {
+                font-size: 18px;
+                font-weight: 500;
+                color: #262626;
+                display: flex;
+                align-items: center;
+                overflow: hidden;
+                flex: 1;
+                margin-right: 20px;
+                .Title {
+                    overflow: hidden;
+                    text-overflow: ellipsis;
+                    white-space: nowrap;
+                    word-break: keep-all;
+                    max-width: 60%;
+                }
+            }
+
+            .TypeTag {
+                display: inline-block;
+                font-size: 12px;
+                color: #667380;
+                line-height: 20px;
+
+                background: #e6ebf0;
+                border-radius: 2px;
+                padding: 0 8px;
+                margin-left: 8px;
+            }
+
+            .Status {
+                font-size: 14px;
+                margin-left: 24px;
+            }
+        }
+
+        .Info {
+            font-size: 14px;
+            color: rgba(38, 38, 38, 0.7);
+        }
+
+        :global {
+            .IconFont,
+            .anticon {
+                margin-right: 8px;
+            }
+        }
+    }
+
+    > main {
+        flex: 1;
+        overflow: auto;
+        background-color: white;
+        padding: 0 20px 20px 20px;
+    }
+}

@@ -1,0 +1,54 @@
+.addNewCol{
+    .assignment{
+        padding: 17px 20px 0 32px;
+        .groupContent{
+            height: 205px;
+            overflow-y: auto;
+            .groupList{
+                .ant-select-selection__rendered{
+                    margin-left: 5px;
+                }
+                .valueIcon{
+                    display: inline-block;
+                    height: 40px;
+                    text-align: center;
+                    width: 20px;
+                    line-height: 40px;   
+                }
+                .listDelBtn{
+                    display: inline-block;
+                    margin-left: 12px;
+                    cursor: pointer;
+                }
+                .ant-select, .ant-select-selection--single{
+                    min-width: 50px;
+                }
+                .ant-form-item-with-help{
+                    margin-bottom: 0px;
+                }
+            }
+        }
+        .groupBottom{
+            height: 55px;
+            padding-top: 10px;
+            .otherGroup{
+               float: left;
+               .otherBtn{
+                   padding-top: 10px;
+                   display: inline-block;
+                   padding-right: 8px;
+               }
+            }
+            .otherGroup:after{
+                display:block;
+                content:'';
+                clear:both;
+                height:0;
+                overflow:hidden
+            }
+            .groupRange{
+                float: right;
+            }
+        }
+    }
+}

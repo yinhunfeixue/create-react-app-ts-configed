@@ -1,0 +1,21 @@
+.Module {
+    padding: 20px;
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+    .ModuleTitle {
+        margin-bottom: 20px !important;
+    }
+    > *:not(:last-child) {
+        margin-bottom: 15px;
+    }
+
+    > main {
+        overflow: auto;
+        flex-grow: 1;
+        flex-shrink: 1;
+        > *:not(:last-child) {
+            margin-bottom: 15px;
+        }
+    }
+}

@@ -1,0 +1,73 @@
+.business-title {
+    font-size: 24px;
+    padding-bottom: 10px;
+}
+
+.pc-title-left {
+    color: #2c2e2f;
+    display: block;
+}
+
+.retention-rate-time {}
+
+.pull-left {
+    float: left;
+}
+
+.pull-right {
+    float: right;
+}
+
+.bus_byl {
+    background: white;
+}
+
+.bus_byl_right li {
+    background: #eee;
+    border: 1px solid #e7e7e7;
+    border-radius: 50px;
+    width: 100%;
+    margin-bottom: 11px;
+    padding: 8px 9px;
+    font-size: 14px;
+    position: relative;
+    padding-left: 12px;
+}
+
+.bus_byl_right li b img {
+    width: 20px;
+    vertical-align: text-bottom;
+}
+
+.bus_byl_right li em {
+    color: #fff;
+    background: #9fc9f5;
+    border-radius: 50px;
+    padding: 3px 15px;
+    position: absolute;
+    right: 10px;
+    top: 6px;
+    font-size: 13px;
+}
+
+.bus_byl_right li {
+    background: #eee;
+    border: 1px solid #e7e7e7;
+    border-radius: 50px;
+    width: 100%;
+    margin-bottom: 11px;
+    padding: 8px 9px;
+    font-size: 14px;
+    position: relative;
+    padding-left: 12px;
+}
+
+.lrkf_new li {
+    margin-bottom: 10px;
+    padding: 9px;
+    padding-left: 12px;
+}
+
+.bus_byl_right li b {
+    padding-right: 5px;
+}

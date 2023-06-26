@@ -1,0 +1,36 @@
+.TableLayoutHeader {
+    font-size: 20px;
+    line-height: 1;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 16px;
+
+    > h2 {
+        margin-bottom: 0;
+        font-size: 20px;
+        font-weight: 600;
+        color: #262626;
+        padding: 3px 0;
+        overflow: hidden;
+        word-break: keep-all;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+        margin-right: 20px;
+        -webkit-font-smoothing: antialiased;
+        font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Helvetica Neue', Helvetica, Arial, sans-serifs;
+        .TableLayoutHeaderIconBack {
+            margin-right: 13px;
+            cursor: pointer;
+        }
+    }
+
+    .TableLayout_HeaderExtraContainer {
+        display: flex;
+        flex-grow: 0;
+        flex-shrink: 0;
+        > *:not(:last-child) {
+            margin-right: 8px;
+        }
+    }
+}

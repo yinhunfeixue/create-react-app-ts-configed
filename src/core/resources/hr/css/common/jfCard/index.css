@@ -1,0 +1,47 @@
+.card_layout_module .ant-card{
+    background: #6884b8
+}
+.card_layout_module .ant-card-head {
+    background: #2f406e;
+}
+.card_layout_module .ant-card.org_card_bg{
+    background: #32B3DC;
+    background:-moz-linear-gradient(left,#32B3DC,#376BC8);
+    background:-webkit-gradient(linear,0 50%,100% 50%,from(#32B3DC),to(#376BC8));
+    background:-webkit-linear-gradient(left,#32B3DC,#376BC8);
+    background:-o-linear-gradient(left,#32B3DC,#376BC8);
+}
+.card_layout_module .org_card_bg  .org_card_title{
+    font-size: 14px;
+    min-height: 142px;
+
+}
+.card_layout_module .org_card_bg  .ant-card-body{
+    min-height: 142px;
+}
+.org_card_title i{
+    color: rgba(255, 255, 255, 0.8);
+    display: block;
+    padding-top: 39px;
+    padding-left: 21%;
+    padding-bottom: 10px;
+}
+.org_card_title em{
+    color: rgba(255, 255, 255, 0.5);
+}
+.org_card_title span{
+    font-size: 34px;    padding-left:21%;
+    padding-right: 5px;
+    letter-spacing: 1.3px;
+    font-family:"SimHei","Helvetica Neue For Number";
+    color: #FFE829
+
+}
+.card_layout_module .ant-card-body {
+    padding: 0px;
+    min-height: 300px;
+}
+.card_layout_module .ant-card-head .ant-card-head-title{
+    text-align: left;
+    color: #c4d2ff;
+}

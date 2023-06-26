@@ -1,0 +1,166 @@
+.addAtomIndexma {
+    .ant-form-item {
+        margin-bottom: 12px;
+    }
+    .formLabel {
+        width: 110px;
+        font-size: 14px;
+        text-align: right;
+    }
+    .saveBtn {
+        position: fixed;
+        height: 52px;
+        background: #fff;
+        z-index: 99;
+        bottom: 0px;
+        left: 250px;
+        text-align: center;
+        padding-top: 10px;
+        width: calc(~"100vw - 250px");
+        box-shadow: 0px 2px 14px 1px rgba(0, 0, 0, 0.1);
+    }
+    .addColumnBtn {
+        border: 1px dashed #d3d3d3;
+        height: 28px;
+        line-height: 28px;
+        text-align: center;
+        cursor: pointer;
+        margin: 16px 0;
+        width: 100%;
+    }
+    .tableAutoDropdown {
+        position: absolute;
+        background: #FFFFFF;
+        box-shadow: 0px 20px 15px 0px rgba(0, 0, 0, 0.04), 0px 13px 14px 0px rgba(0, 0, 0, 0.08), 0px 7px 12px 0px rgba(0, 0, 0, 0.06);
+        border: 1px solid #F2F2F2;
+        width: 100%;
+        z-index: 99;
+        padding: 8px;
+        max-height: 200px;
+        .tableAutoDropdownItem, .columnAutoDropdownItem {
+            line-height: 27px;
+            cursor: pointer;
+        }
+        .tableAutoDropdownItem:hover {
+            background: #EAF2FF;
+        }
+        .columnAutoDropdownItem:hover {
+            background: #EAF2FF;
+        }
+    }
+    .inputTip {
+        padding-left: 80px;
+        color: #b3b3b3;
+        line-height: 20px;
+        margin: 0;
+        font-family: PingFangSC-Light, PingFang SC;
+        font-weight: 300;
+        font-size: 12px;
+    }
+    .editable-cell-value-wrap {
+        padding: 5px 12px;
+        height:28px;
+        cursor: pointer;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+    }
+    .editable-row:hover .editable-cell-value-wrap {
+        border: 1px solid #d9d9d9;
+        border-radius: 4px;
+        padding: 4px 11px;
+    }
+    .staticArea {
+        margin-top: 24px;
+        .numberBlock {
+            width: 16px;
+            height: 17px;
+            background: #1890ff;
+            border-radius: 2px;
+            line-height: 17px;
+            text-align: center;
+            color: #fff;
+            margin-right: 8px;
+            display: inline-block;
+        }
+        img {
+            cursor: pointer;
+            margin-left: 12px;
+            width: 16px;
+        }
+        .addNumber {
+            color: #1890ff;
+            cursor: pointer;
+            display: inline-block;
+        }
+    }
+    .ant-select-selection__rendered {
+        font-size: 14px;
+    }
+    .ant-input {
+        font-size: 14px;
+    }
+    .repeatColumn {
+        td {
+            background: #f5f5f5;
+        }
+    }
+}
+.atomDrawer {
+    font-size: 14px;
+    .title {
+        font-weight: 600;
+        margin: 32px 0 12px 0;
+    }
+    .atomDetailArea div {
+        margin-bottom: 12px;
+        color: #333;
+        .atomLabel {
+            color: #666;
+            display: inline-block;
+            min-width: 110px;
+            max-width: 110px;
+            text-align: right;
+        }
+        .atomContent {
+            word-break: break-all;
+            display: inline-block;
+            width: calc(~"100% - 110px");
+            vertical-align: top;
+        }
+    }
+}
+.periodDrawer {
+    font-size: 14px;
+    .title {
+        font-weight: 600;
+        margin: 32px 0 12px 0;
+    }
+    .atomDetailArea div {
+        margin-bottom: 12px;
+        color: #333;
+        .atomLabel {
+            color: #666;
+            display: inline-block;
+            min-width: 115px;
+            max-width: 115px;
+            text-align: right;
+        }
+        .atomContent {
+            word-break: break-all;
+            display: inline-block;
+            width: calc(~"100% - 115px");
+            vertical-align: top;
+        }
+    }
+}
+.atomTooltip {
+    font-size: 14px;
+    font-family: PingFangSC-Regular, PingFang SC;
+    color: #333333;
+    margin-bottom: 8px;
+    word-break: break-all;
+    display: inline-block;
+    width: calc(~"100% - 100px");
+    vertical-align: top;
+}

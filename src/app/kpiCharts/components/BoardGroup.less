@@ -1,0 +1,57 @@
+.BoardGroup {
+    .drop-over-downward {
+        border-bottom: 2px dashed #1890ff;
+    }
+
+    .drop-over-upward {
+        border-top: 2px dashed #1890ff;
+    }
+
+    display: flex;
+    overflow-x: visible;
+    > *:not(:last-child) {
+        margin-right: 16px;
+    }
+    .Column {
+        flex-grow: 1;
+        flex-shrink: 1;
+        overflow: visible;
+        width: 100px;
+        > *:not(:last-child) {
+            margin-bottom: 16px;
+        }
+    }
+
+    .BoardItemWrap {
+        position: relative;
+
+        .BoardItem {
+            border: solid 2px transparent;
+            &:hover {
+                border: solid 2px #4d73ff;
+            }
+        }
+
+        .IconClose {
+            position: absolute;
+            font-size: 30px;
+            right: 0;
+            top: 0;
+            transform: translate(50%, -50%) rotate(0deg) scale(0, 0);
+            color: rgba(94, 98, 102, 0.85);
+            z-index: 1;
+            transition: all 0.6s;
+            opacity: 0;
+            cursor: pointer;
+        }
+
+        &:hover {
+            cursor: move;
+
+            .IconClose {
+                transform: translate(50%, -50%) rotate(359deg);
+                opacity: 1;
+            }
+        }
+    }
+}

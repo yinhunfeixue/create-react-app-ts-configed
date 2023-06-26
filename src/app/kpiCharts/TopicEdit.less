@@ -1,0 +1,61 @@
+.TopicEdit {
+    position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    z-index: 999;
+    background-color: rgba(247, 248, 250, 0.9);
+    backdrop-filter: blur(10px);
+    display: flex;
+    flex-direction: column;
+    > header {
+        display: flex;
+        align-items: center;
+        padding-right: 16px;
+        box-shadow: 0px 1px 0px 0px #d0d5de;
+        flex-grow: 0;
+        flex-shrink: 0;
+        background-color: white;
+        z-index: 1;
+        .ant-form-item,
+        > :not(:last-child) {
+            margin-right: 8px;
+        }
+
+        .Space {
+            flex-grow: 1;
+            flex-shrink: 1;
+        }
+
+        .Tip {
+            color: #9ea3a8;
+            margin-right: 24px;
+        }
+
+        .IconBack {
+            width: 52px;
+            height: 52px;
+            background: linear-gradient(270deg, #5c89ff 0%, #295df0 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 24px;
+            margin-right: 16px;
+            cursor: pointer;
+        }
+    }
+
+    .Body {
+        padding: 16px 47px;
+        flex-grow: 1;
+        flex-shrink: 1;
+        overflow: auto;
+    }
+}
+.AddBoardDrawer {
+    .ant-drawer-wrapper-body .ant-drawer-body > main {
+        padding: 0;
+    }
+}

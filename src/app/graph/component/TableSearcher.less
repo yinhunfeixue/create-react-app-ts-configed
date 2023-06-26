@@ -1,0 +1,55 @@
+.TableSearcher {
+    .Tabs {
+        margin: 12px 16px;
+        word-break: keep-all;
+        display: flex;
+        justify-content: center;
+        .ant-radio-button-wrapper {
+            &:hover {
+                z-index: 1;
+                color: #2d3033;
+                background: #ffffff;
+                box-shadow: 0px 2px 6px 0px rgba(0, 0, 0, 0.2);
+            }
+
+            &.ant-radio-button-wrapper-checked:not(.ant-radio-button-wrapper-disabled) {
+                background-color: white;
+                color: #4d73ff;
+            }
+        }
+    }
+
+    .TableItem {
+        padding: 8px 16px;
+        > h4 {
+            margin: 0;
+            font-weight: normal;
+        }
+
+        > footer {
+            display: flex;
+            align-items: center;
+            margin-top: 1px;
+            .ant-tag {
+                border-radius: 10px;
+            }
+            .TableItemFooter {
+                color: #9ea3a8;
+                flex-grow: 1;
+                flex-shrink: 1;
+            }
+        }
+
+        &:hover {
+            background: #f4f5f7;
+        }
+        &.TableItemSelected {
+            background: #f0f0f0;
+        }
+    }
+
+    .SearchPanelDropDown,
+    .SearchContainer {
+        width: 260px;
+    }
+}

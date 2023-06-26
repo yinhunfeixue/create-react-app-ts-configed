@@ -1,0 +1,74 @@
+.TableGraphPage {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+
+    .TableGraph {
+        flex-grow: 1;
+        flex-shrink: 1;
+        overflow: hidden;
+    }
+
+    .GraphSpin {
+        height: 100%;
+        .ant-spin-container {
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+        }
+    }
+
+    .GraphTypeGroup {
+        display: flex;
+        align-items: stretch;
+        align-self: stretch;
+        .GraphTypeItem {
+            color: rgba(45, 48, 51, 1);
+            padding: 0 20px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            position: relative;
+
+            &.GraphTypeItemSelected {
+                color: rgba(77, 115, 255, 1);
+                background-color: transparent;
+                &::after {
+                    content: '';
+                    display: block;
+                    position: absolute;
+                    left: 0;
+                    right: 0;
+                    bottom: 0;
+                    height: 2px;
+                    background-color: currentColor;
+                }
+            }
+        }
+    }
+
+    .ChainTargetWrap {
+        display: flex;
+        align-items: center;
+        padding: 0 10px;
+        .ant-select .ant-select-arrow .anticon-down:after,
+        * {
+            color: #4d73ff;
+        }
+    }
+}
+.GraphPageLayoutWrapFull {
+    .GraphTypeGroup {
+        .GraphTypeItem {
+            color: rgba(255, 255, 255, 0.6);
+            &.GraphTypeItemSelected {
+                color: white;
+                background-color: rgba(46, 50, 54, 1);
+                &::after {
+                    background: #4d73ff;
+                }
+            }
+        }
+    }
+}

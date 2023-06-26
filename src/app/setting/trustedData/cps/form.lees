@@ -1,0 +1,101 @@
+
+.wrap{
+  .header{
+    font-size: 16px;
+    font-weight: 500;
+    margin-bottom: 16px;
+  }
+  .headerList{
+    .addTag{
+      color: #4D73FF;
+      cursor: pointer;
+      border-color: #4D73FF;
+    }
+    >span{
+      margin-bottom: 9px;
+    }
+  }
+  .stepIcon{
+    font-size: 12px;
+    width: 16px;
+    height: 16px;
+    line-height: 17px;
+    background: #5B7FA3;
+    border-radius: 2px;
+    color: #fff;
+  }
+  .use{
+    margin-top: 12px;
+    margin-bottom: 8px;
+    :global{
+      .ant-checkbox-wrapper{
+        margin-bottom: 12px;
+      }
+    }
+  }
+  .quality{
+    margin-top: 12px;
+    margin-bottom: 16px;
+    color: #2D3033;
+    &:first-child{
+      :global{
+        .ant-input-number-group-wrapper{
+          margin: 0 12px;
+          vertical-align: middle;
+        }
+      }
+    }
+    &:last-child{
+      :global{
+        .ant-radio-wrapper{
+          margin-bottom: 8px;
+        }
+      }
+    }
+    >div{
+      padding-left: 24px;
+      &.title{
+        padding-left: 0;
+        margin-bottom: 8px;
+      }
+    }
+  }
+  :global{
+    .ant-steps-item-title{
+      line-height: 18px !important;
+    }
+    .ant-steps .ant-steps-item-active .ant-steps-item-title{
+      color: #2D3033 !important;
+      font-weight: 500;
+    }
+  }
+  .inputGroup{
+    font-size: 14px;
+    display: flex;
+    align-items: center;
+    height: 32px;
+    :global{
+      .ant-input-number-group-wrapper{
+        margin-left: 12px;
+        width: 120px;
+      }
+    }
+  }
+  .required{
+    color: #CC0000;
+  }
+}
+
+.validateError{
+  font-size: 14px;
+  :global{
+    .ant-input-number{
+      border-color: #CC0000 !important;
+    }
+  }
+}
+
+.errorTips{
+  color: #CC0000;
+  margin-left: 16px;
+}

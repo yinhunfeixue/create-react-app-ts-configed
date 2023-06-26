@@ -1,0 +1,152 @@
+.dataSourceSettingForm {
+    .ant-alert .ant-alert-close-icon {
+        height: 22px;
+    }
+    .databaseTagArea {
+        .addDatabaseBtn {
+            color: #4D73FF;
+            cursor: pointer;
+            border-color: #4D73FF;
+        }
+        >span{
+            margin-bottom: 9px;
+            height: 28px;
+            line-height: 25px;
+        }
+    }
+    .width520 {
+        width: 520px;
+    }
+    //.Module:first-child {
+    //    background: #fff;
+    //    main {
+    //        width: 520px;
+    //    }
+    //}
+    .Module > main > *:not(:last-child) {
+        margin-bottom: 24px;
+    }
+    .tabBtn {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        column-gap: 8px;
+        .tabBtnItemDisabled {
+            background: #F7F8FA;
+            cursor: not-allowed;
+        }
+        .tabBtnItem {
+            height: 32px;
+            cursor: pointer;
+            background: #f7f8fa;
+            border-radius: 2px;
+            border: 1px solid #c0c6cc;
+            color: #5e6266;
+            line-height: 32px;
+            text-align: center;
+            position: relative;
+            svg {
+                width: 16px;
+                height: 16px;
+                position: absolute;
+                right: 0px;
+            }
+        }
+        .tabBtnItemSelected {
+            background: rgba(77, 115, 255, 0.1);
+            border: 1px solid #4d73ff;
+            color: #4d73ff;
+        }
+    }
+    .disableTabBtn {
+        .tabBtnItem {
+            background: #F7F8FA;
+            cursor: not-allowed;
+        }
+    }
+    .basicInfo {
+        .EditMiniForm div:nth-of-type(5){
+            width: calc("~50% - 4px");
+            margin-right: 8px;
+            .ant-form-item:nth-child(6) {
+                width: calc("~50% - 4px");
+            }
+        }
+    }
+    &.dataSourceSettingFormReadOnly {
+        .ant-select-selector,
+        .ant-input {
+            border: none;
+            background: none !important;
+            padding: 0;
+            line-height: 1;
+            height: unset;
+            color: black !important;
+            cursor: auto !important;
+            box-shadow: none;
+        }
+
+        .ant-select-selection-placeholder {
+            > * {
+                display: none;
+            }
+            content: 'aaaa';
+            &:empty {
+                &::before {
+                    width: unset;
+                    visibility: visible;
+                    content: '-';
+                    color: #c4c8cc;
+                }
+            }
+        }
+
+        .ant-select-selection__rendered {
+            line-height: 1;
+            margin: 0;
+            &::after {
+                content: none;
+            }
+            &:empty {
+                &::before {
+                    width: unset;
+                    visibility: visible;
+                    content: '-';
+                    color: #c4c8cc;
+                }
+            }
+        }
+
+        .ant-select-selection__choice {
+            color: black;
+        }
+
+        .ant-select-arrow {
+            display: none;
+        }
+
+        .ant-input-affix-wrapper-disabled {
+            background: transparent;
+            border: none;
+            padding: 0;
+            .ant-input-show-count-suffix {
+                display: none;
+            }
+        }
+    }
+
+    .DataBaseGroup {
+        //margin: 0 -4px -4px 0;
+        display: flex;
+        flex-wrap: wrap;
+        .DataBaseItem {
+            margin: 0 4px 4px 0;
+            background: #f0f2f5;
+            border-radius: 2px;
+            border: 1px solid #e6e8ed;
+            padding: 0 8px;
+
+            font-size: 14px;
+            line-height: 22px;
+        }
+    }
+}

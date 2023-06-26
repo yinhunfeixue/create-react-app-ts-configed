@@ -1,0 +1,84 @@
+.SearchPanel {
+    @border: 1px solid #d0d5de;
+    position: relative;
+    height: 100%;
+    .SearchPanelMask {
+        display: flex;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        z-index: 1;
+        position: fixed;
+        background-color: rgba(0, 0, 0, 0);
+
+        &.SearchPanelMaskHide {
+            display: none;
+        }
+    }
+
+    .SearchPanelBody {
+        position: relative;
+        z-index: 2;
+        height: 100%;
+
+        .SearchContainer {
+            background-color: white;
+            display: flex;
+            align-items: center;
+            border-right: 1px solid #d0d5de;
+            height: 100%;
+            .ant-input {
+                border-color: transparent;
+                border-radius: 0;
+                box-shadow: none;
+                width: 100%;
+                font-size: 14px;
+            }
+            > * {
+                margin-right: 6px;
+            }
+
+            .IconSearch {
+                flex-grow: 0;
+                flex-shrink: 0;
+                word-break: keep-all;
+                white-space: nowrap;
+                cursor: pointer;
+                > *:not(:last-child) {
+                    margin-right: 6px;
+                }
+            }
+
+            &.SearchContainerHide {
+                border-right: none;
+                .ant-input {
+                    width: 0;
+                    padding-left: 0;
+                    padding-right: 0;
+                }
+            }
+        }
+
+        .SearchPanelDropDown {
+            position: absolute;
+            background: white;
+            bottom: 0;
+            left: 0;
+            min-width: 100%;
+            transform: translateY(100%);
+            border: @border;
+            overflow: auto;
+            animation: SearchPanelDropDownShow 0.3s 1;
+
+            @keyframes SearchPanelDropDownShow {
+                0% {
+                    transform: translateY(100%) translateX(-100%);
+                }
+                100% {
+                    transform: translateY(100%);
+                }
+            }
+        }
+    }
+}

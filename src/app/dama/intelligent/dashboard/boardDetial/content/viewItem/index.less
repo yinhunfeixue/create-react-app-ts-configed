@@ -1,0 +1,173 @@
+
+.viewsMod{
+    display: inline-block;
+    padding: 8px;
+    height: 400px;
+    max-height: 400px;
+    vertical-align: top;
+
+    .viewBack{
+        background-color: white;
+        width: 100%;
+        height: 100%;
+        box-shadow: 0px 6px 8px 0px rgba(18, 28, 37, 0.1);
+        border-radius: 4px;
+        padding: 20px 16px 16px 16px;
+        display: flex;
+        flex-direction: column;
+        &:hover{
+            box-shadow: 0px 6px 8px 0px rgb(182, 183, 183);
+        }
+        .viewDesc{
+          flex-grow: 0;
+          flex-shrink: 0;
+          overflow: hidden;
+          white-space: nowrap;
+          text-overflow: ellipsis;
+          padding-bottom: 5px;
+        }
+        .viewHeader{
+            flex-grow: 0;
+            flex-shrink: 0;
+            cursor: move;
+
+            .viewTitle{
+                min-height:28px;
+                font-size:16px;
+                font-family:PingFangSC-Medium,PingFang SC;
+                font-weight:500;
+                color:rgba(0,0,0,1);
+                overflow: hidden;
+                white-space: nowrap;
+                text-overflow: ellipsis;
+
+            }
+
+            .viewDesc{
+                max-height:20px;
+                font-size:12px;
+                font-family:PingFangSC-Regular,PingFang SC;
+                font-weight:400;
+                color:rgba(0,0,0,1);
+                line-height:20px;
+            }
+        }
+
+        .viewBody{
+            .viewBodyMask{
+              background: rgba(0, 0, 0, 0.6);
+              position: absolute;
+              top: 0px;
+              width: 100%;
+              height: 100%;
+              z-index: 3;
+              color: #FAAD14;
+              text-align: center;
+                em{
+                  display: block;
+                  line-height: 21px;
+                  padding-top: 125px;
+                  padding-left: 24px;
+                  padding-right: 24px;
+                  font-style: normal;
+                }
+                button{
+                  color: #FAAD14;
+                  background: transparent;
+                  border-color: #faad14;
+                  margin-top: 12px;
+                  &:hover{
+                    color: #fff;
+                    border-color: #fff;
+                  }
+                }
+            }
+            position: relative;
+            flex-grow: 1;
+            flex-shrink: 1;
+            min-height: 300px;
+            height: 100%;
+            width: 100%;
+        }
+    }
+}
+
+.dropdownModel {
+    position: relative;
+    margin: 0;
+    padding-top: 8px;
+    padding-bottom: 8px;
+    text-align: left;
+    list-style-type: none;
+    background-color: #fff;
+    background-clip: padding-box;
+    border-radius: 4px;
+    outline: none;
+    -webkit-box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+    -webkit-transform: translate3d(0, 0, 0);
+    font-size: 12px;
+
+    .downItem {
+        // padding-top: 8px;
+        // padding-bottom: 8px;
+        cursor: pointer;
+        padding: 5px 12px;
+    }
+
+    .downItem:hover{
+        background-color: #e6f7ff;
+    }
+
+    .size-selector {
+        display: -webkit-box;
+        display: -moz-box;
+        display: -ms-flexbox;
+        display: -webkit-flex;
+        display: flex;
+        flex-direction: row;
+        -ms-flex-direction: row;
+        -webkit-flex-direction: row;
+        justify-content: space-between;
+        -webkit-justify-content: space-between;
+        -ms-flex-pack: space-between;
+        padding: 5px 12px;
+        // padding: 0 16px
+    }
+
+    .size-selector .size>.size-inner {
+        cursor: pointer;
+        border-radius: 2px;
+        border: 2px solid #c0c6cf;
+        transition: border-color .2s
+    }
+
+    .size-selector .size:hover{
+        .size-inner{
+           border-color:var(--primaryColor);
+        }
+    }
+
+    .size-selector .size.selected .size-inner {
+        border-color: #2e75f0
+    }
+
+
+    .size-selector .size.size-medium>.size-inner {
+        width: 24px;
+        height: 24px
+    }
+
+    .size-selector .size.size-large>.size-inner {
+        width: 48px;
+        height: 24px
+    }
+
+    .item-divider{
+        height: 1px;
+        margin: 4px 0 4px 0;
+        overflow: hidden;
+        line-height: 0;
+        background-color: #e8e8e8;
+    }
+}

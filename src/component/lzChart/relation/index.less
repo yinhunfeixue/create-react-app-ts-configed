@@ -1,0 +1,76 @@
+.lzChartRelation {
+    height: 100%;
+    position: relative;
+    .ControlGroup {
+        display: flex;
+        flex-direction: column;
+        z-index: 99;
+        top: 8px;
+        right: 8px;
+        position: absolute;
+
+        .SubGroup {
+            background: #ffffff;
+            box-shadow: 0px 2px 8px 0px rgba(0, 21, 41, 0.15);
+            margin-bottom: 8px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            border-radius: 2px;
+            .ant-btn{
+                border: none;
+            }
+        }
+    }
+    .diagramComponent {
+        width: 100%;
+        height: 100%;
+        background-color: #f2f2f2;
+
+        // 去除画布的蓝色默认border
+        canvas {
+            border: 0px;
+            outline: none;
+        }
+    }
+
+ 
+    .padding-col {
+        padding-left: 8px;
+    }
+    .node-tooltip {
+        padding: 8px;
+        background: rgba(0, 0, 0, 0.5);
+        border-radius: 4px;
+        font-size: 14px;
+        font-family: PingFangSC-Regular, PingFang SC;
+        font-weight: 400;
+        color: rgba(255, 255, 255, 1);
+
+        .field-name {
+            display: block;
+            width: 66px;
+            float: left;
+        }
+    }
+
+    .ant-btn-sm {
+        padding: 0px;
+    }
+
+    .overviewComponent {
+        position: absolute;
+        width: 120px;
+        height: 84px;
+        right: 8px;
+        bottom: 8px;
+        background-color: #fff;
+        z-index: 300;
+        border: solid 1px #7986cb;
+    }
+}
+.searchItem {
+    .ant-input {
+        border: 0px;
+    }
+}

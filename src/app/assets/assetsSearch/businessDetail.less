@@ -1,0 +1,72 @@
+.businessDetail {
+    font-family: PingFangSC-Regular, PingFang SC;
+    @padding: calc(~'(100% - 1200px) / 2');
+    flex-grow: 1;
+    flex-shrink: 1;
+    background-color: #fff;
+    > header {
+        padding: 28px @padding;
+        background: linear-gradient(180deg, #ffffff 0%, #f2f5fa 100%);
+        display: flex;
+        align-items: center;
+        position: relative;
+
+        .assetIcon {
+            width: 44px;
+            height: 44px;
+            background: #316ce2;
+            border-radius: 100%;
+            color: white;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-grow: 0;
+            flex-shrink: 0;
+            margin-right: 16px;
+            font-size: 18px;
+        }
+
+        h2 {
+            font-size: 20px;
+            font-family: PingFangSC-Semibold, PingFang SC;
+            font-weight: 600;
+            color: #262626;
+        }
+
+        .HeaderExtra {
+            position: absolute;
+            right: @padding;
+            top: 0;
+            bottom: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding-right: 60px;
+            > img {
+                width: 50px;
+                position: absolute;
+                top: 10px;
+                right: 0;
+            }
+        }
+
+        .ant-divider {
+            margin: 0 16px;
+        }
+
+        .atomLabel {
+            > label {
+                color: #9ea3a8;
+            }
+        }
+    }
+    > main {
+        background-color: white;
+        padding: 20px;
+        padding-top: 5px;
+        padding: 5px @padding 20px @padding;
+        .Module {
+            padding: 0;
+        }
+    }
+}

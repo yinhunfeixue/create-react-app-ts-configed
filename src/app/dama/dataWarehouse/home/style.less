@@ -1,0 +1,124 @@
+.wareHoseWelcome {
+    background: #f7f7f7;
+    height: auto;
+    font-family: PingFangSC-Regular, PingFang SC;
+    //padding: 40px 120px;
+    .time {
+        color: #666666;
+        font-size: 12px;
+        text-align: right;
+        margin-bottom: 12px;
+    }
+    .progressText {
+        .ant-progress-text {
+            font-size: 14px;
+        }
+    }
+    .wareItem {
+        height: auto;
+        background: #FFFFFF;
+        box-shadow: 0px 2px 4px 0px rgba(102, 102, 102, 0.3);
+        border-radius: 2px;
+        margin-bottom: 40px;
+        padding: 24px 32px;
+        .ant-progress-circle.ant-progress-status-success .ant-progress-text {
+            color: #333 !important;
+        }
+        .title {
+            font-size: 16px;
+            color: #333333;
+            text-align: left;
+        }
+        .dataView {
+            border-bottom: 1px solid rgba(102, 102, 102, 0.1);
+            display: flex;
+            .dataViewItem {
+                flex-grow: 1;
+                padding: 24px 0px 24px 20px;
+                width: 33%;
+                .dataViewItemBorder {
+                    border-right: 1px solid rgba(102, 102, 102, 0.2);
+                }
+            }
+        }
+        .dataViewWithPic {
+            border-radius: 2px;
+            border: 1px solid rgba(102, 102, 102, 0.1);
+            height: 128px;
+            padding: 9px 3px;
+            img {
+                width: 180px;
+            }
+        }
+        .chartItem {
+            border-right: 1px solid rgba(102, 102, 102, 0.2);
+            height: 220px;
+            margin-top: 25px;
+            text-align: center;
+            .chartItemDesc {
+                padding-top: 60px;
+                padding-left: 32px;
+                vertical-align: top;
+                display: inline-block;
+            }
+        }
+        .dataViewItemName {
+            color: #666666;
+            font-size: 12px;
+            text-align: left;
+        }
+        .dataViewItemValue {
+            font-size: 28px;
+            color: #333333;
+            display: inline-block;
+            span {
+                margin-left: 15px;
+                font-size: 14px;
+                color: #F5222D;
+                float: right;
+                padding-top: 10px;
+                img {
+                    width: 16px;
+                }
+            }
+        }
+    }
+}
+.guideContainer {
+    background: #f7f7f7;
+    height: auto;
+    min-height: calc(~"100vh - 80px");
+    font-family: PingFangSC-Regular, PingFang SC;
+    //padding: 16px 120px;
+    .guideItem {
+        height: auto;
+        background: #FFFFFF;
+        box-shadow: 0px 2px 4px 0px rgba(102, 102, 102, 0.3);
+        border-radius: 2px;
+        .guideTitle {
+            font-size: 36px;
+            color: #333333;
+            display: inline-block;
+            margin-top: 32px;
+        }
+        .guidePic {
+            float: right;
+            img {
+                width: 216px;
+            }
+        }
+        .stepContent {
+            color: #333;
+            padding: 0 30px 40px 30px;
+            border-bottom: 1px solid rgba(102, 102, 102, 0.1);
+            .contentTitle {
+                font-size: 18px;
+                margin-bottom: 24px;
+            }
+            .contentValue {
+                font-size: 14px;
+                margin-bottom: 12px;
+            }
+        }
+    }
+}

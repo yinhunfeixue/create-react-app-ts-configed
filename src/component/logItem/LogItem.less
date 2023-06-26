@@ -1,0 +1,33 @@
+.LogItem {
+    display: flex;
+    align-items: center;
+    border-bottom: 1px solid rgba(238, 240, 245, 1);
+    padding: 9px 0;
+    .LogItemIcon {
+        width: 2px;
+        height: 14px;
+        background: #4d73ff;
+        margin-right: 18px;
+    }
+
+    .LogItemType {
+        margin-right: 8px;
+    }
+
+    > * {
+        flex-grow: 0;
+        flex-shrink: 0;
+    }
+
+    :global {
+        .ant-divider-vertical {
+            margin: 0 24px;
+        }
+    }
+
+    > p {
+        margin-bottom: 0;
+        flex-grow: 1;
+        flex-shrink: 1;
+    }
+}

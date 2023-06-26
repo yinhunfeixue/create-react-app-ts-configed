@@ -1,0 +1,61 @@
+.wordSuggestion{
+    outline: none;
+    // display: flex;
+    // flex-flow: wrap;
+    // padding:8px 16px 8px 16px;
+    position: relative;
+    flex-flow: wrap;
+    overflow: hidden;
+    overflow-y: overlay;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    .selectList{
+        position: relative;
+        .blockList{
+            z-index: 10;
+            position: absolute;
+            top:-4px;
+            // left:0;
+            background:rgba(255,255,255,1);
+            box-shadow:0px 0px 8px 0px rgba(0,0,0,0.15);
+            border-radius:4px;
+            background: #FFFFFF;
+            // min-width: 200px;
+            min-width: 120px;
+            white-space: nowrap;
+            max-height: 400px;
+            overflow: auto;
+            .blockOpiton{
+                padding:3px 16px;
+                cursor: pointer;
+                .optionLogo{
+                    img{
+                        width:12px;
+                        height:12px;
+                        margin-right: 8px;
+                    }
+                }
+            }
+            .blockOpiton:hover{
+                background:rgba(238,238,238,1);;
+                //opacity:0.09;
+            }
+        }                
+    }
+    .searchItem{
+        display: inline-block;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
+        .searchBlock{
+            outline: none;
+            min-width: 5px;
+            line-height: 20px;
+            //height:20px
+          }
+    }
+
+}

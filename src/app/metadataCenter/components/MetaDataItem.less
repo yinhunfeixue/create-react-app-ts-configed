@@ -1,0 +1,114 @@
+.MetaDataItem {
+    padding: 28px 0;
+    border-bottom: 1px solid #f0f2f7;
+    > *:not(:last-child) {
+        margin-bottom: 12px;
+    }
+    .MetaDataItemTitle {
+        display: flex;
+        align-items: center;
+        margin-bottom: 12px;
+        width: 100%;
+        cursor: pointer;
+        > *:not(:last-child) {
+            margin-right: 12px;
+        }
+
+        > a {
+            font-size: 18px;
+            font-weight: 400;
+            color: rgba(45, 48, 51, 1);
+            flex-grow: 0;
+            flex-shrink: 1;
+            max-width: 900px;
+            font-weight: 500;
+        }
+
+        &:hover {
+            > a {
+                color: #4d73ff;
+                text-decoration: underline;
+            }
+        }
+
+        .DimGroup {
+            flex-grow: 0;
+            flex-shrink: 0;
+            display: flex;
+            .DimItem {
+                width: 20px;
+                height: 20px;
+                background: #f7f9fc;
+                border-radius: 10px;
+                text-align: center;
+                line-height: 20px;
+            }
+            > * {
+                margin-right: 4px;
+            }
+        }
+    }
+
+    .TechGroup {
+        word-break: break-word;
+        > .ant-divider {
+            margin: 0 24px;
+        }
+
+        .TechItem {
+            display: inline-block;
+
+            > label {
+                flex-grow: 0;
+                flex-shrink: 0;
+            }
+        }
+    }
+
+    .FieldsGroup {
+        background: #f7f8fa;
+        border-radius: 2px;
+        padding: 12px;
+        line-height: 22px;
+        color: #5e6266;
+
+        .FieldRow {
+            &:not(:last-child) {
+                margin-bottom: 4px;
+            }
+        }
+        .FieldItem {
+            * {
+                vertical-align: middle;
+            }
+            &:not(:last-child) {
+                margin-right: 40px;
+            }
+
+            .ColumnText {
+                vertical-align: middle;
+                > * {
+                    margin-right: 3px;
+                }
+            }
+        }
+    }
+
+    .TagGroup {
+        display: flex;
+        flex-wrap: wrap;
+        > * {
+            margin-right: 12px;
+        }
+    }
+
+    .ant-divider-vertical {
+        border-left: 1px solid #c6c8cc;
+    }
+
+    .ant-tag-blue {
+        border-color: #5b7fa3;
+        background-color: rgba(91, 127, 163, 0.1);
+        color: #5b7fa3;
+    }
+}

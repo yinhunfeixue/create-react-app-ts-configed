@@ -1,0 +1,41 @@
+.GraphDrawerWrap {
+    height: 100%;
+    width: 0;
+    transition: width 0.3s;
+    overflow: hidden;
+    .GraphDrawer {
+        @border:1px solid rgba(208, 213, 222, 1);
+        height: 100%;
+        border-left: @border;
+        background-color: white;
+        display: flex;
+        flex-direction: column;
+        width: 250px;
+
+        > header {
+            height: 40px;
+            border-bottom: @border;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 16px;
+            flex-grow: 0;
+            flex-shrink: 0;
+            font-weight: 500;
+
+            .IconClose {
+                cursor: pointer;
+            }
+        }
+
+        > main {
+            flex-grow: 1;
+            flex-shrink: 1;
+            overflow: auto;
+        }
+    }
+
+    &.GraphDrawerWrapVisible {
+        width: 250px;
+    }
+}

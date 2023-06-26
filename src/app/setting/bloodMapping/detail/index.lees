@@ -1,0 +1,114 @@
+
+.badge{
+  sup{
+      background: #F54B45;
+      color: #fff;
+      border-radius: 100px;
+      padding: 0 2px;
+      text-shadow: none;
+  }
+}
+
+.rebuild{
+  font-size: 14px;
+  display: flex;
+  font-weight: bold;
+  >svg{
+    margin-right: 6px;
+  }
+}
+
+.confirmInfo{
+  position: absolute;
+  bottom: 30px;
+  left: 30px;
+  color: #5E6266;
+  >label{
+    margin-right: 12px;
+  }
+}
+
+.modal{
+  :global{
+    .ant-modal-header{
+      border-bottom: none;
+    }
+    .ant-modal-body{
+      padding: 16px 24px;
+    }
+    .ant-modal-footer{
+      padding: 16px 24px;
+      border-top: none;
+      display: flex;
+      align-items: center;
+      >span{
+        flex: 1;
+        color: #5E6266;
+        text-align: left;
+        >label{
+          margin-right: 12px;
+        }
+      }
+    }
+  }
+}
+
+.outFooter{
+  padding: 12px 16px;
+  display: flex;
+  align-items: center;
+  .select{
+    margin-left: 24px;
+    margin-right: 27px;
+    color: #666666;
+  }
+  .cancel{
+    color: #2D3033;
+    cursor: pointer;
+  }
+}
+
+.iconTitle{
+  display: flex;
+  align-items: center;
+  svg{
+    margin-right: 5px;
+  }
+  .text{
+    color: #9EA3A8;
+  }
+  >span{
+    max-width: 300px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    display: inline-block;
+  }
+}
+
+.compareTable{
+  font-size: 14px;
+  :global{
+    .ant-table-thead > tr > th:not(:last-child):not(.ant-table-selection-column):not(.ant-table-row-expand-icon-cell):not([colspan])::before{
+      display: none;
+    }
+    thead{
+      th:nth-child(2){
+        border-right: 1px solid #E6E8ED;
+      }
+    }
+    tbody{
+      td:nth-child(2){
+        border-right: 1px solid #E6E8ED;
+      }
+    }
+  }
+}
+
+.moreText{
+  display: inline-block;
+  max-width: 170px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}

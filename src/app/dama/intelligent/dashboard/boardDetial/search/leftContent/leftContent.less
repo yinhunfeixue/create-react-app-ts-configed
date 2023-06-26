@@ -1,0 +1,181 @@
+.boardDraw{
+  .leftHeader{
+    border-bottom: 1px solid #ddd;
+    //height: 120px;
+    margin: 0 15px;
+    .topic{
+        text-align: center;
+        // font-size: 16px;
+        // line-height: 60px;
+        h3{
+            padding-top:25px;
+            padding-bottom:15px;
+            font-size: 16px;
+            font-weight: 400;
+            margin-bottom: 0;
+        }
+    }
+    .changeData{
+        text-align: center;
+        margin-bottom: 24px;
+    }
+  }
+  .leftList{
+      padding-left:14px;
+      .ant-list-split .ant-list-header{
+        border: none;
+        padding-top: 0px;
+        padding-bottom: 6px;
+      }
+      .listItem{
+          height: 24px;
+          line-height: 24px;
+          font-size: 12px;
+          border-radius:4px;
+          margin-bottom:6px;
+            .itemType{
+                display: inline-block;
+                width: 28px;
+                height: 24px;
+                text-align: center;
+                img{
+                      margin-top: -3px;
+                      height:12px;
+                      width: 12px;
+                      vertical-align: middle;
+                }
+            }
+            .itemText{
+                display: inline-block;
+                height: 24px;
+                line-height: 24px;
+            }
+            .itemText :after{
+                content: '';
+                display: block;
+                clear: both;
+            }
+          .statusArr{
+              float: right;
+              display: inline-block;
+              width: 50px;
+              margin-left: 16px;
+              .itemStatus{
+                  img{
+                    width: 13px;
+                    height: 14px;
+                    margin-top: -3px;
+                  }
+                  cursor: pointer;
+                  display: inline-block;
+                  width: 16px;
+                  height: 24px;
+                  visibility: hidden;
+              }
+              .itemStatus1{
+                cursor: pointer;
+                img{
+                  margin-top: -3px;
+                }
+                  display: inline-block;
+                  width: 16px;
+                  height: 24px;
+              }
+              .itemStatus2{
+                img{
+                  margin-top: -3px;
+                }
+                  display: none;
+              }
+          }
+        }
+        .listItem:hover{
+          background:rgba(0,0,0,0.09);
+          .statusArr{
+              .itemStatus1{
+                  display: inline-block;
+              }
+              .itemStatus2{
+                  cursor: pointer;
+                  display: inline-block;
+                  width: 16px;
+                  height: 24px;
+                  margin-left: 13px;
+              }
+              .itemStatus{
+                  visibility: initial;
+              }
+          }
+      }
+      .Collspe{
+        padding-top: 16px;
+        font-size: 14px;
+        font-weight: bold;
+      }
+  }
+  .foldBlock{
+    overflow: hidden;
+    background: #FFFFFF;
+    .foldHeader{
+      margin-bottom: 8px;
+    }
+    .foldIcon{
+      width: 5px;
+      height: 6px;
+      cursor: pointer;
+      margin-right: 8px;
+    }
+    .foldName{
+      font-size: 14px;
+      font-weight: bold;
+    }
+    .collseBlock{
+      max-height: 0;
+      overflow: hidden;
+    }
+    .block{
+      transition-duration: 0.3s, 0.3s;
+      transition-timing-function: cubic-bezier(0.645, 0.045, 0.355, 1), cubic-bezier(0.645, 0.045, 0.355, 1);
+      transition-delay: 0s, 0s;
+      max-height: 9999px;
+      overflow: hidden;
+    }
+  }
+
+  .keySearch{
+    margin: 15px;
+    margin-left: 0;
+    position: relative;
+    .ant-select{
+          vertical-align: top;
+    }
+    .ant-select-selection--single{
+        border-right: none;
+        border-top-right-radius: 0px;
+        border-bottom-right-radius: 0px;
+    }
+    .ant-btn-icon-only{
+      height: 32px !important;
+      border-left: none;
+      border-radius: 0px;
+      &:hover{
+        border-color: #ddd;
+      }
+    }
+    .ant-btn-primary.ant-btn-icon-only{
+          border-top-right-radius: 3px;
+          border-bottom-right-radius: 3px;
+    }
+    .inputCloseSearchNew i.anticon-reload {
+          right: 40px;
+    }
+    .ant-btn-icon-only.buttonupdate{
+        border: none;position: absolute;
+        right: 30px;
+        top:2px;
+        // margin-top: 1px;
+        display: inline-block;
+        height: 29px !important
+    }
+  }
+}

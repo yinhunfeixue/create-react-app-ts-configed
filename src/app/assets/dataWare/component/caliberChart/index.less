@@ -1,0 +1,74 @@
+.graph-relation{
+    .typeTableStyle{
+      position: absolute;
+      float: left;
+      left: 10px;
+      z-index: 999;
+      .typeContainerStyle{
+        padding: 5px;
+        line-height: 15px;
+        .typeColor{
+            border: 1px solid;
+            height: 15px;
+            width: 15px;
+            // background: #008ce7;
+            // position: absolute;
+            float: left;
+            margin-right: 10px;
+        }
+      }
+   }
+  .diagram-component {
+    width: 100%;
+    height: calc(75vh);
+    min-height: 450px;
+    // height: 480px;
+    // border: solid 1px #CECECE;
+    background-color: white;
+
+    // 去除画布的蓝色默认border
+    canvas{
+      border:0px;
+      outline:none;
+    }
+  }
+  .padding-row{
+    padding-top: 10px;
+  }
+  .node-tooltip{
+    padding:8px;
+//     width:184px;
+    height:106px;
+    background:rgba(0,0,0,0.5);
+    border-radius:4px;
+    // width:154px;
+    // height:88px;
+    font-size:14px;
+    font-family:PingFangSC-Regular,PingFang SC;
+    font-weight:400;
+    color:rgba(255,255,255,1);
+    // line-height:22px;
+
+    .field-name{
+      display: block;
+      width: 66px;
+      float: left;
+    }
+  }
+
+  .ant-btn-sm{
+    padding:0px
+  }
+
+  .overview-component{
+    position: absolute;
+    width: 200px;
+    height: 100px;
+    top: 10px;
+    left: 10px;
+    background-color: #f2f2f2;
+    z-index: 300;
+    border: solid 1px #7986cb;
+    display: none;
+  }
+}

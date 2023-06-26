@@ -1,0 +1,212 @@
+// .boradOption{
+//     overflow: auto;
+//     max-width: 500px;
+//     white-space: initial;
+// }
+.intelligentManageStep{
+    // background:rgba(246,248,250,1);
+    height: 100%;
+    overflow-y: auto;
+    min-width: 850px;
+    .stepHeader{
+        background:rgba(246,248,250,1);
+        height:84px;
+        color: #000000;
+        font-size: 20px;
+        font-weight: bold;
+        line-height:28px;
+        padding: 32px 144px;
+        font-family:'PingFangSC-Medium,PingFang SC';
+    }
+    .staticContent{
+        height: 200px;
+        width: 100%;
+    }
+    .steps-action{
+        height:88px;
+        z-index: 10;
+        text-align: center;
+        box-shadow:0px -2px 3px 0px rgba(206,193,193,0.5);
+        border:1px solid rgba(237,237,237,1)
+    }
+    .importData{
+        padding: 32px 144px;
+        background: #FFFFFF;
+    }
+    .importContent{
+        background: #FFFFFF;
+    }
+
+    .resultContent{
+        background: #FFFFFF;
+        overflow: hidden;
+        padding: 0 0 30px 0;
+        .resultTip{
+            min-height: 320px;
+            width: 720px;
+            background:rgba(242,243,244,1);
+            margin:0 auto;
+            margin-top: 52px;
+            .tipHeader{
+                text-align: center;
+                padding: 24px 0;
+                padding-top:40px;
+                span{
+                    img{
+                        vertical-align: bottom;
+                    }
+                }
+            }
+            .Error{
+                // height: 60px;
+                color: red;
+                text-align: center;
+            }
+            .success{
+                height: 60px;
+                text-align: center;
+            }
+        }
+    }
+    .step1{
+        padding: 0 144px 80px 144px;
+        transform:none;
+        .condtion{
+            padding-top:24px;
+            .topic{
+                padding-right: 16px;
+            }
+        }
+        .filedDown{
+            height: 300px;
+            border: 1px dashed #d9d9d9;
+            transition: border-color 0.3s;
+            cursor: pointer;
+            border-radius: 4px;
+            text-align: center;
+            position: relative;
+            background: #fafafa;
+            .uploadDone{
+                margin-top: 112px;
+                text-align: center;
+                font-size: 16px;
+            }
+        }
+        .filedDown:hover {
+            border-color: #40a9ff;
+        }
+        .addboard{
+            height: 54px;
+            line-height: 54px;
+            span{
+                font-size: 14px;
+                font-weight: bold;
+            }
+            .add{
+                margin-left: 395px;
+            }
+        }
+        .del{
+            cursor: pointer;
+            display: inline-block;
+            line-height: 37px;
+            margin-left: 20px;
+        }
+        .ant-form-item-label{
+            width: 80px!important
+        }
+        .staticContent{
+            background: #979797;
+            height: 301px;
+        }
+        .steps-action{
+            position: fixed;
+            left: 0;
+            bottom: 0;
+            height: 60px;
+            width: 100%;
+            padding-top: 15px;
+            background: #FFFFFF;
+        }
+        .selectChildren{
+            padding-left:50px;
+
+        }
+        .createTableStep3{
+            .selectColumn{
+                border:1px solid rgba(238,238,238,1);
+                .addboard{
+                    padding-left: 40px;
+                }
+                .mergeContent{
+                    width: 100%;
+                    overflow: auto;
+                    height: 175px;
+                    .mergeHeader{
+                        padding-left: 40px;
+                        height: 40px;
+                        line-height: 40px;
+                        white-space: nowrap;
+                        span{
+                            font-size: 14px;
+                            font-weight: bold;
+                        }
+                    }
+                    .Content{
+                        white-space: nowrap;
+                        .delIcon{
+                            width: 40px;
+                            line-height: 40px;
+                            text-align: center;
+                            display: inline-block;
+                            img{
+                                cursor: pointer;
+                            }
+                        }
+                    }
+                }
+            }
+            .columnPreview{
+                border:1px solid rgba(238,238,238,1);
+                padding: 0 40px 20px;
+                .previewHeader{
+                    height: 54px;
+                    line-height: 54px;
+                    .refresh{
+                        span{
+                            font-size: 14px;
+                        }
+                        float: right;
+                    }
+                }
+                .previewContent{
+                    min-height:284px;
+                    border:1px solid rgba(236,236,236,1);
+                    .widthLimit{
+                        min-width: 100px;
+                        text-align: center;
+                    }
+                    .ant-table-placeholder{
+                        min-height: 284px;
+                    }
+                    .color0{
+                        background: #FEEED7;
+                    }
+                    .color1{
+                        background: #EAF8FD;
+                    }
+                    .color2{
+                        background: #FBE9E7;
+                    }
+                    .color3{
+                        background: #E0F2F1;
+                    }
+
+                }
+            }
+        }
+    }
+    .step2{
+
+    }
+}

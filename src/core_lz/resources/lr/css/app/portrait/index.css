@@ -1,0 +1,48 @@
+.page-title {
+    position: relative;
+}
+
+.portrait-search {
+    position: absolute;
+    right: 5px;
+    top: 1px;
+}
+
+.portrait-search .ant-form .ant-form-item {
+    margin-right: 0;
+}
+
+.cust-kh img {
+    height: 130px;
+    width: 130px;
+    margin-bottom: 10px;
+    border-radius: 5px;
+}
+
+.card_layout_module .ant-card-body {
+    padding: 0px;
+    min-height: inherit;
+    color: #2c2e2f;
+}
+
+.potrait-item-title {
+    color: #2c2e2f;
+    font-size: 14px;
+}
+
+.potrait-item-title .anticon-info-circle:before, .user-des .anticon-info-circle:before {
+    font-size: 12px;
+    color: #999;
+}
+
+.panel-title-white .ant-row div:first-child {
+    background: white;
+}
+
+.card_branch .ant-card-extra a{
+    color: #999;
+}
+
+.pc-title-left {
+    display: inherit;
+}

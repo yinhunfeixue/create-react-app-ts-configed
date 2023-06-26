@@ -1,0 +1,69 @@
+.resultDetail {
+    .CardGroup {
+        display: flex;
+        > *:not(:last-child) {
+            margin-right: 15px;
+        }
+        .CardItem {
+            display: flex;
+            flex-grow: 1;
+            flex-shrink: 1;
+            background: #f7f8fa;
+            border-radius: 4px;
+            padding: 25px;
+            align-items: center;
+
+            .Icon {
+                width: 52px;
+                margin-right: 24px;
+            }
+
+            h1 {
+                font-size: 28px;
+                font-family: DINAlternate-Bold, DINAlternate;
+                font-weight: bold;
+                color: #2d3033;
+                line-height: 32px;
+                margin-bottom: 0;
+            }
+
+            h3 {
+                font-size: 14px;
+                font-family: PingFangSC-Semibold, PingFang SC;
+                font-weight: 600;
+                color: #5e6266;
+                line-height: 22px;
+                margin-bottom: 0;
+            }
+
+            .Divider {
+                margin: 0 40px;
+                height: 80%;
+            }
+
+            > main {
+                flex-grow: 1;
+                flex-shrink: 1;
+
+                .DesItemLabel {
+                    &::before {
+                        content: '';
+                        display: inline-block;
+                        background: #ebedf2;
+                        border: 1px solid #c4c8cc;
+                        width: 9px;
+                        height: 9px;
+                        margin-right: 4px;
+                    }
+
+                    &.DesItemLabelLight {
+                        &::before {
+                            border: 1px solid #ff9900;
+                            background-color: #ff9900;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

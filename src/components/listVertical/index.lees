@@ -1,0 +1,12 @@
+
+.wrap{
+  font-size: 14px;
+  color: #9EA3A8;
+  p{
+    margin: 0;
+    text-align: left;
+  }
+  .value{
+    color: #2D3033;
+  }
+}

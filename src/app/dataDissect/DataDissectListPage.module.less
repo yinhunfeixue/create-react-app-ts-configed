@@ -1,0 +1,41 @@
+.DataDissectListPage {
+    > main {
+        padding: 0;
+    }
+    .DissectList {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        row-gap: 16px;
+        column-gap: 16px;
+    }
+    .IconMenu {
+        padding: 5px;
+        line-height: 1;
+        border-radius: 2px;
+        color: #5e6266;
+        cursor: pointer;
+
+        &:hover {
+            background: #e8e9eb;
+        }
+    }
+
+    .EmptyIcon {
+        width: 140px;
+        height: 140px;
+        margin-bottom: 16px;
+        border-radius: 100%;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        background: linear-gradient(360deg, #fbfcfd 0%, #f5f7fa 100%);
+        > img {
+            width: 60px;
+            height: 60px;
+        }
+    }
+}
+
+.ant-dropdown {
+    border: 2px solid red;
+}

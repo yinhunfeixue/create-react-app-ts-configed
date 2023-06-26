@@ -1,0 +1,68 @@
+.GraphPageLayout {
+    height: 100%;
+
+    .GraphPageLayoutWrap {
+        display: flex;
+        flex-direction: column;
+        height: 100%;
+        background-color: rgba(247, 248, 250, 1);
+        overflow: hidden;
+        border: 1px solid rgba(230, 232, 237, 1);
+
+        .GraphPageLayoutHeader,
+        .GraphPageLayoutControlContainer {
+            display: flex;
+            align-items: stretch;
+            justify-content: space-between;
+            background-color: white;
+            border-bottom: #d0d5de 1px solid;
+            user-select: none;
+            flex-grow: 0;
+            flex-shrink: 0;
+            height: 40px;
+        }
+
+        .GraphPageLayoutHeader {
+            background-color: white;
+            color: rgba(45, 48, 51, 1);
+            align-items: center;
+            padding-left: 15px;
+        }
+
+        > main {
+            flex-grow: 1;
+            flex-shrink: 1;
+            display: flex;
+            overflow: hidden;
+
+            .ChartWrap {
+                flex-grow: 1;
+                flex-shrink: 1;
+                display: flex;
+                flex-direction: column;
+                overflow: hidden;
+                .Chart {
+                    flex-grow: 1;
+                    flex-shrink: 1;
+                    display: flex;
+                    flex-direction: column;
+                    overflow: hidden;
+                }
+            }
+        }
+
+        &.GraphPageLayoutWrapFull {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            z-index: 9;
+            border: none;
+            .GraphPageLayoutHeader {
+                background-color: rgba(56, 60, 64, 1);
+                color: white;
+            }
+        }
+    }
+}

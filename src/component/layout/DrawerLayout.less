@@ -1,0 +1,76 @@
+.DrawerLayout {
+    :global {
+        .ant-drawer-header-title {
+            width: 100%;
+        }
+        .ant-drawer-title {
+            width: 100%;
+        }
+    }
+    .TitleGroup {
+        display: flex;
+        align-items: center;
+        .Title {
+            flex-grow: 1;
+            flex-shrink: 1;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            font-weight: bold;
+        }
+        .ExtraGroup {
+            display: flex;
+            align-items: center;
+            flex-grow: 0;
+            flex-shrink: 0;
+            > *:not(:last-child) {
+                margin-right: 8px;
+                margin-left: 0;
+            }
+        }
+    }
+    .ant-drawer-wrapper-body {
+        display: flex;
+        flex-direction: column;
+
+        .ant-drawer-body {
+            flex-grow: 1;
+            flex-shrink: 1;
+            overflow: auto;
+            display: flex;
+            flex-direction: column;
+            padding: 0;
+            > main {
+                flex-grow: 1;
+                flex-shrink: 1;
+                overflow: auto;
+                padding: 16px 24px 24px 24px;
+                position: relative;
+                > *:not(:last-child) {
+                    margin-bottom: 15px;
+                }
+
+                #drawerLayoutDropContainer {
+                    margin-bottom: 0;
+                    position: relative;
+                }
+            }
+            > footer {
+                flex-grow: 0;
+                flex-shrink: 0;
+                padding: 16px 25px;
+                background: #ffffff;
+                border-top: 1px solid #e6e8ed;
+                > *:not(:last-child) {
+                    margin-right: 8px;
+                }
+            }
+        }
+    }
+
+    .ant-pagination {
+        text-align: right;
+        .ant-pagination-total-text {
+            float: left;
+        }
+    }
+}

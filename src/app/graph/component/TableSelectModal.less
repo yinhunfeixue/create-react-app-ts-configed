@@ -1,0 +1,79 @@
+.TableSelectModal {
+    .ant-modal-body {
+        padding: 20px;
+        max-height: 60vh;
+        overflow: auto;
+    }
+
+    .Header {
+        display: flex;
+        align-items: center;
+        margin-right: 30px;
+        font-size: 14px;
+        .IconSearch {
+            color: rgba(77, 115, 255, 1);
+            margin-right: 10px;
+        }
+
+        .InputWrap {
+            display: flex;
+            align-items: center;
+            flex-grow: 1;
+            flex-shrink: 1;
+            flex-wrap: wrap;
+            .ant-tag {
+                border: none;
+                font-size: 14px;
+                font-weight: normal;
+                margin: 3px 0;
+            }
+            > *:not(:last-child) {
+                margin-right: 4px;
+            }
+
+            .Input {
+                flex-grow: 1;
+                flex-shrink: 1;
+                border: none;
+                outline: none;
+            }
+        }
+    }
+
+    .FieldControlGroup {
+        justify-content: space-between;
+        margin-bottom: 16px;
+        .Label {
+            flex: 1;
+        }
+    }
+
+    .FieldList {
+        .FieldItem {
+            cursor: pointer;
+            padding: 8px 16px;
+            &.ItemSelected {
+                background-color: rgba(244, 245, 247, 1);
+            }
+
+            .FieldItemFooter {
+                color: rgba(158, 163, 168, 1);
+                margin-top: 2px;
+                > *:not(:last-child) {
+                    margin-right: 4px;
+                }
+
+                .ant-tag {
+                    border-radius: 10px;
+                }
+            }
+        }
+    }
+
+    .ant-cascader-picker {
+        .ant-cascader-input {
+            border: none;
+            box-shadow: none !important;
+        }
+    }
+}

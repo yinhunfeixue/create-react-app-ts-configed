@@ -1,0 +1,29 @@
+.ModuleTitle {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    > h2 {
+        font-size: 14px;
+        font-family: PingFangSC-Semibold, PingFang SC;
+        font-weight: 600;
+        color: #1a1a1a;
+        line-height: 1;
+        display: flex;
+        align-items: center;
+        margin: 0;
+        &::before {
+            content: '';
+            width: 4px;
+            height: 14px;
+            background-color: #4c79fc;
+            display: inline-block;
+            border-radius: 2px;
+            margin-right: 8px;
+        }
+
+        > *:not(:last-child) {
+            margin-right: 15px;
+        }
+    }
+}

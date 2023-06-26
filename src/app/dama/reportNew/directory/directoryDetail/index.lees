@@ -1,0 +1,47 @@
+
+.flex{
+  display: flex;
+  >div{
+    flex: 1;
+    p:last-child{
+      max-width: 200px;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+  }
+  margin-bottom: 24px;
+  &:last-child{
+    margin-bottom: 0px;
+  }
+}
+
+
+.title{
+  flex: 1;
+  button{
+    float: right;
+  }
+}
+
+.expandRow{
+  font-size: 14px;
+  :global{
+    .ant-table-cell{
+      padding: 8px !important;
+    }
+    .ant-table{
+      margin: 0 !important;
+      .ant-table-cell{
+        padding: 15px 16px !important;
+      }
+    }
+  }
+}
+
+.tableIcon{
+  img{
+    margin-right: 10px;
+    position: relative;
+    top: -2px;
+  }
+}

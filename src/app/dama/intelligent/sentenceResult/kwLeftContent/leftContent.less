@@ -1,0 +1,206 @@
+.sentenceLeftMenu {
+    padding-bottom: 24px;
+    height: 100%;
+    .ant-spin-nested-loading{
+        height: calc(~"100% - 188px");
+        .ant-spin-container{
+            height: 100%;
+            .leftChild{
+                overflow-y: auto;
+                height: 100%;
+            }
+        }
+    }
+}
+.kwLeftContent{
+    padding-bottom: 24px;
+}
+.formulaBtn{
+    text-align: center;
+    padding-top:20px;
+    .addFormula{
+        cursor: pointer;
+        display: inline-block;
+        height: 30px;
+        background: #FFF;
+        line-height: 30px;
+        width: 120px;
+        border-radius: 20px;
+    }
+}
+.leftHeader{
+    border-bottom: 1px solid #ddd;
+    //height: 120px;
+    margin: 0 15px;
+    .topic{
+        text-align: center;
+        // font-size: 16px;
+        // line-height: 60px;
+        h3{
+            padding-top:25px;
+            padding-bottom:15px;
+            font-size: 16px;
+            font-weight: 400;
+            margin-bottom: 0;
+        }
+    }
+    .changeData{
+        text-align: center;
+        margin-bottom: 24px;
+    }
+}
+.leftChild{
+    padding:0 15px 0 15px;
+    .menuCollspeWarp, .disableBlock{
+        background: #f5f5f5;
+        .foldHeader{
+            .foldName{
+                font-size: 14px;
+                font-weight: bold;
+                max-width: 180px;
+                overflow: hidden;
+                display: inline-grid;
+                width: 100%;
+                text-overflow:ellipsis;
+            }
+        }
+    }
+
+}
+.leftChildBlock{
+    .ant-list-split .ant-list-header{
+        font-size: 14px;
+        font-weight: bold;
+        border: none;
+        padding-top: 0;
+        padding-bottom: 4px;
+        padding-left: 20px;
+        color: #000;
+
+    }
+    .listItem{
+        height: 24px;
+        line-height: 24px;
+        font-size: 12px;
+        //width:200px;
+        border-radius:4px;
+        .itemType{
+            display: inline-block;
+            width: 24px;
+            height: 24px;
+            text-align: left;
+            img{
+                margin-top: -3px;
+                height:12px;
+                width: 12px;
+            }
+        }
+        .statusArr{
+            display: inline-block;
+            width: 21px;
+            text-align: center;
+            //  margin-left: 16px;
+            .itemStatus{
+                img{
+                    margin-top: -3px;
+                }
+                cursor: pointer;
+                display: inline-block;
+                width: 16px;
+                height: 24px;
+                visibility: hidden;
+            }
+            .itemStatus1{
+                img{
+                    margin-top: -3px;
+                }
+                display: inline-block;
+                width: 16px;
+                height: 24px;
+            }
+            .itemStatus2{
+                img{
+                    margin-top: -3px;
+                }
+                display: none;
+            }
+        }
+
+        .itemText{
+            display: inline-block;
+            height: 24px;
+            line-height: 24px;
+        }
+        .itemText :after{
+            content: '';
+            display: block;
+            clear: both;
+        }
+    }
+    .listItem:hover{
+        background:rgba(0,0,0,0.09);
+        .statusArr{
+            .itemStatus1{
+                display: none;
+            }
+            .itemStatus2{
+                cursor: pointer;
+                display: inline-block;
+                width: 16px;
+                height: 24px;
+            }
+            .itemStatus{
+                visibility: initial;
+            }
+        }
+    }
+
+}
+.leftList{
+    .ant-list-split .ant-list-header{
+      border: none;
+      padding-top: 12px;
+      padding-bottom: 6px;
+    }
+      padding:0 15px 0 15px;
+      .listItem{
+          height: 24px;
+          line-height: 24px;
+          font-size: 12px;
+          //width:200px;
+          border-radius:4px;
+          .itemType{
+              display: inline-block;
+              width: 28px;
+              height: 24px;
+              text-align: center;
+              img{
+                    margin-top: -3px;
+                    height:12px;
+                    width: 12px;
+                    vertical-align: middle;
+              }
+          }
+          .itemText{
+              display: inline-block;
+              height: 24px;
+              line-height: 24px;
+          }
+          .itemText :after{
+              content: '';
+              display: block;
+              clear: both;
+          }
+      }
+      .listItem1:hover{
+        background: inherit;
+     }
+}
+
+.intelligent .leftContent .keySearch .ant-btn-icon-only.buttonupdate{
+  border: none;position: absolute;
+  right: 30px;
+  // margin-top: 1px;
+  display: inline-block;
+  height: 29px !important
+}

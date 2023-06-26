@@ -8,6 +8,7 @@
       "esnext"
     ],
     "allowJs": true,
+    "noImplicitAny": false,
     "skipLibCheck": true,
     "esModuleInterop": true,
     "allowSyntheticDefaultImports": true,
@@ -26,6 +27,57 @@
       ],
       "app_images/*": [
         "../resources/images/*"
+      ],
+      "app_icons": [
+        "../resources/icons"
+      ],
+      "app_js": [
+        "./src/core_lz/resources/dmp/js"
+      ],
+      "app_constants": [
+        "./src/constants/index"
+      ],
+      "app_common": [
+        "./src/core_lz/common"
+      ],
+      "app_component": [
+        "./src/core_lz/component"
+      ],
+      "app_page": [
+        "./src/app"
+      ],
+      "app_store": [
+        "./src/store"
+      ],
+      "app_css": [
+        "./src/core_lz/resources/dmp/css"
+      ],
+      "app_api": [
+        "./src/api"
+      ],
+      "app_component_main": [
+        "./src/component"
+      ],
+      "app_service": [
+        "./src/services"
+      ],
+      "app_utils": [
+        "./src/utils"
+      ],
+      "app_config": [
+        "./src/tabConfig"
+      ],
+      "cps": [
+        "./src/component"
+      ],
+      "utils": [
+        "./src/utils"
+      ],
+      "businessCps": [
+        "./src/businessComponents"
+      ],
+      "hooks": [
+        "./src/hooks"
       ],
     }
   },

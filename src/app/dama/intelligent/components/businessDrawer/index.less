@@ -1,0 +1,111 @@
+.card-container {
+    // background: #F5F5F5;
+    display: flex;
+    min-height: 100%;
+    
+    .searchTool{
+        width: 100%;
+        height: 46px;
+        padding-right: 16px;
+        padding-top: 8px;
+    }
+
+    .menuBar {
+        width: 200px;
+        background: rgba(247,248,250,1);
+        flex-shrink: 0;
+
+        .ant-menu-item{
+            margin-top: 0px;
+        }
+
+        .ant-menu-item-selected{
+            background: #fff !important;
+        }
+
+        .menuTitle{
+            height:20px;
+            font-size:12px;
+            font-family:PingFangSC-Regular,PingFang SC;
+            font-weight:400;
+            color:rgba(0,0,0,1);
+            // line-height:20px;
+            .titleName{
+                overflow: hidden;
+                white-space: nowrap;
+                text-overflow: ellipsis;
+            }
+            
+        }
+    }
+
+    .contentCard{
+        width: 50%;
+        // background: #fff;
+        //marginBottom: '20px',
+        // marginRight: '1%',
+        // marginLeft: '1%',
+        display: inline-block;
+        // overflow: hidden;
+        // height: 230px;
+        padding: 8px;
+        border: 0px;
+        overflow: hidden;
+        .ant-card-body{
+            padding: 0px !important;
+        }
+
+        .businessMode{
+            width:100%;
+            height:205px;
+            background:rgba(246,248,250,1);
+            padding: 16px;
+
+            .businessTitle{
+                font-size:14px;
+                font-family:PingFangSC-Medium,PingFang SC;
+                font-weight:600;
+                color:rgba(0,0,0,1);
+            }
+
+            .userInfo{
+                font-size:12px;
+                font-family:PingFangSC-Regular,PingFang SC;
+                font-weight:400;
+                color:rgba(0, 0, 0, 0.45);
+            }
+        }
+
+    }
+    
+
+}
+
+// .card-container > .ant-tabs-card > .ant-tabs-content {
+//     height: 120px;
+//     margin-top: -16px;
+//   }
+  
+//   .card-container > .ant-tabs-card > .ant-tabs-content > .ant-tabs-tabpane {
+//     background: #fff;
+//     padding: 16px;
+//   }
+  
+  .card-container > .ant-tabs-card > .ant-tabs-bar {
+    border-color: #fff;
+  }
+  
+  .card-container > .ant-tabs-card > .ant-tabs-bar .ant-tabs-tab {
+    border-color: transparent;
+    background: transparent;
+  }
+  
+  .card-container > .ant-tabs-card > .ant-tabs-bar .ant-tabs-tab-active {
+    border-color: #fff !important;
+    background: #fff !important;
+  }
+
+  .card-container > .ant-tabs-card > .ant-tabs-content > .ant-tabs-tabpane {
+    background: #fff;
+    padding: 16px;
+}

@@ -1,0 +1,145 @@
+
+// loading效果
+.load-wrap {
+    display: -webkit-box;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    display: flex;
+    flex-direction: row;
+    -ms-flex-direction: row;
+    -webkit-flex-direction: row;
+    flex-grow: 1;
+    -webkit-flex-grow: 1;
+    -ms-flex-grow: 1;
+    flex-shrink: 1;
+    -webkit-flex-shrink: 1;
+    -ms-flex-shrink: 1;
+    flex-basis: 0px;
+    -webkit-flex-basis: 0px;
+    -ms-flex-basis: 0px;
+    min-width: 0px;
+    align-items: center;
+    -webkit-align-items: center;
+    -ms-flex-align: center;
+    justify-content: center;
+    -webkit-justify-content: center;
+    -ms-flex-pack: center;
+    max-width: 100%;
+    box-sizing: border-box;
+}
+
+.loading-indicator {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: #fff;
+    opacity: 0.9;
+    z-index: 1000;
+    display: -webkit-box;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    display: flex;
+    flex-direction: row;
+    -ms-flex-direction: row;
+    -webkit-flex-direction: row;
+    align-items: stretch;
+    -webkit-align-items: stretch;
+    -ms-flex-align: stretch;
+    max-width: 100%;
+    box-sizing: border-box;
+}
+
+.circle {
+    display: inline-block;
+    height: 12px;
+    width: 12px;
+    margin-right: 4px;
+    background-color: #bec6d0;
+    border-radius: 50%;
+    -webkit-animation: loading 1.6s infinite;
+    -moz-animation: loading 1.6s infinite;
+    -o-animation: loading 1.6s infinite;
+    animation: loading 1.6s infinite;
+}
+
+.load-wrap .circle:nth-child(1) {
+    -webkit-animation-delay: .1s;
+    -moz-animation-delay: .1s;
+    -o-animation-delay: .1s;
+    animation-delay: .1s;
+}
+
+.load-wrap .circle:nth-child(2) {
+    -webkit-animation-delay: .3s;
+    -moz-animation-delay: .3s;
+    -o-animation-delay: .3s;
+    animation-delay: .3s;
+}
+
+.load-wrap .circle:nth-child(3) {
+    -webkit-animation-delay: .5s;
+    -moz-animation-delay: .5s;
+    -o-animation-delay: .5s;
+    animation-delay: .5s;
+}
+
+/* Keyframes */
+
+@-webkit-keyframes loading {
+    0%, 100% {
+        -webkit-transform: scale(0.0);
+    }
+    50% {
+        -webkit-transform: scale(1.0);
+    }
+}
+
+@-moz-keyframes loading {
+    0%, 100% {
+        -moz-transform: scale(0.0);
+    }
+    50% {
+        -moz-transform: scale(1.0);
+    }
+}
+
+@-o-keyframes loading {
+    0%, 100% {
+        -o-transform: scale(0.0);
+    }
+    50% {
+        -o-transform: scale(1.0);
+    }
+}
+
+@keyframes loading {
+    0%, 100% {
+        transform: scale(0.0);
+    }
+    50% {
+        transform: scale(1.0);
+    }
+}
+.bk-app-loading-indicator {
+    //position: absolute;
+    height: 100%;
+    width: 100%;
+    display: -webkit-box;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    display: flex;
+    flex-direction: row;
+    -ms-flex-direction: row;
+    -webkit-flex-direction: row;
+    align-items: stretch;
+    -webkit-align-items: stretch;
+    -ms-flex-align: stretch;
+    max-width: 100%;
+    box-sizing: border-box;
+}
+// loading end

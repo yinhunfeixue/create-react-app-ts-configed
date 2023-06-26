@@ -1,0 +1,28 @@
+.Tab_tittle_wrap .Tab_tittle {
+    display: inline-block;
+    border-radius: 20px;
+    padding: 5px 18px;
+    cursor: pointer;
+}
+
+.Tab_tittle_wrap .active {
+    background: #1482ed;
+    color: #fff;
+}
+
+.Tab_item_wrap .Tab_item {
+    display: none;
+}
+
+.Tab_item_wrap .show {
+    display: block;
+}
+
+.branchOffice_list li, .area_list li {
+    float: left;
+    padding-left: 20px;
+    font-size: 14px;
+    width: 226px;
+    padding-bottom: 5px;
+    height: 33px;
+}

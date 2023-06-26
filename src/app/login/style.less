@@ -1,0 +1,137 @@
+@import "../../utils/theme.less";
+
+#lrIndexPage .login-form {
+    max-width: 300px;
+}
+
+#lrIndexPage .login-form-forgot {
+    float: right;
+}
+
+.lr_Login{
+    display: table;
+    .ant-form-item{
+        .has-error .ant-form-explain, .has-error .ant-form-split{
+            // margin-top: 30px;
+            margin-top: 10px;
+            font-size: 14px;
+        }
+    }
+    .login_tab{
+        display: table-cell;
+        vertical-align: middle;
+        .loginBanner{
+            width: 1000px;
+            height: 640px;
+            // background: #3D3D66;
+            margin: 0 auto;
+            .leftBanner{
+                width: 640px;
+                float: left;
+            }
+            .loginForm{
+                width: 360px;
+                float: left;
+                background: #F9F9F9;
+                height: 100%;
+                .login-form-button{
+                    margin-left: 0;
+                    margin-right: 0;
+                }
+                .loginHeader{
+                    padding: 100px 0 90px 0px;
+                    // // color: #FFFFFF;
+                    // font-size: 40px;
+                    text-align: center;
+                    // width: 278px;
+                    height: 48px;
+                    font-size: 40px;
+                    font-family: PingFangSC-Medium, PingFang SC;
+                    font-weight: 500;
+                    color: #333333;
+                    line-height: 48px;
+
+                }
+                .submitForm{
+                    padding: 0 40px;
+                }
+                .ant-input-affix-wrapper .ant-input-prefix{
+                    left:  0;
+                    font-size: 18px;
+                }
+                // input:-webkit-autofill {
+                //     background: inherit !important;
+                // }   
+                input:-webkit-autofill,
+                input:-webkit-autofill:hover,
+                input:-webkit-autofill:focus,
+                input:-webkit-autofill:active {
+                    -webkit-transition-delay: 111111s;
+                    -webkit-transition: color 1111111s ease-out, background-color 1111111s ease-out;
+                } 
+                .ant-input{
+                    background: inherit;
+                    // color: #B3B3B3;
+                    border:none;
+                    border-bottom: 1px solid #888888;
+                    border-radius: 0;
+                }
+                .has-error .ant-input{
+                    border-color: #f5222d;
+                }
+            }
+        }
+
+    }
+}
+.lr_Login .login-form-button {
+    width: 100%;
+    border-color: #217ef2;
+    border-radius: 43px;
+    height: 40px;
+    font-size: 16px;
+    font-weight: 100;
+    background-color: #3d9bfd;
+    background-image: -webkit-gradient(linear,left bottom,left top,from(hsla(0,0%,100%,.06)),to(hsla(0,0%,100%,.06))),-webkit-gradient(linear,left bottom,left top,from(rgba(9,109,236,.5)),to(rgba(76,155,255,.5)));
+    background-image: -webkit-linear-gradient(bottom,hsla(0,0%,100%,.06),hsla(0,0%,100%,.06)),-webkit-linear-gradient(bottom,rgba(9,109,236,.5),rgba(76,155,255,.5));
+    background-image: linear-gradient(0deg,hsla(0,0%,100%,.06) 0,hsla(0,0%,100%,.06)),linear-gradient(0deg,rgba(9,109,236,.5) 0,rgba(76,155,255,.5));
+    box-shadow: inset 0 1px 0 hsla(0,0%,100%,.08), 0 1px 1px rgba(0,0,0,.08);
+    text-shadow: 0 -1px 0 rgba(0,0,0,.1);
+}
+.lr_Login .login-form-button:hover{
+
+  background-color: #3d9bfd;
+  background-image: -webkit-gradient(linear,left bottom,left top,from(hsla(0,0%,100%,.06)),to(hsla(0,0%,100%,.06))),-webkit-gradient(linear,left bottom,left top,from(rgba(9,109,236,.5)),to(rgba(76,155,255,.5)));
+  background-image: -webkit-linear-gradient(bottom,hsla(0,0%,100%,.06),hsla(0,0%,100%,.06)),-webkit-linear-gradient(bottom,rgba(9,109,236,.5),rgba(76,155,255,.5));
+  background-image: linear-gradient(0deg,hsla(0,0%,100%,.06) 0,hsla(0,0%,100%,.06)),linear-gradient(0deg,rgba(76,155,255,.5) 0,rgba(9,109,236,.5));
+
+}
+.lr_Login .ant-btn:not([disabled]):hover{  text-decoration: none;}
+.lr_Login {
+    background: @backgroundColor;
+    width: 100%;
+    height: 100%;
+
+
+    .ant-input-affix-wrapper .ant-input:not(:first-child) {
+        padding-left: 40px;
+    }
+
+}
+.resetPasswordForm{
+  button.ant-btn{
+    padding: 7px 52px !important;
+    height: auto;
+  }
+      .ant-form-item {
+        margin-bottom: 15px;
+    }
+    .ant-input-affix-wrapper{
+          margin-bottom: 5px;
+    }
+}
+.listModal{
+  .ant-modal-content .ant-modal-body .ant-form-item{
+          margin-bottom: 8px;
+  }
+}

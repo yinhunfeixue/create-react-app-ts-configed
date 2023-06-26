@@ -1,0 +1,812 @@
+.dgdlManage {
+    .TableLayout > main {
+        padding-top: 3px;
+    }
+    .ant-pagination {
+        margin: 16px 20px 20px 20px;
+    }
+    .ant-tabs-bar {
+        padding-left: 20px;
+    }
+    .dataContainer {
+        //padding: 0 20px 0px 20px;
+        .dataItem {
+            padding: 24px 20px 24px 16px;
+            border-bottom: 1px solid #EEF0F5;
+        }
+        .dataIcon {
+            display: inline-block;
+            width: 40px;
+            height: 40px;
+            background: #F87E3D;
+            box-shadow: 0px 4px 12px 0px rgba(237, 114, 23, 0.32);
+            border-radius: 50%;
+            margin-bottom: 9px;
+            vertical-align: bottom;
+            line-height: 40px;
+            text-align: center;
+            color: #fff;
+            .iconfont {
+                color: #fff;
+            }
+        }
+        .dataContent {
+            display: inline-block;
+            padding-left: 24px;
+            width: calc(~"100% - 40px");
+            .dataTitle {
+                font-size: 18px;
+                color: #262626;
+                margin-bottom: 8px;
+                .ant-btn {
+                    float: right;
+                    padding: 0px 12px;
+                    height: 28px;
+                }
+            }
+            .ant-form {
+                .ant-form-item {
+                    display: inline-block;
+                    .ant-form-item-label {
+                        display: inline-block;
+                        margin-right: 12px;
+                        margin-bottom: 0px;
+                        label {
+                            color: #9EA3A8;
+                        }
+                    }
+                    .ant-form-item-control {
+                        display: inline-block;
+                        color: #5E6266;
+                        vertical-align: bottom;
+                    }
+                    .ant-form-item-control-wrapper {
+                        display: inline-block;
+                    }
+                }
+            }
+            .ant-form > *:not(:last-child) {
+                margin-right: 32px;
+            }
+            .ant-progress {
+                margin-left: 8px;
+                .ant-progress-inner {
+                    margin-bottom: 4px;
+                }
+            }
+        }
+    }
+}
+.TableAddTip {
+    color: white;
+    word-break: keep-all;
+    white-space: nowrap;
+    > label {
+        color: #9ea3a8;
+        width: 90px;
+        display: inline-block;
+    }
+}
+.dgdlTableManage {
+    .TableLayoutHeader {
+        display: block;
+        margin-bottom: 0px;
+        .TableLayout_HeaderExtraContainer {
+            margin-top: 18px;
+        }
+    }
+}
+.dgdlDetail {
+    .manageStatus {
+        color: #1CA775;
+        font-size: 13px;
+         i {
+            color: #1CA775;
+            margin-right: 4px;
+        }
+    }
+    .ant-alert {
+        margin-bottom: 16px;
+    }
+    .moduleTip {
+        color: #FF4F4F;
+        margin-left: 16px;
+        font-family: PingFangSC-Regular, PingFang SC;
+        font-weight: 400;
+    }
+    .stringArea {
+        background: #F7F8FA;
+        margin-top: 17px;
+        padding: 16px;
+    }
+    .foreignKey {
+        font-size: 16px;
+        margin-left: 12px;
+        vertical-align: sub;
+    }
+    .foreignKey:hover {
+        background: rgba(89, 125, 160, 0.1);
+        border-radius: 1px;
+    }
+    .expandArea {
+        .manageIcon {
+            height: 18px;
+            background: #5FBE9A;
+            border-radius: 2px;
+            padding: 0px 6px;
+            line-height: 18px;
+            color: #fff;
+            margin-right: 16px;
+            font-size: 10px;
+            font-weight: 500;
+            margin-top: 8px;
+            display: inline-block;
+        }
+        .ant-form-item {
+            display: inline-block;
+            margin-bottom: 0px;
+            .ant-form-item-label {
+                display: inline-block;
+                margin-bottom: 0px;
+                line-height: 22px;
+                label {
+                    color: #5E6266;
+                }
+            }
+            .ant-form-item-control {
+                line-height: 22px;
+                display: inline-block;
+            }
+            .ant-form-item-control-wrapper {
+                display: inline-block;
+                vertical-align: bottom;
+            }
+        }
+    }
+    .expandArea > *:not(:last-child) {
+        margin-right: 24px;
+    }
+    .dopTitle {
+        color: #acb2b8;
+        margin-top: 40px;
+        text-align: center;
+    }
+}
+.rootWindow {
+    position: fixed;
+    right: 16px;
+    bottom: 72px;
+    width: 36px;
+    height: 81px;
+    z-index: 999;
+    background: linear-gradient(180deg, #4DAFFF 0%, #5B4DFF 100%);
+    box-shadow: 0px 2px 8px 0px rgba(8, 28, 138, 0.2);
+    border-radius: 18px;
+    color: #fff;
+    font-size: 12px;
+    font-family: PingFangSC-Medium, PingFang SC;
+    font-weight: 500;
+    line-height: 16px;
+    text-align: center;
+    cursor: pointer;
+    .number {
+        width: 30px;
+        height: 30px;
+        background: #FFFFFF;
+        box-shadow: 0px 0px 2px 0px rgba(8, 28, 138, 0.2);
+        border-radius: 50%;
+        margin: 3px 3px 4px 3px;
+        line-height: 30px;
+        span {
+            font-size: 16px;
+            font-weight: 500;
+            color: #4D73FF;
+            span {
+                font-size: 10px;
+            }
+        }
+    }
+    .title {
+        padding: 0 6px;
+    }
+}
+.rootCheckModal {
+    .highlight {
+        color: #4D73FF;
+    }
+    .formDetailInline {
+        .ant-form-item {
+            display: inline-block;
+            margin-bottom: 0px;
+            .ant-form-item-label {
+                display: inline-block;
+                margin-bottom: 0px;
+                line-height: 22px;
+                margin-right: 8px;
+                label {
+                    color: #5E6266;
+                }
+            }
+            .ant-form-item-control {
+                line-height: 22px;
+                display: inline-block;
+            }
+            .ant-form-item-control-wrapper {
+                display: inline-block;
+                vertical-align: bottom;
+            }
+        }
+    }
+    .formDetailInline > *:not(:last-child) {
+        margin-right: 24px;
+    }
+}
+.highlightArea {
+    .highlight {
+        color: #4D73FF;
+    }
+}
+.columnCheckDrawer {
+    .columnLink {
+        color: #5B7FA3;
+        margin-left: 12px;
+        cursor: pointer;
+        display: inline-block;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        overflow-x: hidden;
+        width: 280px;
+        vertical-align: bottom;
+    }
+    .columnLink:hover {
+        color: #4D73FF;
+        text-decoration: underline;
+    }
+    .iconfont {
+        cursor: pointer;
+    }
+    .icon-lajitong {
+        color: #4D73FF;
+        margin-left: 12px;
+    }
+    .icon-you {
+        vertical-align: middle;
+    }
+}
+.standardMapDrawer {
+    .ant-modal-body {
+        padding: 0px !important;
+        height: 474px;
+    }
+    .ant-modal-content {
+        overflow: hidden;
+    }
+    .TableLayout .ant-input-search {
+        width: 100%;
+    }
+    .treeArea {
+        box-shadow: 1px 0px 0px 0px #E6E8ED;
+        height: 100%;
+        margin-right: 25px;
+        padding: 16px 0 0 12px;
+        .ant-tree li .ant-tree-node-content-wrapper {
+            line-height: 36px;
+            width: 100%;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+    }
+    .tableArea {
+        padding: 16px 25px 0 0px;
+    }
+}
+.ddlList {
+    .TableLayout {
+        main {
+            padding-top: 3px;
+        }
+    }
+    .tableLabel {
+        a, div {
+            overflow-x: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+            max-width: 160px;
+            display: inline-block;
+        }
+    }
+    .ant-tabs-bar {
+        margin-bottom: 0px !important;
+    }
+    .ant-tabs {
+        margin-bottom: 0px !important;
+    }
+    .TableLayoutWithOutFooter > main {
+        padding: 0px;
+    }
+    .emptyIcon {
+        text-align: center;
+        margin: 100px 0;
+        .anticon {
+            font-size: 52px;
+        }
+        div {
+            margin-top: 16px;
+            color: #5E6266;
+        }
+    }
+}
+.rootCheckDrawer {
+    .icon-zuo {
+        margin-right: 8px;
+        font-size: 20px;
+        vertical-align: bottom;
+        color: #5E6266;
+        cursor: pointer;
+    }
+    .assetTitle {
+        padding: 8px 0px 0px 0px;
+        background: #fff;
+        //display: flex;
+        .versionLabel {
+            span {
+                display: inline-block;
+                width: 100px;
+                text-align: right;
+            }
+        }
+        .title {
+            font-size: 16px;
+            color: #333;
+            margin-bottom: 4px;
+            width: 100%;
+            text-align: left;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+            .checkStatus {
+                font-size: 14px;
+                span {
+                    width: 8px;
+                    height: 8px;
+                    background: #28AE52;
+                    display: inline-block;
+                    border-radius: 50%;
+                    margin-right: 4px;
+                }
+            }
+        }
+        .atomLabel {
+            font-size: 14px;
+            color: #595959;
+        }
+        .atomContent {
+            margin-right: 32px;
+            color: #262626;
+            display: inline-block;
+            max-width: 22%;
+            overflow-x: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+            vertical-align: bottom;
+        }
+        .assetIcon {
+            width: 40px;
+            height: 40px;
+            background: #E9F4FF;
+            line-height: 40px;
+            text-align: center;
+            font-size: 16px;
+            color: #00A1FF;
+            border-radius: 50%;
+            margin-right: 12px;
+            display: inline-block;
+            vertical-align: bottom;
+            margin-bottom: 8px;
+            .iconfont {
+                color: #fff;
+            }
+        }
+        .OverView {
+            display: inline-block;
+            width: calc(~"100% - 52px");
+            .MiniForm {
+                .HControlGroup > *:not(:last-child) {
+                    margin-right: 24px;
+                }
+            }
+        }
+        .checkStatus {
+            float: right;
+        }
+
+    }
+    .timeline {
+        color: #2D3033;
+        font-size: 14px;
+        margin-bottom: 0px;
+        .ant-timeline-item-last {
+            padding-bottom: 0px;
+        }
+        .ant-timeline-item-head-blue {
+            background: #E6E8ED;
+            border-color: #E6E8ED;
+        }
+        .ant-timeline-item-content {
+            margin-left: 24px;
+        }
+        .timelineTitle {
+            span {
+                margin-right: 24px;
+            }
+        }
+        .timeValue {
+            color: #9EA3A8;
+            margin-bottom: 12px;
+        }
+    }
+    .HControlGroup > *:not(:last-child) {
+        margin-right: 24px;
+    }
+    .detailInfo {
+        color: #2D3033;
+        > label {
+            color: #9ea3a8;
+            display: inline-block;
+            margin-right: 8px;
+
+        }
+    }
+}
+.addRootDrawer {
+    .hideDropdown {
+        display: none;
+    }
+    .redDot {
+        width: 6px;
+        height: 6px;
+        background: #FF4D4F;
+        border: 2px solid rgba(255, 77, 79, 0.2);
+        display: inline-block;
+        position: absolute;
+        top: 12px;
+        right: 14px;
+        border-radius: 50%;
+    }
+    .expandArea {
+        .iconfont {
+            margin-right: 16px;
+            color: #28A877;
+        }
+        .ant-form-item {
+            display: inline-block;
+            margin-bottom: 0px;
+            .ant-form-item-label {
+                display: inline-block;
+                margin-bottom: 0px;
+                line-height: 22px;
+                label {
+                    color: #5E6266;
+                }
+            }
+            .ant-form-item-control {
+                line-height: 22px;
+                display: inline-block;
+            }
+            .ant-form-item-control-wrapper {
+                display: inline-block;
+            }
+        }
+    }
+    .expandArea > *:not(:last-child) {
+        margin-right: 24px;
+    }
+}
+.addDdl {
+    .ant-row{
+        display: flex !important;
+    }
+    .columnArea {
+        .ant-table-placeholder {
+            display: none;
+        }
+    }
+    .foreignKey {
+        font-size: 16px;
+        margin-left: 12px;
+        vertical-align: sub;
+    }
+    .foreignKey:hover {
+        background: rgba(89, 125, 160, 0.1);
+        border-radius: 1px;
+    }
+    .largeSpin {
+        position: absolute;
+        width: 100%;
+        background: rgba(255, 255, 255, 0.3);
+        backdrop-filter: blur(2px);
+        height: 100%;
+        z-index: 99;
+        .ant-spin-dot {
+            margin-top: 45vh;
+        }
+        .ant-spin-text {
+            color: #2D3033;
+        }
+    }
+    .link {
+        display: inline-block;
+        vertical-align: sub;
+    }
+    .HControlGroup {
+        margin-top: 8px;
+        .ant-form-item {
+            margin-right: 24px;
+        }
+        .ant-form-item-label {
+            width: auto !important;
+            margin-right: 0px !important;
+        }
+    }
+    .icon-bianji {
+        color: #5B7FA3;
+        cursor: pointer;
+        margin-left: 6px;
+    }
+    .ant-table {
+        .editableDiv {
+            width: 100%;
+            vertical-align: bottom;
+        }
+    }
+    .editableDiv {
+        //width: 520px;
+        overflow: auto;
+        background: transparent;
+        z-index: 9;
+        cursor: text;
+        .highlight {
+            background: #FFECEC;
+            color: #2D3033;
+            box-shadow: inset 0px -2px 0px 0px #CC0000;
+        }
+    }
+    .editableDiv:empty::before {
+        content: attr(editableDivPlaceholder);
+    }
+    .disabledDiv {
+        background: #F7F8FA;
+        border-radius: 2px;
+        border: 1px solid #C0C6CC;
+        height: 32px;
+        line-height: 32px;
+        padding: 0 16px;
+        color: #C4C8CC;
+        cursor: not-allowed;
+        .highlight {
+            color: #C4C8CC;
+        }
+    }
+    .editableDivPlaceholder {
+        position: absolute;
+        color: #9EA3A8;
+        top: 5px;
+        left: 16px;
+        z-index: 0;
+    }
+    .ddlTableAutoDropdown {
+        position: absolute;
+        background: #ffffff;
+        box-shadow: 0px 2px 6px 0px rgba(0, 0, 0, 0.2);
+        border: 1px solid #f2f2f2;
+        width: 100%;
+        z-index: 9999;
+        padding: 8px;
+        max-height: 200px;
+        .tableAutoDropdownItem,
+        .columnAutoDropdownItem {
+            line-height: 27px;
+            cursor: pointer;
+        }
+        .tableAutoDropdownItem:hover {
+            background: #eaf2ff;
+        }
+        .columnAutoDropdownItem:hover {
+            background: #eaf2ff;
+        }
+    }
+    .configAlert {
+        width: 520px;
+        margin-top: 8px;
+        a {
+            margin-left: 8px;
+            color: #D31C1C;
+            .iconfont {
+                font-size: 14px;
+            }
+        }
+    }
+    .ant-form-item {
+        display: flex;
+        .ant-form-item-label {
+            width: 90px;
+            margin-right: 16px;
+            // margin-top: 5px;
+            text-align: left;
+        }
+    }
+    .VControlGroup {
+        .ant-form-item-label {
+            margin-top: 0px;
+        }
+    }
+    .Module main {
+        overflow: inherit;
+    }
+    .EditMiniForm .ant-form-item .ant-form-item-control {
+        display: inline-block;
+        vertical-align: inherit;
+    }
+}
+.tableTypeModal {
+    .ant-modal-body {
+        padding: 8px 24px 24px 24px;
+    }
+    .tagTypeContent {
+        padding-bottom: 24px;
+        min-height: 240px;
+        max-height: 50vh;
+        overflow-y: auto;
+        margin-bottom: 16px;
+        .tagTypeValue {
+            margin-bottom: 4px;
+        }
+        .tagTypeInput {
+            .ant-input {
+                width: 340px;
+            }
+            .ant-input-affix-wrapper {
+                width: 340px;
+            }
+            .btnArea {
+                float: right;
+                margin-top: 5px;
+            }
+        }
+        .tagTypeName {
+            cursor: pointer;
+            height: 40px;
+            line-height: 39px;
+            padding: 0 15px;
+            div {
+                display: inline-block;
+                width: 340px;
+                overflow: hidden;
+                text-overflow: ellipsis;
+                white-space: nowrap;
+            }
+            .btnArea {
+                display: none;
+                float: right;
+                .icon-bianji {
+                    margin-right: 12px;
+                }
+            }
+        }
+        .tagTypeName:hover {
+            background: #F7F8FA;
+            .btnArea {
+                display: inline-block;
+            }
+        }
+        .iconfont {
+            color: #507499;
+        }
+        .iconfont:hover {
+            color: #4D73FF;
+        }
+    }
+    .addTypeBtn {
+        position: absolute;
+        bottom: 0px;
+    }
+}
+.tableTypeDropdown {
+    .tagTypeContent {
+        height: 196px;
+        padding: 16px 0 36px 0;
+        overflow-y: auto;
+    }
+    a {
+        position: absolute;
+        width: 100%;
+        bottom: 0px;
+        height: 36px;
+        line-height: 36px;
+        background: #fff;
+        box-shadow: 0px -1px 0px 0px #E6E8ED;
+        .anticon {
+            margin: 0 5px 0 12px;
+        }
+    }
+    .dropdownTitle {
+        color: #9EA3A8;
+        margin-bottom: 12px;
+        padding: 0 16px;
+        span {
+            color: #2D3033;
+        }
+    }
+    .dropdownValue {
+        padding: 0 16px;
+        height: 40px;
+        line-height: 40px;
+        cursor: pointer;
+        color: #5E6266;
+        overflow-x: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+    }
+    .dropdownValue:hover {
+        background: #F4F5F7;
+    }
+    .dropdownValueSelected {
+        background: #F4F5F7;
+    }
+    .highlight {
+        color: #4D73FF;
+    }
+    .emptyIcon {
+        text-align: center;
+        margin: 80px 0;
+        .anticon {
+            font-size: 52px;
+        }
+        div {
+            margin-top: 16px;
+            color: #9EA3A8;
+        }
+    }
+}
+.renderRoot {
+    .renderRootTitle {
+        font-size: 14px;
+        font-family: PingFangSC-Medium, PingFang SC;
+        font-weight: 500;
+        color: #262626;
+        i {
+            color: #FF9900;
+            margin-right: 8px;
+        }
+    }
+    .renderRootDesc {
+        color: #5E6266;
+        margin-top: 8px;
+    }
+    .ant-btn {
+        margin-top: 16px;
+    }
+}
+.DdlDrawer {
+    .ant-input {
+        color: #2D3033;
+        background: #F7F8FA;
+        padding: 16px;
+    }
+    .commonScroll {
+        display: block;
+        width: 100%;
+        border: 0px;
+        outline: none;
+        resize: none;
+    }
+}
+.hideDropdown {
+    display: none;
+}
+.ant-modal.hideModal {
+    display: none;
+}
+.WraphideModal {
+    display: none;
+}

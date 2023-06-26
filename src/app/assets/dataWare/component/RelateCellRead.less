@@ -1,0 +1,61 @@
+.RelateCellRead {
+    display: flex;
+    align-items: flex-end;
+    .Arrow {
+        content: '';
+        width: 10px;
+        height: 10px;
+        border: rgba(0, 0, 0, 0.15) 1px solid;
+        position: absolute;
+        border-bottom: none;
+        border-right: none;
+        left: 1px;
+        transform: translate(0, calc(~'-50% + 0.5px')) rotate(-45deg);
+    }
+
+    .CenterInfo {
+        display: flex;
+        align-items: center;
+        height: 70px;
+        hr {
+            border: none;
+            width: 40px;
+            height: 1px;
+            background: rgba(0, 0, 0, 0.15);
+            position: relative;
+        }
+
+        .ArrowLeft {
+            &:before {
+                .Arrow;
+            }
+        }
+
+        .ArrowRight {
+            &:before {
+                .Arrow;
+                left: unset;
+                right: 1px;
+                transform: translate(0, calc(~'-50% + 0.5px')) rotate(135deg);
+            }
+        }
+
+        .RelateType {
+            padding: 6px 12px;
+            border: 1px solid rgba(0, 0, 0, 0.05);
+        }
+    }
+    .IconGroup {
+        padding: 6px 12px;
+        > * {
+            cursor: pointer;
+            color: var(--primaryColor);
+            //&:hover {
+            //    color: rgb(122, 191, 255);
+            //}
+        }
+        > *:not(:last-child) {
+            margin-right: 8px;
+        }
+    }
+}

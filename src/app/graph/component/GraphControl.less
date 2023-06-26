@@ -1,0 +1,34 @@
+.GraphControl {
+    display: flex;
+    align-items: center;
+    .hr {
+        align-self: stretch;
+        width: 1px;
+        background: #d0d5de;
+        border: none;
+        margin: 0;
+        margin-right: 15px;
+    }
+    > * {
+        margin-right: 8px;
+    }
+
+    .Rotateing {
+        &:hover {
+            background-color: transparent;
+        }
+        animation: rotateing 1s infinite;
+        @keyframes rotateing {
+            0% {
+                transform: rotate(0);
+            }
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+    }
+    .IconButton {
+        width: 28px;
+        height: 28px;
+    }
+}

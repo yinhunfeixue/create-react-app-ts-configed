@@ -1,0 +1,141 @@
+.DataDissectEdit {
+    .Steps {
+        .StepItem {
+            @gap: 10px;
+            @iconSize: 16px;
+            > header {
+                display: flex;
+                align-items: center;
+                .StepIcon {
+                    width: @iconSize;
+                    height: @iconSize;
+                    background: #5b7fa3;
+                    border-radius: 2px;
+                    font-size: 12px;
+                    color: white;
+                    line-height: @iconSize;
+                    text-align: center;
+                    margin-right: @gap;
+                }
+                > h4 {
+                    font-size: 14px;
+                    font-weight: 500;
+                    color: #2d3033;
+                    line-height: 22px;
+                    margin-bottom: 0;
+                }
+            }
+            > main {
+                display: flex;
+                align-items: stretch;
+                .Line {
+                    width: @iconSize;
+                    display: flex;
+                    justify-content: center;
+                    margin-right: @gap;
+                    padding: 6px 0;
+                    &::before {
+                        content: '';
+                        display: block;
+                        width: 1px;
+                        height: 100%;
+                        border-left: 1px dashed #e6e8ed;
+                    }
+                }
+                .Body {
+                    padding-top: 12px;
+                    padding-bottom: 30px;
+                    flex-grow: 1;
+                    flex-shrink: 1;
+
+                    .StepSecondItem {
+                        &:not(:last-child) {
+                            padding-bottom: 30px;
+                        }
+                        > h4 {
+                            font-size: 14px;
+                            color: #5e6266;
+                            margin-bottom: 8px;
+                        }
+
+                        .StepSecondContentGroup {
+                            display: flex;
+                            flex-direction: column;
+                            > *:not(:last-child) {
+                                margin-bottom: 8px;
+                            }
+                        }
+
+                        :global {
+                            .unImportText {
+                                font-size: 14px;
+                            }
+                        }
+                    }
+                }
+            }
+
+            &:last-child {
+                > main {
+                    .Line {
+                        &::before {
+                            content: none;
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    :global {
+        .erroringElement:local {
+            animation: showError 0.15s linear 7;
+        }
+        @keyframes showError {
+            0% {
+                transform: none;
+            }
+            33% {
+                transform: translate(5px, 0);
+            }
+            66% {
+                transform: translate(-5px, 0);
+            }
+            100% {
+                transform: none;
+            }
+        }
+    }
+}
+
+.FieldValueTag {
+    display: inline-block;
+    color: white;
+    padding: 2px 5px;
+    border-radius: 2px;
+    font-size: 12px;
+    cursor: pointer;
+}
+
+.FieldDropDownWrap {
+    border: 1px solid #e6e8ed;
+    background-color: white;
+    box-shadow: 0px 2px 6px 0px rgba(0, 0, 0, 0.2);
+    border-radius: 2px;
+    padding: 8px 0;
+    min-width: 120px;
+    position: relative;
+    > h5 {
+        color: #5e6266;
+        padding: 3px 16px;
+        margin-bottom: 0;
+        font-size: 14px;
+    }
+    .FieldItem {
+        padding: 6px 16px;
+        cursor: pointer;
+        &:hover {
+            background: #f4f5f7;
+        }
+    }
+}

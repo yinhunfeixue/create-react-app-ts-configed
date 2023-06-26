@@ -1,0 +1,88 @@
+.editTable {
+    .Module {
+        padding: 24px 0;
+    }
+
+    .Module>main {
+        overflow: visible;
+    }
+
+    .item_header {
+        height: 44px;
+        display: flex;
+
+
+        .item_left {
+            flex: 1;
+            display: flex;
+            align-items: center;
+
+            .item_icon {
+
+                display: block;
+                width: 32px;
+                height: 32px;
+                background: linear-gradient(312deg, #3C5EFF 0%, #4691FF 100%);
+                border-radius: 50%;
+                text-align: center;
+                line-height: 32px;
+                font-size: 14px;
+                font-family: PingFangSC-Semibold, PingFang SC;
+                font-weight: normal;
+                color: #FFFFFF;
+
+            }
+        }
+
+
+        .item_content {
+            flex: 11;
+            height: 44px;
+            padding: 6px 0;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-around;
+
+
+            .title {
+                font-size: 14px;
+                font-family: PingFangSC-Semibold, PingFang SC;
+                font-weight: 600;
+                color: #2D3033;
+                // line-height: 26px;
+            }
+
+            .user_tag_wrap {
+                overflow: hidden;
+                margin-left: 4px;
+                position: relative;
+                top: -1px;
+
+                .user_tag {
+                    border-radius: 10px;
+                    border: 1px solid rgba(37, 127, 218, 0.3);
+                    font-size: 12px;
+                    font-family: PingFangSC-Semibold, PingFang SC;
+                    font-weight: 600;
+                    color: #257FDA;
+                    padding: 0 8px;
+                    margin-right: 6px;
+                }
+            }
+
+            .bottom {
+                color: #5E6266;
+                font-size: 14px;
+                font-family: PingFangSC-Regular, PingFang SC;
+                font-weight: 400;
+
+                .bottom_item {
+                    display: inline-block;
+                    margin-right: 40px;
+                }
+            }
+        }
+    }
+
+
+}
