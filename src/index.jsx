@@ -2,7 +2,6 @@ import '@ant-design/compatible/assets/index.css'
 import { Button, Cascader, ConfigProvider, Empty, Input, Result, Select, Tree, TreeSelect } from 'antd'
 import zhCN from 'antd/es/locale/zh_CN'
 import Cache from 'app_utils/cache'
-import React from 'react'
 import ReactDOM from 'react-dom'
 /* import ClientMonitor from 'skywalking-client-js' */
 import moment from 'moment'
@@ -14,6 +13,7 @@ import './index.less'
 import RouteList from './router/router'
 
 import 'moment/locale/zh-cn'
+import PageUtil from './utils/PageUtil'
 
 moment.locale('zh-cn')
 
@@ -117,7 +117,8 @@ const userAuth = async () => {
                                 key='console'
                                 onClick={() => {
                                     Cache.clear()
-                                    window.location.href = '/login'
+                                    // window.location.href = '/login'
+                                    PageUtil.addTab('login')
                                 }}
                             >
                                 登录
