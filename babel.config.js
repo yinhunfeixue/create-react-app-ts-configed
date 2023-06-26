@@ -7,18 +7,9 @@ module.exports = {
             {
                 libraryName: 'antd',
                 libraryDirectory: 'es',
-                style: 'css',
+                // style: 'css',
             },
             'antd',
-        ],
-        [
-            'import',
-            {
-                libraryName: 'antd-mobile',
-                libraryDirectory: 'lib',
-                style: 'css',
-            },
-            'antd-mobile',
         ],
         [
             'import',
