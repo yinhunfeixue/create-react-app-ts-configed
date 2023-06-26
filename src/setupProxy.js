@@ -7,7 +7,7 @@ const preList = [
     '/browser',
     '/tdc',
     '/quantchiAPI/api/umg',
-    'quantchiAPI',
+    '/quantchiAPI',
     '/service-workflow',
     '/service-task',
     '/service_search',

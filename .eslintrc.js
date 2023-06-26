@@ -14,7 +14,7 @@ module.exports = {
     //强制使用单引号
     quotes: ['off', 'single'],
     //双峰驼命名格式
-    camelcase: 'error',
+    camelcase: 0,
     "jsx-a11y/alt-text":"off",
     //大括号风格
     // 'brace-style': ['error', 'stroustrup'],
