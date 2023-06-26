@@ -1,21 +1,32 @@
-const { createProxyMiddleware } = require('http-proxy-middleware');
+const { createProxyMiddleware } = require('http-proxy-middleware')
 
-const config = {
-  '/baiduApi': {
-    target: 'http://www.baidu.com/',
-    changeOrigin: true,
-    pathRewrite: { '^/baiduApi': '/s' },
-  },
-  '/services': {
-    target: 'http://10.128.27.222:8080',
-    changeOrigin: true,
-  },
-};
+let URL = 'http://192.168.2.45:83'
+
+const preList = [
+    '/v3',
+    '/browser',
+    '/tdc',
+    '/quantchiAPI/api/umg',
+    'quantchiAPI',
+    '/service-workflow',
+    '/service-task',
+    '/service_search',
+    '/search',
+    '/service-qa',
+    '/api',
+    '/service-datacollect',
+    '/service-auth',
+    '/service-girm',
+]
 
 module.exports = (app) => {
-  if (config) {
-    for (let key in config) {
-      app.use(key, createProxyMiddleware(config[key]));
-    }
-  }
-};
+    preList.forEach((item) => {
+        app.use(
+            item,
+            createProxyMiddleware({
+                target: URL,
+                changeOrigin: true,
+            })
+        )
+    })
+}
