@@ -1,0 +1,4 @@
+[submodule "src/core"]
+	path = src/core
+	url = http://192.168.2.54:8088/webprojects/lz_react_component.git
+	branch = dev/antd4
