@@ -3,7 +3,7 @@ import TableLayout from '@/component/layout/TableLayout'
 import Module from '@/component/Module'
 import ProjectUtil from '@/utils/ProjectUtil'
 import { DownloadOutlined } from '@ant-design/icons'
-import { Button, Card, Divider, Form, Input, message, Radio, Select, Spin, Switch as MySwitch, Table, Tabs, Tooltip } from 'antd'
+import { Button, Card, Divider, Form, Input, message, Switch as MySwitch, Radio, Select, Spin, Table, Tabs, Tooltip } from 'antd'
 import {
     getColumnDown,
     getColumnGraph,
@@ -22,7 +22,6 @@ import Graph from 'app_page/dama/component/g6Graph/apply.jsx'
 import _ from 'lodash'
 import { observer } from 'mobx-react'
 import React, { Component } from 'react'
-import './traceability.less'
 
 const { Option } = Select
 const { TabPane } = Tabs

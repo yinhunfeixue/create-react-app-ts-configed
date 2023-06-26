@@ -12,7 +12,6 @@ import { getMetadataTree, postLineageExtractjob } from 'app_api/metadataApi'
 import CONSTANTS from 'app_constants'
 import React, { Component } from 'react'
 import _ from 'underscore'
-import './fileCollect.less'
 
 const Dragger = Upload.Dragger
 const FormItem = Form.Item

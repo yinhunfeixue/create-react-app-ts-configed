@@ -1,12 +1,10 @@
-import React, { Component } from 'react'
-import './index.less'
+import { Component } from 'react'
 
 // import _ from 'underscore'
-import _ from 'lodash'
 // import Config from './config'
-import Views from './views'
 import ChartGeom from './component/geom'
 import TableContent from './component/table'
+import Views from './views'
 // import ChartGeom './Chart'
 
 export default class LzChart extends Component {
