@@ -29,11 +29,11 @@ module.exports = {
     //函数定义时,括号前面要不要有空格
     'space-before-function-paren': ['0', 'never'],
     //禁止使用多个空格
-    'no-multi-spaces': 'error',
+    'no-multi-spaces': '0',
     //es6 箭头符号前后都要有空格
-    'arrow-spacing': ['error', { before: true, after: true }],
+    'arrow-spacing': ['0', { before: true, after: true }],
     //操作符前后必须有空格
-    'space-infix-ops': ['error', { int32Hint: false }],
+    'space-infix-ops': ['0', { int32Hint: false }],
     //逗号前面不允许有空格，后面必须有空格
     'comma-spacing': ['0', { before: false, after: true }],
 
