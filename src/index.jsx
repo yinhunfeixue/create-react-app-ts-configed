@@ -13,7 +13,6 @@ import './index.less'
 import RouteList from './router/router'
 
 import 'moment/locale/zh-cn'
-import PageUtil from './utils/PageUtil'
 
 moment.locale('zh-cn')
 
@@ -117,8 +116,7 @@ const userAuth = async () => {
                                 key='console'
                                 onClick={() => {
                                     Cache.clear()
-                                    // window.location.href = '/login'
-                                    PageUtil.addTab('login')
+                                    window.location.href = '/login'
                                 }}
                             >
                                 登录

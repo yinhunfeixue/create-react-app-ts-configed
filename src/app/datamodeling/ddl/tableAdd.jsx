@@ -1280,7 +1280,7 @@ export default class eastUpload extends Component {
                                                                       message={
                                                                           <div>
                                                                               您选择的数据源未配置规范，请先进行配置
-                                                                              <a onClick={this.openDataSourceConfig}>去配置>></a>
+                                                                              <a onClick={this.openDataSourceConfig}>去配置{'>>'}</a>
                                                                           </div>
                                                                       }
                                                                       type='error'

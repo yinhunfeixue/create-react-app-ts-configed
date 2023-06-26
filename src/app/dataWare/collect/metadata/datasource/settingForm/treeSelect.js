@@ -9,7 +9,7 @@ import {
 import {
     getTree
 } from 'app_api/systemManage'
-import React, {
+import {
     Component
 } from 'react'
 const TreeNode = TreeSelect.TreeNode
@@ -198,8 +198,7 @@ export default class TreeSelectComponent extends Component {
                             }
                             />
                         } else {
-                            return ( <
-                                TreeNode disabled key = {
+                            return ( <TreeNode disabled key = {
                                     item.id
                                 } /* isLeaf={(item.children || []).length <= 0} */
                                 path = {
@@ -215,8 +214,7 @@ export default class TreeSelectComponent extends Component {
                                     item.name
                                 } > {
                                     loop(item.children, depth + 1)
-                                } <
-                                /TreeNode>
+                                } </TreeNode>
                             )
                         }
                     } else if (this.props.type == 'selectDataSource') {
@@ -241,8 +239,7 @@ export default class TreeSelectComponent extends Component {
                             }
                             />
                         } else {
-                            return ( <
-                                TreeNode key = {
+                            return ( <TreeNode key = {
                                     item.id
                                 }
                                 isLeaf = {
@@ -261,13 +258,11 @@ export default class TreeSelectComponent extends Component {
                                     item.name
                                 } > {
                                     loop(item.children, depth + 1)
-                                } <
-                                /TreeNode>
+                                } </TreeNode>
                             )
                         }
                     } else {
-                        return ( <
-                            TreeNode key = {
+                        return ( <TreeNode key = {
                                 item.id
                             }
                             isLeaf = {
@@ -286,8 +281,7 @@ export default class TreeSelectComponent extends Component {
                                 item.name
                             } > {
                                 loop(item.children, depth + 1)
-                            } <
-                            /TreeNode>
+                            } </TreeNode>
                         )
                     }
                     // if(this.props.noResource && item.children[0].type === 3){
@@ -327,8 +321,7 @@ export default class TreeSelectComponent extends Component {
                     // }
                 }
             })
-        return ( <
-            TreeSelect value = {
+        return ( <TreeSelect value = {
                 value || undefined
             } {
                 ...this.props
@@ -365,8 +358,7 @@ export default class TreeSelectComponent extends Component {
                 this.treeOptionSelect.bind(this)
             } > {
                 treeData.length > 0 ? loop(treeData, 1) : null
-            } <
-            /TreeSelect>
+            } </TreeSelect>
         )
     }
 }

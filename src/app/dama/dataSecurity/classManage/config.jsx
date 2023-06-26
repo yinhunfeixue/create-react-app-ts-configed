@@ -1,15 +1,12 @@
 import EmptyLabel from '@/component/EmptyLabel'
-import RichTableLayout from '@/component/layout/RichTableLayout'
-import EmptyIcon from '@/component/EmptyIcon'
-import TableLayout from '@/component/layout/TableLayout'
 import Module from '@/component/Module'
+import TableLayout from '@/component/layout/TableLayout'
 import ModuleTitle from '@/component/module/ModuleTitle'
-import RenderUtil from '@/utils/RenderUtil'
 import ProjectUtil from '@/utils/ProjectUtil'
-import { Button, Checkbox, Divider, Input, Select, Tabs, Tooltip, Table, message, Tag } from 'antd'
-import { getExternalList, getTaskDetail } from 'app_api/metadataApi'
-import { getDsTagInfoList, getTableInfoWithDs, getDsColumnLevelList, getDsColumnLevelListFilters, saveLevelAndTagInfo, dataSecurityLevelList, desensitiseTag } from 'app_api/dataSecurity'
+import RenderUtil from '@/utils/RenderUtil'
+import { Button, Divider, Input, Select, Table, Tabs, Tag, Tooltip, message } from 'antd'
 import { sensitiveTagRule } from 'app_api/dataModeling'
+import { dataSecurityLevelList, desensitiseTag, getDsColumnLevelList, getDsColumnLevelListFilters, getDsTagInfoList, getTableInfoWithDs, saveLevelAndTagInfo } from 'app_api/dataSecurity'
 import React, { Component } from 'react'
 import './index.less'
 
@@ -626,7 +623,7 @@ export default class ClassManageConfig extends Component {
                                                 </Select>
                                                 <Divider />
                                                 <ModuleTitle style={{ display: 'inline-block', marginBottom: 15 }} title='字段安全等级' />
-                                                <span style={{ color: '#949799' }}>（字段安全等级>=表安全等级）</span>
+                                                <span style={{ color: '#949799' }}>（字段安全等级{'>'}=表安全等级）</span>
                                                 <div style={{ marginBottom: 16 }}>
                                                     <Input.Search
                                                         allowClear
