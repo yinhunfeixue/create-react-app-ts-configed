@@ -555,7 +555,7 @@ module.exports = function (webpackEnv) {
                     ? shouldUseSourceMap
                     : isEnvDevelopment,
                   modules: {
-                    mode: 'icss',
+                    mode: 'global',
                   },
                 },
                 'less-loader'
