@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="32px" height="32px" viewBox="0 0 32 32" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 59 (86127) - https://sketch.com -->
+    <title>7246720E-36E2-4B76-9537-0AF025E7F2D6</title>
+    <desc>Created with Sketch.</desc>
+    <g id="Keywords-Search" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="图表的icon" transform="translate(-1308.000000, -493.000000)">
+            <g id="饼图" transform="translate(1304.000000, 489.000000)">
+                <rect id="Rectangle" x="0" y="0" width="40" height="40"></rect>
+                <path d="M19.2727273,4 L19.2727273,36 C10.9952409,35.6315733 4.3684267,29.0047591 4,20.7272727 L4,19.2727273 C4.3684267,10.9952409 10.9952409,4.3684267 19.2727273,4 Z" id="Path" fill="#3872F7" fill-rule="nonzero"></path>
+                <path d="M30.7927273,8.18909091 L20.7272727,18.2545455 L20.7272727,4 C24.4693741,4.17495822 28.0314464,5.65743918 30.7927273,8.18909091 Z" id="Path" fill="#FCC839" fill-rule="nonzero"></path>
+                <path d="M20.7272727,20.7272727 L36,20.7272727 C35.6315733,29.0047591 29.0047591,35.6315733 20.7272727,36 L20.7272727,20.7272727 Z" id="Path" fill="#F04152" fill-rule="nonzero"></path>
+                <path d="M36,19.2727273 L21.7454545,19.2727273 L31.8109091,9.20727273 C34.3425608,11.9685536 35.8250418,15.5306259 36,19.2727273 Z" id="Path" fill="#48D1E0" fill-rule="nonzero"></path>
+            </g>
+        </g>
+    </g>
+</svg>

@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="20px" height="20px" viewBox="0 0 20 20" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 63.1 (92452) - https://sketch.com -->
+    <title>20px/Data/Source</title>
+    <desc>Created with Sketch.</desc>
+    <g id="主导航修改2" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="首页" transform="translate(-240.000000, -511.000000)">
+            <g id="数据源" transform="translate(230.000000, 501.000000)">
+                <g id="20px/Data/Source" transform="translate(10.000000, 10.000000)">
+                    <rect id="box_20" x="0" y="0" width="20" height="20"></rect>
+                    <path d="M4.75,9 L9.5,11.75 L9.5,17.25 L4.75,20 L0,17.25 L0,11.75 L4.75,9 Z M15.25,9 L20,11.75 L20,17.25 L15.25,20 L10.5,17.25 L10.5,11.75 L15.25,9 Z M4.75,10.4116667 L1.21777105,12.4552222 L1.21777105,16.5435556 L4.75,18.5871111 L8.2810101,16.5435556 L8.2810101,12.4552222 L4.75,10.4116667 Z M15.25,10.4116667 L11.7177711,12.4552222 L11.7177711,16.5435556 L15.25,18.5871111 L18.7810101,16.5435556 L18.7810101,12.4552222 L15.25,10.4116667 Z M10,0 L15,2.75 L15,8.25 L10,11 L5,8.25 L5,2.75 L10,0 Z M10,1.41166667 L6.28186427,3.45522222 L6.28186427,7.54355556 L10,9.58711111 L13.7168527,7.54355556 L13.7168527,3.45522222 L10,1.41166667 Z" id="形状结合" fill="#7EB2E6" fill-rule="evenodd"></path>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="12px" height="12px" viewBox="0 0 12 12" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 63.1 (92452) - https://sketch.com -->
+    <title>12px/cross</title>
+    <desc>Created with Sketch.</desc>
+    <g id="主导航修改2" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="导航_搜索栏" transform="translate(-1414.000000, -58.000000)">
+            <g id="Search-open" transform="translate(1117.000000, 48.000000)">
+                <g id="12px/cross" transform="translate(297.000000, 10.000000)">
+                    <rect id="box_12px" x="0" y="0" width="12" height="12"></rect>
+                    <path d="M10.4696699,0.469669914 L11.5303301,1.53033009 L7.05966991,5.99966991 L11.5303301,10.4696699 L10.4696699,11.5303301 L5.99966991,7.05966991 L1.53033009,11.5303301 L0.469669914,10.4696699 L4.93966991,5.99966991 L0.469669914,1.53033009 L1.53033009,0.469669914 L5.99966991,4.93966991 L10.4696699,0.469669914 Z" id="形状结合" fill="#CECECE" fill-rule="evenodd"></path>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

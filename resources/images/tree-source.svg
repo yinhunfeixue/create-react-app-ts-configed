@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="12px" height="12px" viewBox="0 0 12 12" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>12px/tree/source</title>
+    <g id="12px/tree/source" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="tree/source">
+            <rect id="Rectangle" fill="#000000" fill-rule="nonzero" opacity="0" x="0" y="0" width="12" height="12"></rect>
+            <path d="M8.445,2.115 L6,0.705 L3.555,2.115 L3.555,4.935 L6,6.3525 L8.445,4.935 L8.445,2.115 Z M0.615,7.065 L0.615,9.885 L3.06,11.295 L5.505,9.885 L5.505,7.065 L3.06,5.6475 L0.615,7.065 Z M8.94,5.6475 L6.495,7.065 L6.495,9.885 L8.94,11.295 L11.385,9.885 L11.385,7.065 L8.94,5.6475 Z" id="Shape" fill="#333333"></path>
+        </g>
+    </g>
+</svg>

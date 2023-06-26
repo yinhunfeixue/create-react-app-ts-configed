@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="32px" height="32px" viewBox="0 0 32 32" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 59 (86127) - https://sketch.com -->
+    <title>C5CEDB2E-6C4D-4AB8-B332-58919CAC7325</title>
+    <desc>Created with Sketch.</desc>
+    <g id="Keywords-Search-V2.0" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="数据看板-" transform="translate(-664.000000, -278.000000)">
+            <g id="Group-2" transform="translate(664.000000, 278.000000)">
+                <circle id="Oval" fill="#F6F8FA" cx="16" cy="16" r="16"></circle>
+                <g id="操作" transform="translate(4.000000, 4.000000)">
+                    <path d="M20,14 C18.9,14 18,13.1 18,12 C18,10.9 18.9,10 20,10 C21.1,10 22,10.9 22,12 C22,13.1 21.1,14 20,14 Z" id="Path" fill="#000000" fill-rule="nonzero"></path>
+                    <path d="M12,14 C10.9,14 10,13.1 10,12 C10,10.9 10.9,10 12,10 C13.1,10 14,10.9 14,12 C14,13.1 13.1,14 12,14 Z" id="Path" fill="#000000" fill-rule="nonzero"></path>
+                    <path d="M4,14 C2.9,14 2,13.1 2,12 C2,10.9 2.9,10 4,10 C5.1,10 6,10.9 6,12 C6,13.1 5.1,14 4,14 Z" id="Path" fill="#000000" fill-rule="nonzero"></path>
+                    <rect id="Rectangle" x="0" y="0" width="24" height="24"></rect>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

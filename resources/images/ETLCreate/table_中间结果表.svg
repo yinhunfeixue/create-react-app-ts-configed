@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="20px" height="20px" viewBox="0 0 20 20" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 63.1 (92452) - https://sketch.com -->
+    <title>20px/table_中间结果表</title>
+    <desc>Created with Sketch.</desc>
+    <g id="20px/table_中间结果表" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <rect id="box_20" x="0" y="0" width="20" height="20"></rect>
+        <path d="M19,2 C19.5522847,2 20,2.44771525 20,3 L20,17 C20,17.5522847 19.5522847,18 19,18 L1,18 C0.44771525,18 -2.0001778e-12,17.5522847 -2.0001778e-12,17 L-1.99662509e-12,3 C-1.99662509e-12,2.44771525 0.44771525,2 1,2 L19,2 Z M1,3 L1,17 L19,17 L19,3 L1,3 Z M9,6 L10.001,6.875 L11,6 L17,6 L17,14 L11,14 L9.999,13.124 L9,14 L3,14 L3,6 L9,6 Z M8.6,7 L4,7 L4,13 L8.6,13 L9.226,12.448 L7,10.5 L7,9.50437657 L9.227,7.553 L8.6,7 Z M16,7 L11.4,7 L10.774,7.552 L13,9.5 L13,10.4956234 L10.773,12.447 L11.4,13 L16,13 L16,7 Z M10,8.235 L8,10 L10,11.765 L12,10 L10,8.235 Z" id="csv" fill="#555555"></path>
+    </g>
+</svg>

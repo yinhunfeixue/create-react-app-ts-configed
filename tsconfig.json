@@ -23,7 +23,10 @@
     "paths": {
       "@/*": [
         "./*"
-      ]
+      ],
+      "app_images/*": [
+        "../resources/images/*"
+      ],
     }
   },
   "include": [

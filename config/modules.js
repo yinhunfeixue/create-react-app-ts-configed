@@ -68,8 +68,28 @@ function getWebpackAliases(options = {}) {
       src: paths.appSrc,
     };
   }
+  const ROOT_PATH = path.resolve(__dirname, '../')
+  const APP_NAME = 'dmp'
   return {
-    '@': paths.appSrc,
+    '@': ROOT_PATH + '/src',
+    app_images: ROOT_PATH + '/resources/images',
+    app_icons: ROOT_PATH + '/resources/icons',
+    app_js: ROOT_PATH + '/src/core_lz/resources/' + APP_NAME + '/js',
+    app_constants: ROOT_PATH + '/src/constants/index',
+    app_common: ROOT_PATH + '/src/core_lz/common',
+    app_component: ROOT_PATH + '/src/core_lz/component',
+    app_page: ROOT_PATH + '/src/app',
+    app_store: ROOT_PATH + '/src/store',
+    app_css: ROOT_PATH + '/src/core_lz/resources/' + APP_NAME + '/css',
+    app_api: ROOT_PATH + '/src/api',
+    app_component_main: ROOT_PATH + '/src/component',
+    app_service: ROOT_PATH + '/src/services',
+    app_utils: ROOT_PATH + '/src/utils',
+    app_config: ROOT_PATH + '/src/tabConfig',
+    cps: ROOT_PATH + '/src/components',
+    utils: ROOT_PATH + '/src/utils',
+    businessCps: ROOT_PATH + '/src/businessComponents',
+    hooks: ROOT_PATH + '/src/hooks',
   };
 }
 

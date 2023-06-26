@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="33px" height="33px" viewBox="0 0 33 33" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 59 (86127) - https://sketch.com -->
+    <title>88AC457B-1E29-4EB6-AB3E-115BDF29B96D</title>
+    <desc>Created with Sketch.</desc>
+    <g id="Keywords-Search" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="图表的icon" transform="translate(-1234.000000, -612.000000)">
+            <g id="Group-8" transform="translate(1231.000000, 608.000000)">
+                <g id="气泡图" transform="translate(4.000000, 4.000000)">
+                    <polyline id="Path" stroke="#47515F" points="0 1.06666667 0 32 32 32"></polyline>
+                    <g id="Group" transform="translate(3.310345, 0.000000)" fill-rule="nonzero">
+                        <ellipse id="Oval" fill="#FCC839" cx="22.8098522" cy="5.34637037" rx="4.72906404" ry="4.62222222"></ellipse>
+                        <ellipse id="Oval" fill="#48D1E0" cx="12.5635468" cy="6.88711111" rx="3.37339901" ry="3.29718519"></ellipse>
+                        <ellipse id="Oval" fill="#F04152" cx="3.75172414" cy="24.5131852" rx="3.27881773" ry="3.20474074"></ellipse>
+                        <ellipse id="Oval" fill="#448EF6" cx="15.7162562" cy="18.4426667" rx="7.09359606" ry="6.93333333"></ellipse>
+                    </g>
+                </g>
+                <rect id="Rectangle" x="0" y="0" width="40" height="40"></rect>
+            </g>
+        </g>
+    </g>
+</svg>

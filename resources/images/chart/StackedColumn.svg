@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="32px" height="33px" viewBox="0 0 32 33" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 59 (86127) - https://sketch.com -->
+    <title>B1812C8B-6F9C-4AD4-81FD-0B0DCC41C406</title>
+    <desc>Created with Sketch.</desc>
+    <g id="Keywords-Search" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="图表的icon" transform="translate(-1309.000000, -380.000000)">
+            <g id="堆叠柱状图" transform="translate(1305.000000, 376.000000)">
+                <rect id="Rectangle" x="0" y="0" width="40" height="40"></rect>
+                <g id="Group-3" transform="translate(4.000000, 4.000000)">
+                    <line x1="0" y1="31.6" x2="32" y2="31.6" id="Path" stroke="#47515F"></line>
+                    <g id="Group" transform="translate(0.000000, -0.000000)" fill-rule="nonzero">
+                        <path d="M0,19.2 L6.4,19.2 L6.4,28.8 L0,28.8 L0,19.2 Z M8.536,11.2 L14.936,11.2 L14.936,28.8 L8.536,28.8 L8.536,11.2 Z M17.064,0 L23.464,0 L23.464,28.8 L17.064,28.8 L17.064,0 Z M25.6,8 L32,8 L32,28.8 L25.6,28.8 L25.6,8 Z" id="Shape" fill="#3872F7"></path>
+                        <path d="M0,19.2 L6.4,19.2 L6.4,25.6 L0,25.6 L0,19.2 Z M8.536,9.6 L14.936,9.6 L14.936,22.4 L8.536,22.4 L8.536,9.6 Z M17.064,9.6 L23.464,9.6 L23.464,19.2 L17.064,19.2 L17.064,9.6 Z M25.6,8 L32,8 L32,20.8 L25.6,20.8 L25.6,8 Z" id="Shape" fill="#F04152"></path>
+                        <path d="M0,19.2 L6.4,19.2 L6.4,22.4 L0,22.4 L0,19.2 Z M8.536,9.6 L14.936,9.6 L14.936,17.6 L8.536,17.6 L8.536,9.6 Z M17.064,4.8 L23.464,4.8 L23.464,11.2 L17.064,11.2 L17.064,4.8 Z M25.6,11.2 L32,11.2 L32,16 L25.6,16 L25.6,11.2 Z" id="Shape" fill="#FCC838"></path>
+                        <path d="M0,17.6 L6.4,17.6 L6.4,19.2 L0,19.2 L0,17.6 Z M8.536,9.6 L14.936,9.6 L14.936,14.4 L8.536,14.4 L8.536,9.6 Z M17.064,0 L23.464,0 L23.464,6.4 L17.064,6.4 L17.064,0 Z M25.6,8 L32,8 L32,11.2 L25.6,11.2 L25.6,8 Z" id="Shape" fill="#48D1E0"></path>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

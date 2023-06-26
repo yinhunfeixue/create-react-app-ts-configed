@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="20px" height="20px" viewBox="0 0 20 20" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 63.1 (92452) - https://sketch.com -->
+    <title>20px/more</title>
+    <desc>Created with Sketch.</desc>
+    <g id="20px/more" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <rect id="box_20" x="0" y="0" width="20" height="20"></rect>
+        <path d="M8,2 C8,3.10457516 8.89542484,4 10,4 C11.1045752,4 12,3.10457516 12,2 C12,0.895424837 11.1045752,0 10,0 C8.89542484,0 8,0.895424837 8,2 L8,2 Z M8,10 C8,11.1045752 8.89542484,12 10,12 C11.1045752,12 12,11.1045752 12,10 C12,8.89542484 11.1045752,8 10,8 C8.89542484,8 8,8.89542484 8,10 L8,10 Z M8,18 C8,19.104576 8.89542484,20 10,20 C11.1045752,20 12,19.104576 12,18 C12,16.8954279 11.1045752,16 10,16 C8.89542484,15.9978253 8,16.8954279 8,18 L8,18 Z" id="形状" fill="#555555"></path>
+    </g>
+</svg>
