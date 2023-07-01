@@ -16,31 +16,36 @@
 	// 	"description": "Log output to console"
 	// }
 	// 创建enum文件
-	"createEnum": {
-		"prefix": "newEnum",
-		"body": [
-			"/**",
-			"* ${TM_FILENAME_BASE}",
-			"*/",
-			"enum ${TM_FILENAME_BASE} {",
-			"UNKNOW,",
-			"$1",
-			"};",
-			"",
-			"namespace ${TM_FILENAME_BASE} {",
-			"export function toString(value: ${TM_FILENAME_BASE}){",
-			"switch (value) {",
-			"case ${TM_FILENAME_BASE}.UNKNOW:",
-			"return '通过';",
-			"default:",
-			"return '';",
-			"}",
-			"}",
-			"}",
-			"export default ${TM_FILENAME_BASE};",
-		],
-		"description": "创建Enum"
-	},
+	// 创建enum文件
+  "createEnum": {
+    "prefix": "newEnum",
+    "body": [
+      "/**",
+      "* ${TM_FILENAME_BASE}",
+      "*/",
+      "enum ${TM_FILENAME_BASE} {",
+      "UNKNOW,",
+      "$1",
+      "};",
+      "",
+      "namespace ${TM_FILENAME_BASE} {",
+      "/**",
+      " * 枚举值列表，一般用于列表显示，例如下拉框",
+      " */",
+      "export const ALL_LIST:${TM_FILENAME_BASE}[] = []",
+      "",
+      "/**",
+      " * 枚举值转换为字符串",
+      " */",
+      "export function toString(value: ${TM_FILENAME_BASE}){",
+      "  const dic: { [key in ${TM_FILENAME_BASE}]: string } = {}",
+      "return dic[value] || '';",
+      "}",
+      "}",
+      "export default ${TM_FILENAME_BASE};",
+    ],
+    "description": "创建Enum"
+  },
 	"createInterface": {
 		"prefix": "newInterface",
 		"body": [
