@@ -1,5 +1,12 @@
-import { Editor, EditorState, Modifier, RichUtils } from 'draft-js';
+import {
+  ContentState,
+  Editor,
+  EditorState,
+  Modifier,
+  RichUtils,
+} from 'draft-js';
 import { stateToHTML } from 'draft-js-export-html';
+import { stateFromHTML } from 'draft-js-import-html';
 import React, { useState } from 'react';
 
 interface RichTextEditorProps {}
@@ -25,9 +32,20 @@ const styleMap = {
   },
 };
 
+let initialHtml = `
+<p><span style="font-size: 16px; color: red"><strong>Hello, world!</strong></span></p>
+<p><span style="font-size: 18px;">This is an example of <strong>initial HTML</strong> with styles.</span></p>
+`;
+
+initialHtml = '';
+
 const RichTextEditor: React.FC<RichTextEditorProps> = () => {
+  const contentState = initialHtml
+    ? stateFromHTML(initialHtml)
+    : ContentState.createFromText('<p style="color:red">aaaa</p>');
+
   const [editorState, setEditorState] = useState(() =>
-    EditorState.createEmpty()
+    EditorState.createWithContent(contentState)
   );
 
   const handleKeyCommand = (command: string, editorState: EditorState) => {

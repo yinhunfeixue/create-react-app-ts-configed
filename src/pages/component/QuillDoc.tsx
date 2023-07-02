@@ -56,6 +56,7 @@ const QuillDoc: React.FC<IQuillDocProps> = (props) => {
         </button>
       </header>
       <ReactQuill
+        value={`<p><span style="color:red">aaaa</span>bbb</p>`}
         className="QuillDocBody"
         ref={quillRef}
         theme="snow"
