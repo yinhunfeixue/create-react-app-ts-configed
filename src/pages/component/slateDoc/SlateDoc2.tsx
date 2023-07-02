@@ -65,11 +65,16 @@ class SlateDoc2 extends Component<ISlateDoc2Props, ISlateDoc2State> {
   private updateStyle(style: IStyle) {
     const { editor } = this.state;
     const { selection } = editor;
+
     if (selection) {
       Transforms.setNodes<IText>(editor, style, {
         match: Text.isText,
         split: true,
       });
+
+      setTimeout(() => {
+        Transforms.select(editor, selection);
+      }, 1000);
     }
   }
 
