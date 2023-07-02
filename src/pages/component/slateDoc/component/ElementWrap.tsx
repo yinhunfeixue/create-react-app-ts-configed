@@ -17,7 +17,16 @@ class ElementWrap extends Component<IElementWrapProps, IElementWrapState> {
   render() {
     const { children, onSettingClick, onDeleteClick } = this.props;
     return (
-      <div contentEditable={false} className={styles.ElementWrap} tabIndex={0}>
+      <div
+        contentEditable={false}
+        className={styles.ElementWrap}
+        tabIndex={0}
+        onFocus={(event) => {
+          // 焦点始终在父元素上
+          event.stopPropagation();
+          event.currentTarget.focus();
+        }}
+      >
         <span className={styles.ControlBar}>
           <Button
             icon={<SettingOutlined />}
@@ -28,7 +37,6 @@ class ElementWrap extends Component<IElementWrapProps, IElementWrapState> {
             icon={<DeleteOutlined />}
             type="text"
             onClick={(event) => {
-              console.log('delete1');
               if (onDeleteClick) {
                 onDeleteClick(event);
               }
