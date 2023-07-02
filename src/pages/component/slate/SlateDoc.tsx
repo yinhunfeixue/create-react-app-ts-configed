@@ -2,7 +2,6 @@ import { Button } from 'antd';
 import React, { useCallback, useMemo, useState } from 'react';
 import { Editor, Element, Node, Range, Text, createEditor } from 'slate';
 
-import MyLeaf from '@/pages/component/slate/MyLeaf';
 import escapeHtml from 'escape-html';
 import { Editable, RenderLeafProps, Slate, withReact } from 'slate-react';
 
@@ -105,16 +104,13 @@ const RichTextEditor: React.FC = () => {
       const fontSize = customLeaf.fontSize || '16';
       const fontWeight = customLeaf.bold ? 'bold' : 'normal';
       const color = customLeaf.color || 'black';
-      // return (
-      //   <span
-      //     {...attributes}
-      //     style={{ fontSize: `${fontSize}px`, fontWeight, color }}
-      //   >
-      //     {children}
-      //   </span>
-      // );
       return (
-        <MyLeaf style={{ color, fontSize, fontWeight }}>{children}</MyLeaf>
+        <span
+          {...attributes}
+          style={{ fontSize: `${fontSize}px`, fontWeight, color }}
+        >
+          {children}
+        </span>
       );
     },
     []
