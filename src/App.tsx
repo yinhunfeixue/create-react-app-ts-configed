@@ -8,7 +8,7 @@ import RouterRender from './base/config/RouterRender';
 ProxySetting.init();
 Model.init();
 
-function App() {
+const App: React.FC<any> = (props: any) => {
   return (
     <ConfigProvider locale={zhCN}>
       <RouterRender />

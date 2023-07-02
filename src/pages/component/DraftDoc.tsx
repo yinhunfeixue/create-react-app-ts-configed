@@ -1,11 +1,5 @@
 // import { convertFromHTML } from 'draft-convert';
-import {
-  Editor,
-  EditorState,
-  Modifier,
-  RichUtils,
-  convertToRaw,
-} from 'draft-js';
+import { Editor, EditorState, Modifier, RichUtils } from 'draft-js';
 import { stateToHTML } from 'draft-js-export-html';
 import { InlineCreators, stateFromHTML } from 'draft-js-import-html';
 import React, { useState } from 'react';
@@ -105,8 +99,6 @@ const RichTextEditor: React.FC<RichTextEditorProps> = () => {
   };
 
   const exportHtml = () => {
-    console.log('convertToRaw', convertToRaw(editorState.getCurrentContent()));
-
     const contentState = editorState.getCurrentContent();
     const options = {
       inlineStyles: {
@@ -119,6 +111,7 @@ const RichTextEditor: React.FC<RichTextEditorProps> = () => {
       },
     };
     const html = stateToHTML(contentState, options);
+    // eslint-disable-next-line no-console
     console.log(html);
   };
 

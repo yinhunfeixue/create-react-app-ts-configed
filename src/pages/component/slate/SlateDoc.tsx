@@ -254,6 +254,7 @@ const RichTextEditor: React.FC = () => {
         onClick={async () => {
           const html = await serializeHTMLList(value);
           setHtmlContent(html);
+          // eslint-disable-next-line no-console
           console.log(
             'save',
             value,
@@ -268,9 +269,9 @@ const RichTextEditor: React.FC = () => {
         editor={editor}
         value={value}
         onChange={(value) => {
-          console.log('chagne', value);
           setValue(value as CustomElement[]);
 
+          // eslint-disable-next-line no-console
           console.log('color', getSelectedTextColor(editor));
         }}
       >

@@ -1,7 +1,8 @@
+import Config from '@/pages/component/slateDoc/Config';
 import ColorPicker from '@/pages/component/slateDoc/component/ColorPicker';
 import IStyle from '@/pages/component/slateDoc/interface/IStyle';
 import { Button, Select } from 'antd';
-import React, { Component } from 'react';
+import React, { Component, ReactNode } from 'react';
 import { Editor } from 'slate';
 import styles from './ToolBar.module.less';
 
@@ -12,6 +13,7 @@ interface IToolBarState {
 interface IToolBarProps {
   edit: Editor;
   onChange: (value: IStyle) => void;
+  children?: ReactNode;
 }
 
 /**
@@ -23,11 +25,7 @@ class ToolBar extends Component<IToolBarProps, IToolBarState> {
     this.state = {
       fontSizeList: [12, 14, 16, 18, 20, 24, 28],
 
-      style: {
-        fontSize: 14,
-        color: '#999999',
-        bold: false,
-      },
+      style: { ...Config.defaultStyle },
     };
   }
 
@@ -41,14 +39,15 @@ class ToolBar extends Component<IToolBarProps, IToolBarState> {
         },
       },
       () => {
-        onChange(this.state.style);
+        onChange(value);
       }
     );
   }
 
   render() {
     const { fontSizeList, style } = this.state;
-    const { fontSize, color, bold } = style;
+    const { fontSize, color, fontWeight } = style;
+    const { children } = this.props;
     return (
       <div className={styles.ToolBar}>
         {/* 常规内容 */}
@@ -64,14 +63,16 @@ class ToolBar extends Component<IToolBarProps, IToolBarState> {
         />
         {/* 颜色 */}
         <ColorPicker
-          color={color}
+          color={color || '#999999'}
           onChange={(color) => this.updateStyle({ color })}
         />
         {/* 粗体 */}
         <Button
           type="text"
-          style={{ fontWeight: bold ? 'bold' : 'normal' }}
-          onClick={() => this.updateStyle({ bold: !bold })}
+          style={{ fontWeight }}
+          onClick={() =>
+            this.updateStyle({ fontWeight: fontWeight ? 'bold' : undefined })
+          }
         >
           B
         </Button>
@@ -80,6 +81,7 @@ class ToolBar extends Component<IToolBarProps, IToolBarState> {
         {/* 列表 */}
         {/* 分隔线 */}
         {/* 扩展功能 */}
+        {children}
       </div>
     );
   }

@@ -1,11 +1,23 @@
 import IComponentProps from '@/base/interfaces/IComponentProps';
 import ToolBar from '@/pages/component/slateDoc/component/ToolBar';
+import IElement from '@/pages/component/slateDoc/interface/IElement';
+import IStyle from '@/pages/component/slateDoc/interface/IStyle';
+import IText from '@/pages/component/slateDoc/interface/IText';
 import React, { Component } from 'react';
-import { Editor, createEditor } from 'slate';
+import { Text, Transforms, createEditor } from 'slate';
+import {
+  Editable,
+  ReactEditor,
+  RenderElementProps,
+  RenderLeafProps,
+  Slate,
+  withReact,
+} from 'slate-react';
 import './SlateDoc2.less';
 
 interface ISlateDoc2State {
-  editor: Editor;
+  editor: ReactEditor;
+  value: IElement[];
 }
 interface ISlateDoc2Props extends IComponentProps {}
 
@@ -16,12 +28,53 @@ class SlateDoc2 extends Component<ISlateDoc2Props, ISlateDoc2State> {
   constructor(props: ISlateDoc2Props) {
     super(props);
     this.state = {
-      editor: createEditor(),
+      editor: withReact(createEditor()),
+      value: [
+        {
+          type: 'paragraph',
+          children: [
+            {
+              text: 'A line of asdfd fadsd adfa dfdsf asdfabggdfgdfgfdgsdf  dfgsfg dfg df',
+            },
+          ],
+        },
+      ],
     };
   }
 
-  render() {
+  private renderLeaf(data: RenderLeafProps) {
+    const { attributes, children } = data;
+    let leaf: IText = data.leaf;
+
+    return (
+      <span {...attributes} style={leaf}>
+        {children}
+      </span>
+    );
+  }
+
+  private renderElement(data: RenderElementProps) {
+    const { attributes, children } = data;
+    let element: IElement = data.element as IElement;
+    switch (element.type) {
+      default:
+        return <p {...attributes}>{children}</p>;
+    }
+  }
+
+  private updateStyle(style: IStyle) {
     const { editor } = this.state;
+    const { selection } = editor;
+    if (selection) {
+      Transforms.setNodes<IText>(editor, style, {
+        match: Text.isText,
+        split: true,
+      });
+    }
+  }
+
+  render() {
+    const { editor, value } = this.state;
     return (
       <div className="SlateDoc2">
         {/* 操作区 */}
@@ -29,11 +82,27 @@ class SlateDoc2 extends Component<ISlateDoc2Props, ISlateDoc2State> {
           <ToolBar
             edit={editor}
             onChange={(value) => {
-              console.log('styleChange', value);
+              this.updateStyle(value);
             }}
-          />
+          >
+            额外的操作
+          </ToolBar>
         </header>
         {/* 内容区 */}
+        <main>
+          <Slate
+            editor={editor}
+            value={value}
+            onChange={(value) => {
+              this.setState({ value: value as IElement[] });
+            }}
+          >
+            <Editable
+              renderLeaf={this.renderLeaf}
+              renderElement={this.renderElement}
+            />
+          </Slate>
+        </main>
       </div>
     );
   }

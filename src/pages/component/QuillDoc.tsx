@@ -29,8 +29,6 @@ const QuillDoc: React.FC<IQuillDocProps> = (props) => {
     const quill = quillRef.current?.getEditor();
     const range = quill?.getSelection();
 
-    console.log('insert table', range);
-
     if (range) {
       quill?.insertEmbed(range.index, 'table', 'new');
     }
