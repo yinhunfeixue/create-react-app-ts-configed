@@ -8,6 +8,7 @@ class Config {
     fontSize: 14,
     color: '#000',
     fontWeight: 'normal',
+    textAlign: 'left',
   };
 }
 export default Config;

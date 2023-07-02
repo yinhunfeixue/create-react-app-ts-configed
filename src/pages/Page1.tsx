@@ -4,6 +4,7 @@ import QuillDoc from '@/pages/component/QuillDoc';
 import SlateDoc from '@/pages/component/slate/SlateDoc';
 import SlateDoc2 from '@/pages/component/slateDoc/SlateDoc2';
 import ElementWrap from '@/pages/component/slateDoc/component/ElementWrap';
+import IDocController from '@/pages/component/slateDoc/interface/IDocController';
 import IElement from '@/pages/component/slateDoc/interface/IElement';
 import { Alert, Button, Card, Table } from 'antd';
 import Axios from 'axios';
@@ -15,7 +16,7 @@ interface IPage1Props extends IComponentProps {}
 const defaultContent: IElement[] = [
   {
     type: 'h1',
-    style: { textAlign: 'center' },
+    textAlign: 'center',
     children: [
       {
         text: '标题',
@@ -50,7 +51,7 @@ const defaultContent: IElement[] = [
  * Page1
  */
 class Page1 extends Component<IPage1Props, IPage1State> {
-  private slateDocRef = React.createRef<SlateDoc2>();
+  private docController!: IDocController;
   constructor(props: IPage1Props) {
     super(props);
     this.state = {};
@@ -61,16 +62,13 @@ class Page1 extends Component<IPage1Props, IPage1State> {
   }
 
   private insertTable() {
-    const { current } = this.slateDocRef;
-    if (current) {
-      current.insertContent({
-        id: 'tabl1',
-        type: 'antdTable',
-        data: {
-          title: '我是表格携带的标题',
-        },
-      });
-    }
+    this.docController.insertItem({
+      id: 'tabl1',
+      type: 'antdTable',
+      data: {
+        title: '我是表格携带的标题',
+      },
+    });
   }
 
   render() {
@@ -78,7 +76,6 @@ class Page1 extends Component<IPage1Props, IPage1State> {
       <div>
         <Card title="slat2" style={{ marginBottom: 20 }}>
           <SlateDoc2
-            ref={this.slateDocRef}
             initData={defaultContent}
             extraTools={
               <>
@@ -87,21 +84,22 @@ class Page1 extends Component<IPage1Props, IPage1State> {
                 </Button>
                 <Button
                   onClick={() => {
-                    console.log('save', this.slateDocRef.current?.state.value);
+                    console.log('save', this.docController.getValue());
                   }}
                 >
                   导出
                 </Button>
               </>
             }
-            customElementRender={(props) => {
+            customElementRender={(props, controller) => {
               const { type, data, id } = props.element as IElement;
+              this.docController = controller;
               switch (type) {
                 case 'antdTable':
                   return (
                     <ElementWrap
                       onSettingClick={() => {
-                        this.slateDocRef.current?.updateItem(
+                        controller.updateItem(
                           (n) => {
                             return n.id === id;
                           },
@@ -109,7 +107,7 @@ class Page1 extends Component<IPage1Props, IPage1State> {
                         );
                       }}
                       onDeleteClick={() => {
-                        this.slateDocRef.current?.removeItem((n) => {
+                        controller.removeItem((n) => {
                           return n.id === id;
                         });
                       }}

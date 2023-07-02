@@ -35,7 +35,7 @@ module.exports = {
     //操作符前后必须有空格
     'space-infix-ops': ['error', { int32Hint: false }],
     //逗号前面不允许有空格，后面必须有空格
-    'comma-spacing': ['error', { before: false, after: true }],
+    'comma-spacing': 'off',
 
     /************禁用旧写法*************/
     //不能使用var定义变量

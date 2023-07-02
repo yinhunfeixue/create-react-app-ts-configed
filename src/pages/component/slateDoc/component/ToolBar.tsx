@@ -2,17 +2,20 @@ import Config from '@/pages/component/slateDoc/Config';
 import ColorPicker from '@/pages/component/slateDoc/component/ColorPicker';
 import IStyle from '@/pages/component/slateDoc/interface/IStyle';
 import { Button, Select } from 'antd';
+import { Property } from 'csstype';
 import React, { Component, ReactNode } from 'react';
 import { Editor } from 'slate';
 import styles from './ToolBar.module.less';
 
 interface IToolBarState {
-  fontSizeList: number[];
   style: IStyle;
+  fontSizeList: number[];
+  alignList: { value: Property.TextAlign; label: string }[];
 
   textType: string;
   textTypeList: { value: string; label: string }[];
 }
+
 interface IToolBarProps {
   edit: Editor;
   onStyleChange: (value: IStyle) => void;
@@ -52,6 +55,13 @@ class ToolBar extends Component<IToolBarProps, IToolBarState> {
           label: '标题四',
         },
       ],
+
+      alignList: [
+        { value: 'left', label: '左' },
+        { value: 'center', label: '中' },
+        { value: 'right', label: '右' },
+      ],
+
       style: { ...Config.defaultStyle },
     };
   }
@@ -84,8 +94,9 @@ class ToolBar extends Component<IToolBarProps, IToolBarState> {
   }
 
   render() {
-    const { fontSizeList, style, textTypeList, textType } = this.state;
-    const { fontSize, color, fontWeight } = style;
+    const { fontSizeList, style, textTypeList, textType, alignList } =
+      this.state;
+    const { fontSize, color, fontWeight, textAlign } = style;
     const { children, onInsertElement } = this.props;
     return (
       <div className={styles.ToolBar}>
@@ -125,6 +136,15 @@ class ToolBar extends Component<IToolBarProps, IToolBarState> {
           B
         </Button>
         {/* 对齐 */}
+        <Select
+          options={alignList}
+          value={textAlign}
+          style={{ width: 90 }}
+          bordered={false}
+          dropdownStyle={{ width: 140 }}
+          dropdownMatchSelectWidth={false}
+          onChange={(value) => this.updateStyle({ textAlign: value })}
+        />
         {/* 数字序号 */}
         {/* 列表 */}
         {/* 分隔线 */}
