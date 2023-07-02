@@ -1,7 +1,7 @@
 import Config from '@/pages/component/slateDoc/Config';
 import ColorPicker from '@/pages/component/slateDoc/component/ColorPicker';
 import IStyle from '@/pages/component/slateDoc/interface/IStyle';
-import { Button, Select } from 'antd';
+import { Button, Divider, Select } from 'antd';
 import { Property } from 'csstype';
 import React, { Component, ReactNode } from 'react';
 import { Editor } from 'slate';
@@ -22,6 +22,8 @@ interface IToolBarProps {
   children?: ReactNode;
   onTypeChange: (value: string) => void;
   onInsertElement: (type: string) => void;
+
+  onWrapTypeChange: (wrapType: string, type: string) => void;
 }
 
 /**
@@ -97,7 +99,7 @@ class ToolBar extends Component<IToolBarProps, IToolBarState> {
     const { fontSizeList, style, textTypeList, textType, alignList } =
       this.state;
     const { fontSize, color, fontWeight, textAlign } = style;
-    const { children, onInsertElement } = this.props;
+    const { children, onInsertElement, onWrapTypeChange } = this.props;
     return (
       <div className={styles.ToolBar}>
         {/* 文本类型 */}
@@ -135,18 +137,22 @@ class ToolBar extends Component<IToolBarProps, IToolBarState> {
         >
           B
         </Button>
+        <Divider type="vertical" />
         {/* 对齐 */}
         <Select
           options={alignList}
           value={textAlign}
-          style={{ width: 90 }}
+          style={{ width: 60 }}
           bordered={false}
           dropdownStyle={{ width: 140 }}
           dropdownMatchSelectWidth={false}
           onChange={(value) => this.updateStyle({ textAlign: value })}
         />
         {/* 数字序号 */}
+        <Button onClick={() => onWrapTypeChange('ol', 'li')}>ol</Button>
         {/* 列表 */}
+        <Button onClick={() => onWrapTypeChange('ul', 'li')}>ul</Button>
+        <Divider type="vertical" />
         {/* 分隔线 */}
         <Button
           type="text"

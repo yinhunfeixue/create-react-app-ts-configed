@@ -5,7 +5,15 @@ import IElement from '@/pages/component/slateDoc/interface/IElement';
 import IStyle from '@/pages/component/slateDoc/interface/IStyle';
 import IText from '@/pages/component/slateDoc/interface/IText';
 import React, { Component, ReactElement, ReactNode } from 'react';
-import { Editor, Node, Text, Transforms, createEditor, isBlock } from 'slate';
+import {
+  Editor,
+  Element,
+  Node,
+  Text,
+  Transforms,
+  createEditor,
+  isBlock,
+} from 'slate';
 import {
   Editable,
   ReactEditor,
@@ -135,11 +143,31 @@ class SlateDoc2 extends Component<ISlateDoc2Props, ISlateDoc2State> {
 
   private updateType(type: string) {
     const { editor } = this.state;
+
     Transforms.setNodes<IElement>(
       editor,
       { type },
       { match: (n) => Editor.isBlock(editor, n as any) }
     );
+  }
+
+  private wrapType(wrapType: string, type: string) {
+    const { editor } = this.state;
+    Transforms.unwrapNodes(editor, {
+      match: (n) =>
+        !Editor.isEditor(n) &&
+        Element.isElement(n) &&
+        (n as IElement).type === wrapType,
+    });
+    Transforms.setNodes<IElement>(
+      editor,
+      { type },
+      { match: (n) => Editor.isBlock(editor, n as any) }
+    );
+
+    Transforms.wrapNodes(editor, {
+      type: wrapType,
+    } as any);
   }
 
   private updateStyle(style: IStyle) {
@@ -150,29 +178,15 @@ class SlateDoc2 extends Component<ISlateDoc2Props, ISlateDoc2State> {
 
     const useBlock = Boolean(style.textAlign);
 
-    console.log('style', style);
     if (selection) {
       if (useBlock) {
         Transforms.setNodes<IText>(editor, style, {
           match: (n) => {
-            console.log(
-              'match',
-              n,
-              Text.isText(n),
-              Text.isTextList(n),
-              isBlock(editor, n as any),
-              Editor.isElementReadOnly(editor, n as any),
-              Editor.isEditor(n),
-              Editor.isInline(editor, n as any)
-            );
-
             if (
               isBlock(editor, n as any) &&
               !Text.isText(n) &&
               !Editor.isEditor(n)
             ) {
-              console.log('true', n);
-
               return true;
             }
 
@@ -211,6 +225,9 @@ class SlateDoc2 extends Component<ISlateDoc2Props, ISlateDoc2State> {
               this.insertItem({
                 type,
               });
+            }}
+            onWrapTypeChange={(wrapType, type) => {
+              this.wrapType(wrapType, type);
             }}
           >
             {extraTools}
