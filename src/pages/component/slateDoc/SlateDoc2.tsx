@@ -127,7 +127,7 @@ class SlateDoc2 extends Component<ISlateDoc2Props, ISlateDoc2State> {
   private defaultElementRender(data: RenderElementProps) {
     const { attributes, children } = data;
     let element: IElement = data.element as IElement;
-    const { type, ...style } = element;
+    const { type = 'div', ...style } = element;
     const noChildrenType = ['hr', 'br'];
 
     if (noChildrenType.includes(type)) {
