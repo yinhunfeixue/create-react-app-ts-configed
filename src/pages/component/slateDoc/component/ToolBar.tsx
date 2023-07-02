@@ -1,4 +1,4 @@
-import { Button, Divider, Select, Tooltip } from 'antd';
+import { Divider, Select, Tooltip } from 'antd';
 import { Property } from 'csstype';
 import React, { Component, ReactNode } from 'react';
 import { Editor, Element, Text } from 'slate';
@@ -183,7 +183,13 @@ class ToolBar extends Component<IToolBarProps, IToolBarState> {
     const { children, onInsertElement, onWrapTypeChange } = this.props;
 
     return (
-      <div className={styles.ToolBar}>
+      <div
+        className={styles.ToolBar}
+        tabIndex={-1}
+        // onMouseDown={(event) => {
+        //   event.preventDefault();
+        // }}
+      >
         {/* 文本类型 */}
         <Select
           options={textTypeList}
@@ -212,9 +218,9 @@ class ToolBar extends Component<IToolBarProps, IToolBarState> {
           }}
         />
         {/* 粗体 */}
-        <Button
-          type="text"
+        <div
           style={{ fontWeight }}
+          tabIndex={-1}
           onClick={() =>
             this.updateStyle({
               fontWeight: fontWeight === 'bold' ? 'normal' : 'bold',
@@ -222,7 +228,7 @@ class ToolBar extends Component<IToolBarProps, IToolBarState> {
           }
         >
           B
-        </Button>
+        </div>
         <Divider type="vertical" />
         {/* 对齐 */}
         <Select

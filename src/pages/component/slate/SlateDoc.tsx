@@ -1,288 +1,174 @@
-import { Button } from 'antd';
-import React, { useCallback, useMemo, useState } from 'react';
-import {
-  Editor,
-  Element,
-  Node,
-  Range,
-  Text,
-  Transforms,
-  createEditor,
-} from 'slate';
+/* eslint-disable */
 
-import MyLeaf from '@/pages/component/slate/MyLeaf';
-import escapeHtml from 'escape-html';
+import React, { useEffect, useMemo, useRef } from 'react';
+import { Editor, Range, Text, Transforms, createEditor } from 'slate';
+import { withHistory } from 'slate-history';
+import { Editable, Slate, useFocused, useSlate, withReact } from 'slate-react';
 
-import html2canvas from 'html2canvas';
-import { Editable, RenderLeafProps, Slate, withReact } from 'slate-react';
+import { Button, Menu } from 'antd';
 
-interface FontSizeMenuProps {
-  editor: Editor;
-}
-
-const FontSizeMenu: React.FC<FontSizeMenuProps> = ({ editor }) => {
-  const [fontSize, setFontSize] = useState<string>('14');
-
-  const handleChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
-    const newSize = event.target.value;
-    const { selection } = editor;
-
-    if (selection && Range.isExpanded(selection)) {
-      Editor.addMark(editor, 'fontSize', newSize);
-    }
-
-    setFontSize(newSize);
-  };
+const HoveringMenuExample = () => {
+  const editor = useMemo(() => withHistory(withReact(createEditor())), []);
 
   return (
-    <select value={fontSize} onChange={handleChange}>
-      <option value="12">12</option>
-      <option value="14">14</option>
-      <option value="16">16</option>
-      <option value="18">18</option>
-      <option value="20">20</option>
-    </select>
+    <Slate editor={editor} initialValue={initialValue}>
+      <HoveringToolbar />
+      <Editable
+        renderLeaf={(props) => <Leaf {...props} />}
+        placeholder="Enter some text..."
+        onDOMBeforeInput={(event: InputEvent) => {
+          switch (event.inputType) {
+            case 'formatBold':
+              event.preventDefault();
+              return toggleFormat(editor, 'bold');
+            case 'formatItalic':
+              event.preventDefault();
+              return toggleFormat(editor, 'italic');
+            case 'formatUnderline':
+              event.preventDefault();
+              return toggleFormat(editor, 'underlined');
+          }
+        }}
+      />
+    </Slate>
   );
 };
 
-const BoldButton: React.FC<FontSizeMenuProps> = ({ editor }) => {
-  const handleClick = () => {
-    const { selection } = editor;
-    if (selection && Range.isExpanded(selection)) {
-      Editor.addMark(editor, 'bold', true);
-    } else {
-      Editor.removeMark(editor, 'bold');
-    }
-  };
-
-  return <button onClick={handleClick}>Bold</button>;
-};
-
-const ColorPicker: React.FC<FontSizeMenuProps> = ({ editor }) => {
-  const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    // const color = event.target.value;
-    // const { selection } = editor;
-
-    // if (selection && Range.isExpanded(selection)) {
-    //   Editor.addMark(editor, 'color', color);
-    // }
-    const color = event.target.value;
-    const { selection } = editor;
-    if (selection) {
-      Transforms.setNodes(editor, { color } as any, {
-        match: Text.isText,
-        split: true,
-      });
-    }
-  };
-
-  return <input type="color" onChange={handleChange} />;
-};
-
-interface CustomElement extends Element {
-  type: string;
-  children: CustomText[];
-}
-
-interface CustomText extends Text {
-  fontSize?: string;
-  bold?: boolean;
-  color?: string;
-}
-
-const RichTextEditor: React.FC = () => {
-  const editor = useMemo(() => withReact(createEditor()), []);
-  const [value, setValue] = useState<CustomElement[]>([
-    {
-      type: 'paragraph',
-      children: [
-        {
-          text: 'A line of',
-        },
-        {
-          text: ' text i',
-          bold: true,
-        },
-        {
-          text: 'n a p',
-        },
-        {
-          text: 'aragr',
-          color: '#e70d0d',
-        },
-        {
-          text: 'aph.',
-        },
-      ],
-    },
-  ]);
-
-  const [htmlContent, setHtmlContent] = useState('');
-
-  const renderElement = ({ attributes, children, element }: any) => {
-    switch (element.type) {
-      case 'custom':
-        return <MyLeaf id="custom" />;
-      default:
-        return <p {...attributes}>{children}</p>;
-    }
-  };
-
-  const renderLeaf = useCallback(
-    ({ attributes, children, leaf }: RenderLeafProps) => {
-      const customLeaf = leaf as CustomText;
-      const fontSize = customLeaf.fontSize || '14';
-      const fontWeight = customLeaf.bold ? 'bold' : 'normal';
-      const color = customLeaf.color || 'black';
-      return (
-        <span
-          {...attributes}
-          style={{ fontSize: `${fontSize}px`, fontWeight, color }}
-        >
-          {children}
-        </span>
-      );
-    },
-    []
+const toggleFormat = (editor: any, format: any) => {
+  const isActive = isFormatActive(editor, format);
+  Transforms.setNodes(
+    editor,
+    { [format]: isActive ? null : true },
+    { match: Text.isText, split: true }
   );
+};
 
-  /**
-   * 序列化为纯文本
-   * @param nodes
-   * @returns
-   */
-  const serialize = (nodes: Node[]) => {
-    return nodes.map((n: Node) => Node.string(n)).join('\n');
-  };
+const isFormatActive = (editor: any, format: any) => {
+  const [match] = Editor.nodes(editor, {
+    match: (n) => n[format] === true,
+    mode: 'all',
+  });
+  return !!match;
+};
 
-  const serializeHTML = async (node: any) => {
-    if (Text.isText(node)) {
-      let style: string[] = [];
-      const { bold, color, fontSize } = node as any;
-      if (bold) {
-        style.push(`font-weight: bold`);
-      }
-      if (color) {
-        style.push(`color: ${color}`);
-      }
-      if (fontSize) {
-        style.push(`font-size: ${fontSize}px`);
-      }
-      let string = escapeHtml(node.text);
+const Leaf = ({ attributes, children, leaf }: any) => {
+  if (leaf.bold) {
+    children = <strong>{children}</strong>;
+  }
 
-      if (style.length) {
-        string = `<span style="${style.join(';')}">${string}</span>`;
-      }
-      return string;
-    }
+  if (leaf.italic) {
+    children = <em>{children}</em>;
+  }
 
-    // const children = node.children
-    //   ? node.children.map(async (n: Node) => await serializeHTML(n)).join('')
-    //   : '';
-    let children = '';
-    if (node.children) {
-      const list = [];
-      for (let item of node.children) {
-        list.push(await serializeHTML(item));
-      }
-      children = list.join('');
-    }
+  if (leaf.underlined) {
+    children = <u>{children}</u>;
+  }
 
-    switch (node.type) {
-      case 'custom':
-        const img = await html2canvas(
-          document.getElementById('custom') as HTMLElement
-        );
+  return <span {...attributes}>{children}</span>;
+};
 
-        return `<img src="${img.toDataURL()}" />`;
-      case 'quote':
-        return `<blockquote><p>${children}</p></blockquote>`;
-      case 'paragraph':
-        return `<p>${children}</p>`;
-      case 'link':
-        return `<a href="${escapeHtml(node.url)}">${children}</a>`;
-      default:
-        return children;
-    }
-  };
+const HoveringToolbar = () => {
+  const ref = useRef<HTMLDivElement | null>();
+  const editor = useSlate();
+  const inFocus = useFocused();
 
-  const serializeHTMLList = async (nodeList: any[]) => {
-    const result = [];
-    for (const item of nodeList) {
-      result.push(await serializeHTML(item));
-    }
-    return result.join('');
-    // return node.map(async (item) => await serializeHTML(item)).join('');
-  };
-
-  const insertCustomComponent = () => {
+  useEffect(() => {
+    const el = ref.current;
     const { selection } = editor;
-    if (selection) {
-      const customComponent = {
-        type: 'custom',
-        data: { x: 1 },
-        children: [{ text: '' }],
-      };
-      editor.insertNode(customComponent);
-    }
-  };
 
-  const getSelectedTextColor = (editor: Editor) => {
-    if (!editor.selection) return null;
-
-    let color;
-    const textNodes = Array.from(
-      Editor.nodes(editor, { at: editor.selection, match: Text.isText })
-    );
-
-    for (const [node] of textNodes as any) {
-      if (color === undefined) {
-        color = node.color;
-      } else if (color !== node.color) {
-        return null;
-      }
+    if (!el) {
+      return;
     }
 
-    return color;
-  };
+    if (
+      el &&
+      (!selection ||
+        !inFocus ||
+        Range.isCollapsed(selection) ||
+        Editor.string(editor, selection) === '')
+    ) {
+      el.removeAttribute('style');
+      return;
+    }
+
+    const domSelection = window.getSelection();
+    const domRange = domSelection!.getRangeAt(0);
+    const rect = domRange.getBoundingClientRect();
+    el.style.opacity = '1';
+    el.style.top = `${rect.top + window.pageYOffset - el.offsetHeight}px`;
+    el.style.left = `${
+      rect.left + window.pageXOffset - el.offsetWidth / 2 + rect.width / 2
+    }px`;
+  });
 
   return (
-    <div>
-      <FontSizeMenu editor={editor} />
-      <BoldButton editor={editor} />
-      <ColorPicker editor={editor} />
-      <Button
-        onClick={async () => {
-          const html = await serializeHTMLList(value);
-          setHtmlContent(html);
-          // eslint-disable-next-line no-console
-          console.log(
-            'save',
-            value,
-            `纯文本=${serialize(value)},  富文本=${html}`
-          );
+    <div ref={ref as any}>
+      <Menu
+        style={{
+          padding: '8px 7px 6px',
+          position: 'absolute',
+          zIndex: 1,
+          top: -10000,
+          left: -10000,
+          marginTop: -6,
+          opacity: 1,
+          backgroundColor: '#222',
+          borderRadius: 4,
+          transition: 'opacity 0.75s',
+          // top: -10000px;
+          // left: -10000px;
+          // margin - top: -6px;
+          // opacity: 0;
+          // background - color: #222;
+          // border - radius: 4px;
+          // transition: opacity 0.75s;
+        }}
+        onMouseDown={(e) => {
+          // prevent toolbar from taking focus away from editor
+          e.preventDefault();
         }}
       >
-        导出
-      </Button>
-      <Button onClick={() => insertCustomComponent()}>插入自定义元素</Button>
-      <Slate
-        editor={editor}
-        value={value}
-        onChange={(value) => {
-          setValue(value as CustomElement[]);
-
-          // eslint-disable-next-line no-console
-          console.log('color', getSelectedTextColor(editor));
-        }}
-      >
-        <Editable renderLeaf={renderLeaf} renderElement={renderElement} />
-      </Slate>
-
-      <h4>转换为html的效果</h4>
-      <div dangerouslySetInnerHTML={{ __html: htmlContent }} />
+        <FormatButton format="bold" icon="format_bold" />
+        <FormatButton format="italic" icon="format_italic" />
+        <FormatButton format="underlined" icon="format_underlined" />
+      </Menu>
     </div>
   );
 };
 
-export default RichTextEditor;
+const FormatButton = ({ format, icon }: any) => {
+  const editor = useSlate();
+  return (
+    <Button
+      // active={isFormatActive(editor, format)}
+      onClick={() => toggleFormat(editor, format)}
+    >
+      {icon}
+    </Button>
+  );
+};
+
+const initialValue: any[] = [
+  {
+    type: 'paragraph',
+    children: [
+      {
+        text: 'This example shows how you can make a hovering menu appear above your content, which you can use to make text ',
+      },
+      { text: 'bold', bold: true },
+      { text: ', ' },
+      { text: 'italic', italic: true },
+      { text: ', or anything else you might want to do!' },
+    ],
+  },
+  {
+    type: 'paragraph',
+    children: [
+      { text: 'Try it out yourself! Just ' },
+      { text: 'select any piece of text and the menu will appear', bold: true },
+      { text: '.' },
+    ],
+  },
+];
+
+export default HoveringMenuExample;

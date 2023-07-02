@@ -401,7 +401,7 @@ class SlateDoc2 extends Component<ISlateDoc2Props, ISlateDoc2State> {
           <main style={{ transform: `scale(${docScale})` }}>
             <Slate
               editor={editor}
-              value={value}
+              initialValue={value}
               onChange={(value) => {
                 this.setState({ value: value as IElement[] });
                 this.valueChangeHandler();
