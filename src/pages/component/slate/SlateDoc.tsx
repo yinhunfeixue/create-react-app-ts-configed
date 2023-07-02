@@ -2,7 +2,9 @@ import { Button } from 'antd';
 import React, { useCallback, useMemo, useState } from 'react';
 import { Editor, Element, Node, Range, Text, createEditor } from 'slate';
 
+import MyLeaf from '@/pages/component/slate/MyLeaf';
 import escapeHtml from 'escape-html';
+
 import { Editable, RenderLeafProps, Slate, withReact } from 'slate-react';
 
 interface FontSizeMenuProps {
@@ -10,7 +12,7 @@ interface FontSizeMenuProps {
 }
 
 const FontSizeMenu: React.FC<FontSizeMenuProps> = ({ editor }) => {
-  const [fontSize, setFontSize] = useState<string>('16');
+  const [fontSize, setFontSize] = useState<string>('14');
 
   const handleChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
     const newSize = event.target.value;
@@ -98,10 +100,21 @@ const RichTextEditor: React.FC = () => {
     },
   ]);
 
+  const [htmlContent, setHtmlContent] = useState('');
+
+  const renderElement = ({ attributes, children, element }: any) => {
+    switch (element.type) {
+      case 'custom':
+        return <MyLeaf />;
+      default:
+        return <p {...attributes}>{children}</p>;
+    }
+  };
+
   const renderLeaf = useCallback(
     ({ attributes, children, leaf }: RenderLeafProps) => {
       const customLeaf = leaf as CustomText;
-      const fontSize = customLeaf.fontSize || '16';
+      const fontSize = customLeaf.fontSize || '14';
       const fontWeight = customLeaf.bold ? 'bold' : 'normal';
       const color = customLeaf.color || 'black';
       return (
@@ -127,9 +140,21 @@ const RichTextEditor: React.FC = () => {
 
   const serializeHTML = (node: any) => {
     if (Text.isText(node)) {
+      let style: string[] = [];
+      const { bold, color, fontSize } = node as any;
+      if (bold) {
+        style.push(`font-weight: bold`);
+      }
+      if (color) {
+        style.push(`color: ${color}`);
+      }
+      if (fontSize) {
+        style.push(`font-size: ${fontSize}px`);
+      }
       let string = escapeHtml(node.text);
-      if ((node as any).bold) {
-        string = `<strong>${string}</strong>`;
+
+      if (style.length) {
+        string = `<span style="${style.join(';')}">${string}</span>`;
       }
       return string;
     }
@@ -139,6 +164,8 @@ const RichTextEditor: React.FC = () => {
       : '';
 
     switch (node.type) {
+      case 'custome':
+        return 'custome';
       case 'quote':
         return `<blockquote><p>${children}</p></blockquote>`;
       case 'paragraph':
@@ -150,6 +177,17 @@ const RichTextEditor: React.FC = () => {
     }
   };
 
+  const insertCustomComponent = () => {
+    const { selection } = editor;
+    if (selection) {
+      const customComponent = {
+        type: 'custom',
+        children: [{ text: '' }],
+      };
+      editor.insertNode(customComponent);
+    }
+  };
+
   return (
     <div>
       <FontSizeMenu editor={editor} />
@@ -157,11 +195,18 @@ const RichTextEditor: React.FC = () => {
       <ColorPicker editor={editor} />
       <Button
         onClick={() => {
-          console.log('save', value, serialize(value), serializeHTML(value[0]));
+          const html = serializeHTML(value[0]);
+          setHtmlContent(html);
+          console.log(
+            'save',
+            value,
+            `纯文本=${serialize(value)},  富文本=${html}`
+          );
         }}
       >
         导出
       </Button>
+      <Button onClick={() => insertCustomComponent()}>插入自定义元素</Button>
       <Slate
         editor={editor}
         value={value}
@@ -171,8 +216,11 @@ const RichTextEditor: React.FC = () => {
           setValue(value as CustomElement[]);
         }}
       >
-        <Editable renderLeaf={renderLeaf} />
+        <Editable renderLeaf={renderLeaf} renderElement={renderElement} />
       </Slate>
+
+      <h4>转换为html的效果</h4>
+      <div dangerouslySetInnerHTML={{ __html: htmlContent }} />
     </div>
   );
 };

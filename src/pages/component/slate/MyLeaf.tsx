@@ -1,4 +1,4 @@
-import Tooltip from 'antd/es/tooltip';
+import { Empty } from 'antd';
 import React, { CSSProperties, ReactNode } from 'react';
 interface IMyLeafProps {
   style?: CSSProperties;
@@ -8,11 +8,10 @@ interface IMyLeafProps {
  * MyLeaf
  */
 const MyLeaf: React.FC<IMyLeafProps> = (props) => {
-  const { style, children } = props;
   return (
-    <Tooltip title="antd tip">
-      <span style={style}>{children}</span>
-    </Tooltip>
+    <div contentEditable={false}>
+      <Empty />
+    </div>
   );
 };
 export default MyLeaf;
