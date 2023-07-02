@@ -3,6 +3,7 @@ import ToolBar from '@/pages/component/slateDoc/component/ToolBar';
 import IElement from '@/pages/component/slateDoc/interface/IElement';
 import IStyle from '@/pages/component/slateDoc/interface/IStyle';
 import IText from '@/pages/component/slateDoc/interface/IText';
+import { Button } from 'antd';
 import React, { Component } from 'react';
 import { Text, Transforms, createEditor } from 'slate';
 import {
@@ -66,15 +67,14 @@ class SlateDoc2 extends Component<ISlateDoc2Props, ISlateDoc2State> {
     const { editor } = this.state;
     const { selection } = editor;
 
+    const previousSelection = Object.assign({}, editor.selection);
+
     if (selection) {
       Transforms.setNodes<IText>(editor, style, {
         match: Text.isText,
         split: true,
       });
-
-      setTimeout(() => {
-        Transforms.select(editor, selection);
-      }, 1000);
+      Transforms.select(editor, previousSelection);
     }
   }
 
@@ -90,7 +90,9 @@ class SlateDoc2 extends Component<ISlateDoc2Props, ISlateDoc2State> {
               this.updateStyle(value);
             }}
           >
-            额外的操作
+            <div>
+              <Button>插入表格</Button>
+            </div>
           </ToolBar>
         </header>
         {/* 内容区 */}
