@@ -164,8 +164,8 @@ const RichTextEditor: React.FC = () => {
       : '';
 
     switch (node.type) {
-      case 'custome':
-        return 'custome';
+      case 'custom':
+        return '<div style="border:1px solid #eee; width:100px; height:50px;">custom</div>';
       case 'quote':
         return `<blockquote><p>${children}</p></blockquote>`;
       case 'paragraph':
@@ -175,6 +175,10 @@ const RichTextEditor: React.FC = () => {
       default:
         return children;
     }
+  };
+
+  const serializeHTMLList = (node: any[]) => {
+    return node.map((item) => serializeHTML(item)).join('');
   };
 
   const insertCustomComponent = () => {
@@ -195,7 +199,7 @@ const RichTextEditor: React.FC = () => {
       <ColorPicker editor={editor} />
       <Button
         onClick={() => {
-          const html = serializeHTML(value[0]);
+          const html = serializeHTMLList(value);
           setHtmlContent(html);
           console.log(
             'save',
