@@ -1,13 +1,13 @@
+// import { convertFromHTML } from 'draft-convert';
 import {
-  ContentState,
   Editor,
   EditorState,
   Modifier,
   RichUtils,
-  convertFromHTML,
   convertToRaw,
 } from 'draft-js';
 import { stateToHTML } from 'draft-js-export-html';
+import { InlineCreators, stateFromHTML } from 'draft-js-import-html';
 import React, { useState } from 'react';
 
 interface RichTextEditorProps {}
@@ -32,20 +32,36 @@ const styleMap = {
     color: 'red',
   },
 };
-
-let initialHtml = `<p>This is an exam<span style="color: red">ple of </span><span style="color: red"><strong>init</strong></span><strong>ial HTML</strong> with styles.</p>`;
-
-// initialHtml = '';
+const initialHTML = `
+<p>
+  <span style="color: red;">这是红色文本。</span>
+  <span style="color: blue;">这是蓝色文本。</span>
+</p>
+`;
 
 const RichTextEditor: React.FC<RichTextEditorProps> = () => {
-  const blocksFromHTML = convertFromHTML(initialHtml);
-  const state = ContentState.createFromBlockArray(
-    blocksFromHTML.contentBlocks,
-    blocksFromHTML.entityMap
-  );
+  const options = {
+    customInlineFn: (element: any, { Style }: InlineCreators) => {
+      if (element.style.color) {
+        const color = element.style.color.toLowerCase();
+        if (color === 'red') {
+          return Style('COLOR-red');
+        } else if (color === 'blue') {
+          return Style('BLUE');
+        }
+      }
+      return;
+    },
+  };
+
+  const initialContentState = stateFromHTML(initialHTML, options);
+  // const state = ContentState.createFromBlockArray(
+  //   blocksFromHTML.,
+  //   blocksFromHTML.entityMap
+  // );
 
   const [editorState, setEditorState] = useState(() =>
-    EditorState.createWithContent(state)
+    EditorState.createWithContent(initialContentState)
   );
 
   const handleKeyCommand = (command: string, editorState: EditorState) => {
@@ -82,7 +98,6 @@ const RichTextEditor: React.FC<RichTextEditorProps> = () => {
       selection,
       `COLOR-${color}`
     );
-    console.log('color', `COLOR-${color}`);
 
     setEditorState(
       EditorState.push(editorState, nextContentState, 'change-inline-style')
