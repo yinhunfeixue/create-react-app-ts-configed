@@ -1,105 +1,123 @@
-import DraftToolBar from '@/pages/component/DraftToolBar';
-import { Button, message } from 'antd';
-import { convertFromHTML, convertToHTML } from 'draft-convert';
-import { Editor, EditorState, RichUtils } from 'draft-js';
-import 'draft-js/dist/Draft.css';
-import React, { useCallback, useRef, useState } from 'react';
-import './DraftDoc.less';
+import { Editor, EditorState, Modifier, RichUtils } from 'draft-js';
+import { stateToHTML } from 'draft-js-export-html';
+import React, { useState } from 'react';
 
-interface IDraftDocProps {}
+interface RichTextEditorProps {}
 
-const initHTML = `<p>我是初始值 ,<span style="color:red;font-size:24px">asfsfj</span>skgl sjkgjdfgkl;sdjg l;djgk sdfg df</p>`;
+const styleMap = {
+  'FONTSIZE-12': {
+    fontSize: '12px',
+  },
+  'FONTSIZE-14': {
+    fontSize: '14px',
+  },
+  'FONTSIZE-16': {
+    fontSize: '16px',
+  },
+  'FONTSIZE-18': {
+    fontSize: '18px',
+  },
+  'FONTSIZE-20': {
+    fontSize: '20px',
+  },
+  'COLOR-red': {
+    color: 'red',
+  },
+};
 
-/**
- * DraftDoc
- */
-const DraftDoc: React.FC<IDraftDocProps> = (props) => {
-  const [editorState, setEditorState] = useState(
-    EditorState.createWithContent(convertFromHTML(initHTML))
+const RichTextEditor: React.FC<RichTextEditorProps> = () => {
+  const [editorState, setEditorState] = useState(() =>
+    EditorState.createEmpty()
   );
-  const [colorStyleMap, setColorStyleMap] = useState({
-    fontSize24: {
-      fontSize: 24,
-    },
-  });
 
-  const toggleBold = useCallback(() => {
+  const handleKeyCommand = (command: string, editorState: EditorState) => {
+    const newState = RichUtils.handleKeyCommand(editorState, command);
+
+    if (newState) {
+      setEditorState(newState);
+      return 'handled';
+    }
+
+    return 'not-handled';
+  };
+
+  const toggleBold = () => {
     setEditorState(RichUtils.toggleInlineStyle(editorState, 'BOLD'));
-  }, [editorState]);
+  };
 
-  const changeColor = useCallback(
-    (color) => {
-      const colorStyle = `COLOR_${color.hex}`;
-      let editorStateWithColor = RichUtils.toggleInlineStyle(
-        editorState,
-        colorStyle
-      );
+  const setFontSize = (fontSize: string) => {
+    const selection = editorState.getSelection();
+    const nextContentState = Modifier.applyInlineStyle(
+      editorState.getCurrentContent(),
+      selection,
+      `FONTSIZE-${fontSize}`
+    );
+    setEditorState(
+      EditorState.push(editorState, nextContentState, 'change-inline-style')
+    );
+  };
 
-      // 添加颜色样式定义到 colorStyleMap
-      setColorStyleMap((prevColorStyleMap) => ({
-        ...prevColorStyleMap,
-        [colorStyle]: { color: color.hex },
-      }));
+  const setColor = (color: string) => {
+    const selection = editorState.getSelection();
+    const nextContentState = Modifier.applyInlineStyle(
+      editorState.getCurrentContent(),
+      selection,
+      `COLOR-${color}`
+    );
+    console.log('color', `COLOR-${color}`);
 
-      // 移除旧的颜色样式
-      const currentInlineStyle = editorStateWithColor.getCurrentInlineStyle();
-      currentInlineStyle.forEach((style) => {
-        if (style && style.startsWith('COLOR_') && style !== colorStyle) {
-          editorStateWithColor = RichUtils.toggleInlineStyle(
-            editorStateWithColor,
-            style
-          );
-        }
-      });
+    setEditorState(
+      EditorState.push(editorState, nextContentState, 'change-inline-style')
+    );
+  };
 
-      setEditorState(editorStateWithColor);
-    },
-    [editorState]
-  );
-
-  const setFontSize = useCallback(
-    (value: number) => {
-      setEditorState(
-        RichUtils.toggleInlineStyle(editorState, `fontSize${value}`)
-      );
-      setTimeout(() => {
-        if (editRef.current) {
-          editRef.current.focus();
-        }
-      }, 0);
-    },
-    [editorState]
-  );
-
-  const exportHTML = useCallback(() => {
-    const result = convertToHTML(editorState.getCurrentContent());
-    console.log('result', result);
-
-    message.success(result);
-  }, [editorState]);
-
-  const editRef = useRef<Draft.DraftComponent.Base.DraftEditor>(null);
+  const exportHtml = () => {
+    const contentState = editorState.getCurrentContent();
+    const options = {
+      inlineStyles: {
+        'FONTSIZE-12': { style: { fontSize: '12px' } },
+        'FONTSIZE-14': { style: { fontSize: '14px' } },
+        'FONTSIZE-16': { style: { fontSize: '16px' } },
+        'FONTSIZE-18': { style: { fontSize: '18px' } },
+        'FONTSIZE-20': { style: { fontSize: '20px' } },
+        'COLOR-red': { style: { color: 'red' } },
+      },
+    };
+    const html = stateToHTML(contentState, options);
+    console.log(html);
+  };
 
   return (
-    <div className="DraftDoc">
-      <DraftToolBar
-        onBoldChange={toggleBold}
-        onColorChange={changeColor}
-        onInsertTable={() => {}}
-        onFontSizeChange={(value) => setFontSize(value)}
+    <div>
+      <button onClick={toggleBold}>Bold</button>
+      <select
+        onChange={(e) => setFontSize(e.target.value)}
+        defaultValue="default"
+      >
+        <option value="default" disabled>
+          Font Size
+        </option>
+        <option value="12">12</option>
+        <option value="14">14</option>
+        <option value="16">16</option>
+        <option value="18">18</option>
+        <option value="20">20</option>
+      </select>
+      <input
+        type="color"
+        onChange={(e) => {
+          setColor('red');
+        }}
       />
-      <div className="DraftDocBody">
-        <div>
-          <Button onClick={() => exportHTML()}>保存</Button>
-        </div>
-        <Editor
-          ref={editRef}
-          customStyleMap={colorStyleMap}
-          editorState={editorState}
-          onChange={(value) => setEditorState(value)}
-        />
-      </div>
+      <button onClick={exportHtml}>Export HTML</button>
+      <Editor
+        editorState={editorState}
+        handleKeyCommand={handleKeyCommand}
+        onChange={setEditorState}
+        customStyleMap={styleMap}
+      />
     </div>
   );
 };
-export default DraftDoc;
+
+export default RichTextEditor;
