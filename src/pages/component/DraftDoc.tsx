@@ -1,4 +1,6 @@
 import DraftToolBar from '@/pages/component/DraftToolBar';
+import { Button, message } from 'antd';
+import { convertFromHTML, convertToHTML } from 'draft-convert';
 import { Editor, EditorState, RichUtils } from 'draft-js';
 import 'draft-js/dist/Draft.css';
 import React, { useCallback, useRef, useState } from 'react';
@@ -6,13 +8,17 @@ import './DraftDoc.less';
 
 interface IDraftDocProps {}
 
+const initHTML = `<p>我是初始值 ,<span style="color:red;font-size:24px">asfsfj</span>skgl sjkgjdfgkl;sdjg l;djgk sdfg df</p>`;
+
 /**
  * DraftDoc
  */
 const DraftDoc: React.FC<IDraftDocProps> = (props) => {
-  const [editorState, setEditorState] = useState(EditorState.createEmpty());
+  const [editorState, setEditorState] = useState(
+    EditorState.createWithContent(convertFromHTML(initHTML))
+  );
   const [colorStyleMap, setColorStyleMap] = useState({
-    fontsize24: {
+    fontSize24: {
       fontSize: 24,
     },
   });
@@ -51,13 +57,25 @@ const DraftDoc: React.FC<IDraftDocProps> = (props) => {
     [editorState]
   );
 
-  const setFontSize = useCallback(() => {
-    setEditorState(RichUtils.toggleInlineStyle(editorState, 'fontsize24'));
-    setTimeout(() => {
-      if (editRef.current) {
-        editRef.current.focus();
-      }
-    }, 0);
+  const setFontSize = useCallback(
+    (value: number) => {
+      setEditorState(
+        RichUtils.toggleInlineStyle(editorState, `fontSize${value}`)
+      );
+      setTimeout(() => {
+        if (editRef.current) {
+          editRef.current.focus();
+        }
+      }, 0);
+    },
+    [editorState]
+  );
+
+  const exportHTML = useCallback(() => {
+    const result = convertToHTML(editorState.getCurrentContent());
+    console.log('result', result);
+
+    message.success(result);
   }, [editorState]);
 
   const editRef = useRef<Draft.DraftComponent.Base.DraftEditor>(null);
@@ -67,11 +85,13 @@ const DraftDoc: React.FC<IDraftDocProps> = (props) => {
       <DraftToolBar
         onBoldChange={toggleBold}
         onColorChange={changeColor}
-        onInsertTable={() => {
-          setFontSize();
-        }}
+        onInsertTable={() => {}}
+        onFontSizeChange={(value) => setFontSize(value)}
       />
       <div className="DraftDocBody">
+        <div>
+          <Button onClick={() => exportHTML()}>保存</Button>
+        </div>
         <Editor
           ref={editRef}
           customStyleMap={colorStyleMap}
