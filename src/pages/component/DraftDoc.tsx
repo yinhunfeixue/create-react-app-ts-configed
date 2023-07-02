@@ -4,9 +4,10 @@ import {
   EditorState,
   Modifier,
   RichUtils,
+  convertFromHTML,
+  convertToRaw,
 } from 'draft-js';
 import { stateToHTML } from 'draft-js-export-html';
-import { stateFromHTML } from 'draft-js-import-html';
 import React, { useState } from 'react';
 
 interface RichTextEditorProps {}
@@ -32,20 +33,19 @@ const styleMap = {
   },
 };
 
-let initialHtml = `
-<p><span style="font-size: 16px; color: red"><strong>Hello, world!</strong></span></p>
-<p><span style="font-size: 18px;">This is an example of <strong>initial HTML</strong> with styles.</span></p>
-`;
+let initialHtml = `<p>This is an exam<span style="color: red">ple of </span><span style="color: red"><strong>init</strong></span><strong>ial HTML</strong> with styles.</p>`;
 
-initialHtml = '';
+// initialHtml = '';
 
 const RichTextEditor: React.FC<RichTextEditorProps> = () => {
-  const contentState = initialHtml
-    ? stateFromHTML(initialHtml)
-    : ContentState.createFromText('<p style="color:red">aaaa</p>');
+  const blocksFromHTML = convertFromHTML(initialHtml);
+  const state = ContentState.createFromBlockArray(
+    blocksFromHTML.contentBlocks,
+    blocksFromHTML.entityMap
+  );
 
   const [editorState, setEditorState] = useState(() =>
-    EditorState.createWithContent(contentState)
+    EditorState.createWithContent(state)
   );
 
   const handleKeyCommand = (command: string, editorState: EditorState) => {
@@ -90,6 +90,8 @@ const RichTextEditor: React.FC<RichTextEditorProps> = () => {
   };
 
   const exportHtml = () => {
+    console.log('convertToRaw', convertToRaw(editorState.getCurrentContent()));
+
     const contentState = editorState.getCurrentContent();
     const options = {
       inlineStyles: {
