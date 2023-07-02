@@ -151,23 +151,38 @@ class SlateDoc2 extends Component<ISlateDoc2Props, ISlateDoc2State> {
     );
   }
 
-  private wrapType(wrapType: string, type: string) {
+  private wrapType(
+    wrapType: string,
+    type: string,
+    removedWrapType: string[] = []
+  ) {
     const { editor } = this.state;
+    let hasNode = false;
     Transforms.unwrapNodes(editor, {
-      match: (n) =>
-        !Editor.isEditor(n) &&
-        Element.isElement(n) &&
-        (n as IElement).type === wrapType,
+      match: (n) => {
+        const type = (n as IElement).type;
+        const result =
+          !Editor.isEditor(n) &&
+          Element.isElement(n) &&
+          (type === wrapType || removedWrapType.includes(type));
+        if (type === wrapType) {
+          hasNode = true;
+        }
+        return result;
+      },
     });
-    Transforms.setNodes<IElement>(
-      editor,
-      { type },
-      { match: (n) => Editor.isBlock(editor, n as any) }
-    );
 
-    Transforms.wrapNodes(editor, {
-      type: wrapType,
-    } as any);
+    if (!hasNode) {
+      Transforms.setNodes<IElement>(
+        editor,
+        { type },
+        { match: (n) => Editor.isBlock(editor, n as any) }
+      );
+
+      Transforms.wrapNodes(editor, {
+        type: wrapType,
+      } as any);
+    }
   }
 
   private updateStyle(style: IStyle) {
@@ -226,8 +241,8 @@ class SlateDoc2 extends Component<ISlateDoc2Props, ISlateDoc2State> {
                 type,
               });
             }}
-            onWrapTypeChange={(wrapType, type) => {
-              this.wrapType(wrapType, type);
+            onWrapTypeChange={(wrapType, type, removedWrapType) => {
+              this.wrapType(wrapType, type, removedWrapType);
             }}
           >
             {extraTools}

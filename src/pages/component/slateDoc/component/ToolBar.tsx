@@ -23,7 +23,11 @@ interface IToolBarProps {
   onTypeChange: (value: string) => void;
   onInsertElement: (type: string) => void;
 
-  onWrapTypeChange: (wrapType: string, type: string) => void;
+  onWrapTypeChange: (
+    wrapType: string,
+    type: string,
+    removedWrapType: string[]
+  ) => void;
 }
 
 /**
@@ -149,9 +153,13 @@ class ToolBar extends Component<IToolBarProps, IToolBarState> {
           onChange={(value) => this.updateStyle({ textAlign: value })}
         />
         {/* 数字序号 */}
-        <Button onClick={() => onWrapTypeChange('ol', 'li')}>ol</Button>
+        <Button onClick={() => onWrapTypeChange('ol', 'li', ['ol', 'ul'])}>
+          ol
+        </Button>
         {/* 列表 */}
-        <Button onClick={() => onWrapTypeChange('ul', 'li')}>ul</Button>
+        <Button onClick={() => onWrapTypeChange('ul', 'li', ['ol', 'ul'])}>
+          ul
+        </Button>
         <Divider type="vertical" />
         {/* 分隔线 */}
         <Button
