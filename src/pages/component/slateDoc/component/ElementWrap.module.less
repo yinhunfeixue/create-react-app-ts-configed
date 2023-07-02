@@ -1,0 +1,36 @@
+.ElementWrap {
+  position: relative;
+  border: 3px solid transparent;
+  border-radius: 6px;
+  overflow: visible;
+  &:hover {
+    border-color: #e6e8ee;
+  }
+  &:focus {
+    border-color: #b8c7fe;
+    .ControlBar {
+      transform: translateY(-100%);
+      opacity: 1;
+      pointer-events: all;
+    }
+  }
+  .ControlBar {
+    position: absolute;
+    top: 0;
+    right: 0;
+    padding: 4px;
+    opacity: 0;
+    pointer-events: none;
+
+    transition: all 0.3s;
+
+    background: #ffffff;
+    box-shadow: 0px 4px 8px 0px rgba(0, 0, 0, 0.08);
+    border-radius: 4px;
+    border: 1px solid #e6e8ed;
+
+    transform: translateY(-100%);
+    opacity: 1;
+    pointer-events: all;
+  }
+}

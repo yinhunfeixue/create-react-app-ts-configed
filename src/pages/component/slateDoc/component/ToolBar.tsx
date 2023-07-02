@@ -9,11 +9,15 @@ import styles from './ToolBar.module.less';
 interface IToolBarState {
   fontSizeList: number[];
   style: IStyle;
+
+  textType: string;
+  textTypeList: { value: string; label: string }[];
 }
 interface IToolBarProps {
   edit: Editor;
-  onChange: (value: IStyle) => void;
+  onStyleChange: (value: IStyle) => void;
   children?: ReactNode;
+  onTypeChange: (value: string) => void;
 }
 
 /**
@@ -24,13 +28,35 @@ class ToolBar extends Component<IToolBarProps, IToolBarState> {
     super(props);
     this.state = {
       fontSizeList: [12, 14, 16, 18, 20, 24, 28],
-
+      textType: 'span',
+      textTypeList: [
+        {
+          value: 'span',
+          label: '正文',
+        },
+        {
+          value: 'h1',
+          label: '标题一',
+        },
+        {
+          value: 'h2',
+          label: '标题二',
+        },
+        {
+          value: 'h3',
+          label: '标题三',
+        },
+        {
+          value: 'h4',
+          label: '标题四',
+        },
+      ],
       style: { ...Config.defaultStyle },
     };
   }
 
   private updateStyle(value: Partial<IStyle>) {
-    const { onChange } = this.props;
+    const { onStyleChange } = this.props;
     this.setState(
       {
         style: {
@@ -39,18 +65,39 @@ class ToolBar extends Component<IToolBarProps, IToolBarState> {
         },
       },
       () => {
-        onChange(value);
+        onStyleChange(value);
+      }
+    );
+  }
+
+  private updateType(value: string) {
+    const { onTypeChange } = this.props;
+    this.setState(
+      {
+        textType: value,
+      },
+      () => {
+        onTypeChange(value);
       }
     );
   }
 
   render() {
-    const { fontSizeList, style } = this.state;
+    const { fontSizeList, style, textTypeList, textType } = this.state;
     const { fontSize, color, fontWeight } = style;
     const { children } = this.props;
     return (
       <div className={styles.ToolBar}>
-        {/* 常规内容 */}
+        {/* 文本类型 */}
+        <Select
+          options={textTypeList}
+          value={textType}
+          style={{ width: 90 }}
+          bordered={false}
+          dropdownStyle={{ width: 140 }}
+          dropdownMatchSelectWidth={false}
+          onChange={(value) => this.updateType(value)}
+        />
         {/* 字号 */}
         <Select
           value={fontSize}

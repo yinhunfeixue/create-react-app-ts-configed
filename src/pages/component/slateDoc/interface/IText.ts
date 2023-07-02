@@ -4,4 +4,6 @@ import { Text } from 'slate';
 /**
  * IText
  */
-export default interface IText extends Text, IStyle {}
+export default interface IText extends Text, IStyle {
+  type?: string;
+}

@@ -4,7 +4,7 @@ import IElement from '@/pages/component/slateDoc/interface/IElement';
 import IStyle from '@/pages/component/slateDoc/interface/IStyle';
 import IText from '@/pages/component/slateDoc/interface/IText';
 import React, { Component, ReactElement, ReactNode } from 'react';
-import { Text, Transforms, createEditor } from 'slate';
+import { Editor, Node, Text, Transforms, createEditor } from 'slate';
 import {
   Editable,
   ReactEditor,
@@ -39,8 +39,9 @@ interface ISlateDoc2Props extends IComponentProps {
 class SlateDoc2 extends Component<ISlateDoc2Props, ISlateDoc2State> {
   constructor(props: ISlateDoc2Props) {
     super(props);
+    const editor = withReact(createEditor());
     this.state = {
-      editor: withReact(createEditor()),
+      editor,
       value: props.initData || [],
     };
   }
@@ -48,12 +49,8 @@ class SlateDoc2 extends Component<ISlateDoc2Props, ISlateDoc2State> {
   private renderLeaf(data: RenderLeafProps) {
     const { attributes, children } = data;
     let leaf: IText = data.leaf;
-
-    return (
-      <span {...attributes} style={leaf}>
-        {children}
-      </span>
-    );
+    const { type = 'span' } = leaf;
+    return React.createElement(type, { ...attributes, style: leaf, children });
   }
 
   private renderElement = (data: RenderElementProps) => {
@@ -80,7 +77,37 @@ class SlateDoc2 extends Component<ISlateDoc2Props, ISlateDoc2State> {
     }
   }
 
-  public updateStyle(style: IStyle) {
+  public removeItem(match: (n: IElement) => boolean) {
+    const { editor } = this.state;
+    for (const [node, path] of Node.nodes(editor)) {
+      if (match(node as IElement)) {
+        Transforms.removeNodes(editor, { at: path });
+        break;
+      }
+    }
+  }
+
+  public updateItem(match: (n: IElement) => boolean, data: Partial<IElement>) {
+    const { editor } = this.state;
+    for (const [node, path] of Node.nodes(editor)) {
+      if (match(node as IElement)) {
+        console.log('updateitem', data);
+        Transforms.setNodes(editor, data, { at: path });
+        break;
+      }
+    }
+  }
+
+  private updateType(type: string) {
+    const { editor } = this.state;
+    Transforms.setNodes<IElement>(
+      editor,
+      { type },
+      { match: (n) => Editor.isBlock(editor, n as any) }
+    );
+  }
+
+  private updateStyle(style: IStyle) {
     const { editor } = this.state;
     const { selection } = editor;
 
@@ -98,11 +125,18 @@ class SlateDoc2 extends Component<ISlateDoc2Props, ISlateDoc2State> {
     }
   }
 
-  public insertContent<T = any>(element: IElement<T>) {
+  public insertContent<T = any>(element: Partial<IElement<T>>) {
     const { editor } = this.state;
     const { selection } = editor;
     if (selection) {
-      editor.insertNode(element);
+      if (!element.children) {
+        element.children = [
+          {
+            text: '',
+          },
+        ];
+      }
+      editor.insertNode(element as IElement);
     }
   }
 
@@ -115,8 +149,11 @@ class SlateDoc2 extends Component<ISlateDoc2Props, ISlateDoc2State> {
         <header>
           <ToolBar
             edit={editor}
-            onChange={(value) => {
+            onStyleChange={(value) => {
               this.updateStyle(value);
+            }}
+            onTypeChange={(value) => {
+              this.updateType(value);
             }}
           >
             {extraTools}
