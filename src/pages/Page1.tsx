@@ -1,6 +1,7 @@
 import IComponentProps from '@/base/interfaces/IComponentProps';
 import DraftDoc from '@/pages/component/DraftDoc';
 import QuillDoc from '@/pages/component/QuillDoc';
+import SlateDoc from '@/pages/component/slate/SlateDoc';
 import { Card } from 'antd';
 import Axios from 'axios';
 import React, { Component } from 'react';
@@ -24,6 +25,9 @@ class Page1 extends Component<IPage1Props, IPage1State> {
   render() {
     return (
       <div>
+        <Card title="slat">
+          <SlateDoc />
+        </Card>
         <Card title="draft">
           <DraftDoc />
         </Card>
