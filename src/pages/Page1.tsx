@@ -3,7 +3,7 @@ import DraftDoc from '@/pages/component/DraftDoc';
 import QuillDoc from '@/pages/component/QuillDoc';
 import { Card } from 'antd';
 import Axios from 'axios';
-import { Component } from 'react';
+import React, { Component } from 'react';
 
 interface IPage1State {}
 interface IPage1Props extends IComponentProps {}
