@@ -249,13 +249,13 @@ class SlateDoc2 extends Component<ISlateDoc2Props, ISlateDoc2State> {
     }
   }
 
-  private getSelectNodeList(match: (n: Node) => boolean) {
+  private getSelectNodeList() {
     const { editor } = this.state;
     const { selection } = editor;
     if (selection) {
-      const array = Array.from(Editor.nodes(editor, { at: selection, match }));
+      const array = Array.from(Editor.nodes(editor, { at: selection }));
       if (array.length) {
-        return array.map((item) => item[0]);
+        return array.map((item) => item[0]) as unknown as IElement[];
       }
     }
     return undefined;
@@ -266,7 +266,7 @@ class SlateDoc2 extends Component<ISlateDoc2Props, ISlateDoc2State> {
     const { selection } = editor;
 
     if (selection) {
-      const previousSelection = Object.assign({}, editor.selection);
+      // const previousSelection = Object.assign({}, editor.selection);
       const useBlock = Boolean(style.textAlign);
       const blockMatch = (n: Node) => {
         return Element.isElement(n) && !Editor.isEditor(n);
@@ -275,22 +275,18 @@ class SlateDoc2 extends Component<ISlateDoc2Props, ISlateDoc2State> {
 
       const match = useBlock ? blockMatch : inlineMatch;
 
-      const targetNodeList = this.getSelectNodeList(match);
-      if (targetNodeList) {
-        targetNodeList.forEach((item) => {
-          Transforms.setNodes(editor, { props: { style } } as IElement, {
-            match,
-            split: !useBlock,
-            merge: (props, node) => {
-              return L.merge({}, node, props);
-            },
-          });
-        });
+      Transforms.setNodes(editor, { props: { style } } as IElement, {
+        match,
+        split: !useBlock,
+        merge: (props, node) => {
+          const value = L.merge({}, props, node);
+          return value;
+        },
+      });
 
-        setTimeout(() => {
-          Transforms.select(editor, previousSelection);
-        }, 10);
-      }
+      // setTimeout(() => {
+      //   Transforms.select(editor, previousSelection);
+      // }, 100);
     }
   }
 
@@ -316,7 +312,6 @@ class SlateDoc2 extends Component<ISlateDoc2Props, ISlateDoc2State> {
       if (beforeIndex >= 0 && afterIndex >= 0) {
         const beforeContent = before.substring(beforeIndex + 2);
         const afterContent = after.substring(0, afterIndex);
-        console.log('showdrop');
         this.setState({
           showDrop: true,
           dropContent: `${beforeContent}-${afterContent}`,
@@ -364,12 +359,16 @@ class SlateDoc2 extends Component<ISlateDoc2Props, ISlateDoc2State> {
       docScale = 1,
       bodyExtra,
     } = this.props;
+
+    const selectedNodeList = this.getSelectNodeList();
+
     return (
       <div className={classNames('SlateDoc2', className)} style={style}>
         {/* 操作区 */}
         {!disabledEdit ? (
           <header>
             <ToolBar
+              selectedNodeList={selectedNodeList}
               edit={editor}
               onStyleChange={(value) => {
                 this.updateStyle(value);

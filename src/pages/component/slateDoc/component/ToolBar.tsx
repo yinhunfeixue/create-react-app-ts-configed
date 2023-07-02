@@ -1,8 +1,9 @@
 import { Button, Divider, Select, Tooltip } from 'antd';
 import { Property } from 'csstype';
 import React, { Component, ReactNode } from 'react';
-import { Editor } from 'slate';
+import { Editor, Element, Text } from 'slate';
 import Config from '../Config';
+import IElement from '../interface/IElement';
 import IStyle from '../interface/IStyle';
 import ColorPicker from './ColorPicker';
 import IconFont from './IconFont2';
@@ -29,6 +30,8 @@ interface IToolBarProps {
     type: string,
     removedWrapType: string[]
   ) => void;
+
+  selectedNodeList?: IElement[];
 }
 
 /**
@@ -100,11 +103,85 @@ class ToolBar extends Component<IToolBarProps, IToolBarState> {
     );
   }
 
+  private getColorFromNodeList() {
+    return this.getStyleValueFromSelectionNodes('color');
+  }
+
+  private getFontWeightFromNodeList() {
+    return this.getStyleValueFromSelectionNodes('fontWeight');
+  }
+
+  private getFontSizeFromNodeList() {
+    return this.getStyleValueFromSelectionNodes('fontSize');
+  }
+
+  private gettextAlignFromNodeList() {
+    return this.getStyleValueFromSelectionNodes(
+      'textAlign',
+      (n) => Element.isElement(n) && !Editor.isEditor(n)
+    );
+  }
+
+  private getStyleValueFromSelectionNodes(
+    attributeName: keyof React.CSSProperties,
+    match: (n: IElement) => boolean = Text.isText
+  ) {
+    return this.getValuefromSelectionNodes(match, (item) => {
+      if (item.props && item.props.style) {
+        return item.props.style[attributeName];
+      }
+      return;
+    });
+  }
+
+  private getValuefromSelectionNodes(
+    match: (n: IElement) => boolean,
+    getValue: (n: IElement) => any
+  ) {
+    const { selectedNodeList } = this.props;
+    if (!selectedNodeList) {
+      return undefined;
+    }
+    const effectList = selectedNodeList.filter(match);
+    if (!effectList.length) {
+      return undefined;
+    }
+    let result: any = getValue(effectList[0]);
+    for (const item of effectList) {
+      let currentValue = getValue(item);
+      if (currentValue !== result) {
+        return undefined;
+      }
+    }
+    return result;
+  }
+
+  componentDidUpdate(prevProps: Readonly<IToolBarProps>): void {
+    if (prevProps.selectedNodeList !== this.props.selectedNodeList) {
+      const color = this.getColorFromNodeList();
+      const fontWeight = this.getFontWeightFromNodeList();
+      const fontSize = this.getFontSizeFromNodeList();
+      const textAlign = this.gettextAlignFromNodeList();
+      const { style } = this.state;
+      this.setState({
+        style: { ...style, color, fontWeight, fontSize, textAlign },
+      });
+    }
+  }
+
   render() {
     const { fontSizeList, style, textTypeList, textType, alignList } =
       this.state;
-    const { fontSize, color, fontWeight, textAlign } = style;
+
+    const { defaultStyle } = Config;
+    const {
+      fontSize = defaultStyle.fontSize,
+      color = defaultStyle.color,
+      fontWeight = defaultStyle.fontWeight,
+      textAlign = defaultStyle.textAlign,
+    } = style;
     const { children, onInsertElement, onWrapTypeChange } = this.props;
+
     return (
       <div className={styles.ToolBar}>
         {/* 文本类型 */}
@@ -129,15 +206,19 @@ class ToolBar extends Component<IToolBarProps, IToolBarState> {
         />
         {/* 颜色 */}
         <ColorPicker
-          color={color || '#999999'}
-          onChange={(color) => this.updateStyle({ color })}
+          color={color as string}
+          onChange={(color) => {
+            this.updateStyle({ color });
+          }}
         />
         {/* 粗体 */}
         <Button
           type="text"
           style={{ fontWeight }}
           onClick={() =>
-            this.updateStyle({ fontWeight: fontWeight ? 'bold' : undefined })
+            this.updateStyle({
+              fontWeight: fontWeight === 'bold' ? 'normal' : 'bold',
+            })
           }
         >
           B
