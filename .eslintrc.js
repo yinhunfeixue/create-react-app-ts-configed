@@ -27,7 +27,7 @@ module.exports = {
     //缩进用2个空格
     indent: 0,
     //函数定义时,括号前面要不要有空格
-    'space-before-function-paren': ['error', 'never'],
+    'space-before-function-paren': 'off',
     //禁止使用多个空格
     'no-multi-spaces': 'error',
     //es6 箭头符号前后都要有空格

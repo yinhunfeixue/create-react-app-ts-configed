@@ -5,6 +5,7 @@ import { Editor, Element, Node, Range, Text, createEditor } from 'slate';
 import MyLeaf from '@/pages/component/slate/MyLeaf';
 import escapeHtml from 'escape-html';
 
+import html2canvas from 'html2canvas';
 import { Editable, RenderLeafProps, Slate, withReact } from 'slate-react';
 
 interface FontSizeMenuProps {
@@ -105,7 +106,7 @@ const RichTextEditor: React.FC = () => {
   const renderElement = ({ attributes, children, element }: any) => {
     switch (element.type) {
       case 'custom':
-        return <MyLeaf />;
+        return <MyLeaf id="custom" />;
       default:
         return <p {...attributes}>{children}</p>;
     }
@@ -138,7 +139,7 @@ const RichTextEditor: React.FC = () => {
     return nodes.map((n: Node) => Node.string(n)).join('\n');
   };
 
-  const serializeHTML = (node: any) => {
+  const serializeHTML = async (node: any) => {
     if (Text.isText(node)) {
       let style: string[] = [];
       const { bold, color, fontSize } = node as any;
@@ -159,13 +160,25 @@ const RichTextEditor: React.FC = () => {
       return string;
     }
 
-    const children = node.children
-      ? node.children.map((n: Node) => serializeHTML(n)).join('')
-      : '';
+    // const children = node.children
+    //   ? node.children.map(async (n: Node) => await serializeHTML(n)).join('')
+    //   : '';
+    let children = '';
+    if (node.children) {
+      const list = [];
+      for (let item of node.children) {
+        list.push(await serializeHTML(item));
+      }
+      children = list.join('');
+    }
 
     switch (node.type) {
       case 'custom':
-        return '<div style="border:1px solid #eee; width:100px; height:50px;">custom</div>';
+        const img = await html2canvas(
+          document.getElementById('custom') as HTMLElement
+        );
+
+        return `<img src="${img.toDataURL()}" />`;
       case 'quote':
         return `<blockquote><p>${children}</p></blockquote>`;
       case 'paragraph':
@@ -177,8 +190,13 @@ const RichTextEditor: React.FC = () => {
     }
   };
 
-  const serializeHTMLList = (node: any[]) => {
-    return node.map((item) => serializeHTML(item)).join('');
+  const serializeHTMLList = async (nodeList: any[]) => {
+    const result = [];
+    for (const item of nodeList) {
+      result.push(await serializeHTML(item));
+    }
+    return result.join('');
+    // return node.map(async (item) => await serializeHTML(item)).join('');
   };
 
   const insertCustomComponent = () => {
@@ -198,8 +216,8 @@ const RichTextEditor: React.FC = () => {
       <BoldButton editor={editor} />
       <ColorPicker editor={editor} />
       <Button
-        onClick={() => {
-          const html = serializeHTMLList(value);
+        onClick={async () => {
+          const html = await serializeHTMLList(value);
           setHtmlContent(html);
           console.log(
             'save',
