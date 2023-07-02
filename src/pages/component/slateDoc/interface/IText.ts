@@ -1,9 +1,9 @@
-import IStyle from '@/pages/component/slateDoc/interface/IStyle';
-import { Text } from 'slate';
+import { Text } from 'slate'
 
 /**
  * IText
  */
-export default interface IText extends Text, IStyle {
-  type?: string;
+export default interface IText extends Text {
+    type?: string
+    props?: React.HTMLAttributes<any>
 }

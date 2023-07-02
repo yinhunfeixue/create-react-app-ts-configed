@@ -16,7 +16,6 @@ interface IPage1Props extends IComponentProps {}
 const defaultContent: IElement[] = [
   {
     type: 'h1',
-    textAlign: 'center',
     children: [
       {
         text: '标题',
@@ -100,14 +99,14 @@ class Page1 extends Component<IPage1Props, IPage1State> {
                     <ElementWrap
                       onSettingClick={() => {
                         controller.updateItem(
-                          (n) => {
+                          (n: IElement) => {
                             return n.id === id;
                           },
                           { data: { title: 'aa' } }
                         );
                       }}
                       onDeleteClick={() => {
-                        controller.removeItem((n) => {
+                        controller.removeItem((n: IElement) => {
                           return n.id === id;
                         });
                       }}

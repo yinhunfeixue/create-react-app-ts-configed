@@ -1,13 +1,16 @@
-import IStyle from '@/pages/component/slateDoc/interface/IStyle';
 import IText from '@/pages/component/slateDoc/interface/IText';
+import { Key } from 'react';
 import { Element } from 'slate';
 
 /**
  * IElement
  */
-export default interface IElement<T = any> extends Element, IStyle {
-  id?: string;
-  data?: T;
+// @ts-ignore
+export default interface IElement<T = any> extends Element {
+  id?: Key;
   type: string;
-  children: IText[];
+  children: (IElement | IText)[];
+  data?: T;
+  props?: React.HTMLAttributes<any>;
+  orgType?: string;
 }

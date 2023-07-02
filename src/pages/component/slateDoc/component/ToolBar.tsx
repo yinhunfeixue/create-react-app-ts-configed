@@ -1,16 +1,17 @@
-import Config from '@/pages/component/slateDoc/Config';
-import ColorPicker from '@/pages/component/slateDoc/component/ColorPicker';
-import IStyle from '@/pages/component/slateDoc/interface/IStyle';
-import { Button, Divider, Select } from 'antd';
+import { Button, Divider, Select, Tooltip } from 'antd';
 import { Property } from 'csstype';
 import React, { Component, ReactNode } from 'react';
 import { Editor } from 'slate';
+import Config from '../Config';
+import IStyle from '../interface/IStyle';
+import ColorPicker from './ColorPicker';
+import IconFont from './IconFont2';
 import styles from './ToolBar.module.less';
 
 interface IToolBarState {
   style: IStyle;
   fontSizeList: number[];
-  alignList: { value: Property.TextAlign; label: string }[];
+  alignList: { value: Property.TextAlign; label: ReactNode }[];
 
   textType: string;
   textTypeList: { value: string; label: string }[];
@@ -63,9 +64,9 @@ class ToolBar extends Component<IToolBarProps, IToolBarState> {
       ],
 
       alignList: [
-        { value: 'left', label: '左' },
-        { value: 'center', label: '中' },
-        { value: 'right', label: '右' },
+        { value: 'left', label: <IconFont useCss type="e758" /> },
+        { value: 'center', label: <IconFont useCss type="e756" /> },
+        { value: 'right', label: <IconFont useCss type="e757" /> },
       ],
 
       style: { ...Config.defaultStyle },
@@ -153,22 +154,34 @@ class ToolBar extends Component<IToolBarProps, IToolBarState> {
           onChange={(value) => this.updateStyle({ textAlign: value })}
         />
         {/* 数字序号 */}
-        <Button onClick={() => onWrapTypeChange('ol', 'li', ['ol', 'ul'])}>
-          ol
-        </Button>
-        {/* 列表 */}
-        <Button onClick={() => onWrapTypeChange('ul', 'li', ['ol', 'ul'])}>
-          ul
-        </Button>
+        <Tooltip title="有序列表">
+          <IconFont
+            className="IconButton"
+            useCss
+            type="e75a"
+            onClick={() => onWrapTypeChange('ol', 'li', ['ol', 'ul'])}
+          />
+        </Tooltip>
+        <Tooltip title="无序列表">
+          <IconFont
+            className="IconButton"
+            useCss
+            type="e759"
+            onClick={() => onWrapTypeChange('ul', 'li', ['ol', 'ul'])}
+          />
+        </Tooltip>
         <Divider type="vertical" />
-        {/* 分隔线 */}
-        <Button
-          type="text"
-          style={{ fontWeight }}
-          onClick={() => onInsertElement('hr')}
-        >
-          -
-        </Button>
+        <Tooltip title="分隔线">
+          <IconFont
+            className="IconButton"
+            useCss
+            type="e75b"
+            onClick={() => {
+              onInsertElement('hr');
+              onInsertElement('p');
+            }}
+          />
+        </Tooltip>
         {/* 扩展功能 */}
         {children}
       </div>

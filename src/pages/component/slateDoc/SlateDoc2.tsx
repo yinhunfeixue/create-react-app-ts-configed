@@ -4,15 +4,17 @@ import IDocController from '@/pages/component/slateDoc/interface/IDocController'
 import IElement from '@/pages/component/slateDoc/interface/IElement';
 import IStyle from '@/pages/component/slateDoc/interface/IStyle';
 import IText from '@/pages/component/slateDoc/interface/IText';
+import classNames from 'classnames';
+import L from 'lodash';
 import React, { Component, ReactElement, ReactNode } from 'react';
 import {
   Editor,
   Element,
   Node,
+  Range,
   Text,
   Transforms,
   createEditor,
-  isBlock,
 } from 'slate';
 import {
   Editable,
@@ -27,6 +29,9 @@ import './SlateDoc2.less';
 interface ISlateDoc2State {
   editor: ReactEditor;
   value: IElement[];
+
+  showDrop?: boolean;
+  dropContent?: ReactNode;
 }
 interface ISlateDoc2Props extends IComponentProps {
   /**
@@ -43,6 +48,14 @@ interface ISlateDoc2Props extends IComponentProps {
     data: RenderElementProps,
     controller: IDocController
   ) => ReactElement | undefined;
+
+  disabledEdit?: boolean;
+
+  isInline?: (node: IElement) => boolean;
+
+  docScale?: number;
+
+  bodyExtra?: ReactNode;
 }
 
 /**
@@ -53,9 +66,21 @@ class SlateDoc2 extends Component<ISlateDoc2Props, ISlateDoc2State> {
   constructor(props: ISlateDoc2Props) {
     super(props);
     const editor = withReact(createEditor());
+    if (props.isInline) {
+      editor.isInline = props.isInline as any;
+    }
     this.state = {
       editor,
-      value: props.initData || [],
+      value: props.initData || [
+        {
+          type: 'p',
+          children: [
+            {
+              text: '',
+            },
+          ],
+        },
+      ],
     };
 
     this.controller = {
@@ -63,10 +88,11 @@ class SlateDoc2 extends Component<ISlateDoc2Props, ISlateDoc2State> {
       removeItem: this.removeItem,
       updateItem: this.updateItem,
       getValue: () => this.state.value,
+      insertItemList: this.insertItemList.bind(this),
     };
   }
 
-  private insertItem = <T = any,>(element: Partial<IElement<T>>) => {
+  private insertItem = <T = any,>(element: IElement<T>) => {
     const { editor } = this.state;
     const { selection } = editor;
     if (selection) {
@@ -81,6 +107,14 @@ class SlateDoc2 extends Component<ISlateDoc2Props, ISlateDoc2State> {
     }
   };
 
+  private insertItemList<T = any>(elementList: IElement<T>[]) {
+    const { editor } = this.state;
+    const { selection } = editor;
+    if (selection) {
+      editor.insertNodes(elementList, {});
+    }
+  }
+
   private removeItem = (match: (n: IElement) => boolean) => {
     const { editor } = this.state;
     for (const [node, path] of Node.nodes(editor)) {
@@ -91,7 +125,10 @@ class SlateDoc2 extends Component<ISlateDoc2Props, ISlateDoc2State> {
     }
   };
 
-  private updateItem(match: (n: IElement) => boolean, data: Partial<IElement>) {
+  private updateItem = (
+    match: (n: IElement) => boolean,
+    data: Partial<IElement>
+  ) => {
     const { editor } = this.state;
     for (const [node, path] of Node.nodes(editor)) {
       if (match(node as IElement)) {
@@ -99,15 +136,15 @@ class SlateDoc2 extends Component<ISlateDoc2Props, ISlateDoc2State> {
         break;
       }
     }
-  }
+  };
 
   private renderLeaf(data: RenderLeafProps) {
     const { attributes, children } = data;
     let leaf: IText = data.leaf;
-    const { type = 'span' } = leaf;
+    const { type = 'span', props } = leaf;
     return React.createElement(type, {
       ...attributes,
-      style: leaf,
+      ...props,
       children,
     });
   }
@@ -127,15 +164,15 @@ class SlateDoc2 extends Component<ISlateDoc2Props, ISlateDoc2State> {
   private defaultElementRender(data: RenderElementProps) {
     const { attributes, children } = data;
     let element: IElement = data.element as IElement;
-    const { type = 'div', ...style } = element;
-    const noChildrenType = ['hr', 'br'];
+    const { type = 'div', props } = element;
+    const noChildrenType = ['hr'];
 
     if (noChildrenType.includes(type)) {
       return React.createElement(type, { ...attributes });
     } else {
       return React.createElement(type, {
         ...attributes,
-        style,
+        ...props,
         children,
       });
     }
@@ -144,11 +181,7 @@ class SlateDoc2 extends Component<ISlateDoc2Props, ISlateDoc2State> {
   private updateType(type: string) {
     const { editor } = this.state;
 
-    Transforms.setNodes<IElement>(
-      editor,
-      { type },
-      { match: (n) => Editor.isBlock(editor, n as any) }
-    );
+    Transforms.setNodes<IElement>(editor, { type }, { split: true });
   }
 
   private wrapType(
@@ -157,112 +190,238 @@ class SlateDoc2 extends Component<ISlateDoc2Props, ISlateDoc2State> {
     removedWrapType: string[] = []
   ) {
     const { editor } = this.state;
-    let hasNode = false;
-    Transforms.unwrapNodes(editor, {
-      match: (n) => {
-        const type = (n as IElement).type;
-        const result =
-          !Editor.isEditor(n) &&
-          Element.isElement(n) &&
-          (type === wrapType || removedWrapType.includes(type));
-        if (type === wrapType) {
-          hasNode = true;
+    const { selection } = editor;
+
+    if (!selection) {
+      return;
+    }
+
+    const hasNode = Boolean(
+      Array.from(
+        Editor.nodes(editor, {
+          at: selection,
+          match: (n) => Element.isElement(n) && (n as IElement).type === type,
+        })
+      ).length
+    );
+    const nodes = Array.from(
+      Editor.nodes(editor, {
+        at: selection,
+        match: (n) => !Editor.isEditor(n) && Element.isElement(n),
+      })
+    );
+
+    if (hasNode) {
+      // 还原type，并移除wrap
+      for (const [node, path] of nodes) {
+        if ((node as IElement).type === type) {
+          Transforms.setNodes<IElement>(
+            editor,
+            { type: (node as IElement).orgType, orgType: undefined },
+            {
+              at: path,
+            }
+          );
         }
-        return result;
-      },
-    });
-
-    if (!hasNode) {
-      Transforms.setNodes<IElement>(
-        editor,
-        { type },
-        { match: (n) => Editor.isBlock(editor, n as any) }
-      );
-
+      }
+      Transforms.unwrapNodes(editor, {
+        match: (n) => {
+          const type = (n as IElement).type;
+          const result =
+            !Editor.isEditor(n) &&
+            Element.isElement(n) &&
+            (type === wrapType || removedWrapType.includes(type));
+          return result;
+        },
+      });
+    } else {
+      // 设置结点类型和源类型，并添加包裹元素
+      for (const [node, path] of nodes) {
+        Transforms.setNodes<IElement>(
+          editor,
+          { type, orgType: (node as IElement).type },
+          { at: path }
+        );
+      }
       Transforms.wrapNodes(editor, {
         type: wrapType,
       } as any);
     }
   }
 
+  private getSelectNodeList(match: (n: Node) => boolean) {
+    const { editor } = this.state;
+    const { selection } = editor;
+    if (selection) {
+      const array = Array.from(Editor.nodes(editor, { at: selection, match }));
+      if (array.length) {
+        return array.map((item) => item[0]);
+      }
+    }
+    return undefined;
+  }
+
   private updateStyle(style: IStyle) {
     const { editor } = this.state;
     const { selection } = editor;
 
-    const previousSelection = Object.assign({}, editor.selection);
-
-    const useBlock = Boolean(style.textAlign);
-
     if (selection) {
-      if (useBlock) {
-        Transforms.setNodes<IText>(editor, style, {
-          match: (n) => {
-            if (
-              isBlock(editor, n as any) &&
-              !Text.isText(n) &&
-              !Editor.isEditor(n)
-            ) {
-              return true;
-            }
+      const previousSelection = Object.assign({}, editor.selection);
+      const useBlock = Boolean(style.textAlign);
+      const blockMatch = (n: Node) => {
+        return Element.isElement(n) && !Editor.isEditor(n);
+      };
+      const inlineMatch = Text.isText;
 
-            return false;
-          },
+      const match = useBlock ? blockMatch : inlineMatch;
+
+      const targetNodeList = this.getSelectNodeList(match);
+      if (targetNodeList) {
+        targetNodeList.forEach((item) => {
+          Transforms.setNodes(editor, { props: { style } } as IElement, {
+            match,
+            split: !useBlock,
+            merge: (props, node) => {
+              return L.merge({}, node, props);
+            },
+          });
         });
-      } else {
-        Transforms.setNodes<IText>(editor, style, {
-          match: Text.isText,
-          split: true,
-        });
+
+        setTimeout(() => {
+          Transforms.select(editor, previousSelection);
+        }, 10);
       }
-
-      setTimeout(() => {
-        Transforms.select(editor, previousSelection);
-      }, 10);
     }
   }
 
+  private valueChangeHandler() {
+    const checkList = [this.checkQuote];
+    for (const item of checkList) {
+      if (item()) {
+        break;
+      }
+    }
+  }
+
+  private checkQuote = (): boolean => {
+    // 获取前后文本，判断是否显示下拉框
+    const textOnBothSides = this.getBeforeAndAfterText();
+    if (textOnBothSides) {
+      const { before, after } = textOnBothSides;
+
+      const beforeIndex = before.lastIndexOf('[[');
+      const afterIndex = after.indexOf(']]');
+
+      // 如果是光标在 [[]]中间，则显示下拉框
+      if (beforeIndex >= 0 && afterIndex >= 0) {
+        const beforeContent = before.substring(beforeIndex + 2);
+        const afterContent = after.substring(0, afterIndex);
+        console.log('showdrop');
+        this.setState({
+          showDrop: true,
+          dropContent: `${beforeContent}-${afterContent}`,
+        });
+        return true;
+      }
+    }
+    this.setState({ showDrop: false, dropContent: `` });
+    return false;
+  };
+
+  private getBeforeAndAfterText():
+    | { before: string; after: string }
+    | undefined {
+    const { editor } = this.state;
+    const { selection } = editor;
+    if (selection && Range.isCollapsed(selection)) {
+      // 获取光标前后的位置
+      let before = Editor.before(editor, selection, { unit: 'block' });
+      let after = Editor.after(editor, selection, { unit: 'block' });
+
+      // 创建一个包含光标前后的范围
+      let beforeRange = before
+        ? { anchor: before, focus: selection.anchor }
+        : null;
+      let afterRange = after
+        ? { anchor: selection.anchor, focus: after }
+        : null;
+
+      // 获取这个范围内的文本
+      let beforeText = beforeRange ? Editor.string(editor, beforeRange) : '';
+      let afterText = afterRange ? Editor.string(editor, afterRange) : '';
+      return { before: beforeText, after: afterText };
+    }
+    return undefined;
+  }
+
   render() {
-    const { editor, value } = this.state;
-    const { extraTools } = this.props;
+    const { editor, value, showDrop, dropContent } = this.state;
+    const {
+      extraTools,
+      className,
+      style,
+      disabledEdit,
+      docScale = 1,
+      bodyExtra,
+    } = this.props;
     return (
-      <div className="SlateDoc2">
+      <div className={classNames('SlateDoc2', className)} style={style}>
         {/* 操作区 */}
-        <header>
-          <ToolBar
-            edit={editor}
-            onStyleChange={(value) => {
-              this.updateStyle(value);
-            }}
-            onTypeChange={(value) => {
-              this.updateType(value);
-            }}
-            onInsertElement={(type) => {
-              this.insertItem({
-                type,
-              });
-            }}
-            onWrapTypeChange={(wrapType, type, removedWrapType) => {
-              this.wrapType(wrapType, type, removedWrapType);
-            }}
-          >
-            {extraTools}
-          </ToolBar>
-        </header>
+        {!disabledEdit ? (
+          <header>
+            <ToolBar
+              edit={editor}
+              onStyleChange={(value) => {
+                this.updateStyle(value);
+              }}
+              onTypeChange={(value) => {
+                this.updateType(value);
+              }}
+              onInsertElement={(type) => {
+                this.insertItem({
+                  type,
+                  children: [
+                    {
+                      text: '',
+                    },
+                  ],
+                });
+              }}
+              onWrapTypeChange={(wrapType, type, removedWrapType) => {
+                this.wrapType(wrapType, type, removedWrapType);
+              }}
+            >
+              {extraTools}
+            </ToolBar>
+          </header>
+        ) : null}
+
         {/* 内容区 */}
-        <main>
-          <Slate
-            editor={editor}
-            value={value}
-            onChange={(value) => {
-              this.setState({ value: value as IElement[] });
-            }}
-          >
-            <Editable
-              renderLeaf={this.renderLeaf}
-              renderElement={this.renderElement}
-            />
-          </Slate>
-        </main>
+        <div className="SlateDocBody">
+          {bodyExtra}
+          <main style={{ transform: `scale(${docScale})` }}>
+            <Slate
+              editor={editor}
+              value={value}
+              onChange={(value) => {
+                this.setState({ value: value as IElement[] });
+                this.valueChangeHandler();
+              }}
+            >
+              <Editable
+                readOnly={disabledEdit}
+                style={{ padding: 20 }}
+                renderLeaf={this.renderLeaf}
+                renderElement={this.renderElement}
+              />
+            </Slate>
+          </main>
+          {showDrop ? (
+            <div style={{ position: 'absolute', top: 200, left: '50%' }}>
+              drop {dropContent}
+            </div>
+          ) : null}
+        </div>
       </div>
     );
   }
