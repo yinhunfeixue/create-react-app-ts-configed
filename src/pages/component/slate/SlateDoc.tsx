@@ -1,6 +1,14 @@
 import { Button } from 'antd';
 import React, { useCallback, useMemo, useState } from 'react';
-import { Editor, Element, Node, Range, Text, createEditor } from 'slate';
+import {
+  Editor,
+  Element,
+  Node,
+  Range,
+  Text,
+  Transforms,
+  createEditor,
+} from 'slate';
 
 import MyLeaf from '@/pages/component/slate/MyLeaf';
 import escapeHtml from 'escape-html';
@@ -52,11 +60,19 @@ const BoldButton: React.FC<FontSizeMenuProps> = ({ editor }) => {
 
 const ColorPicker: React.FC<FontSizeMenuProps> = ({ editor }) => {
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    // const color = event.target.value;
+    // const { selection } = editor;
+
+    // if (selection && Range.isExpanded(selection)) {
+    //   Editor.addMark(editor, 'color', color);
+    // }
     const color = event.target.value;
     const { selection } = editor;
-
-    if (selection && Range.isExpanded(selection)) {
-      Editor.addMark(editor, 'color', color);
+    if (selection) {
+      Transforms.setNodes(editor, { color } as any, {
+        match: Text.isText,
+        split: true,
+      });
     }
   };
 
@@ -210,6 +226,25 @@ const RichTextEditor: React.FC = () => {
     }
   };
 
+  const getSelectedTextColor = (editor: Editor) => {
+    if (!editor.selection) return null;
+
+    let color;
+    const textNodes = Array.from(
+      Editor.nodes(editor, { at: editor.selection, match: Text.isText })
+    );
+
+    for (const [node] of textNodes as any) {
+      if (color === undefined) {
+        color = node.color;
+      } else if (color !== node.color) {
+        return null;
+      }
+    }
+
+    return color;
+  };
+
   return (
     <div>
       <FontSizeMenu editor={editor} />
@@ -234,8 +269,9 @@ const RichTextEditor: React.FC = () => {
         value={value}
         onChange={(value) => {
           console.log('chagne', value);
-
           setValue(value as CustomElement[]);
+
+          console.log('color', getSelectedTextColor(editor));
         }}
       >
         <Editable renderLeaf={renderLeaf} renderElement={renderElement} />
