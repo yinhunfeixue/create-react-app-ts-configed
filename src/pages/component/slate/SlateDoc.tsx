@@ -1,6 +1,14 @@
+import { Button } from 'antd';
 import React, { useCallback, useMemo, useState } from 'react';
 import { Editor, Element, Range, Text, createEditor } from 'slate';
+
 import { Editable, RenderLeafProps, Slate, withReact } from 'slate-react';
+import { rules } from './SlateRule';
+
+const Html = require('slate-html-serializer').default;
+console.log('Html', Html);
+
+const html = new Html({ rules });
 
 interface FontSizeMenuProps {
   editor: Editor;
@@ -100,6 +108,14 @@ const RichTextEditor: React.FC = () => {
       <FontSizeMenu editor={editor} />
       <BoldButton editor={editor} />
       <ColorPicker editor={editor} />
+      <Button
+        onClick={() => {
+          const htmlStr = html.serialize(value);
+          console.log('save', value, htmlStr);
+        }}
+      >
+        导出
+      </Button>
       <Slate
         editor={editor}
         value={value}
