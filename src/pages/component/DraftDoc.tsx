@@ -1,7 +1,7 @@
 import DraftToolBar from '@/pages/component/DraftToolBar';
 import { Editor, EditorState, RichUtils } from 'draft-js';
 import 'draft-js/dist/Draft.css';
-import React, { useCallback, useState } from 'react';
+import React, { useCallback, useRef, useState } from 'react';
 import './DraftDoc.less';
 
 interface IDraftDocProps {}
@@ -53,7 +53,14 @@ const DraftDoc: React.FC<IDraftDocProps> = (props) => {
 
   const setFontSize = useCallback(() => {
     setEditorState(RichUtils.toggleInlineStyle(editorState, 'fontsize24'));
+    setTimeout(() => {
+      if (editRef.current) {
+        editRef.current.focus();
+      }
+    }, 0);
   }, [editorState]);
+
+  const editRef = useRef<Draft.DraftComponent.Base.DraftEditor>(null);
 
   return (
     <div className="DraftDoc">
@@ -66,6 +73,7 @@ const DraftDoc: React.FC<IDraftDocProps> = (props) => {
       />
       <div className="DraftDocBody">
         <Editor
+          ref={editRef}
           customStyleMap={colorStyleMap}
           editorState={editorState}
           onChange={(value) => setEditorState(value)}
