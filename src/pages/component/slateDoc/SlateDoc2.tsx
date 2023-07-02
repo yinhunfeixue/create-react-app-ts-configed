@@ -3,8 +3,7 @@ import ToolBar from '@/pages/component/slateDoc/component/ToolBar';
 import IElement from '@/pages/component/slateDoc/interface/IElement';
 import IStyle from '@/pages/component/slateDoc/interface/IStyle';
 import IText from '@/pages/component/slateDoc/interface/IText';
-import { Button } from 'antd';
-import React, { Component } from 'react';
+import React, { Component, ReactElement, ReactNode } from 'react';
 import { Text, Transforms, createEditor } from 'slate';
 import {
   Editable,
@@ -20,7 +19,19 @@ interface ISlateDoc2State {
   editor: ReactEditor;
   value: IElement[];
 }
-interface ISlateDoc2Props extends IComponentProps {}
+interface ISlateDoc2Props extends IComponentProps {
+  /**
+   * 额外的工具，会放在工具栏右侧
+   * 工具通常分两种
+   * 1. 插入元素--@see insertContent
+   * 2. 修改样式--@see updateStyle
+   */
+  extraTools?: ReactNode;
+
+  initData?: IElement[];
+
+  customElementRender?: (data: RenderElementProps) => ReactElement | undefined;
+}
 
 /**
  * SlateDoc2
@@ -30,16 +41,7 @@ class SlateDoc2 extends Component<ISlateDoc2Props, ISlateDoc2State> {
     super(props);
     this.state = {
       editor: withReact(createEditor()),
-      value: [
-        {
-          type: 'paragraph',
-          children: [
-            {
-              text: 'A line of asdfd fadsd adfa dfdsf asdfabggdfgdfgfdgsdf  dfgsfg dfg df',
-            },
-          ],
-        },
-      ],
+      value: props.initData || [],
     };
   }
 
@@ -54,16 +56,31 @@ class SlateDoc2 extends Component<ISlateDoc2Props, ISlateDoc2State> {
     );
   }
 
-  private renderElement(data: RenderElementProps) {
+  private renderElement = (data: RenderElementProps) => {
+    const { customElementRender } = this.props;
+    let result: ReactElement | undefined;
+    if (customElementRender) {
+      result = customElementRender(data);
+    }
+    if (!result) {
+      result = this.defaultElementRender(data);
+    }
+    return result;
+  };
+
+  private defaultElementRender(data: RenderElementProps) {
     const { attributes, children } = data;
     let element: IElement = data.element as IElement;
-    switch (element.type) {
-      default:
-        return <p {...attributes}>{children}</p>;
+    const { type, style } = element;
+    const noChildrenType = ['hr', 'br'];
+    if (noChildrenType.includes(type)) {
+      return React.createElement(type, { ...attributes, style });
+    } else {
+      return React.createElement(type, { ...attributes, style, children });
     }
   }
 
-  private updateStyle(style: IStyle) {
+  public updateStyle(style: IStyle) {
     const { editor } = this.state;
     const { selection } = editor;
 
@@ -74,12 +91,24 @@ class SlateDoc2 extends Component<ISlateDoc2Props, ISlateDoc2State> {
         match: Text.isText,
         split: true,
       });
-      Transforms.select(editor, previousSelection);
+
+      setTimeout(() => {
+        Transforms.select(editor, previousSelection);
+      }, 10);
+    }
+  }
+
+  public insertContent<T = any>(element: IElement<T>) {
+    const { editor } = this.state;
+    const { selection } = editor;
+    if (selection) {
+      editor.insertNode(element);
     }
   }
 
   render() {
     const { editor, value } = this.state;
+    const { extraTools } = this.props;
     return (
       <div className="SlateDoc2">
         {/* 操作区 */}
@@ -90,9 +119,7 @@ class SlateDoc2 extends Component<ISlateDoc2Props, ISlateDoc2State> {
               this.updateStyle(value);
             }}
           >
-            <div>
-              <Button>插入表格</Button>
-            </div>
+            {extraTools}
           </ToolBar>
         </header>
         {/* 内容区 */}

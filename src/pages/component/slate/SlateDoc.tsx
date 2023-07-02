@@ -220,6 +220,7 @@ const RichTextEditor: React.FC = () => {
     if (selection) {
       const customComponent = {
         type: 'custom',
+        data: { x: 1 },
         children: [{ text: '' }],
       };
       editor.insertNode(customComponent);
