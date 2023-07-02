@@ -50,7 +50,11 @@ class SlateDoc2 extends Component<ISlateDoc2Props, ISlateDoc2State> {
     const { attributes, children } = data;
     let leaf: IText = data.leaf;
     const { type = 'span' } = leaf;
-    return React.createElement(type, { ...attributes, style: leaf, children });
+    return React.createElement(type, {
+      ...attributes,
+      style: leaf,
+      children: <span>{children}</span>,
+    });
   }
 
   private renderElement = (data: RenderElementProps) => {
@@ -70,10 +74,15 @@ class SlateDoc2 extends Component<ISlateDoc2Props, ISlateDoc2State> {
     let element: IElement = data.element as IElement;
     const { type, style } = element;
     const noChildrenType = ['hr', 'br'];
+
     if (noChildrenType.includes(type)) {
       return React.createElement(type, { ...attributes, style });
     } else {
-      return React.createElement(type, { ...attributes, style, children });
+      return React.createElement(type === 'p' ? 'div' : type, {
+        ...attributes,
+        style,
+        children,
+      });
     }
   }
 
@@ -91,7 +100,6 @@ class SlateDoc2 extends Component<ISlateDoc2Props, ISlateDoc2State> {
     const { editor } = this.state;
     for (const [node, path] of Node.nodes(editor)) {
       if (match(node as IElement)) {
-        console.log('updateitem', data);
         Transforms.setNodes(editor, data, { at: path });
         break;
       }
@@ -154,6 +162,11 @@ class SlateDoc2 extends Component<ISlateDoc2Props, ISlateDoc2State> {
             }}
             onTypeChange={(value) => {
               this.updateType(value);
+            }}
+            onInsertElement={(type) => {
+              this.insertContent({
+                type,
+              });
             }}
           >
             {extraTools}

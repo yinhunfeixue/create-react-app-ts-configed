@@ -109,8 +109,6 @@ class Page1 extends Component<IPage1Props, IPage1State> {
                         );
                       }}
                       onDeleteClick={() => {
-                        console.log('remove1');
-
                         this.slateDocRef.current?.removeItem((n) => {
                           return n.id === id;
                         });

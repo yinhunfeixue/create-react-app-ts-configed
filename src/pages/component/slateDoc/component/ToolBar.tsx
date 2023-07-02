@@ -18,6 +18,7 @@ interface IToolBarProps {
   onStyleChange: (value: IStyle) => void;
   children?: ReactNode;
   onTypeChange: (value: string) => void;
+  onInsertElement: (type: string) => void;
 }
 
 /**
@@ -85,7 +86,7 @@ class ToolBar extends Component<IToolBarProps, IToolBarState> {
   render() {
     const { fontSizeList, style, textTypeList, textType } = this.state;
     const { fontSize, color, fontWeight } = style;
-    const { children } = this.props;
+    const { children, onInsertElement } = this.props;
     return (
       <div className={styles.ToolBar}>
         {/* 文本类型 */}
@@ -127,6 +128,13 @@ class ToolBar extends Component<IToolBarProps, IToolBarState> {
         {/* 数字序号 */}
         {/* 列表 */}
         {/* 分隔线 */}
+        <Button
+          type="text"
+          style={{ fontWeight }}
+          onClick={() => onInsertElement('hr')}
+        >
+          -
+        </Button>
         {/* 扩展功能 */}
         {children}
       </div>
