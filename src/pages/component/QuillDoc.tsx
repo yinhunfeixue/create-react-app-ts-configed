@@ -43,11 +43,9 @@ const QuillDoc: React.FC<IQuillDocProps> = (props) => {
         <button className="ql-bold">Bold</button>
         <button className="ql-italic">Italic</button>
         <button className="ql-underline">Underline</button>
-        <select className="ql-size">
+        <select className="ql-size" value="normal" onChange={() => {}}>
           <option value="small">Small</option>
-          <option value="normal" selected>
-            Normal
-          </option>
+          <option value="normal">Normal</option>
           <option value="large">Large</option>
           <option value="huge">Huge</option>
         </select>

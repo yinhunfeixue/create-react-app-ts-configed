@@ -1,14 +1,10 @@
 import { Button } from 'antd';
 import React, { useCallback, useMemo, useState } from 'react';
-import { Editor, Element, Range, Text, createEditor } from 'slate';
+import { Editor, Element, Node, Range, Text, createEditor } from 'slate';
 
+import MyLeaf from '@/pages/component/slate/MyLeaf';
+import escapeHtml from 'escape-html';
 import { Editable, RenderLeafProps, Slate, withReact } from 'slate-react';
-import { rules } from './SlateRule';
-
-const Html = require('slate-html-serializer').default;
-console.log('Html', Html);
-
-const html = new Html({ rules });
 
 interface FontSizeMenuProps {
   editor: Editor;
@@ -81,7 +77,25 @@ const RichTextEditor: React.FC = () => {
   const [value, setValue] = useState<CustomElement[]>([
     {
       type: 'paragraph',
-      children: [{ text: 'A line of text in a paragraph.' }],
+      children: [
+        {
+          text: 'A line of',
+        },
+        {
+          text: ' text i',
+          bold: true,
+        },
+        {
+          text: 'n a p',
+        },
+        {
+          text: 'aragr',
+          color: '#e70d0d',
+        },
+        {
+          text: 'aph.',
+        },
+      ],
     },
   ]);
 
@@ -91,17 +105,54 @@ const RichTextEditor: React.FC = () => {
       const fontSize = customLeaf.fontSize || '16';
       const fontWeight = customLeaf.bold ? 'bold' : 'normal';
       const color = customLeaf.color || 'black';
+      // return (
+      //   <span
+      //     {...attributes}
+      //     style={{ fontSize: `${fontSize}px`, fontWeight, color }}
+      //   >
+      //     {children}
+      //   </span>
+      // );
       return (
-        <span
-          {...attributes}
-          style={{ fontSize: `${fontSize}px`, fontWeight, color }}
-        >
-          {children}
-        </span>
+        <MyLeaf style={{ color, fontSize, fontWeight }}>{children}</MyLeaf>
       );
     },
     []
   );
+
+  /**
+   * 序列化为纯文本
+   * @param nodes
+   * @returns
+   */
+  const serialize = (nodes: Node[]) => {
+    return nodes.map((n: Node) => Node.string(n)).join('\n');
+  };
+
+  const serializeHTML = (node: any) => {
+    if (Text.isText(node)) {
+      let string = escapeHtml(node.text);
+      if ((node as any).bold) {
+        string = `<strong>${string}</strong>`;
+      }
+      return string;
+    }
+
+    const children = node.children
+      ? node.children.map((n: Node) => serializeHTML(n)).join('')
+      : '';
+
+    switch (node.type) {
+      case 'quote':
+        return `<blockquote><p>${children}</p></blockquote>`;
+      case 'paragraph':
+        return `<p>${children}</p>`;
+      case 'link':
+        return `<a href="${escapeHtml(node.url)}">${children}</a>`;
+      default:
+        return children;
+    }
+  };
 
   return (
     <div>
@@ -110,8 +161,7 @@ const RichTextEditor: React.FC = () => {
       <ColorPicker editor={editor} />
       <Button
         onClick={() => {
-          const htmlStr = html.serialize(value);
-          console.log('save', value, htmlStr);
+          console.log('save', value, serialize(value), serializeHTML(value[0]));
         }}
       >
         导出
@@ -119,7 +169,11 @@ const RichTextEditor: React.FC = () => {
       <Slate
         editor={editor}
         value={value}
-        onChange={(value) => setValue(value as CustomElement[])}
+        onChange={(value) => {
+          console.log('chagne', value);
+
+          setValue(value as CustomElement[]);
+        }}
       >
         <Editable renderLeaf={renderLeaf} />
       </Slate>
