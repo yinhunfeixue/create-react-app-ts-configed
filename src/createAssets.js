@@ -1,12 +1,12 @@
 const FS = require('fs');
 const PATH = require('path');
 
-const assetFold = 'static';
+const assetFold = 'assets';
 const ROOT_FOLDER = PATH.join(__dirname, assetFold);
 const EXT_LIST = ['.jpg', '.png', '.svg', '.gif'];
 
 const netAssetsServer = '';
-const isWx = true;
+const isWx = false;
 
 /**
  *
@@ -78,7 +78,7 @@ contentList.push(
 // 用于导出的类型
 contentList.push(`type AssetsType = typeof Assets`);
 
-contentList.push(`export default Assets;`, `export { AssetsType };`);
+contentList.push(`export default Assets;`, `export type { AssetsType };`);
 
 // 如果使用网络资源, 添加网络函数
 if (netAssetsServer) {
