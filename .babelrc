@@ -6,15 +6,6 @@
     [
       "import",
       {
-        "libraryName": "antd",
-        "libraryDirectory": "es",
-        "style": "css"
-      },
-      "antd"
-    ],
-    [
-      "import",
-      {
         "libraryName": "antd-mobile",
         "libraryDirectory": "lib",
         "style": "css"
