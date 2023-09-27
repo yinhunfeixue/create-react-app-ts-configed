@@ -20,8 +20,7 @@ class Page1 extends Component<IPage1Props, IPage1State> {
     };
   }
   componentDidMount() {
-    Axios.get('baiduApi?wd=create-react-app').catch((error) => {
-    });
+    Axios.get('baiduApi?wd=create-react-app').catch((error) => {});
   }
 
   render() {

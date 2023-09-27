@@ -8,7 +8,7 @@ module.exports = {
     //使用console会有警告
     'no-console': 'warn',
     //禁止出现未使用的变量
-    'no-unused-vars': 'error',
+    '@typescript-eslint/no-unused-vars': 'error',
     //不允许重复import
     'no-duplicate-imports': 'error',
     //强制使用单引号
