@@ -1,58 +1,140 @@
-import IComponentProps from '@/base/interfaces/IComponentProps';
-import UrlUtil from '@/utils/UrlUtil';
-import { Button, Drawer } from 'antd';
-import Axios from 'axios';
-import { Component } from 'react';
+import { MenuOutlined } from '@ant-design/icons';
+import { DndContext, DragEndEvent } from '@dnd-kit/core';
+import { restrictToVerticalAxis } from '@dnd-kit/modifiers';
+import {
+  SortableContext,
+  arrayMove,
+  useSortable,
+  verticalListSortingStrategy,
+} from '@dnd-kit/sortable';
+import { CSS } from '@dnd-kit/utilities';
+import { Table } from 'antd';
+import type { ColumnsType } from 'antd/es/table';
+import React, { useState } from 'react';
 
-interface IPage1State {
-  visibleDrawer: boolean;
+interface DataType {
+  key: string;
+  name: string;
+  age: number;
+  address: string;
 }
-interface IPage1Props extends IComponentProps {}
 
-/**
- * Page1
- */
-class Page1 extends Component<IPage1Props, IPage1State> {
-  constructor(props: IPage1Props) {
-    super(props);
-    this.state = {
-      visibleDrawer: false,
-    };
-  }
-  componentDidMount() {
-    Axios.get('baiduApi?wd=create-react-app').catch((error) => {});
-  }
+const columns: ColumnsType<DataType> = [
+  {
+    key: 'sort',
+  },
+  {
+    title: 'Name',
+    dataIndex: 'name',
+  },
+  {
+    title: 'Age',
+    dataIndex: 'age',
+  },
+  {
+    title: 'Address',
+    dataIndex: 'address',
+  },
+];
 
-  render() {
-    const { visibleDrawer } = this.state;
-    return (
-      <div>
-        Page1
-        <Button
-          onClick={() => {
-            UrlUtil.toUrl(`/Page2/page21`, { x: 1 });
+interface RowProps extends React.HTMLAttributes<HTMLTableRowElement> {
+  'data-row-key': string;
+}
+
+const Row = ({ children, ...props }: RowProps) => {
+  console.log('props', props);
+
+  const {
+    attributes,
+    listeners,
+    setNodeRef,
+    setActivatorNodeRef,
+    transform,
+    transition,
+    isDragging,
+  } = useSortable({
+    id: props['data-row-key'],
+  });
+
+  const style: React.CSSProperties = {
+    ...props.style,
+    transform: CSS.Transform.toString(transform && { ...transform, scaleY: 1 }),
+    transition,
+    ...(isDragging ? { position: 'relative', zIndex: 9999 } : {}),
+  };
+
+  return (
+    <tr {...props} ref={setNodeRef} style={style} {...attributes}>
+      {React.Children.map(children, (child) => {
+        if ((child as React.ReactElement).key === 'sort') {
+          return React.cloneElement(child as React.ReactElement, {
+            children: (
+              <MenuOutlined
+                ref={setActivatorNodeRef}
+                style={{ touchAction: 'none', cursor: 'move' }}
+                {...listeners}
+              />
+            ),
+          });
+        }
+        return child;
+      })}
+    </tr>
+  );
+};
+
+const App: React.FC = () => {
+  const [dataSource, setDataSource] = useState([
+    {
+      key: '1',
+      name: 'John Brown',
+      age: 32,
+      address:
+        'Long text Long text Long text Long text Long text Long text Long text Long text Long text Long text Long text Long text Long text Long text Long text Long text Long text Long text Long text Long text Long text Long text Long text Long text Long text Long text Long text Long text Long text Long text Long text Long text',
+    },
+    {
+      key: '2',
+      name: 'Jim Green',
+      age: 42,
+      address: 'London No. 1 Lake Park',
+    },
+    {
+      key: '3',
+      name: 'Joe Black',
+      age: 32,
+      address: 'Sidney No. 1 Lake Park',
+    },
+  ]);
+
+  const onDragEnd = ({ active, over }: DragEndEvent) => {
+    if (active.id !== over?.id) {
+      setDataSource((previous) => {
+        const activeIndex = previous.findIndex((i) => i.key === active.id);
+        const overIndex = previous.findIndex((i) => i.key === over?.id);
+        return arrayMove(previous, activeIndex, overIndex);
+      });
+    }
+  };
+
+  return (
+    <DndContext modifiers={[restrictToVerticalAxis]} onDragEnd={onDragEnd}>
+      <SortableContext
+        items={dataSource.map((i) => i.key)}
+        strategy={verticalListSortingStrategy}
+      >
+        <Table
+          components={{
+            body: {
+              row: Row,
+            },
           }}
-        >
-          打开页面二一
-        </Button>
-        <Button onClick={() => this.setState({ visibleDrawer: true })}>
-          打开drawer
-        </Button>
-        {visibleDrawer && (
-          <Drawer
-            title="drawer"
-            open={visibleDrawer}
-            closable
-            onClose={() => {
-              this.setState({ visibleDrawer: false });
-            }}
-          >
-            aa
-          </Drawer>
-        )}
-      </div>
-    );
-  }
-}
+          rowKey="key"
+          columns={columns}
+          dataSource={dataSource}
+        />
+      </SortableContext>
+    </DndContext>
+  );
+};
 
-export default Page1;
+export default App;
