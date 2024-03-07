@@ -11,3 +11,20 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+.HGroup {
+  display: flex;
+  align-items: center;
+  > *:not(:last-child) {
+    margin-right: 8px;
+  }
+}
+
+.VGroup {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  > *:not(:last-child) {
+    margin-bottom: 8px;
+  }
+}
