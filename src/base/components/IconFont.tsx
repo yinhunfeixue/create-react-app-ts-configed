@@ -4,7 +4,7 @@ import classNames from 'classnames';
 import { CSSProperties, Component } from 'react';
 import './IconFont.less';
 
-const js = require('../fonts/iconfont.js');
+const js = require('../../fonts/iconfont');
 
 interface IIconFontState {}
 interface IIconFontProps extends IComponentProps {
@@ -32,7 +32,7 @@ class IconFont extends Component<IIconFontProps, IIconFontState> {
       cursor: onClick ? 'pointer' : 'unset',
     };
     if (useCss) {
-      const char = unescape(`%u${type}`);
+      const char = String.fromCharCode(parseInt(type, 16));
       return (
         <span
           {...other}

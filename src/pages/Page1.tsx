@@ -1,5 +1,5 @@
+import IconFont from '@/base/components/IconFont';
 import IComponentProps from '@/base/interfaces/IComponentProps';
-import IconFont from '@/component/IconFont';
 import { Component } from 'react';
 
 interface IPage1State {}
