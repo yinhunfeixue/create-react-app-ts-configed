@@ -16,36 +16,35 @@
 	// 	"description": "Log output to console"
 	// }
 	// 创建enum文件
-	// 创建enum文件
-  "createEnum": {
-    "prefix": "newEnum",
-    "body": [
-      "/**",
-      "* ${TM_FILENAME_BASE}",
-      "*/",
-      "enum ${TM_FILENAME_BASE} {",
-      "UNKNOW,",
-      "$1",
-      "};",
-      "",
-      "namespace ${TM_FILENAME_BASE} {",
-      "/**",
-      " * 枚举值列表，一般用于列表显示，例如下拉框",
-      " */",
-      "export const ALL_LIST:${TM_FILENAME_BASE}[] = []",
-      "",
-      "/**",
-      " * 枚举值转换为字符串",
-      " */",
-      "export function toString(value: ${TM_FILENAME_BASE}){",
-      "  const dic: { [key in ${TM_FILENAME_BASE}]: string } = {}",
-      "return dic[value] || '';",
-      "}",
-      "}",
-      "export default ${TM_FILENAME_BASE};",
-    ],
-    "description": "创建Enum"
-  },
+	"createEnum": {
+		"prefix": "newEnum",
+		"body": [
+			"/**",
+			"* ${TM_FILENAME_BASE}",
+			"*/",
+			"enum ${TM_FILENAME_BASE} {",
+			"UNKNOW,",
+			"$1",
+			"};",
+			"",
+			"namespace ${TM_FILENAME_BASE} {",
+			"/**",
+			" * 枚举值列表，一般用于列表显示，例如下拉框",
+			" */",
+			"export const ALL_LIST:${TM_FILENAME_BASE}[] = []",
+			"",
+			"/**",
+			" * 枚举值转换为字符串",
+			" */",
+			"export function toString(value: ${TM_FILENAME_BASE}){",
+			"  const dic: { [key in ${TM_FILENAME_BASE}]: string } = {}",
+			"return dic[value] || '';",
+			"}",
+			"}",
+			"export default ${TM_FILENAME_BASE};",
+		],
+		"description": "创建Enum"
+	},
 	"createInterface": {
 		"prefix": "newInterface",
 		"body": [
@@ -153,13 +152,19 @@
 	"createHooks": {
 		"prefix": "newHooks",
 		"body": [
-			"import React from 'react'",
-			"interface I${TM_FILENAME_BASE}Props {}",
+			"import classNames from 'classnames'",
+			"import React, { CSSProperties } from 'react'",
+			"import styles from './${TM_FILENAME_BASE}.module.less'",
+			"interface I${TM_FILENAME_BASE}Props {",
+			"className?: string,",
+			"style?:CSSProperties",
+			"}",
 			"/**",
 			"* ${TM_FILENAME_BASE}",
 			"*/",
 			"const ${TM_FILENAME_BASE}: React.FC<I${TM_FILENAME_BASE}Props> = (props) => {",
-			"return <div>${TM_FILENAME_BASE}</div>",
+			"const { className, style } = props",
+			"return <div className={classNames(styles.${TM_FILENAME_BASE}, className)} style={style}>${TM_FILENAME_BASE}</div>",
 			"}",
 			"export default ${TM_FILENAME_BASE}",
 		]

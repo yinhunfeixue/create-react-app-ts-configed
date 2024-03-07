@@ -1,8 +1,8 @@
-import { MouseEventHandler } from 'react';
+import { CSSProperties, MouseEventHandler } from 'react';
 
 export default interface IComponentProps extends React.DOMAttributes<any> {
   className?: string;
-  style?: { [key: string]: any };
+  style?: CSSProperties;
   data?: any;
   onClick?: MouseEventHandler;
 }
