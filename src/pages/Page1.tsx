@@ -1,28 +1,22 @@
 import IComponentProps from '@/base/interfaces/IComponentProps';
-import Axios from 'axios';
+import IconFont from '@/component/IconFont';
 import { Component } from 'react';
 
-interface IPage1State {
-  visibleDrawer: boolean;
-}
+interface IPage1State {}
 interface IPage1Props extends IComponentProps {}
 
 /**
  * Page1
  */
 class Page1 extends Component<IPage1Props, IPage1State> {
-  constructor(props: IPage1Props) {
-    super(props);
-    this.state = {
-      visibleDrawer: false,
-    };
-  }
-  componentDidMount() {
-    Axios.get('baiduApi?wd=create-react-app').catch((error) => {});
-  }
-
   render() {
-    return <div style={{ whiteSpace: 'pre' }}>aaa\r\nbbbb{'\r\n'}ccc</div>;
+    return (
+      <div style={{ whiteSpace: 'pre' }}>
+        page1
+        <IconFont type="icon-hotfill" />
+        <IconFont type="e757" useCss />
+      </div>
+    );
   }
 }
 
