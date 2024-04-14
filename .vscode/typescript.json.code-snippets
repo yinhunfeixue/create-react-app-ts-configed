@@ -162,7 +162,7 @@
 			"/**",
 			"* ${TM_FILENAME_BASE}",
 			"*/",
-			"const ${TM_FILENAME_BASE}: React.FC<I${TM_FILENAME_BASE}Props> = (props) => {",
+			"function ${TM_FILENAME_BASE}(props: I${TM_FILENAME_BASE}Props) {",
 			"const { className, style } = props",
 			"return <div className={classNames(styles.${TM_FILENAME_BASE}, className)} style={style}>${TM_FILENAME_BASE}</div>",
 			"}",
