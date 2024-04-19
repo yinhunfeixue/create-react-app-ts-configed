@@ -15,8 +15,6 @@ function ModelInit() {
   }, []);
 
   useEffect(() => {
-    console.log('update data');
-
     ProjectUtil.setModelData = setData;
     ProjectUtil.getModelData = () => {
       return data;
