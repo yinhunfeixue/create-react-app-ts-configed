@@ -1,4 +1,5 @@
-import React, { Component, ReactElement } from 'react';
+import ModelInit from '@/hooks/ModelInit';
+import { ReactElement } from 'react';
 import { HashRouter, Navigate, Route, Routes } from 'react-router-dom';
 import IRouteItem from './IRouteItem';
 import routeConfig from './RouteConfig';
@@ -6,8 +7,9 @@ import routeConfig from './RouteConfig';
 /**
  * 路由配置文件
  */
-class RouterRender extends Component<any, any> {
-  renderRoutes(data?: IRouteItem[]): ReactElement[] {
+function RouterRender(props: any) {
+  ModelInit();
+  const renderRoutes = (data?: IRouteItem[]): ReactElement[] => {
     if (!data) {
       return [];
     }
@@ -33,25 +35,19 @@ class RouterRender extends Component<any, any> {
       };
 
       return (
-        <Route
-          key={item.path}
-          path={item.path}
-          element={createElement(this.props)}
-        >
-          {this.renderRoutes(item.children)}
+        <Route key={item.path} path={item.path} element={createElement(props)}>
+          {renderRoutes(item.children)}
         </Route>
       );
     });
     return result;
-  }
+  };
 
-  render() {
-    return (
-      <HashRouter>
-        <Routes>{this.renderRoutes(routeConfig)}</Routes>
-      </HashRouter>
-    );
-  }
+  return (
+    <HashRouter>
+      <Routes>{renderRoutes(routeConfig)}</Routes>
+    </HashRouter>
+  );
 }
 
 export default RouterRender;

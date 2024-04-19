@@ -1,4 +1,3 @@
-import Model from '@/base/model/Model';
 import PageUtil from '@/utils/PageUtil';
 import { notification } from 'antd';
 import axios, { AxiosResponse } from 'axios';
@@ -18,7 +17,7 @@ class ProxySetting {
     );
     axios.interceptors.request.use((config) => {
       // 如需添加全局请求头，在这里配置
-      const token = Model.token;
+      const token = ''; // todo Model.token;
       if (token) {
         config.headers.token = token;
       }

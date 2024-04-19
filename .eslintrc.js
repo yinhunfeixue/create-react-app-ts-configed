@@ -63,5 +63,6 @@ module.exports = {
       },
     ],
     'react/jsx-key': 'error',
+    'react-hooks/exhaustive-deps': 0,
   },
 };

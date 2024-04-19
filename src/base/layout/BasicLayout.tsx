@@ -1,56 +1,35 @@
-import IRouteItem from '@/base/config/IRouteItem';
 import { APP_NAME } from '@/base/config/ProjectConfig';
 import { MENU_LIST } from '@/base/config/RouteConfig';
 import IPageProps from '@/base/interfaces/IPageProps';
 import LayoutUtil from '@/utils/LayoutUtil';
 import PageUtil from '@/utils/PageUtil';
 import { Button, Menu } from 'antd';
-import { ItemType } from 'antd/lib/menu/hooks/useItems';
 import TreeControl from 'fb-project-component/es/utils/TreeControl';
 import { pathToRegexp } from 'path-to-regexp';
-import { Component, ReactText } from 'react';
+import { Key, useCallback, useEffect, useState } from 'react';
 import styles from './BasicLayout.module.less';
 
-interface IBasicLayoutState {
-  openMenuKeys: ReactText[];
-  selectedMenuKeys: ReactText[];
-}
-
 /**
- * 基础布局
+ * BasicLayout
  */
-class BasicLayout extends Component<IPageProps, IBasicLayoutState> {
-  private treeControl = new TreeControl<IRouteItem>();
+function BasicLayout(props: IPageProps) {
+  const { children } = props;
+  const [openMenuKeys, setOpenMenuKeys] = useState<Key[]>([]);
+  const [selectedMenuKeys, setSelectedMenuKeys] = useState<Key[]>([]);
 
-  constructor(props: IPageProps) {
-    super(props);
-    this.state = {
-      openMenuKeys: [],
-      selectedMenuKeys: [],
-    };
-  }
+  const updateSelectedKeys = useCallback(() => {
+    const keys = getSelectedKeys();
+    setOpenMenuKeys(keys);
+    setSelectedMenuKeys(keys);
+  }, []);
 
-  componentDidMount() {
-    this.updateSelectedKeys();
-  }
+  useEffect(() => {
+    updateSelectedKeys();
+  }, [props.location.pathname, updateSelectedKeys]);
 
-  componentDidUpdate(prevProps: IPageProps) {
-    if (this.props.location.pathname !== prevProps.location.pathname) {
-      this.updateSelectedKeys();
-    }
-  }
-
-  private updateSelectedKeys() {
-    const keys = this.getSelectedKeys();
-    this.setState({
-      openMenuKeys: keys,
-      selectedMenuKeys: keys,
-    });
-  }
-
-  private getSelectedKeys() {
-    const currentPath = window.location.hash.substr(1);
-    const chain = this.treeControl.searchChain(MENU_LIST, (node) => {
+  const getSelectedKeys = () => {
+    const currentPath = window.location.hash.substring(1);
+    const chain = new TreeControl().searchChain(MENU_LIST, (node) => {
       const reg = pathToRegexp(node.path);
       if (reg.test(currentPath)) {
         return true;
@@ -58,47 +37,44 @@ class BasicLayout extends Component<IPageProps, IBasicLayoutState> {
       return false;
     });
     return chain ? chain.map((item) => item.path) : [];
-  }
+  };
 
-  private createMenuItems(): ItemType[] {
+  const createMenuItems = () => {
     return LayoutUtil.createMenuItems(MENU_LIST);
-  }
+  };
 
-  render() {
-    const { openMenuKeys, selectedMenuKeys } = this.state;
-    return (
-      <div className={styles.BasicLayout}>
-        <div className={styles.Left}>
-          <div className={styles.Logo}>{APP_NAME}</div>
-          <Menu
-            theme="dark"
-            mode="inline"
-            items={this.createMenuItems()}
-            openKeys={openMenuKeys as string[]}
-            selectedKeys={selectedMenuKeys as string[]}
-            onOpenChange={(keys) => {
-              this.setState({ openMenuKeys: keys });
-            }}
-            onSelect={(option) => {
-              this.setState({ selectedMenuKeys: option.selectedKeys || [] });
-            }}
-          />
-        </div>
-        <div className={styles.Right}>
-          <header>
-            header
-            <Button
-              onClick={() => {
-                PageUtil.openLoginPage(window.location.href);
-              }}
-            >
-              退出
-            </Button>
-          </header>
-          <main>{this.props.children}</main>
-        </div>
+  return (
+    <div className={styles.BasicLayout}>
+      <div className={styles.Left}>
+        <div className={styles.Logo}>{APP_NAME}</div>
+        <Menu
+          theme="dark"
+          mode="inline"
+          items={createMenuItems()}
+          openKeys={openMenuKeys as string[]}
+          selectedKeys={selectedMenuKeys as string[]}
+          onOpenChange={(keys) => {
+            setOpenMenuKeys(keys);
+          }}
+          onSelect={(option) => {
+            setSelectedMenuKeys(option.selectedKeys);
+          }}
+        />
       </div>
-    );
-  }
+      <div className={styles.Right}>
+        <header>
+          header
+          <Button
+            onClick={() => {
+              PageUtil.openLoginPage(window.location.href);
+            }}
+          >
+            退出
+          </Button>
+        </header>
+        <main>{children}</main>
+      </div>
+    </div>
+  );
 }
 export default BasicLayout;
