@@ -1,4 +1,5 @@
 import PageUtil from '@/utils/PageUtil';
+import ProjectUtil from '@/utils/ProjectUtil';
 import { notification } from 'antd';
 import axios, { AxiosResponse } from 'axios';
 
@@ -17,7 +18,7 @@ class ProxySetting {
     );
     axios.interceptors.request.use((config) => {
       // 如需添加全局请求头，在这里配置
-      const token = ''; // todo Model.token;
+      const token = ProjectUtil.getModelData().token;
       if (token) {
         config.headers.token = token;
       }
