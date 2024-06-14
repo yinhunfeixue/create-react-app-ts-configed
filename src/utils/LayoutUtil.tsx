@@ -1,6 +1,6 @@
 import IRouteItem from '@/base/config/IRouteItem';
 import UrlUtil from '@/utils/UrlUtil';
-import { ItemType } from 'antd/lib/menu/hooks/useItems';
+import { ItemType } from 'antd/lib/menu/interface';
 import { ReactNode } from 'react';
 
 /**

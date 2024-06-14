@@ -1,6 +1,6 @@
 import ScrollBarUtil from '@/pages/component/ScrollBarUtil';
 import classNames from 'classnames';
-import React, { CSSProperties, Component } from 'react';
+import React, { CSSProperties, Component, ReactNode } from 'react';
 import './ScrollContainer.less';
 
 interface IScrollContainerState {}
@@ -10,6 +10,7 @@ interface IScrollContainerProps {
   onScrollSizeChange: (width: number, height: number) => void;
   scrollLeft?: number;
   scrollTop?: number;
+  children?: ReactNode;
 }
 
 /**

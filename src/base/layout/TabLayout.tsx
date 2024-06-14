@@ -4,7 +4,7 @@ import routeConfig, { MENU_LIST } from '@/base/config/RouteConfig';
 import IPageProps from '@/base/interfaces/IPageProps';
 import LayoutUtil from '@/utils/LayoutUtil';
 import { Menu, Tabs } from 'antd';
-import { ItemType } from 'antd/lib/menu/hooks/useItems';
+import { ItemType } from 'antd/es/menu/interface';
 import TreeControl from 'fb-project-component/es/utils/TreeControl';
 import React, { Component, ReactElement, ReactNode, ReactText } from 'react';
 import styles from './TabLayout.module.less';

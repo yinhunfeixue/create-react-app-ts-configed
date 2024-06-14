@@ -1,11 +1,10 @@
 import { Cascader, GetProps } from 'antd';
-import { BaseOptionType, DefaultOptionType } from 'rc-cascader';
-import { ValueType } from 'rc-cascader/lib/Cascader';
+import { BaseOptionType, DefaultOptionType } from 'antd/es/cascader';
 import { useEffect, useState } from 'react';
 
-type IProCascaderProps<
-  T extends DefaultOptionType | BaseOptionType = DefaultOptionType
-> = GetProps<typeof Cascader<T>> & {
+type IProCascaderProps<T extends DefaultOptionType> = GetProps<
+  typeof Cascader
+> & {
   /**
    *
    * @param level 加载第几层的数据
@@ -33,7 +32,8 @@ function ProCascader<
   }, []);
 
   const getItemKey = (item: T) => {
-    return item[fieldNames?.value || 'value'];
+    const key: string = fieldNames?.value || 'value';
+    return (item as DefaultOptionType)[key];
   };
 
   const init = async () => {
@@ -59,10 +59,10 @@ function ProCascader<
    */
   const loadDataForOptions = async (
     options: T[],
-    values: ValueType,
+    values: typeof value,
     level: number
   ) => {
-    if (values.length) {
+    if (values?.length) {
       const value = values[0];
       const option = options.find((item) => getItemKey(item) === value);
       if (option) {
@@ -79,11 +79,11 @@ function ProCascader<
     <Cascader
       {...otherProps}
       fieldNames={fieldNames}
-      value={value}
+      value={value as any}
       options={effectOptions}
       loadData={async (selectOptions) => {
         const parent = selectOptions[selectOptions.length - 1];
-        const children = await loadData2(selectOptions.length, parent);
+        const children = await loadData2(selectOptions.length, parent as T);
         parent.children = children;
         setStateOptions([...(stateOptions || [])]);
       }}
