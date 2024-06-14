@@ -16,9 +16,8 @@ function Login(props: IPageProps) {
       token: '123456',
     });
     const { query } = props;
-    const backUrl: string = query?.backUrl as string;
-    if (backUrl) {
-      window.location.href = backUrl;
+    if (query?.back) {
+      window.location.href = decodeURIComponent(query.back as string);
     } else {
       UrlUtil.toUrl('/');
     }
