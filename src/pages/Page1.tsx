@@ -1,23 +1,21 @@
-import IconFont from '@/base/components/IconFont';
-import IComponentProps from '@/base/interfaces/IComponentProps';
-import { Component } from 'react';
+import classNames from 'classnames';
+import { CSSProperties } from 'react';
 
-interface IPage1State {}
-interface IPage1Props extends IComponentProps {}
-
+const img = require('../assets/a.png');
+console.log(img);
+interface IPage1Props {
+  className?: string;
+  style?: CSSProperties;
+}
 /**
  * Page1
  */
-class Page1 extends Component<IPage1Props, IPage1State> {
-  render() {
-    return (
-      <div style={{ whiteSpace: 'pre' }}>
-        page1
-        <IconFont type="icon-hotfill" />
-        <IconFont type="e757" useCss />
-      </div>
-    );
-  }
+function Page1(props: IPage1Props) {
+  const { className, style } = props;
+  return (
+    <div className={classNames(className)} style={style}>
+      Page1
+    </div>
+  );
 }
-
 export default Page1;
