@@ -11,7 +11,7 @@ ProxySetting.init();
 function App() {
   return (
     <ModelProvider>
-      <StyleProvider hashPriority="low">
+      <StyleProvider hashPriority="high">
         <ConfigProvider locale={zhCN}>
           <RouterRender />
         </ConfigProvider>

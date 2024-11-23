@@ -1,8 +1,7 @@
+import ProSelect from '@/procomponent/ProSelect';
 import classNames from 'classnames';
 import { CSSProperties } from 'react';
 
-const img = require('../assets/a.png');
-console.log(img);
 interface IPage1Props {
   className?: string;
   style?: CSSProperties;
@@ -14,7 +13,30 @@ function Page1(props: IPage1Props) {
   const { className, style } = props;
   return (
     <div className={classNames(className)} style={style}>
-      Page1
+      <ProSelect
+        placeholder="单选"
+        style={{ width: 300 }}
+        options={['aaaa', 'bbbbb', 'ccc'].map((item) => ({
+          value: item,
+          label: item,
+        }))}
+      />
+
+      <ProSelect
+        placeholder="多选"
+        mode="multiple"
+        style={{ width: 300 }}
+        options={[
+          'aaaaaaaa',
+          'bbbbbbbb',
+          'ccccccc',
+          'ddddddddd',
+          'eeeeeeeeeeeeee',
+        ].map((item) => ({
+          value: item,
+          label: item,
+        }))}
+      />
     </div>
   );
 }
