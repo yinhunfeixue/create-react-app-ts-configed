@@ -43,6 +43,10 @@ const routeConfig: IRouteItem[] = [
       },
     ],
   },
+  {
+    path: '*',
+    component: async(() => import('@/pages/Page404')),
+  },
 ];
 
 export const MENU_LIST: IRouteItem[] = routeConfig[1].children || [];
